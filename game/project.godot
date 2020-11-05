@@ -1,0 +1,183 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "ArrayUtil",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/array_util.gd"
+}, {
+"base": "Node",
+"class": "CameraLimiter",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd"
+}, {
+"base": "Node",
+"class": "CameraMove2D",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/camera/behavior/camera_move.gd"
+}, {
+"base": "Node",
+"class": "CameraShake",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/camera/behavior/camera_shake.gd"
+}, {
+"base": "Node",
+"class": "CameraZoom2D",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/camera/behavior/camera_zoom.gd"
+}, {
+"base": "Position2D",
+"class": "Circle2D",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd"
+}, {
+"base": "Object",
+"class": "DictionaryUtil",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/dictionary_util.gd"
+}, {
+"base": "Object",
+"class": "MultiYield",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/multi_yield.gd"
+}, {
+"base": "Node",
+"class": "NodeUtil",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/node_util.gd"
+}, {
+"base": "Object",
+"class": "PropertyUtil",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/property_util.gd"
+}, {
+"base": "ReferenceRect",
+"class": "RandomDistributionArea",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area.gd"
+}, {
+"base": "Node",
+"class": "RandomDistributionAreaLayer",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area_layer.gd"
+}, {
+"base": "Node2D",
+"class": "ShapeDraw2D",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/shape/shape_draw_2d.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/state_machine/state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/state_machine/state_machine.gd"
+}, {
+"base": "Object",
+"class": "StopWatch",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/stop_watch.gd"
+}, {
+"base": "Object",
+"class": "StringUtil",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/util/string_util.gd"
+}, {
+"base": "Object",
+"class": "Vector2Util",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/2d/vector/vector2_util.gd"
+} ]
+_global_script_class_icons={
+"ArrayUtil": "",
+"CameraLimiter": "",
+"CameraMove2D": "",
+"CameraShake": "",
+"CameraZoom2D": "",
+"Circle2D": "",
+"DictionaryUtil": "",
+"MultiYield": "",
+"NodeUtil": "",
+"PropertyUtil": "",
+"RandomDistributionArea": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area.svg",
+"RandomDistributionAreaLayer": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area_layer.svg",
+"ShapeDraw2D": "",
+"State": "res://addons/godot_helper_pack/core/state_machine/state.svg",
+"StateMachine": "res://addons/godot_helper_pack/core/state_machine/state_machine.svg",
+"StopWatch": "",
+"StringUtil": "",
+"Vector2Util": ""
+}
+
+[application]
+
+config/name="Game Off 2020 - MOONSHOT"
+run/main_scene="res://scenes/title/title.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://addons/godot_helper_pack/core/globals.gd"
+SignalMgr="*res://addons/godot_helper_pack/core/signal_mgr.gd"
+transitionMgr="*res://utils/transitionMgr.tscn"
+soundTrackMgr="*res://utils/soundTrackMgr.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "godot_helper_pack" )
+
+[global]
+
+monitor=false
+
+[input]
+
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+screen_shot={
+"deadzone": 0.5,
+"events": [  ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
