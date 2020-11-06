@@ -41,7 +41,7 @@ rect_min_size = Vector2( 300, 250 )
 margin_right = 300.0
 margin_bottom = 64.0
 text = "New Game"
-sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
+sceneToLoad = "res://scenes/game/game.tscn"
 fadeSound = true
 
 [node name="creditsBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
