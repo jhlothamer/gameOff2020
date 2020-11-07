@@ -5,9 +5,15 @@ class_name CameraZoom2D
 export var zoom_speed = .25
 export var min_camera_zoom: float = .25
 export var max_camera_zoom: float = 10.0
+export var initial_camera_zoom: float = .25
 
 
 onready var camera: Camera2D = get_parent() if typeof(get_parent()) == typeof(Camera2D) else null
+
+func _ready():
+	if camera == null:
+		return
+	camera.zoom = Vector2.ONE * clamp(initial_camera_zoom, min_camera_zoom, max_camera_zoom)
 
 
 func _input(event):
