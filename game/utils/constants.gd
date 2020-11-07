@@ -14,4 +14,4 @@ enum StructureTileType {
 	Recreation
 }
 
-
+const STRUCTURE_TILE_TYPE_COUNT  = 10

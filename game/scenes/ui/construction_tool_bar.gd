@@ -1,5 +1,7 @@
 extends Control
 
+signal construction_tool_bar_clicked(structure_tile_type)
+
 var _expanded := false
 var _btns := []
 var _animating := false
@@ -42,6 +44,7 @@ onready var _construction_btn: TextureButton = $ConstructionBtn
 
 func _ready():
 	SignalMgr.register_subscriber(self, "focused_gained", "_on_focused_gained")
+	SignalMgr.register_publisher(self, "construction_tool_bar_clicked")
 	set("custom_constants/separation", -50)
 	for c in get_children():
 		if c.name.ends_with("Btn"):
@@ -50,7 +53,7 @@ func _ready():
 	
 	for structure_tile_type in _structure_tile_type_to_button.keys():
 		var btn = _structure_tile_type_to_button[structure_tile_type]
-		btn.connect("pressed", self, "_on_Button_pressed", [structure_tile_type])
+		btn.connect("button_down", self,"_on_button_down", [structure_tile_type])
 	
 
 func _on_focused_gained(control):
@@ -104,5 +107,7 @@ func _process(_delta):
 
 
 
-func _on_Button_pressed(tile_type):
+func _on_button_down(tile_type):
 	print("clicked on structure button of type " + str(tile_type))
+	yield(get_tree().create_timer(.2),"timeout")
+	emit_signal("construction_tool_bar_clicked", tile_type)
