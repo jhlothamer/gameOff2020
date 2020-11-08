@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://assets/images/temp/tiles/medical_placement_disallowed.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/temp/tiles/education_placement_allowed.png" type="Texture" id=28]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
+[ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
+[ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
 
 [sub_resource type="TileSet" id=1]
 0/name = "uuc_placement_allowed.png 0"
@@ -396,10 +398,16 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 200, 200 )
 cell_quadrant_size = 100
 format = 1
-tile_data = PoolIntArray( -65552, 1, 0, -65551, 9, 0, -65550, 8, 0, -16, 5, 0, -15, 3, 0, -14, 6, 0, 65520, 2, 0, 65521, 4, 0, 65522, 7, 0 )
+tile_data = PoolIntArray( -65552, 8, 0, -65551, 9, 0, -65550, 6, 0, -16, 5, 0, -15, 3, 0, -14, 1, 0, 65520, 2, 0, 65521, 4, 0, 65522, 7, 0 )
 
 [node name="PlacementOverlay" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
+cell_size = Vector2( 200, 200 )
+cell_quadrant_size = 100
+format = 1
+
+[node name="PoweredOverlay" type="TileMap" parent="."]
+tile_set = ExtResource( 30 )
 cell_size = Vector2( 200, 200 )
 cell_quadrant_size = 100
 format = 1
@@ -409,5 +417,13 @@ script = ExtResource( 29 )
 placement_overlay_tile_map = NodePath("../PlacementOverlay")
 allowed_tiles_tile_map = NodePath("../AllowedTiles")
 structure_tiles_tile_map = NodePath("../Structures")
+
+[node name="PowerOverlayMgr" type="Node" parent="."]
+script = ExtResource( 31 )
+power_radius_tiles = 3
+placement_overlay_tile_map = NodePath("../PlacementOverlay")
+allowed_tiles_tile_map = NodePath("../AllowedTiles")
+structure_tiles_tile_map = NodePath("../Structures")
+power_overlay_tile_map = NodePath("../PoweredOverlay")
 
 [node name="Hud" parent="." instance=ExtResource( 14 )]

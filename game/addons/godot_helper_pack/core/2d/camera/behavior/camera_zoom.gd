@@ -87,8 +87,8 @@ func _zoom_step(zoom_in: bool) -> void:
 		var z1 = zoom*Vector2.ONE
 		
 		var c1 = c0 + (-0.5*v0 + point)*(z0-z1)
-		print("zoom to mouse: " + str(c1))
-		print("camera glob pos: " + str(camera.global_position))
+#		print("zoom to mouse: " + str(c1))
+#		print("camera glob pos: " + str(camera.global_position))
 		#camera.global_position = c1
 		tween.interpolate_property(camera, "global_position", camera.global_position, c1, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		#tween.interpolate_property(camera, "global_position", camera.global_position, mouse_pos, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
