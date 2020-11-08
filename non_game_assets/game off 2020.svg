@@ -282,9 +282,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="-2451.9745"
-     inkscape:cy="2530.9926"
+     inkscape:zoom="1"
+     inkscape:cx="-3626.9355"
+     inkscape:cy="2711.876"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -32139,6 +32139,38 @@
        x="-607.99658"
        y="557.04443"
        inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/placement_disallowed.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
+    <g
+       id="g5696">
+      <path
+         id="rect11038"
+         style="fill:none;fill-opacity:0.5;stroke:#00ffff;stroke-width:1.05832;stroke-opacity:1"
+         d="m -1083.5468,530.46697 h 51.8584 v 51.85835 h -51.8584 z" />
+      <path
+         id="path11057"
+         style="fill:none;fill-opacity:0.5;stroke:#00ffff;stroke-width:1.05832;stroke-opacity:1"
+         d="m -1136.4634,477.55026 h 157.69165 v 157.69177 h -157.69165 z" />
+    </g>
+    <path
+       id="path5692"
+       style="fill:#00ffff;fill-opacity:0.3;stroke:none;stroke-width:1.05833;stroke-opacity:1"
+       d="m -999.83534,656.12619 h 52.91667 v 52.91662 h -52.91667 z"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/powered_overlay.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
+    <path
+       id="path5698"
+       style="fill:#00ffff;fill-opacity:0.5;stroke:none;stroke-width:1.05833;stroke-opacity:1"
+       d="m -941.51917,664.35657 h 52.91667 v 52.91662 h -52.91667 z"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/powered_overlay2.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
+    <path
+       id="path5700"
+       style="fill:#00ffff;fill-opacity:0.7;stroke:none;stroke-width:1.05833;stroke-opacity:1"
+       d="m -884.11385,655.62654 h 52.91667 v 52.91662 h -52.91667 z"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/powered_overlay3.png"
        inkscape:export-xdpi="95.999298"
        inkscape:export-ydpi="95.999298" />
   </g>

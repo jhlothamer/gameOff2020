@@ -1,6 +1,8 @@
 extends Node2D
 
 signal structure_tile_placed(structure_tile_type, cell_v)
+signal toggle_power_overlay(show_overlay)
+signal update_power_overlay()
 
 export var placement_overlay_tile_map: NodePath
 export var allowed_tiles_tile_map: NodePath
@@ -28,6 +30,8 @@ var _last_mouse_cell_v
 func _ready():
 	SignalMgr.register_subscriber(self, "construction_tool_bar_clicked", "_on_construction_tool_bar_clicked")
 	SignalMgr.register_publisher(self, "structure_tile_placed")
+	SignalMgr.register_publisher(self, "toggle_power_overlay")
+	SignalMgr.register_publisher(self, "update_power_overlay")
 
 
 func _process(delta):
@@ -46,6 +50,8 @@ func _process(delta):
 		else:
 			_placement_overlay_tile_map.set_cellv(cell_v, _structure_type + Constants.STRUCTURE_TILE_TYPE_COUNT)
 		_last_mouse_cell_v = cell_v
+		if _structure_type == Constants.StructureTileType.Power:
+			emit_signal("update_power_overlay")
 	
 	
 
@@ -59,6 +65,8 @@ func _on_construction_tool_bar_clicked(structure_type):
 		_placement_overlay_tile_map.set_cellv(allowed_placement_tile, _allowed_placement_tile_id)
 	_structure_type = structure_type
 	_placing_structure = true
+	if structure_type == Constants.StructureTileType.Power:
+		emit_signal("toggle_power_overlay", true)
 
 
 func _have_tile_map_nodes():
@@ -96,6 +104,8 @@ func _input(event):
 		_allowed_placement_tiles = []
 		_last_mouse_cell_v = null
 		_placement_overlay_tile_map.clear()
+		emit_signal("toggle_power_overlay", false)
+
 
 
 
