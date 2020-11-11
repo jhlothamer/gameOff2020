@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reclaimation_placement_disallowed.png-63329ff7ce6e0f53e3e2eba353cdb2ed.stex"
+path="res://.import/agriculture_icon_disabled.png-a588d6b3ce6dc1b0d2f252caabc9a93f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/temp/tiles/reclaimation_placement_disallowed.png"
-dest_files=[ "res://.import/reclaimation_placement_disallowed.png-63329ff7ce6e0f53e3e2eba353cdb2ed.stex" ]
+source_file="res://assets/images/temp/ui/agriculture_icon_disabled.png"
+dest_files=[ "res://.import/agriculture_icon_disabled.png-a588d6b3ce6dc1b0d2f252caabc9a93f.stex" ]
 
 [params]
 

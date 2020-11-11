@@ -34,7 +34,6 @@ func _get_move_direction() -> Vector2:
 	return move_direction
 
 
-
 func _process(_delta):
 	var move_direction = _get_move_direction()
 	

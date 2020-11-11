@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/resources_dlg.gd" type="Script" id=1]
+
+[node name="ResourcesDlg" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+odd_row_color = Color( 0.172549, 0.164706, 0.196078, 1 )
+even_row_color = Color( 0.227982, 0.216736, 0.261719, 1 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 316.0
+margin_bottom = 336.0
+window_title = "Resources"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tree" type="Tree" parent="AcceptDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/item_margin = 10
+custom_constants/draw_guides = 10
+custom_constants/hseparation = 10
+columns = 2
+hide_root = true
+select_mode = 1
+[connection signal="popup_hide" from="AcceptDialog" to="." method="_on_AcceptDialog_popup_hide"]

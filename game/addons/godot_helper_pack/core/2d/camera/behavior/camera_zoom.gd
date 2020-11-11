@@ -23,8 +23,8 @@ func _ready():
 	tween = Tween.new()
 	add_child(tween)
 
-
-func _input(event):
+func _unhandled_input(event):
+	#func _input(event):
 	if !event is InputEventMouseButton || camera == null:
 		return
 	if event.button_index != BUTTON_WHEEL_UP and event.button_index != BUTTON_WHEEL_DOWN:
