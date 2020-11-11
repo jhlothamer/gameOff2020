@@ -32,7 +32,7 @@
 			"name": "Power Station",
 			"description": "",
 			"powerRadius": 3,
-			"powerProvided": 10,
+			"powerProvided": 20,
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 			},

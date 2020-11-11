@@ -157,6 +157,11 @@ SignalMgr="*res://addons/godot_helper_pack/core/signal_mgr.gd"
 transitionMgr="*res://utils/transitionMgr.tscn"
 soundTrackMgr="*res://utils/soundTrackMgr.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "godot_helper_pack" )

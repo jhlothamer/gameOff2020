@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Agriculture.jpg-b5d015c7505b0c44668daf7b4c688758.stex"
+path="res://.import/Agriculture.png-bc67914b3f87d21cf77b40b55625c290.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tiles/Agriculture.jpg"
-dest_files=[ "res://.import/Agriculture.jpg-b5d015c7505b0c44668daf7b4c688758.stex" ]
+source_file="res://assets/images/tiles/Agriculture.png"
+dest_files=[ "res://.import/Agriculture.png-bc67914b3f87d21cf77b40b55625c290.stex" ]
 
 [params]
 
