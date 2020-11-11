@@ -1,0 +1,171 @@
+{
+	"ids": {
+	"UUC" : 0,
+	"Power" : 1,
+	"Agriculture" : 2,
+	"Residential" : 3,
+	"Office" : 4,
+	"Education" : 5,
+	"Medical" : 6,
+	"Reclamation" : 7,
+	"Factory" : 8,
+	"Recreation" : 9
+	},
+	"structures": {
+		"UUC": {
+			"name": "Universal Utility Conduit",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"iron": 100
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 0,
+				"population": 0
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Power": {
+			"name": "Power Station",
+			"description": "",
+			"powerRadius": 3,
+			"powerProvided": 10,
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 0,
+				"population": 4
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Agriculture": {
+			"name": "Agriculture Pod",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 5,
+				"population": 2,
+				"water": 10
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+				"water": 0.1
+			}
+		},
+		"Residential": {
+			"name": "Residential Complex",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 2,
+				"population": 4
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Office": {
+			"name": "Office Complex",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 2,
+				"population": 4
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Education": {
+			"name": "Education Complex",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 2,
+				"population": 20
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Medical": {
+			"name": "Medical Center",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 3,
+				"population": 10
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Reclamation": {
+			"name": "Reclamation Center",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 1,
+				"population": 2
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Factory": {
+			"name": "Factory",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 3,
+				"population": 4
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		},
+		"Recreation": {
+			"name": "Recreation Center",
+			"description": "",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"electricity": 1,
+				"population": 3
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			}
+		}
+	}
+}

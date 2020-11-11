@@ -9,9 +9,9 @@ export var allowed_tiles_tile_map: NodePath
 export var structure_tiles_tile_map: NodePath
 
 
-onready var _placement_overlay_tile_map: TileMap = get_node_or_null(placement_overlay_tile_map) if placement_overlay_tile_map != null else null
-onready var _allowed_tiles_tile_map: TileMap = get_node_or_null(allowed_tiles_tile_map) if allowed_tiles_tile_map != null else null
-onready var _structure_tiles_tile_map: TileMap = get_node_or_null(structure_tiles_tile_map) if structure_tiles_tile_map != null else null
+onready var _placement_overlay_tile_map: TileMap
+onready var _allowed_tiles_tile_map: TileMap
+onready var _structure_tiles_tile_map: TileMap
 
 var _placing_structure := false
 var _allowed_placement_tiles := []
@@ -32,9 +32,15 @@ func _ready():
 	SignalMgr.register_publisher(self, "structure_tile_placed")
 	SignalMgr.register_publisher(self, "toggle_power_overlay")
 	SignalMgr.register_publisher(self, "update_power_overlay")
+	
+	if placement_overlay_tile_map != null:
+		_placement_overlay_tile_map = get_node_or_null(placement_overlay_tile_map)
+	if allowed_tiles_tile_map != null:
+		_allowed_tiles_tile_map = get_node_or_null(allowed_tiles_tile_map)
+	if structure_tiles_tile_map != null:
+		_structure_tiles_tile_map = get_node_or_null(structure_tiles_tile_map)
 
-
-func _process(delta):
+func _process(_delta):
 	if !_placing_structure || !_have_tile_map_nodes():
 		return
 	var mouse_position = get_global_mouse_position()

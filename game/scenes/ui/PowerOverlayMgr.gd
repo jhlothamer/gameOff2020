@@ -12,7 +12,7 @@ onready var _allowed_tiles_tile_map: TileMap = get_node_or_null(allowed_tiles_ti
 onready var _structure_tiles_tile_map: TileMap = get_node_or_null(structure_tiles_tile_map) if structure_tiles_tile_map != null else null
 onready var _power_overlay_tile_map: TileMap = get_node_or_null(power_overlay_tile_map) if power_overlay_tile_map != null else null
 
-onready var _power_radius_tiles_sq: float
+var _power_radius_tiles_sq: float
 
 var _spiral_vectors := []
 

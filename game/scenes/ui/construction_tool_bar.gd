@@ -56,7 +56,7 @@ func _ready():
 		btn.connect("button_down", self,"_on_button_down", [structure_tile_type])
 	
 
-func _on_focused_gained(control):
+func _on_focused_gained(_control):
 	if _expanded:
 		_expanded = false
 		_construction_btn.pressed = false
@@ -65,6 +65,7 @@ func _on_focused_gained(control):
 func _on_ConstructionBtn_toggled(button_pressed):
 	if button_pressed:
 		_expanded = true
+		_refresh_button_disable_states()
 		_animation_player.play("expand")
 	else:
 		_expanded = false
@@ -80,14 +81,14 @@ func _on_ConstructionBtn_focus_exited():
 	_animation_player.play_backwards("expand")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	_animating =  false
 	if !_expanded:
 		for i in range(2, _btns.size()):
 			_btns[i].rect_position = Vector2.ZERO
 
 
-func _on_AnimationPlayer_animation_started(anim_name):
+func _on_AnimationPlayer_animation_started(_anim_name):
 	_animating = true
 
 
@@ -106,8 +107,18 @@ func _process(_delta):
 			_btns[i].rect_position.x = _follow_x[_btns[i]].rect_position.x
 
 
-
 func _on_button_down(tile_type):
 	print("clicked on structure button of type " + str(tile_type))
 	yield(get_tree().create_timer(.2),"timeout")
-	emit_signal("construction_tool_bar_clicked", tile_type)
+	var resource_mgr := ResourceMgr.get_resource_mgr()
+	if resource_mgr.have_enough_resources_for_constructions(tile_type):
+		emit_signal("construction_tool_bar_clicked", tile_type)
+	else:
+		print("didn't have enough resource in end - play sound and/or show message")
+
+
+func _refresh_button_disable_states():
+	var resource_mgr:ResourceMgr = Globals.get("ResourceMgr")
+	for structure_type_id in _structure_tile_type_to_button.keys():
+		var btn:TextureButton = _structure_tile_type_to_button[structure_type_id]
+		btn.disabled = !resource_mgr.have_enough_resources_for_constructions(structure_type_id)
