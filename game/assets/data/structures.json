@@ -17,7 +17,6 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
-				"iron": 100
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {

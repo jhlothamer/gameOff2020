@@ -58,10 +58,12 @@ export var structure_tiles_tile_map: NodePath
 export var structure_status_overlay_tiles_tile_map: NodePath
 #ConstructionRepairEtcAnimations
 export var construction_repair_etc_animations_parent: NodePath
+export var separator_boxes_tile_map: NodePath
 
 var _allowed_tiles_tile_map: TileMap
 var _structure_tiles_tile_map: TileMap
 var _structure_status_overlay_tiles_tile_map: TileMap
+var _separator_boxes_tile_map: TileMap
 var _construction_repair_etc_animations_parent: Node2D
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 
@@ -80,7 +82,7 @@ var _power_radius_tiles_sq: float
 
 var _structure_alert_status_overlay_tile_id := {}
 var _structure_disable_status_overlay_tile_id := {}
-
+var _structure_enabled_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE_COUNT*3
 
 func _ready():
 	#SignalMgr.register_subscriber(self, "structure_tile_placed", "_on_structure_tile_placed")
@@ -95,6 +97,8 @@ func _ready():
 		_structure_status_overlay_tiles_tile_map = get_node_or_null(structure_status_overlay_tiles_tile_map)
 	if construction_repair_etc_animations_parent != null:
 		_construction_repair_etc_animations_parent = get_node_or_null(construction_repair_etc_animations_parent)
+	if separator_boxes_tile_map != null:
+		_separator_boxes_tile_map = get_node_or_null(separator_boxes_tile_map)
 	
 	
 	var structure_file: File = File.new()
@@ -137,6 +141,7 @@ func _init_structures_list():
 	for used_cell in used_cells:
 		var tile_id = _structure_tiles_tile_map.get_cellv(used_cell)
 		_structures[used_cell] = _create_structure_data_object(tile_id, used_cell)
+		_separator_boxes_tile_map.set_cellv(used_cell, _structure_enabled_status_overlay_tile_id)
 	
 	refresh_structure_resources()
 	
@@ -233,6 +238,7 @@ func get_structure_construction_resources(structure_type_id: int) -> Dictionary:
 
 
 func _do_construction_animation(structure: StructureData) -> void:
+	_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, -1)
 	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
 	structure.current_animation = construction_animation
 	_construction_repair_etc_animations_parent.add_child(construction_animation)
@@ -241,10 +247,12 @@ func _do_construction_animation(structure: StructureData) -> void:
 	yield(construction_animation, "animation_finished")
 	construction_animation.queue_free()
 	structure.disabled = false
+	_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 	refresh_structure_resources()
 
 func _do_reclamation_animation(structure: StructureData) -> void:
 	structure.clear_current_animation()
+	_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, -1)
 	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
 	structure.current_animation = construction_animation
 	_construction_repair_etc_animations_parent.add_child(construction_animation)
@@ -254,6 +262,7 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 	construction_animation.queue_free()
 	#structure.disabled = false
 	#_structure_tiles_tile_map.set_cellv(structure.tile_map_cell, -1)
+	#_structure_enabled_status_overlay_tile_id
 	refresh_structure_resources()
 
 

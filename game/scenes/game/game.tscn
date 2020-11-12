@@ -76,6 +76,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="SeperatorBoxes" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 200, 200 )
+cell_quadrant_size = 100
+format = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
 [node name="ConstructionRepairEtcAnimations" type="Node2D" parent="."]
 
 [node name="PlacementOverlay" type="TileMap" parent="."]
@@ -127,6 +137,7 @@ allowed_tiles_tile_map = NodePath("../AllowedTiles")
 structure_tiles_tile_map = NodePath("../Structures")
 structure_status_overlay_tiles_tile_map = NodePath("../StructuresStatusOverlay")
 construction_repair_etc_animations_parent = NodePath("../ConstructionRepairEtcAnimations")
+separator_boxes_tile_map = NodePath("../SeperatorBoxes")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
