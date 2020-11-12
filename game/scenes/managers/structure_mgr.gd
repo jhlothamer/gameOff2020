@@ -15,6 +15,7 @@ class StructureData:
 	var structure_meta_data
 	var disabled := false
 	var resources_lacking := []
+	var current_animation
 	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_meta_data_):
 		structure_type_id = structure_type_id_
 		tile_map_cell = tile_map_cell_
@@ -45,16 +46,24 @@ class StructureData:
 				resources_lacking.append("electricity")
 				print("structure at tile " + str(tile_map_cell) + " lacks power")
 		#check population
+	func clear_current_animation():
+		if current_animation == null:
+			return
+		current_animation.queue_free()
+		current_animation = null
 
 
 export var allowed_tiles_tile_map: NodePath
 export var structure_tiles_tile_map: NodePath
 export var structure_status_overlay_tiles_tile_map: NodePath
+#ConstructionRepairEtcAnimations
+export var construction_repair_etc_animations_parent: NodePath
 
-onready var _allowed_tiles_tile_map: TileMap
-onready var _structure_tiles_tile_map: TileMap
-onready var _structure_status_overlay_tiles_tile_map: TileMap
-
+var _allowed_tiles_tile_map: TileMap
+var _structure_tiles_tile_map: TileMap
+var _structure_status_overlay_tiles_tile_map: TileMap
+var _construction_repair_etc_animations_parent: Node2D
+var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 
 # metadata about structures
 var _structure_data := {}
@@ -84,6 +93,9 @@ func _ready():
 		_allowed_tiles_tile_map = get_node_or_null(allowed_tiles_tile_map)
 	if structure_status_overlay_tiles_tile_map != null:
 		_structure_status_overlay_tiles_tile_map = get_node_or_null(structure_status_overlay_tiles_tile_map)
+	if construction_repair_etc_animations_parent != null:
+		_construction_repair_etc_animations_parent = get_node_or_null(construction_repair_etc_animations_parent)
+	
 	
 	var structure_file: File = File.new()
 	var error = structure_file.open(structure_data_file_path, File.READ)
@@ -129,24 +141,44 @@ func _init_structures_list():
 	refresh_structure_resources()
 	
 
-func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector2) -> StructureData:
+func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector2, disabled: bool = false) -> StructureData:
 	var structure_meta_data = _get_structure_metadata_by_id(structure_type_id)
 	var structureData = StructureData.new(structure_type_id, tile_map_cell, structure_meta_data)
+	structureData.disabled = disabled
 	if structure_type_id == Constants.StructureTileType.Power:
 		structureData.powers_cells = _get_powered_cells(tile_map_cell)
 	return structureData
 
 
 func add_structure(structure_tile_type: int, cell_v: Vector2) -> void:
-	_structures[cell_v] = _create_structure_data_object(structure_tile_type, cell_v)
-	refresh_structure_resources()
+	var structure = _create_structure_data_object(structure_tile_type, cell_v, true)
+	_structures[cell_v] = structure
+	_structure_tiles_tile_map.set_cellv(structure.tile_map_cell, structure.structure_type_id)
+	_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
+	_do_construction_animation(structure)
+
+func remove_structure(cell_v: Vector2) -> void:
+	if !_structures.has(cell_v):
+		return
+	var structure: StructureData = _structures[cell_v]
+	if !structure.disabled:
+		structure.disabled = true
+		refresh_structure_resources()
+	_structures.erase(cell_v)
+	if structure.structure_type_id  != Constants.StructureTileType.UUC:
+		_structures[cell_v] = _create_structure_data_object(Constants.StructureTileType.UUC, cell_v, false)
+		_structure_tiles_tile_map.set_cellv(cell_v, Constants.StructureTileType.UUC)
+	else:
+		_structure_tiles_tile_map.set_cellv(cell_v, -1)
+	_do_reclamation_animation(structure)
+	
 
 
 func refresh_structure_resources():
 	var power_stations = []
 	for structure in _structures.values():
 		structure.power_subscription = 0
-		if structure.structure_type_id == Constants.StructureTileType.Power:
+		if structure.structure_type_id == Constants.StructureTileType.Power && !structure.disabled:
 			power_stations.append(structure)
 
 	_structure_status_overlay_tiles_tile_map.clear()
@@ -162,7 +194,9 @@ func refresh_structure_resources():
 	
 	for structure in _structures.values():
 		structure.update_lack_resources()
-		if structure.resources_lacking.size() > 0:
+		if structure.disabled:
+			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
+		elif structure.resources_lacking.size() > 0:
 			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_alert_status_overlay_tile_id[structure.structure_type_id])
 		else:
 			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, -1)
@@ -198,4 +232,34 @@ func get_structure_construction_resources(structure_type_id: int) -> Dictionary:
 	return structure_metadata["constructionResources"]
 
 
+func _do_construction_animation(structure: StructureData) -> void:
+	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
+	structure.current_animation = construction_animation
+	_construction_repair_etc_animations_parent.add_child(construction_animation)
+	construction_animation.global_position = _structure_tiles_tile_map.map_to_world(structure.tile_map_cell)
+	construction_animation.play("default")
+	yield(construction_animation, "animation_finished")
+	construction_animation.queue_free()
+	structure.disabled = false
+	refresh_structure_resources()
 
+func _do_reclamation_animation(structure: StructureData) -> void:
+	structure.clear_current_animation()
+	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
+	structure.current_animation = construction_animation
+	_construction_repair_etc_animations_parent.add_child(construction_animation)
+	construction_animation.global_position = _structure_tiles_tile_map.map_to_world(structure.tile_map_cell)
+	construction_animation.play("default", true)
+	yield(construction_animation, "animation_finished")
+	construction_animation.queue_free()
+	#structure.disabled = false
+	#_structure_tiles_tile_map.set_cellv(structure.tile_map_cell, -1)
+	refresh_structure_resources()
+
+
+
+func is_disabled(tile_map_cell: Vector2) -> bool:
+	if _structures.has(tile_map_cell):
+		var structure: StructureData = _structures[tile_map_cell]
+		return structure.disabled
+	return true

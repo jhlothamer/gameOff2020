@@ -1,26 +1,26 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/images/temp/ui/construction_icon.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/temp/ui/power_icon.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/temp/ui/agriculture_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/Power_Reactor_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/Agriculture_icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/temp/ui/medical_icon.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/temp/ui/office_icon.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/temp/ui/reclamation_icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/Start-Tile_icon_disabled.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/temp/ui/residential_icon.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/temp/ui/factory_icon.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/temp/ui/education_icon.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/temp/ui/uuc_icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/Start-Tile_icon.png" type="Texture" id=10]
 [ext_resource path="res://scenes/ui/construction_tool_bar.gd" type="Script" id=11]
-[ext_resource path="res://assets/images/temp/ui/recreation_icon.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/temp/ui/uuc_icon_disabled.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/Recreation_icon_disabled.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/Reclaimation-Center_icon_disabled.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/temp/ui/office_icon_disabled.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/temp/ui/reclamation_icon_disabled.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/ui/Recreation_icon.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/temp/ui/factory_icon_disabled.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/temp/ui/medical_icon_disabled.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/temp/ui/agriculture_icon_disabled.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/temp/ui/recreation_icon_disabled.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/ui/Agriculture_icon_disabled.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/ui/Reclaimation-Center_icon.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/temp/ui/residential_icon_disabled.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/temp/ui/power_icon_disabled.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/ui/Power_Reactor_icon_disabled.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/temp/ui/education_icon_disabled.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
@@ -70,7 +70,7 @@ margin_right = 50.0
 margin_bottom = 50.0
 hint_tooltip = "Universal Utility Conduit"
 texture_normal = ExtResource( 10 )
-texture_disabled = ExtResource( 13 )
+texture_disabled = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -139,8 +139,8 @@ __meta__ = {
 margin_right = 50.0
 margin_bottom = 50.0
 hint_tooltip = "Reclamation Center"
-texture_normal = ExtResource( 6 )
-texture_disabled = ExtResource( 15 )
+texture_normal = ExtResource( 19 )
+texture_disabled = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,8 +160,8 @@ margin_right = 50.0
 margin_bottom = 50.0
 hint_tooltip = "Recreation Center"
 mouse_filter = 1
-texture_normal = ExtResource( 12 )
-texture_disabled = ExtResource( 19 )
+texture_normal = ExtResource( 15 )
+texture_disabled = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

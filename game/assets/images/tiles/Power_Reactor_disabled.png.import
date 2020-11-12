@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wrench-Animation.png-71d383b55e2f65a19a87c1d4f180e011.stex"
+path="res://.import/Power_Reactor_disabled.png-3e51e83b7d586aded3dd3f6339a3754e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tiles/Wrench-Animation.png"
-dest_files=[ "res://.import/Wrench-Animation.png-71d383b55e2f65a19a87c1d4f180e011.stex" ]
+source_file="res://assets/images/tiles/Power_Reactor_disabled.png"
+dest_files=[ "res://.import/Power_Reactor_disabled.png-3e51e83b7d586aded3dd3f6339a3754e.stex" ]
 
 [params]
 

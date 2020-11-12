@@ -282,9 +282,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.0000001"
-     inkscape:cx="-2598.8167"
-     inkscape:cy="2044.4534"
+     inkscape:zoom="0.70710682"
+     inkscape:cx="-2143.0466"
+     inkscape:cy="1833.1406"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -33956,6 +33956,249 @@
            style="fill:none;fill-opacity:1;stroke:#808080;stroke-width:2.64584;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            d="m -205.25626,421.66526 c 0,3.0538 -8.81079,5.52939 -19.67944,5.52939 -10.86865,0 -19.67944,-2.47559 -19.67944,-5.52939"
            sodipodi:nodetypes="csc" />
+      </g>
+    </g>
+    <rect
+       style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6026"
+       width="27.108723"
+       height="9.0362415"
+       x="-636.81677"
+       y="542.69922"
+       ry="3.7012587"
+       rx="5.5353246" />
+    <g
+       id="g6094">
+      <rect
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect6012"
+         width="27.108723"
+         height="9.0362415"
+         x="-653.56342"
+         y="520.54858"
+         ry="3.7012587"
+         rx="5.5353246" />
+      <path
+         id="rect6014"
+         style="fill:none;stroke:#f8b660;stroke-width:3.99999;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M -2461.8965 1933.7324 C -2465.7798 1933.7324 -2468.9043 1939.9727 -2468.9043 1947.7227 L -2468.9043 1967.1191 C -2468.9043 1969.9909 -2468.4743 1972.6529 -2467.7363 1974.8691 C -2464.2337 1970.4377 -2457.2859 1967.4277 -2449.2402 1967.4277 L -2388.623 1967.4277 C -2377.1879 1967.4277 -2367.96 1973.502 -2367.7148 1981.1074 L -2360.1543 1981.1074 C -2356.271 1981.1074 -2353.1445 1974.869 -2353.1445 1967.1191 L -2353.1445 1947.7227 C -2353.1445 1939.9727 -2356.271 1933.7324 -2360.1543 1933.7324 L -2461.8965 1933.7324 z "
+         transform="scale(0.26458333)" />
+      <path
+         id="rect6016"
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -649.24219,499.2038 h 11.32541 c 1.02745,0 1.40914,1.77762 2.11918,3.70125 l 2.11667,5.73442 c 0.71004,1.92363 -1.09173,2.9075 -2.11918,2.9075 h -13.44208 c -1.02746,0 -1.85461,-1.65076 -1.85461,-3.70125 v -4.94067 c 0,-2.05049 0.82715,-3.70125 1.85461,-3.70125 z"
+         sodipodi:nodetypes="sssssssss" />
+      <path
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833334;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -617.75935,511.70157 c 0,0 -1.85208,6.43408 -1.85208,9.22563 0,2.79156 5.29167,7.10897 5.29167,7.10897"
+         id="path6019"
+         sodipodi:nodetypes="csc" />
+      <circle
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path6037"
+         cx="-647.70374"
+         cy="525.06671"
+         r="2.8988287" />
+      <circle
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle6039"
+         cx="-631.68909"
+         cy="525.06671"
+         r="2.8988287" />
+      <circle
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle6041"
+         cx="-639.69641"
+         cy="525.06671"
+         r="2.8988287" />
+      <path
+         style="fill:none;stroke:#f8b660;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -623.01177,521.71612 h 3.69576"
+         id="path6043" />
+    </g>
+    <g
+       id="g6147"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/ui/deconstruct_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298">
+      <rect
+         style="fill:#6f3460;fill-opacity:1;stroke:#6f3460;stroke-width:0.264583;stroke-opacity:1"
+         id="rect6046"
+         width="12.964584"
+         height="12.964581"
+         x="-591.81305"
+         y="491.43265" />
+      <g
+         id="g6135">
+        <rect
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect6096"
+           width="8.1553698"
+           height="2.7184567"
+           x="-591.23376"
+           y="499.76639"
+           ry="3.7012587"
+           rx="1.6888881" />
+        <path
+           id="path6099"
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -590.57595,497.08433 c -0.3091,0 -0.5578,0.49671 -0.5578,1.11359 v 1.5439 c 0,0.22858 0.0342,0.44047 0.093,0.61687 0.2788,-0.35272 0.83182,-0.59231 1.47224,-0.59231 h 4.82495 c 0.9102,0 1.64471,0.4835 1.66423,1.08886 h 0.60179 c 0.3091,0 0.55796,-0.49655 0.55796,-1.11342 v -1.5439 c 0,-0.61688 -0.24886,-1.11359 -0.55796,-1.11359 z" />
+        <path
+           id="path6101"
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -589.93378,493.34503 h 3.40713 c 0.3091,0 0.42392,0.53478 0.63753,1.11348 l 0.63678,1.72514 c 0.21361,0.57871 -0.32844,0.87469 -0.63753,0.87469 h -4.04391 c -0.3091,0 -0.55794,-0.49661 -0.55794,-1.11348 v -1.48635 c 0,-0.61686 0.24884,-1.11348 0.55794,-1.11348 z"
+           sodipodi:nodetypes="sssssssss" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -580.4625,497.10485 c 0,0 -0.55718,1.93563 -0.55718,2.77543 0,0.83982 1.59194,2.13866 1.59194,2.13866"
+           id="path6103"
+           sodipodi:nodetypes="csc" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6105"
+           cx="-589.47095"
+           cy="501.12561"
+           r="0.8720817" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6107"
+           cx="-584.65314"
+           cy="501.12561"
+           r="0.8720817" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6109"
+           cx="-587.06201"
+           cy="501.12561"
+           r="0.8720817" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:0.318387;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -582.04264,500.11762 h 1.11183"
+           id="path6111" />
+      </g>
+    </g>
+    <g
+       id="g6236"
+       transform="translate(8.1692337,-2.3824686)"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/reclaim_allowed.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298">
+      <rect
+         style="fill:#008000;fill-opacity:0.501961;stroke:none;stroke-width:1.07993;stroke-opacity:1"
+         id="rect6152"
+         width="52.916668"
+         height="52.916653"
+         x="-558.32635"
+         y="387.58969" />
+      <g
+         id="g6204">
+        <rect
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect6154"
+           width="32.621479"
+           height="10.873826"
+           x="-556.00922"
+           y="420.92465"
+           ry="3.7012587"
+           rx="6.884016" />
+        <path
+           id="path6157"
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -553.37798,410.19642 c -1.2364,0 -2.2312,1.98684 -2.2312,4.45436 v 6.1756 c 0,0.91432 0.1368,1.76188 0.372,2.46748 1.1152,-1.41088 3.32728,-2.36924 5.88896,-2.36924 h 19.2998 c 3.6408,0 6.57884,1.934 6.65692,4.35544 h 2.40716 c 1.2364,0 2.23184,-1.9862 2.23184,-4.45368 v -6.1756 c 0,-2.46752 -0.99544,-4.45436 -2.23184,-4.45436 z" />
+        <path
+           id="path6159"
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -550.8093,395.23922 h 13.62852 c 1.2364,0 1.69568,2.13912 2.55012,4.45392 l 2.54712,6.90056 c 0.85444,2.31484 -1.31376,3.49876 -2.55012,3.49876 h -16.17564 c -1.2364,0 -2.23176,-1.98644 -2.23176,-4.45392 v -5.9454 c 0,-2.46744 0.99536,-4.45392 2.23176,-4.45392 z"
+           sodipodi:nodetypes="sssssssss" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -512.92418,410.2785 c 0,0 -2.22872,7.74252 -2.22872,11.10172 0,3.35928 6.36776,8.55464 6.36776,8.55464"
+           id="path6161"
+           sodipodi:nodetypes="csc" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6163"
+           cx="-548.95795"
+           cy="426.36154"
+           r="3.4883265" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6165"
+           cx="-529.68671"
+           cy="426.36154"
+           r="3.4883265" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6167"
+           cx="-539.3222"
+           cy="426.36154"
+           r="3.4883265" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -519.24474,422.32958 h 4.44732"
+           id="path6169" />
+      </g>
+    </g>
+    <g
+       id="g6248"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/temp/tiles/reclaim_disallowed.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298">
+      <rect
+         style="fill:#d30000;fill-opacity:0.50196081;stroke:none;stroke-width:1.07993;stroke-opacity:1"
+         id="rect6206"
+         width="52.916668"
+         height="52.916653"
+         x="-485.05994"
+         y="385.59998" />
+      <g
+         id="g6224"
+         transform="translate(73.266404,-1.9897011)">
+        <rect
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect6208"
+           width="32.621479"
+           height="10.873826"
+           x="-556.00922"
+           y="420.92465"
+           ry="3.7012587"
+           rx="6.884016" />
+        <path
+           id="path6210"
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -553.37798,410.19642 c -1.2364,0 -2.2312,1.98684 -2.2312,4.45436 v 6.1756 c 0,0.91432 0.1368,1.76188 0.372,2.46748 1.1152,-1.41088 3.32728,-2.36924 5.88896,-2.36924 h 19.2998 c 3.6408,0 6.57884,1.934 6.65692,4.35544 h 2.40716 c 1.2364,0 2.23184,-1.9862 2.23184,-4.45368 v -6.1756 c 0,-2.46752 -0.99544,-4.45436 -2.23184,-4.45436 z" />
+        <path
+           id="path6212"
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -550.8093,395.23922 h 13.62852 c 1.2364,0 1.69568,2.13912 2.55012,4.45392 l 2.54712,6.90056 c 0.85444,2.31484 -1.31376,3.49876 -2.55012,3.49876 h -16.17564 c -1.2364,0 -2.23176,-1.98644 -2.23176,-4.45392 v -5.9454 c 0,-2.46744 0.99536,-4.45392 2.23176,-4.45392 z"
+           sodipodi:nodetypes="sssssssss" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -512.92418,410.2785 c 0,0 -2.22872,7.74252 -2.22872,11.10172 0,3.35928 6.36776,8.55464 6.36776,8.55464"
+           id="path6214"
+           sodipodi:nodetypes="csc" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6216"
+           cx="-548.95795"
+           cy="426.36154"
+           r="3.4883265" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6218"
+           cx="-529.68671"
+           cy="426.36154"
+           r="3.4883265" />
+        <circle
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle6220"
+           cx="-539.3222"
+           cy="426.36154"
+           r="3.4883265" />
+        <path
+           style="fill:none;stroke:#f8b660;stroke-width:1.27355;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -519.24474,422.32958 h 4.44732"
+           id="path6222" />
       </g>
     </g>
   </g>
