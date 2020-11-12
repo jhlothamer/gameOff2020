@@ -18,6 +18,7 @@ static func get_resource_mgr() -> ResourceMgr:
 
 func _ready():
 	SignalMgr.register_subscriber(self, "structure_tile_placed", "_on_structure_tile_placed")
+	SignalMgr.register_subscriber(self, "structure_tile_reclaimed", "_on_structure_tile_reclaimed")
 	Globals.set("ResourceMgr", self)
 	if structure_mgr != null:
 		_structure_mgr = get_node_or_null(structure_mgr)
@@ -73,3 +74,12 @@ func _on_structure_tile_placed(structure_tile_type, cell_v):
 		_structure_mgr.add_structure(structure_tile_type, cell_v)
 	else:
 		print("didn't have enough resources to contruct structure")
+
+
+func _on_structure_tile_reclaimed(structure_tile_type, cell_v):
+	pass
+	#increment resources by reclamation amounts
+	_structure_mgr.remove_structure(cell_v)
+
+
+
