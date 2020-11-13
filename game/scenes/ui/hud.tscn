@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/temp/ui/resources_icon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ui/resources_dlg.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/images/temp/ui/deconstruct_icon.png" type="Texture" id=5]
+[ext_resource path="res://scenes/ui/tile_popup_menu.tscn" type="PackedScene" id=6]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -30,6 +30,8 @@ __meta__ = {
 
 [node name="ResourcesDlg" parent="Dialogs" instance=ExtResource( 4 )]
 visible = false
+
+[node name="TilePopupMenu" parent="Dialogs" instance=ExtResource( 6 )]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -59,11 +61,11 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 margin_top = 20.0
-margin_right = 50.0
-margin_bottom = 124.0
+margin_right = 70.0
+margin_bottom = 94.0
 
 [node name="ResourceDialogBtn" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
-margin_right = 50.0
+margin_right = 70.0
 margin_bottom = 50.0
 hint_tooltip = "Resources"
 texture_normal = ExtResource( 3 )
@@ -71,11 +73,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeconstructBtn" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
+[node name="RndDmgTestBtn" type="Button" parent="MarginContainer2/VBoxContainer"]
 margin_top = 54.0
-margin_right = 50.0
-margin_bottom = 104.0
-hint_tooltip = "Reclaim Structure"
-texture_normal = ExtResource( 5 )
+margin_right = 70.0
+margin_bottom = 74.0
+hint_tooltip = "Randomly Damage a Structure
+(this is just for testing)"
+text = "Rnd Dmg"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ResourceDialogBtn" to="." method="_on_ResourceDialogBtn_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/DeconstructBtn" to="." method="_on_DeconstructBtn_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/RndDmgTestBtn" to="." method="_on_RndDmgTestBtn_pressed"]
