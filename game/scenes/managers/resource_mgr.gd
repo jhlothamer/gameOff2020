@@ -19,6 +19,9 @@ static func get_resource_mgr() -> ResourceMgr:
 func _ready():
 	SignalMgr.register_subscriber(self, "structure_tile_placed", "_on_structure_tile_placed")
 	SignalMgr.register_subscriber(self, "structure_tile_reclaimed", "_on_structure_tile_reclaimed")
+	SignalMgr.register_subscriber(self, "structure_tile_repaired", "_on_structure_tile_repaired")
+	SignalMgr.register_subscriber(self, "structure_tile_enabled", "_on_structure_tile_enabled")
+	SignalMgr.register_subscriber(self, "structure_tile_disabled", "_on_structure_tile_disabled")
 	Globals.set("ResourceMgr", self)
 	if structure_mgr != null:
 		_structure_mgr = get_node_or_null(structure_mgr)
@@ -81,5 +84,17 @@ func _on_structure_tile_reclaimed(structure_tile_type, cell_v):
 	#increment resources by reclamation amounts
 	_structure_mgr.remove_structure(cell_v)
 
+
+func _on_structure_tile_repaired(structure_tile_type, cell_v):
+	#decrement resources by repair amounts
+	_structure_mgr.repair_structure(cell_v)
+
+
+func _on_structure_tile_enabled(structure_tile_type, cell_v):
+	_structure_mgr.enable_structure(cell_v)
+
+
+func _on_structure_tile_disabled(structure_tile_type, cell_v):
+	_structure_mgr.disable_structure(cell_v)
 
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/tile_popup_menu.gd" type="Script" id=1]
+
+[node name="TilePopupMenu" type="PopupMenu"]
+margin_right = 20.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+[connection signal="id_pressed" from="." to="." method="_on_TilePopupMenu_id_pressed"]

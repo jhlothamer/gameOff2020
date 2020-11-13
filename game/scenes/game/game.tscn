@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_zoom.gd" type="Script" id=3]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_move.gd" type="Script" id=4]
 [ext_resource path="res://assets/tilesets/placement.tres" type="TileSet" id=5]
+[ext_resource path="res://assets/images/tiles/Damage_overlay.png" type="Texture" id=6]
+[ext_resource path="res://scenes/managers/damage_mgr.gd" type="Script" id=7]
 [ext_resource path="res://scenes/ui/hud.tscn" type="PackedScene" id=14]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" type="Script" id=15]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
@@ -12,6 +14,22 @@
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
 [ext_resource path="res://scenes/managers/resource_mgr.gd" type="Script" id=32]
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=33]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Damage_overlay.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 200, 200 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="game" type="Node2D"]
 __meta__ = {
@@ -76,6 +94,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="DamageOverlay" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 200, 200 )
+format = 1
+
 [node name="SeperatorBoxes" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 200, 200 )
@@ -138,6 +161,11 @@ structure_tiles_tile_map = NodePath("../Structures")
 structure_status_overlay_tiles_tile_map = NodePath("../StructuresStatusOverlay")
 construction_repair_etc_animations_parent = NodePath("../ConstructionRepairEtcAnimations")
 separator_boxes_tile_map = NodePath("../SeperatorBoxes")
+damage_overlay_tile_map = NodePath("../DamageOverlay")
+
+[node name="DamageMgr" type="Node" parent="."]
+script = ExtResource( 7 )
+structure_mgr = NodePath("../StructureMgr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -149,6 +177,8 @@ __meta__ = {
 [node name="CameraMove2D" type="Node" parent="Camera2D"]
 script = ExtResource( 4 )
 move_speed = 5.0
+left_mouse_button_drag = true
+middle_mouse_button_drag = true
 
 [node name="CameraLimiter" type="Node" parent="Camera2D"]
 script = ExtResource( 15 )
