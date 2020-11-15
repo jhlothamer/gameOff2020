@@ -159,6 +159,7 @@ func _init_structures_list():
 		var tile_id = _structure_tiles_tile_map.get_cellv(used_cell)
 		var structure = _create_structure_data_object(tile_id, used_cell)
 		structure.under_construction = false
+		
 		_structures[used_cell] = structure
 		_separator_boxes_tile_map.set_cellv(used_cell, _structure_enabled_status_overlay_tile_id)
 	

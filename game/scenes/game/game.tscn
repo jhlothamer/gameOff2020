@@ -172,6 +172,9 @@ damage_overlay_tile_map = NodePath("../DamageOverlay")
 script = ExtResource( 7 )
 structure_mgr = NodePath("../StructureMgr")
 
+[node name="DamageTimer" type="Timer" parent="DamageMgr"]
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 __meta__ = {
@@ -239,3 +242,4 @@ bus = "Zoom3"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
 stream = ExtResource( 11 )
 volume_db = -12.0
+[connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]

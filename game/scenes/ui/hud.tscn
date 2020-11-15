@@ -79,6 +79,7 @@ margin_right = 70.0
 margin_bottom = 74.0
 hint_tooltip = "Randomly Damage a Structure
 (this is just for testing)"
+toggle_mode = true
 text = "Rnd Dmg"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/ResourceDialogBtn" to="." method="_on_ResourceDialogBtn_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/RndDmgTestBtn" to="." method="_on_RndDmgTestBtn_pressed"]
