@@ -15,6 +15,7 @@ class StructureData:
 	var structure_meta_data
 	var disabled := false
 	var damaged := false
+	var structure_name = ""
 	var under_construction := true
 	var resources_lacking := []
 	var current_animation
@@ -41,6 +42,10 @@ class StructureData:
 		else:
 			structure.power_subscription += power_left
 			power_subscription += power_left
+	func _get_name():
+		return structure_name
+	func _set_name(new_name):
+		structure_name = new_name
 	func update_lack_resources():
 		resources_lacking.clear()
 		if structure_type_id != Constants.StructureTileType.Power:
@@ -165,12 +170,19 @@ func _init_structures_list():
 	refresh_structure_resources()
 	
 
-func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector2, disabled: bool = false) -> StructureData:
+func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector2, disabled: bool = false, custom_name: String = "") -> StructureData:
 	var structure_meta_data = _get_structure_metadata_by_id(structure_type_id)
 	var structureData = StructureData.new(structure_type_id, tile_map_cell, structure_meta_data)
 	structureData.disabled = disabled
 	if structure_type_id == Constants.StructureTileType.Power:
 		structureData.powers_cells = _get_powered_cells(tile_map_cell)
+	if custom_name == "":
+		if _structure_id_to_name.has(structure_type_id):
+			structureData.structure_name = _structure_id_to_name[structure_type_id]
+		else:
+			print("error structure base id " + str(structure_type_id) + " has no name")
+	else:
+		structureData.structure_name = custom_name
 	return structureData
 
 
