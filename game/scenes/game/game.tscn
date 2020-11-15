@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://assets/tilesets/placement.tres" type="TileSet" id=5]
 [ext_resource path="res://assets/images/tiles/Damage_overlay.png" type="Texture" id=6]
 [ext_resource path="res://scenes/managers/damage_mgr.gd" type="Script" id=7]
+[ext_resource path="res://scenes/managers/zoom_level_sound_mixer.gd" type="Script" id=8]
+[ext_resource path="res://assets/music/temp/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/temp/115759__warwickallison__windloop.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/temp/mp3-8209654939931753-160543743293813.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/temp/274186__littlerobotsoundfactory__spaceengine-controlroom-loop-01.wav" type="AudioStream" id=12]
 [ext_resource path="res://scenes/ui/hud.tscn" type="PackedScene" id=14]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" type="Script" id=15]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
@@ -191,6 +196,46 @@ min_camera_zoom = 2.0
 max_camera_zoom = 15.0
 initial_camera_zoom = 15.0
 zoom_steps = 2
+zoom_step_time_seconds = 0.4
 zoom_to_mouse = true
 
 [node name="Hud" parent="." instance=ExtResource( 14 )]
+
+[node name="ZoomLevelSoundMixer" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Zoom1Music" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom1Music"]
+stream = ExtResource( 9 )
+bus = "Zoom1"
+
+[node name="Zoom1Sound" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom1Sound"]
+stream = ExtResource( 12 )
+volume_db = -15.0
+
+[node name="Zoom2Music" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom2Music"]
+stream = ExtResource( 9 )
+bus = "Zoom2"
+
+[node name="Zoom2Sound" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom2Sound"]
+stream = ExtResource( 10 )
+
+[node name="Zoom3Music" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Music"]
+stream = ExtResource( 9 )
+volume_db = -14.241
+bus = "Zoom3"
+
+[node name="Zoom3Sound" type="Node" parent="ZoomLevelSoundMixer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
+stream = ExtResource( 11 )
+volume_db = -12.0

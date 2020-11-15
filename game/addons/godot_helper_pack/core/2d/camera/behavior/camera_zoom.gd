@@ -1,6 +1,8 @@
 extends Node
 class_name CameraZoom2D
 
+signal zoom_step_change_initiated(from_zoom_step, to_zoom_step, zoom_speed)
+
 
 export var zoom_speed = .25
 export var min_camera_zoom: float = .25
@@ -18,6 +20,7 @@ var _current_zoom_step := 0
 func _ready():
 	if camera == null:
 		return
+	SignalMgr.register_publisher(self, "zoom_step_change_initiated")
 	camera.zoom = Vector2.ONE * clamp(initial_camera_zoom, min_camera_zoom, max_camera_zoom)
 	_current_zoom_step = zoom_steps
 	tween = Tween.new()
@@ -76,6 +79,13 @@ func _zoom_step(zoom_in: bool) -> void:
 	zoom = clamp(zoom + zoom_change, min_camera_zoom, max_camera_zoom)
 	if zoom == camera.zoom.x:
 		return
+	
+	#var x = (zoom - min_camera_zoom) / (max_camera_zoom - min_camera_zoom)*zoom_steps
+	var current_zoom_level = (camera.zoom.x - min_camera_zoom) / float(abs(zoom_change))
+	var next_zoom_level = current_zoom_level + 1
+	if zoom_in:
+		next_zoom_level = current_zoom_level - 1
+	emit_signal("zoom_step_change_initiated", current_zoom_level, next_zoom_level, zoom_step_time_seconds)
 	
 	tween.interpolate_property(camera, "zoom", camera.zoom, Vector2.ONE*zoom, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	if zoom_to_mouse:
