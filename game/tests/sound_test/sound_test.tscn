@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/music/temp/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg" type="AudioStream" id=1]
+[ext_resource path="res://tests/sound_test/sound_test.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -48.0
+max_value = 0.0
+_data = [ Vector2( 0, -47.8909 ), 0.0, 0.0, 0, 1, Vector2( 0.147163, -47.8909 ), 0.0, 0.0, 0, 0, Vector2( 0.569149, -26.9455 ), 168.76, 168.76, 0, 0, Vector2( 0.902482, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[node name="SoundTest" type="Node2D"]
+script = ExtResource( 2 )
+curve_in = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Zoom3"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Zoom2"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="TestBtn" type="Button" parent="."]
+margin_left = 260.334
+margin_top = 193.663
+margin_right = 450.334
+margin_bottom = 254.663
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TestBtn" to="." method="_on_TestBtn_pressed"]
