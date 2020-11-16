@@ -19,6 +19,9 @@
 [ext_resource path="res://assets/images/ui/people-blue.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/power-red.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/ui/power-blue.png" type="Texture" id=19]
+[ext_resource path="res://scenes/managers/SpawnerMgr.gd" type="Script" id=20]
+[ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=21]
+[ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=22]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
@@ -103,6 +106,15 @@ colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="PhysicsMaterial" id=5]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id=6]
+
+[sub_resource type="CircleShape2D" id=7]
+
 [node name="game" type="Node2D"]
 __meta__ = {
 "_edit_group_": true,
@@ -151,6 +163,46 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="MoonSurfaceCollision" type="Area2D" parent="."]
+visible = false
+scale = Vector2( 360, 360 )
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceCollision"]
+shape = SubResource( 4 )
+
+[node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
+scale = Vector2( 360, 360 )
+physics_material_override = SubResource( 5 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceBody"]
+shape = SubResource( 6 )
+
+[node name="GravityField" type="Area2D" parent="."]
+visible = false
+scale = Vector2( 1460, 1000 )
+space_override = 1
+gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 400.0
+linear_damp = 0.0
+angular_damp = 0.0
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityField"]
+shape = SubResource( 7 )
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -260,6 +312,12 @@ separator_boxes_tile_map = NodePath("../SeperatorBoxes")
 damage_overlay_tile_map = NodePath("../DamageOverlay")
 resource_indicators_overlay_tile_map = NodePath("../ResourceIndicators")
 
+[node name="SpawnerMgr" type="Node" parent="."]
+script = ExtResource( 20 )
+
+[node name="AsteroidTimer" type="Timer" parent="SpawnerMgr"]
+one_shot = true
+
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 7 )
 structure_mgr = NodePath("../StructureMgr")
@@ -270,6 +328,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -287,13 +346,11 @@ limit_reference_rect = NodePath("../../CameraLimitsRect")
 
 [node name="CameraZoom2D" type="Node" parent="Camera2D"]
 script = ExtResource( 3 )
-zoom_speed = 0.5
-min_camera_zoom = 2.0
-max_camera_zoom = 15.0
+zoom_speed = 0.01
+min_camera_zoom = 0.01
+max_camera_zoom = 500.0
 initial_camera_zoom = 15.0
-zoom_steps = 2
 zoom_step_time_seconds = 0.4
-zoom_to_mouse = true
 
 [node name="Hud" parent="." instance=ExtResource( 14 )]
 
@@ -335,4 +392,6 @@ bus = "Zoom3"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
 stream = ExtResource( 11 )
 volume_db = -18.0
+[connection signal="body_entered" from="MoonSurfaceCollision" to="MoonSurfaceCollision" method="_on_MoonSurfaceCollision_body_entered"]
+[connection signal="timeout" from="SpawnerMgr/AsteroidTimer" to="SpawnerMgr" method="_on_AsteroidTimer_timeout"]
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
