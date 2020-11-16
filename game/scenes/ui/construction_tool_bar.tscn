@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/ui/Residence_icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/ui/Start-Tile_icon_disabled.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/ui/Residence_icon_disabled.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/temp/ui/factory_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/Factory_icon_disabled.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/temp/ui/education_icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/ui/Start-Tile_icon.png" type="Texture" id=10]
 [ext_resource path="res://scenes/ui/construction_tool_bar.gd" type="Script" id=11]
@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/images/ui/Reclaimation-Center_icon_disabled.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/ui/Office_icon_disabled.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/ui/Recreation_icon.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/temp/ui/factory_icon_disabled.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/ui/Factory_icon.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/temp/ui/medical_icon_disabled.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/Agriculture_icon_disabled.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/ui/Reclaimation-Center_icon.png" type="Texture" id=19]
@@ -149,8 +149,8 @@ __meta__ = {
 margin_right = 50.0
 margin_bottom = 50.0
 hint_tooltip = "Factory"
-texture_normal = ExtResource( 8 )
-texture_disabled = ExtResource( 16 )
+texture_normal = ExtResource( 16 )
+texture_disabled = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

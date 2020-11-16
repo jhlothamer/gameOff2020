@@ -9,6 +9,11 @@ signal structure_tile_enabled(structure_tile_type, cell_v)
 
 var _current_structure: StructureMgr.StructureData
 
+const NAME_ITEM_ID := 0
+const REPAIR_ITEM_ID := 2
+const RECLAIM_ITEM_ID := 3
+const DISABLE_ITEM_ID := 4
+
 
 func _ready():
 	SignalMgr.register_publisher(self, "structure_tile_repaired")
@@ -23,13 +28,13 @@ func _ready():
 	add_item("Disable", 4)
 
 func show_for_structure(structure: StructureMgr.StructureData, position: Vector2):
-	set_item_disabled(0, !structure.damaged)
-	set_item_disabled(2, structure.damaged)
-	set_item_text(0, structure._get_name())
+	set_item_text(NAME_ITEM_ID, structure._get_name())
+	set_item_disabled(REPAIR_ITEM_ID, !structure.damaged)
+	set_item_disabled(DISABLE_ITEM_ID, structure.damaged)
 	if structure.disabled:
-		set_item_text(4, "Enable")
+		set_item_text(DISABLE_ITEM_ID, "Enable")
 	else:
-		set_item_text(4, "Disable")
+		set_item_text(DISABLE_ITEM_ID, "Disable")
 	_current_structure = structure
 	popup(Rect2(position, rect_size))
 	#rect_position = position
@@ -38,11 +43,11 @@ func show_for_structure(structure: StructureMgr.StructureData, position: Vector2
 
 func _on_TilePopupMenu_id_pressed(id):
 	var structure_mgr := StructureMgr.get_structure_mgr()
-	if id == 2:
+	if id == REPAIR_ITEM_ID:
 		emit_signal("structure_tile_repaired", _current_structure.structure_type_id, _current_structure.tile_map_cell)
-	elif id == 3:
+	elif id == RECLAIM_ITEM_ID:
 		emit_signal("structure_tile_reclaimed", _current_structure.structure_type_id, _current_structure.tile_map_cell)
-	elif id == 4:
+	elif id == DISABLE_ITEM_ID:
 		if _current_structure.disabled:
 			emit_signal("structure_tile_enabled", _current_structure.structure_type_id, _current_structure.tile_map_cell)
 		else:
