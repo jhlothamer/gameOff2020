@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/ui/time_line.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/temp/timeline/timeline.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/temp/timeline/planet_endpoint.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/temp/timeline/meteor_shower_marker.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/temp/timeline/comet_marker.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/temp/timeline/generation_ship.png" type="Texture" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 25.0855, 58.0042, 0, 0, 0, 0, 678.813, 58.0042 )
+}
+
+[node name="TimeLine" type="MarginContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 50
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 50.0
+margin_right = 702.0
+margin_bottom = 67.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 19.0
+margin_bottom = 17.0
+custom_constants/margin_top = -2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2"]
+modulate = Color( 0.972549, 0.713726, 0.376471, 1 )
+margin_top = -2.0
+margin_right = 19.0
+margin_bottom = 17.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 23.0
+margin_right = 679.0
+margin_bottom = 17.0
+texture = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 683.0
+margin_right = 702.0
+margin_bottom = 17.0
+custom_constants/margin_top = -2
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+self_modulate = Color( 0.572549, 0.223529, 0.964706, 1 )
+margin_top = -2.0
+margin_right = 19.0
+margin_bottom = 17.0
+texture = ExtResource( 3 )
+
+[node name="MarkersTemplates" type="Node2D" parent="."]
+
+[node name="meteor_shower_marker" type="Sprite" parent="MarkersTemplates"]
+position = Vector2( 249.823, 57.95 )
+texture = ExtResource( 4 )
+offset = Vector2( 4.50369, -23.9998 )
+
+[node name="comet_marker" type="Sprite" parent="MarkersTemplates"]
+position = Vector2( 372.26, 57.8852 )
+texture = ExtResource( 5 )
+offset = Vector2( 10.5837, -25.1108 )
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 25.0855, 58.0042 )
+
+[node name="generation_ship" type="Sprite" parent="Path2D/PathFollow2D"]
+texture = ExtResource( 6 )
+offset = Vector2( -25, 0 )
