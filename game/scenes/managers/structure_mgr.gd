@@ -72,12 +72,14 @@ export var structure_status_overlay_tiles_tile_map: NodePath
 export var construction_repair_etc_animations_parent: NodePath
 export var separator_boxes_tile_map: NodePath
 export var damage_overlay_tile_map: NodePath
+export var resource_indicators_overlay_tile_map: NodePath
 
 var _allowed_tiles_tile_map: TileMap
 var _structure_tiles_tile_map: TileMap
 var _structure_status_overlay_tiles_tile_map: TileMap
 var _separator_boxes_tile_map: TileMap
 var _damage_overlay_tile_map: TileMap
+var _resource_indicators_overlay_tile_map: TileMap
 var _construction_repair_etc_animations_parent: Node2D
 
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
@@ -98,7 +100,8 @@ var _power_radius_tiles_sq: float
 
 var _structure_alert_status_overlay_tile_id := {}
 var _structure_disable_status_overlay_tile_id := {}
-var _structure_enabled_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE_COUNT*3
+const _structure_enabled_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE_COUNT*3
+const _structure_lack_resource_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE_COUNT*3 + 1
 
 func _ready():
 	#SignalMgr.register_subscriber(self, "structure_tile_placed", "_on_structure_tile_placed")
@@ -117,7 +120,8 @@ func _ready():
 		_separator_boxes_tile_map = get_node_or_null(separator_boxes_tile_map)
 	if damage_overlay_tile_map != null:
 		_damage_overlay_tile_map = get_node_or_null(damage_overlay_tile_map)
-	
+	if resource_indicators_overlay_tile_map != null:
+		_resource_indicators_overlay_tile_map = get_node_or_null(resource_indicators_overlay_tile_map)
 	
 	var structure_file: File = File.new()
 	var error = structure_file.open(structure_data_file_path, File.READ)
@@ -165,7 +169,7 @@ func _init_structures_list():
 		var structure = _create_structure_data_object(tile_id, used_cell)
 		structure.under_construction = false
 		_structures[used_cell] = structure
-		_separator_boxes_tile_map.set_cellv(used_cell, _structure_enabled_status_overlay_tile_id)
+		#_separator_boxes_tile_map.set_cellv(used_cell, _structure_enabled_status_overlay_tile_id)
 	
 	refresh_structure_resources()
 	
@@ -243,19 +247,47 @@ func refresh_structure_resources(debug: bool = false):
 		structure.update_lack_resources()
 		if structure.disabled:
 			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
+			_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		elif structure.resources_lacking.size() > 0:
-			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_alert_status_overlay_tile_id[structure.structure_type_id])
+			#_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_alert_status_overlay_tile_id[structure.structure_type_id])
+			_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		elif structure.under_construction:
 			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
+			_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, -1)
 		else:
 			_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, -1)
+			_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
+		
+		_refresh_structure_resource_indicators(structure)
+		
 		if structure.damaged:
 			_damage_overlay_tile_map.set_cellv(structure.tile_map_cell, 0)
+			_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		else:
 			if debug:
 				print("clearing damage overlat for tile at " + str(structure.tile_map_cell))
 			_damage_overlay_tile_map.set_cellv(structure.tile_map_cell, -1)
+			#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 
+
+func _refresh_structure_resource_indicators(structure: StructureData):
+	if structure.structure_type_id == Constants.StructureTileType.UUC:
+		return
+		
+	var structure_resource_icon_cellv = structure.tile_map_cell * 8 + Vector2(5,6)
+	
+	if structure.structure_type_id != Constants.StructureTileType.Power:
+		if structure.resources_lacking.has("electricity"):
+			_resource_indicators_overlay_tile_map.set_cellv(structure_resource_icon_cellv, 2)
+		else:
+			_resource_indicators_overlay_tile_map.set_cellv(structure_resource_icon_cellv, 0)
+	
+	structure_resource_icon_cellv += Vector2.RIGHT
+	
+	if structure.resources_lacking.has("population"):
+		_resource_indicators_overlay_tile_map.set_cellv(structure_resource_icon_cellv, 3)
+	else:
+		_resource_indicators_overlay_tile_map.set_cellv(structure_resource_icon_cellv, 1)
 
 
 func _get_powered_cells(power_station_cell: Vector2) -> Array:
@@ -298,7 +330,7 @@ func _do_construction_animation(structure: StructureData) -> void:
 	construction_animation.queue_free()
 	structure.disabled = false
 	structure.under_construction = false
-	_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
+	#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 	refresh_structure_resources()
 
 func _do_reclamation_animation(structure: StructureData) -> void:
@@ -314,7 +346,7 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 	_structures.erase(structure.tile_map_cell)
 	_structure_tiles_tile_map.set_cellv(structure.tile_map_cell, -1)
 	if structure.structure_type_id != Constants.StructureTileType.UUC:
-		_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
+		#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 		var uuc_structure = _create_structure_data_object(Constants.StructureTileType.UUC, structure.tile_map_cell, false)
 		uuc_structure.under_construction = false
 		_structures[structure.tile_map_cell] = uuc_structure
