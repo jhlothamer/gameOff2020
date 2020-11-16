@@ -21,11 +21,11 @@
 [ext_resource path="res://scenes/managers/resource_mgr.gd" type="Script" id=32]
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=33]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
 colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=2]
 0/name = "Damage_overlay.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -72,7 +72,7 @@ show_behind_parent = true
 position = Vector2( -732.551, 0 )
 points = PoolVector2Array( 0, 0, -7200, 0 )
 width = 978.0
-gradient = SubResource( 2 )
+gradient = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -124,7 +124,7 @@ __meta__ = {
 }
 
 [node name="DamageOverlay" type="TileMap" parent="."]
-tile_set = SubResource( 3 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 200, 200 )
 format = 1
 
@@ -267,3 +267,4 @@ bus = "Zoom3"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
 stream = ExtResource( 11 )
 volume_db = -18.0
+[connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
