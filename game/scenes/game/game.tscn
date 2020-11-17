@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -32,7 +32,16 @@
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
 colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+
+[sub_resource type="TileSet" id=6]
 0/name = "power-blue.png 0"
 0/texture = ExtResource( 19 )
 0/tex_offset = Vector2( 0, 0 )
@@ -90,7 +99,7 @@ colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=7]
 0/name = "Damage_overlay.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -105,15 +114,6 @@ colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-
-[sub_resource type="CircleShape2D" id=4]
-
-[sub_resource type="PhysicsMaterial" id=5]
-bounce = 0.4
-
-[sub_resource type="CircleShape2D" id=6]
-
-[sub_resource type="CircleShape2D" id=7]
 
 [node name="game" type="Node2D"]
 __meta__ = {
@@ -176,15 +176,15 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceCollision"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
 scale = Vector2( 360, 360 )
-physics_material_override = SubResource( 5 )
+physics_material_override = SubResource( 3 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceBody"]
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="GravityField" type="Area2D" parent="."]
 visible = false
@@ -202,7 +202,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityField"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -228,7 +228,7 @@ __meta__ = {
 }
 
 [node name="ResourceIndicators" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 6 )
 cell_size = Vector2( 25, 25 )
 format = 1
 
@@ -243,7 +243,7 @@ __meta__ = {
 }
 
 [node name="DamageOverlay" type="TileMap" parent="."]
-tile_set = SubResource( 3 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 200, 200 )
 format = 1
 
