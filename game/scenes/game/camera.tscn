@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_move.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" type="Script" id=2]
+[ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_zoom.gd" type="Script" id=3]
+
+[node name="Camera" type="Camera2D"]
+position = Vector2( -2884.48, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CameraMove2D" type="Node" parent="."]
+script = ExtResource( 1 )
+move_speed = 5.0
+left_mouse_button_drag = true
+middle_mouse_button_drag = true
+
+[node name="CameraLimiter" type="Node" parent="."]
+script = ExtResource( 2 )
+limit_reference_rect = NodePath("../../Camera/CameraLimitsRect")
+
+[node name="CameraZoom2D" type="Node" parent="."]
+script = ExtResource( 3 )
+zoom_speed = 0.5
+min_camera_zoom = 2.0
+max_camera_zoom = 15.0
+initial_camera_zoom = 15.0
+zoom_steps = 2
+zoom_step_time_seconds = 0.4
+zoom_to_mouse = true
+
+[node name="CameraLimitsRect" type="ReferenceRect" parent="."]
+margin_left = -10348.5
+margin_top = -9203.9
+margin_right = 17046.5
+margin_bottom = 9724.1
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

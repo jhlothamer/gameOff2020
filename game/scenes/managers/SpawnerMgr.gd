@@ -9,8 +9,9 @@ var spawn_extents_min = Vector2(-13233,-9203.9)
 var spawn_extents_max = Vector2(13233,9203.9)
 
 onready var fragment_scene = preload("res://scenes/game/Fragment.tscn")
-export var min_time_between_asteroids = 1 #seconds
-export var max_time_between_asteroids = 5
+export var min_time_between_asteroids:float = 1 #seconds
+export var max_time_between_asteroids:float = 5
+export var debug := false
 
 # how many asteroids can exist in scene at once
 export var max_concurrent_asteroids = 20
@@ -25,11 +26,14 @@ export var fragment_limit = 200
 export var fragment_propel_variance_min = 0.4
 export var fragment_propel_variance_max = 0.8
 
+onready var spawn_limit_rect := $ReferenceRect
+
 func _ready():
-	spawn_extents_min.x = get_parent().get_node("CameraLimitsRect").rect_global_position.x
-	spawn_extents_min.y = get_parent().get_node("CameraLimitsRect").rect_global_position.y
-	spawn_extents_max.x = abs(get_parent().get_node("CameraLimitsRect").rect_global_position.x)
-	spawn_extents_max.y = abs(get_parent().get_node("CameraLimitsRect").rect_global_position.y)
+	Globals.set("SpawnMgr", self)
+	spawn_extents_min.x = spawn_limit_rect.rect_global_position.x
+	spawn_extents_min.y = spawn_limit_rect.rect_global_position.y
+	spawn_extents_max.x = abs(spawn_limit_rect.rect_global_position.x)
+	spawn_extents_max.y = abs(spawn_limit_rect.rect_global_position.y)
 	_load_sprites("res://assets/images/asteroids", asteroid_sprites)
 	_load_sprites("res://assets/images/asteroids/fragments", fragment_sprites )
 	if asteroid_sprites.empty():
@@ -47,7 +51,8 @@ func _process(delta):
 		if _is_out_of_bounds(i):
 			i.queue_free()
 			asteroids.erase(i)
-			print("asteroid out of bounds, despawning")
+			if debug:
+				print("asteroid out of bounds, despawning")
 	for i in fragments:
 		if _is_out_of_bounds(i):
 			i.queue_free()
@@ -90,7 +95,8 @@ func _spawn_asteroid():
 			# delay kick to let physics body settle after spawning
 			asteroid.delayed_kick_impulse = initial_kick
 			add_child(asteroid)
-			print("added asteroid at " + str(spawn_pos))
+			if debug:
+				print("added asteroid at " + str(spawn_pos))
 
 func _start_spawn_timer():
 	$AsteroidTimer.wait_time = rand_range(min_time_between_asteroids,max_time_between_asteroids)
@@ -104,7 +110,7 @@ func _load_sprites(path, array):
 		var FileName = direc.get_next()
 		if FileName == "":
 			break
-		elif !FileName.begins_with(".") and !FileName.ends_with(".import"):
+		elif !FileName.begins_with(".") and !FileName.ends_with(".import") and !direc.dir_exists(path + "/" + FileName):
 			array.append(load(path + "/" + FileName))
 	direc.list_dir_end()
 	

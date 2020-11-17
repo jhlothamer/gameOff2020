@@ -42,7 +42,6 @@ func show_for_structure(structure: StructureMgr.StructureData, position: Vector2
 
 
 func _on_TilePopupMenu_id_pressed(id):
-	var structure_mgr := StructureMgr.get_structure_mgr()
 	if id == REPAIR_ITEM_ID:
 		emit_signal("structure_tile_repaired", _current_structure.structure_type_id, _current_structure.tile_map_cell)
 	elif id == RECLAIM_ITEM_ID:
