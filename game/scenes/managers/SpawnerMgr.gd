@@ -138,7 +138,7 @@ func _disintegrate(body):
 		new_fragment.angular_velocity = body.angular_velocity \
 			+ rand_range(-20,20)
 		fragments.append(new_fragment)
-		add_child(new_fragment)
+		call_deferred("add_child",new_fragment)
 	asteroids.erase(body)
 	body.queue_free()
 

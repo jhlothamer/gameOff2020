@@ -346,11 +346,13 @@ limit_reference_rect = NodePath("../../CameraLimitsRect")
 
 [node name="CameraZoom2D" type="Node" parent="Camera2D"]
 script = ExtResource( 3 )
-zoom_speed = 0.01
-min_camera_zoom = 0.01
-max_camera_zoom = 500.0
+zoom_speed = 0.5
+min_camera_zoom = 2.0
+max_camera_zoom = 15.0
 initial_camera_zoom = 15.0
+zoom_steps = 2
 zoom_step_time_seconds = 0.4
+zoom_to_mouse = true
 
 [node name="Hud" parent="." instance=ExtResource( 14 )]
 
