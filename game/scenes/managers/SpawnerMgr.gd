@@ -52,7 +52,6 @@ func _process(delta):
 		if _is_out_of_bounds(i):
 			i.queue_free()
 			fragments.erase(i)
-			print("fragment out of bounds, despawning")
 
 func _is_out_of_bounds(body):
 	if body.global_position.x > spawn_extents_max.x or \
@@ -89,7 +88,6 @@ func _spawn_asteroid():
 			asteroid.position = spawn_pos
 			asteroids.append(asteroid)
 			# delay kick to let physics body settle after spawning
-			asteroid.delayed_kick_offset = Vector2(rand_range(0,50),rand_range(0,50))
 			asteroid.delayed_kick_impulse = initial_kick
 			add_child(asteroid)
 			print("added asteroid at " + str(spawn_pos))

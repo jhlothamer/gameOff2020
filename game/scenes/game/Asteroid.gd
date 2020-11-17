@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 var type = "Asteroid"
-var delayed_kick_offset = Vector2(0,0)
 var delayed_kick_impulse = Vector2(0,0)
 var physics_tick_countdown = 10
 var apply_initial_force = true
@@ -26,7 +25,7 @@ func _physics_process(delta):
 			physics_tick_countdown -= 1
 
 func _give_asteroid_kick():
-	apply_impulse(delayed_kick_offset, delayed_kick_impulse )
+	apply_impulse(Vector2(0,0), delayed_kick_impulse )
 
 func _mark_for_disintegration():
 	marked_for_disintegration = true
