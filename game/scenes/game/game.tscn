@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -19,6 +19,10 @@
 [ext_resource path="res://assets/images/ui/people-blue.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/power-red.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/ui/power-blue.png" type="Texture" id=19]
+[ext_resource path="res://scenes/managers/SpawnerMgr.gd" type="Script" id=20]
+[ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=21]
+[ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=22]
+[ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=23]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
@@ -29,7 +33,19 @@
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
 colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4700, 500 )
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="PhysicsMaterial" id=4]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id=5]
+
+[sub_resource type="CircleShape2D" id=6]
+
+[sub_resource type="TileSet" id=7]
 0/name = "power-blue.png 0"
 0/texture = ExtResource( 19 )
 0/tex_offset = Vector2( 0, 0 )
@@ -87,7 +103,7 @@ colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=8]
 0/name = "Damage_overlay.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -152,6 +168,82 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DrivePlumePhysics" type="Area2D" parent="."]
+position = Vector2( -10000, 0 )
+collision_layer = 4
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrivePlumePhysics"]
+shape = SubResource( 2 )
+
+[node name="DriveSurfaceBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DriveSurfaceBody"]
+position = Vector2( -5460, -495 )
+polygon = PoolVector2Array( 20, 20, 99.5332, 128.342, 134.329, 272.017, 153.411, 353.957, 156.779, 484.162, 135.452, 762.662, 55.7568, 946.348, -3.7334, 991.247, 35.5527, 1054.83, 116.37, 1052.59, 181.473, 1026.77, 474.435, 1086.26, 515.966, 1143.5, 606.886, 1122.18, 979.393, 1216.1, 1083.51, 1293.52, 1184.96, 1253.48, 1483.96, 1314.88, 1884.41, 1429.68, 1996.65, 1432.71, 1958.9, 1221.29, 1860.73, 485.063, 1974, -375.75, 1673.93, -390.83, 1505.57, -341.442, 1164.34, -310.013, 194.431, -33.8874, 73.2046, -60.8265, 5.85693, -54.0918, 0, 0 )
+
+[node name="DriveSurface" type="Area2D" parent="."]
+position = Vector2( -5460, -495 )
+collision_layer = 4
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DriveSurface"]
+polygon = PoolVector2Array( 20, 20, 99.5332, 128.342, 134.329, 272.017, 153.411, 353.957, 156.779, 484.162, 135.452, 762.662, 55.7568, 946.348, -3.7334, 991.247, 35.5527, 1054.83, 116.37, 1052.59, 181.473, 1026.77, 474.435, 1086.26, 515.966, 1143.5, 606.886, 1122.18, 979.393, 1216.1, 1083.51, 1293.52, 1184.96, 1253.48, 1483.96, 1314.88, 1884.41, 1429.68, 1996.65, 1432.71, 1958.9, 1221.29, 1860.73, 485.063, 1974, -375.75, 1673.93, -390.83, 1505.57, -341.442, 1164.34, -310.013, 194.431, -33.8874, 73.2046, -60.8265, 5.85693, -54.0918, 0, 0 )
+
+[node name="MoonSurfaceCollision" type="Area2D" parent="."]
+visible = false
+scale = Vector2( 360, 360 )
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+collision_layer = 4
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceCollision"]
+shape = SubResource( 3 )
+
+[node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
+scale = Vector2( 360, 360 )
+collision_layer = 2
+physics_material_override = SubResource( 4 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceBody"]
+shape = SubResource( 5 )
+
+[node name="GravityField" type="Area2D" parent="."]
+visible = false
+scale = Vector2( 1460, 1000 )
+space_override = 1
+gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 400.0
+linear_damp = 0.0
+angular_damp = 0.0
+collision_layer = 8
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityField"]
+shape = SubResource( 6 )
+
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
 tile_set = ExtResource( 2 )
@@ -176,7 +268,7 @@ __meta__ = {
 }
 
 [node name="ResourceIndicators" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 25, 25 )
 format = 1
 
@@ -191,7 +283,7 @@ __meta__ = {
 }
 
 [node name="DamageOverlay" type="TileMap" parent="."]
-tile_set = SubResource( 3 )
+tile_set = SubResource( 8 )
 cell_size = Vector2( 200, 200 )
 format = 1
 
@@ -260,6 +352,15 @@ separator_boxes_tile_map = NodePath("../SeperatorBoxes")
 damage_overlay_tile_map = NodePath("../DamageOverlay")
 resource_indicators_overlay_tile_map = NodePath("../ResourceIndicators")
 
+[node name="SpawnerMgr" type="Node" parent="."]
+script = ExtResource( 20 )
+min_time_between_asteroids = 5
+max_time_between_asteroids = 10
+max_concurrent_asteroids = 1
+
+[node name="AsteroidTimer" type="Timer" parent="SpawnerMgr"]
+one_shot = true
+
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 7 )
 structure_mgr = NodePath("../StructureMgr")
@@ -270,6 +371,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -335,4 +437,8 @@ bus = "Zoom3"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
 stream = ExtResource( 11 )
 volume_db = -18.0
+[connection signal="body_entered" from="DrivePlumePhysics" to="DrivePlumePhysics" method="_on_DrivePlumePhysics_body_entered"]
+[connection signal="body_entered" from="DriveSurface" to="MoonSurfaceCollision" method="_on_DriveSurface_body_entered"]
+[connection signal="body_entered" from="MoonSurfaceCollision" to="MoonSurfaceCollision" method="_on_MoonSurfaceCollision_body_entered"]
+[connection signal="timeout" from="SpawnerMgr/AsteroidTimer" to="SpawnerMgr" method="_on_AsteroidTimer_timeout"]
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]

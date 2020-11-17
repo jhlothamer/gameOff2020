@@ -208,6 +208,13 @@ screen_shot={
 "events": [  ]
 }
 
+[physics]
+
+2d/default_gravity=0
+2d/default_gravity_vector=Vector2( 0, 0 )
+2d/default_linear_damp=0.0
+2d/default_angular_damp=0.0
+
 [rendering]
 
 environment/default_clear_color=Color( 0.0431373, 0.0352941, 0.105882, 1 )
