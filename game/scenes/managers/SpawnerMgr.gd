@@ -78,10 +78,10 @@ func _spawn_asteroid():
 				else:
 					#spawn bottom
 					spawn_pos.y = spawn_extents_max.y - 100
-				spawn_pos.x = rand_range((spawn_extents_min.x ) + 100, spawn_extents_max.x - 100)
+				spawn_pos.x = rand_range((spawn_extents_max.x / 2 ) + 100, spawn_extents_max.x - 100)
 			else:
 				#spawn right side
-				spawn_pos.x = spawn_extents_min.x - 100
+				spawn_pos.x = (spawn_extents_max.x / 2) + 100
 				spawn_pos.y = rand_range(spawn_extents_min.y + 100, spawn_extents_max.y - 100)
 			var initial_kick = spawn_pos.direction_to(Vector2(0,0)).rotated(rand_range(-135,135))
 			initial_kick = initial_kick * rand_range( 500, 3000)

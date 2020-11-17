@@ -33,19 +33,19 @@
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
 colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4700, 500 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=4]
 bounce = 0.4
-
-[sub_resource type="CircleShape2D" id=4]
 
 [sub_resource type="CircleShape2D" id=5]
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="CircleShape2D" id=6]
+
+[sub_resource type="TileSet" id=7]
 0/name = "power-blue.png 0"
 0/texture = ExtResource( 19 )
 0/tex_offset = Vector2( 0, 0 )
@@ -103,7 +103,7 @@ bounce = 0.4
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=8]
 0/name = "Damage_overlay.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -172,12 +172,20 @@ __meta__ = {
 position = Vector2( -10000, 0 )
 collision_layer = 4
 script = ExtResource( 23 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DrivePlumePhysics"]
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="DriveSurfaceBody" type="StaticBody2D" parent="."]
 collision_layer = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DriveSurfaceBody"]
 position = Vector2( -5460, -495 )
@@ -207,16 +215,16 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceCollision"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
 scale = Vector2( 360, 360 )
 collision_layer = 2
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 4 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonSurfaceBody"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="GravityField" type="Area2D" parent="."]
 visible = false
@@ -234,7 +242,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityField"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -260,7 +268,7 @@ __meta__ = {
 }
 
 [node name="ResourceIndicators" type="TileMap" parent="."]
-tile_set = SubResource( 6 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 25, 25 )
 format = 1
 
@@ -275,7 +283,7 @@ __meta__ = {
 }
 
 [node name="DamageOverlay" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
+tile_set = SubResource( 8 )
 cell_size = Vector2( 200, 200 )
 format = 1
 
@@ -346,12 +354,9 @@ resource_indicators_overlay_tile_map = NodePath("../ResourceIndicators")
 
 [node name="SpawnerMgr" type="Node" parent="."]
 script = ExtResource( 20 )
-max_time_between_asteroids = 1
+min_time_between_asteroids = 5
+max_time_between_asteroids = 10
 max_concurrent_asteroids = 1
-min_asteroid_segments = 10
-max_asteroid_segments = 20
-fragment_propel_variance_min = 1.5
-fragment_propel_variance_max = 2.0
 
 [node name="AsteroidTimer" type="Timer" parent="SpawnerMgr"]
 one_shot = true
