@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://scenes/managers/SpawnerMgr.gd" type="Script" id=20]
 [ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=21]
 [ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=22]
+[ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=23]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
@@ -31,6 +32,9 @@
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
 colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 4700, 500 )
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -164,7 +168,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DrivePlumePhysics" type="Area2D" parent="."]
+position = Vector2( -10000, 0 )
+collision_layer = 4
+script = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrivePlumePhysics"]
+shape = SubResource( 8 )
+
 [node name="DriveSurfaceBody" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DriveSurfaceBody"]
 position = Vector2( -5460, -495 )
@@ -172,6 +185,7 @@ polygon = PoolVector2Array( 20, 20, 99.5332, 128.342, 134.329, 272.017, 153.411,
 
 [node name="DriveSurface" type="Area2D" parent="."]
 position = Vector2( -5460, -495 )
+collision_layer = 4
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -185,6 +199,7 @@ visible = false
 scale = Vector2( 360, 360 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
+collision_layer = 4
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_group_": true,
@@ -196,6 +211,7 @@ shape = SubResource( 2 )
 
 [node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
 scale = Vector2( 360, 360 )
+collision_layer = 2
 physics_material_override = SubResource( 3 )
 script = ExtResource( 22 )
 
@@ -211,7 +227,7 @@ gravity_vec = Vector2( 0, 0 )
 gravity = 400.0
 linear_damp = 0.0
 angular_damp = 0.0
-collision_layer = 2
+collision_layer = 8
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -330,9 +346,12 @@ resource_indicators_overlay_tile_map = NodePath("../ResourceIndicators")
 
 [node name="SpawnerMgr" type="Node" parent="."]
 script = ExtResource( 20 )
-min_time_between_asteroids = 5
-max_time_between_asteroids = 10
+max_time_between_asteroids = 1
 max_concurrent_asteroids = 1
+min_asteroid_segments = 10
+max_asteroid_segments = 20
+fragment_propel_variance_min = 1.5
+fragment_propel_variance_max = 2.0
 
 [node name="AsteroidTimer" type="Timer" parent="SpawnerMgr"]
 one_shot = true
@@ -413,6 +432,7 @@ bus = "Zoom3"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ZoomLevelSoundMixer/Zoom3Sound"]
 stream = ExtResource( 11 )
 volume_db = -18.0
+[connection signal="body_entered" from="DrivePlumePhysics" to="DrivePlumePhysics" method="_on_DrivePlumePhysics_body_entered"]
 [connection signal="body_entered" from="DriveSurface" to="MoonSurfaceCollision" method="_on_DriveSurface_body_entered"]
 [connection signal="body_entered" from="MoonSurfaceCollision" to="MoonSurfaceCollision" method="_on_MoonSurfaceCollision_body_entered"]
 [connection signal="timeout" from="SpawnerMgr/AsteroidTimer" to="SpawnerMgr" method="_on_AsteroidTimer_timeout"]

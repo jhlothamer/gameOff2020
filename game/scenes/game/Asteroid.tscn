@@ -8,7 +8,7 @@
 [node name="AsteroidBody" type="RigidBody2D"]
 z_index = 4
 z_as_relative = false
-collision_mask = 3
+collision_mask = 15
 mass = 5.0
 contacts_reported = 1
 contact_monitor = true
