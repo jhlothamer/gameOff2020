@@ -15,6 +15,7 @@ _data = {
 [node name="TimeLine" type="MarginContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 custom_constants/margin_top = 50
 script = ExtResource( 1 )
 __meta__ = {
@@ -25,10 +26,12 @@ __meta__ = {
 margin_top = 50.0
 margin_right = 702.0
 margin_bottom = 67.0
+mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 margin_right = 19.0
 margin_bottom = 17.0
+mouse_filter = 2
 custom_constants/margin_top = -2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2"]
@@ -36,6 +39,7 @@ modulate = Color( 0.972549, 0.713726, 0.376471, 1 )
 margin_top = -2.0
 margin_right = 19.0
 margin_bottom = 17.0
+mouse_filter = 2
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 
@@ -43,12 +47,14 @@ texture = ExtResource( 3 )
 margin_left = 23.0
 margin_right = 679.0
 margin_bottom = 17.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 683.0
 margin_right = 702.0
 margin_bottom = 17.0
+mouse_filter = 2
 custom_constants/margin_top = -2
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/MarginContainer"]
@@ -56,6 +62,7 @@ self_modulate = Color( 0.572549, 0.223529, 0.964706, 1 )
 margin_top = -2.0
 margin_right = 19.0
 margin_bottom = 17.0
+mouse_filter = 2
 texture = ExtResource( 3 )
 
 [node name="MarkersTemplates" type="Node2D" parent="."]
