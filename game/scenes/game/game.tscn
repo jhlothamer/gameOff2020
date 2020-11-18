@@ -22,7 +22,7 @@
 [ext_resource path="res://scenes/managers/resource_mgr.gd" type="Script" id=32]
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=33]
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=1]
 0/name = "power-blue.png 0"
 0/texture = ExtResource( 19 )
 0/tex_offset = Vector2( 0, 0 )
@@ -80,7 +80,7 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=2]
 0/name = "Damage_overlay.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -129,7 +129,7 @@ __meta__ = {
 }
 
 [node name="ResourceIndicators" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 25, 25 )
 format = 1
 __meta__ = {
@@ -148,7 +148,7 @@ __meta__ = {
 }
 
 [node name="DamageOverlay" type="TileMap" parent="."]
-tile_set = SubResource( 8 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 200, 200 )
 format = 1
 __meta__ = {

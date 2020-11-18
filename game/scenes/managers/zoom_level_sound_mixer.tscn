@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.gd" type="Script" id=5]
 
 [node name="ZoomLevelSoundMixer" type="Node"]
+pause_mode = 2
 script = ExtResource( 5 )
 
 [node name="Zoom1Music" type="Node" parent="."]
