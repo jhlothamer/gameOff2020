@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg-427d6468493199b009cbe4f859b21a3d.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/temp/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg"
+dest_files=[ "res://.import/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg-427d6468493199b009cbe4f859b21a3d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
