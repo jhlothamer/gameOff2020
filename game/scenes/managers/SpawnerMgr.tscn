@@ -4,8 +4,15 @@
 
 [node name="SpawnerMgr" type="Node"]
 script = ExtResource( 1 )
+min_time_between_asteroids = 4.0
+max_time_between_asteroids = 8.0
+fragment_propel_variance_min = 0.6
+fragment_propel_variance_max = 1.0
 
 [node name="AsteroidTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShowerDurationTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
@@ -18,3 +25,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_AsteroidTimer_timeout"]
+[connection signal="timeout" from="ShowerDurationTimer" to="." method="_on_ShowerDurationTimer_timeout"]
