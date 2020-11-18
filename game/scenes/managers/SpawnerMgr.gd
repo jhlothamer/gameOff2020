@@ -109,7 +109,10 @@ func _initialize_timeline():
 		event_dict["type"] = 0
 		event_dict["time"] = seconds_event
 		event_dict["duration"] = randi() % (shower_duration_max - shower_duration_min) + shower_duration_min
-		get_parent().get_node("Hud/TimeLine")._add_event_dict(event_dict)
+		if get_parent().get_node("Hud/TimeLine")._add_event_dict(event_dict):
+			pass
+		else:
+			print("adding event failed type = " + str(event_dict["type"] + " at " + str(event_dict["time"] + " seconds ")))
 
 func _spawn_asteroid():
 	if shower_active:
