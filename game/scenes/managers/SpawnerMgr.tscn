@@ -4,8 +4,8 @@
 
 [node name="SpawnerMgr" type="Node"]
 script = ExtResource( 1 )
-min_time_between_asteroids = 4.0
-max_time_between_asteroids = 8.0
+min_time_between_asteroids = 1.0
+max_time_between_asteroids = 2.0
 fragment_propel_variance_min = 0.6
 fragment_propel_variance_max = 1.0
 

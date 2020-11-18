@@ -84,32 +84,38 @@ func _add_event(event_type:int, time:int, duration:int)->bool:
 	_add_timeline_marker(event_dict)
 	return true
 	
+func _get_next_event() ->Dictionary:
+	_sort_timeline_events()
+	var next_event = null
+	for x in event_schedule:
+		if next_event == null:
+			next_event = x
+		else:
+			if x["time"] < next_event["time"]:
+				next_event = x
+	# no need to compare to current time, the schedule should be pruned
+	return next_event
+
 func _sort_timeline_events():
 	event_schedule.sort_custom(CustomSorter, "sort_ascending")
 	
 func _check_event_schedule():
-	var closest_event = null
-	for x in event_schedule:
-		if closest_event == null:
-			closest_event = x
-		else:
-			if x["time"] < closest_event["time"]:
-				closest_event = x
-		var time_of_event = x["time"]
-		if _current_time_seconds > time_of_event:
-			if x["type"] == 0:
-				emit_signal("AsteroidShowerEvent", x.duplicate() )
-				event_schedule.erase(x)
-				_clean_event_markers(x)
-				#start one event at a time, even if only a few frames apart.
-				# simpler this way
-				return
+	var closest_event = _get_next_event()
+	var time_of_event = closest_event["time"]
+	if _current_time_seconds > time_of_event:
+		if closest_event["type"] == 0:
+			emit_signal("AsteroidShowerEvent", closest_event.duplicate() )
+			event_schedule.erase(closest_event)
+			_clean_event_markers(closest_event)
+			#start one event at a time, even if only a few frames apart.
+			# simpler this way
+			return
 	var time_until_next_event = closest_event["time"] - int(_current_time_seconds)
 	if time_until_next_event < 20:
 		var type = ""
 		if closest_event["type"] == 0:
 			type = "Asteroid shower"
-		print("time until next " + type + " is " + str(time_until_next_event) + " time away")
+		print("time until next " + type + " is " + str(time_until_next_event) + " seconds away")
 	
 
 func _clean_event_markers(event_dict):

@@ -51,14 +51,14 @@ func _ready():
 		print("errror loading asteroid sprites")
 
 func _on_AsteroidShowerEvent(event_dict):
+	var new_time = event_dict["duration"]
 	if shower_active:
 		# new shower started during a current one
-		# just add the time on
-		var new_time = event_dict["time"]
+		# just add the duration on
 		$ShowerDurationTimer.wait_time += new_time
 	print("asteroid shower event signalled")
 	shower_active = true
-	$ShowerDurationTimer.wait_time = rand_range(shower_duration_min, shower_duration_max)
+	$ShowerDurationTimer.wait_time = new_time
 	$ShowerDurationTimer.start()
 	_start_spawn_timer()
 
@@ -88,6 +88,14 @@ func _is_out_of_bounds(body):
 		body.global_position.y < spawn_extents_min.y - 1000:
 			return true
 	return false
+
+func _input(event):
+	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
+		var new_event = {}
+		new_event["time"] = 0#dosnt matter
+		new_event["type"] = 0
+		new_event["duration"] = 100
+		_on_AsteroidShowerEvent(new_event)
 
 func _initialize_timeline():
 	total_game_time = get_parent().get_node("Hud/TimeLine").game_time_length_minutes * 60
