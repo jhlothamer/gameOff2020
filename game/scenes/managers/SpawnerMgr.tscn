@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/managers/SpawnerMgr.gd" type="Script" id=1]
+
+[node name="SpawnerMgr" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+margin_left = -10348.5
+margin_top = -9203.9
+margin_right = 17046.5
+margin_bottom = 9724.1
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_AsteroidTimer_timeout"]

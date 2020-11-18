@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/music/temp/523808__doctor-dreamchip__2020-04-27-sythwave-vaporwave.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/sounds/temp/274186__littlerobotsoundfactory__spaceengine-controlroom-loop-01.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/temp/115759__warwickallison__windloop.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/temp/mp3-8209654939931753-160543743293813.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/managers/zoom_level_sound_mixer.gd" type="Script" id=5]
+
+[node name="ZoomLevelSoundMixer" type="Node"]
+script = ExtResource( 5 )
+
+[node name="Zoom1Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Music"]
+stream = ExtResource( 1 )
+bus = "Zoom1"
+
+[node name="Zoom1Sound" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Sound"]
+stream = ExtResource( 2 )
+volume_db = -15.0
+
+[node name="Zoom2Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Music"]
+stream = ExtResource( 1 )
+bus = "Zoom2"
+
+[node name="Zoom2Sound" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Sound"]
+stream = ExtResource( 3 )
+
+[node name="Zoom3Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Music"]
+stream = ExtResource( 1 )
+volume_db = -14.241
+bus = "Zoom3"
+
+[node name="Zoom3Sound" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Sound"]
+stream = ExtResource( 4 )
+volume_db = -18.0

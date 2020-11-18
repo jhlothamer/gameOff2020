@@ -1,15 +1,15 @@
 extends Area2D
 
-onready var spawn_mgr = get_parent().get_node("SpawnerMgr")
 
 func _ready():
-	var extents = get_parent().get_node("MoonBackground").radius
+	var extents = get_parent().radius
 	scale = Vector2(extents/10, extents/10)
 
 
 func _body_impacted(body):
 	if "type" in body:
 		if body.type == "Asteroid":
+			var spawn_mgr = Globals.get("SpawnMgr")
 			spawn_mgr._asteroid_impact(body)
 		else:
 			# other types of collsions?
