@@ -9,8 +9,8 @@ var spawn_extents_min = Vector2(-13233,-9203.9)
 var spawn_extents_max = Vector2(13233,9203.9)
 
 onready var fragment_scene = preload("res://scenes/game/Fragment.tscn")
-export var min_time_between_asteroids:float = 4 #seconds
-export var max_time_between_asteroids:float = 8
+export var min_time_between_asteroids:float = 1 #seconds
+export var max_time_between_asteroids:float = 2
 export var debug := false
 
 export var showers_per_game_min = 5
@@ -89,13 +89,16 @@ func _is_out_of_bounds(body):
 			return true
 	return false
 
-func _input(event):
-	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
-		var new_event = {}
-		new_event["time"] = 0#dosnt matter
-		new_event["type"] = 0
-		new_event["duration"] = 100
-		_on_AsteroidShowerEvent(new_event)
+# testing, uncomment func below and press tab to spawn shower
+
+
+#func _input(event):
+#	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
+#		var new_event = {}
+#		new_event["time"] = 0#dosnt matter
+#		new_event["type"] = 0
+#		new_event["duration"] = 100
+#		_on_AsteroidShowerEvent(new_event)
 
 func _initialize_timeline():
 	total_game_time = get_parent().get_node("Hud/TimeLine").game_time_length_minutes * 60
