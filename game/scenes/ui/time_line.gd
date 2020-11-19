@@ -18,6 +18,8 @@ export var range_of_time_between_showers: int = 50
 export var showers_per_game_min: int = 5
 export var showers_per_game_max: int = 10
 
+var event_check_frequency = 30
+
 # sprite object and event time
 var timeline_markers = {}
 
@@ -136,9 +138,13 @@ func _clean_event_markers(event_dict):
 
 func _process(delta):
 	_current_time_seconds += delta
+	if event_check_frequency <= 0:
+		_check_event_schedule()
+		event_check_frequency = 30
+	else:
+		event_check_frequency -= 1
 	if _current_time_seconds >= _next_year_seconds:
 		_next_year_seconds += float(seconds_per_year)
-		_check_event_schedule()
 		emit_signal("YearHasElapsed")
 	var progress = _current_time_seconds / _game_time_length_seconds
 	_generation_ship_path_follow.unit_offset = progress
