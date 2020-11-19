@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AMB_Ship_Far_Impacts_7.wav-722c5b879bc0971a8ecfd8efcd490948.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_7.wav"
+dest_files=[ "res://.import/AMB_Ship_Far_Impacts_7.wav-722c5b879bc0971a8ecfd8efcd490948.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
