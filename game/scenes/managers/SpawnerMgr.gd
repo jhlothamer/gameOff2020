@@ -10,26 +10,28 @@ var spawn_extents_max = Vector2(13233,9203.9)
 
 onready var fragment_scene = preload("res://scenes/game/Fragment.tscn")
 export var min_time_between_asteroids:float = 1 #seconds
-export var max_time_between_asteroids:float = 5
+export var max_time_between_asteroids:float = 2
 export var debug := false
+
+var shower_active = false
 
 # how many asteroids can exist in scene at once
 export var max_concurrent_asteroids = 20
 
-var spawning_allowed = false
-
 # how many segments are launched after collision
-export var min_asteroid_segments: int = 2
-export var max_asteroid_segments: int = 5
+export var min_asteroid_segments: int = 4
+export var max_asteroid_segments: int = 8
 export var fragment_limit = 200
 # how much variance in the change in velocity by which they are ejected
-export var fragment_propel_variance_min = 0.4
-export var fragment_propel_variance_max = 0.8
+export var fragment_propel_variance_min = 0.6
+export var fragment_propel_variance_max = 1.0
+
 
 onready var spawn_limit_rect := $ReferenceRect
 
 func _ready():
 	Globals.set("SpawnMgr", self)
+	SignalMgr.register_subscriber(self, "AsteroidShowerEvent", "_on_AsteroidShowerEvent")
 	spawn_extents_min.x = spawn_limit_rect.rect_global_position.x
 	spawn_extents_min.y = spawn_limit_rect.rect_global_position.y
 	spawn_extents_max.x = abs(spawn_limit_rect.rect_global_position.x)
@@ -38,10 +40,19 @@ func _ready():
 	_load_sprites("res://assets/images/asteroids/fragments", fragment_sprites )
 	if asteroid_sprites.empty():
 		print("errror loading asteroid sprites")
-	else:
-		_start_spawn_timer()
-		spawning_allowed = true
-		
+
+func _on_AsteroidShowerEvent(event_dict):
+	var new_time = event_dict["duration"]
+	if shower_active:
+		# new shower started during a current one
+		# just add the duration on
+		$ShowerDurationTimer.wait_time += new_time
+	print("asteroid shower event signalled")
+	shower_active = true
+	$ShowerDurationTimer.wait_time = new_time
+	$ShowerDurationTimer.start()
+	_start_spawn_timer()
+
 func _process(delta):
 	if fragments.size() > fragment_limit:
 		var to_remove = fragments[0]
@@ -66,8 +77,20 @@ func _is_out_of_bounds(body):
 			return true
 	return false
 
+# testing, uncomment func below and press tab to spawn shower
+
+
+#func _input(event):
+#	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
+#		var new_event = {}
+#		new_event["time"] = 0#dosnt matter
+#		new_event["type"] = 0
+#		new_event["duration"] = 100
+#		_on_AsteroidShowerEvent(new_event)
+
+
 func _spawn_asteroid():
-	if spawning_allowed:
+	if shower_active:
 		if asteroids.size() >= max_concurrent_asteroids:
 			_start_spawn_timer()
 			return
@@ -86,14 +109,15 @@ func _spawn_asteroid():
 				spawn_pos.x = rand_range((spawn_extents_max.x / 2 ) + 100, spawn_extents_max.x - 100)
 			else:
 				#spawn right side
-				spawn_pos.x = (spawn_extents_max.x / 2) + 100
+				spawn_pos.x = (spawn_extents_max.x ) - 100
 				spawn_pos.y = rand_range(spawn_extents_min.y + 100, spawn_extents_max.y - 100)
-			var initial_kick = spawn_pos.direction_to(Vector2(0,0)).rotated(rand_range(-135,135))
-			initial_kick = initial_kick * rand_range( 500, 3000)
+			var initial_kick = spawn_pos.direction_to(Vector2(0,0)).rotated(rand_range(-45,45))
+			initial_kick = initial_kick * rand_range( 1000, 7500)
 			asteroid.position = spawn_pos
 			asteroids.append(asteroid)
 			# delay kick to let physics body settle after spawning
 			asteroid.delayed_kick_impulse = initial_kick
+			asteroid.delayed_torque_impulse = rand_range(-1000,1000)
 			add_child(asteroid)
 			if debug:
 				print("added asteroid at " + str(spawn_pos))
@@ -115,7 +139,7 @@ func _load_sprites(path, array):
 	direc.list_dir_end()
 	
 func _on_AsteroidTimer_timeout():
-	if !spawning_allowed:
+	if !shower_active:
 		$AsteroidTimer.stop()
 		return
 	_spawn_asteroid()
@@ -146,3 +170,6 @@ func _disintegrate(body):
 	asteroids.erase(body)
 	body.queue_free()
 
+func _on_ShowerDurationTimer_timeout():
+	shower_active = false
+	$AsteroidTimer.stop()
