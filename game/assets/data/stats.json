@@ -1,3 +1,37 @@
 {
-	
+	"Population":{
+		"startingAmount": 200,
+		"looseGameAmount": 50
+	},
+	"Morale":{
+		"startingAmount": 200
+	},
+	"Water":{
+		"producedByStructure": "Reclamation",
+		"unitsPerStructure": 1
+	},
+	"Food":{
+		"producedByStructure": "Agriculture",
+		"unitsPerStructure": 1
+	},
+	"Shelter":{
+		"producedByStructure": "Residential",
+		"unitsPerStructure": 1
+	},
+	"Clothing":{
+		"producedByStructure": "Factory",
+		"unitsPerStructure": 1
+	},
+	"Health":{
+		"producedByStructure": "Medical",
+		"unitsPerStructure": 1
+	},
+	"Education":{
+		"producedByStructure": "Education",
+		"unitsPerStructure": 1
+	},
+	"Entertainment":{
+		"producedByStructure": "Recreation",
+		"unitsPerStructure": 1
+	}
 }

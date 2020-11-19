@@ -63,6 +63,8 @@ class StructureData:
 	func set_damaged(is_damaged:bool) -> void:
 		damaged = is_damaged
 		disabled = is_damaged
+	func lacks_resources() -> bool:
+		return resources_lacking.size() > 0
 
 
 #export var allowed_tiles_tile_map: NodePath
@@ -421,4 +423,16 @@ func damage_structure(structure: StructureData):
 	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 	interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 	interaction_sound.play_failure_deactive_sound()
+
+func get_functioning_structures_by_type_name(type_name: String) -> Array:
+	var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, type_name)
+	var functioning_structures := []
+	for structure in _structures:
+		if structure.structure_type_id != structure_type_id:
+			continue
+		if structure.disabled or structure.damaged or structure.under_construction or structure.lacks_resources():
+			continue
+		functioning_structures.append(structure)
+	return functioning_structures
+
 	
