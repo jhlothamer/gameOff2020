@@ -1,12 +1,14 @@
 extends AnimatedSprite
 
+onready var construction_audio_stream := $ConstructionAudioStream
+onready var reclamation_audio_stream := $ReclamationAudioStream
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func play_construction_animation():
+	construction_audio_stream.play()
+	play("default")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func play_reclamation_animation():
+	reclamation_audio_stream.play()
+	play("default", true)

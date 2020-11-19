@@ -38,9 +38,7 @@ func _on_DamageTimer_timeout():
 		print("No valid structures to damage")
 		return
 	var rand_structure: StructureMgr.StructureData = ArrayUtil.get_rand(non_damaged_structures)
-	rand_structure.set_damaged(true)
 	var structure_mgr := StructureMgr.get_structure_mgr()
-	StructureMgr.get_structure_mgr().refresh_structure_resources()
-	print("damaged structure " + structure_mgr._structure_id_to_name[rand_structure.structure_type_id] )
+	structure_mgr.damage_structure(rand_structure)
 	# set random time for next damage
 	_start_random_damage_timer()
