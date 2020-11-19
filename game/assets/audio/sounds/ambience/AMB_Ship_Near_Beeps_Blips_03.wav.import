@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AMB_Ship_Near_Beeps_Blips_03.wav-02d2620637588ed895f8a303ad87b55f.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_03.wav"
+dest_files=[ "res://.import/AMB_Ship_Near_Beeps_Blips_03.wav-02d2620637588ed895f8a303ad87b55f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
