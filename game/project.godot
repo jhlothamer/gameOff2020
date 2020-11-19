@@ -160,6 +160,7 @@ _global_script_class_icons={
 
 config/name="Game Off 2020 - MOONSHOT"
 run/main_scene="res://scenes/title/title.tscn"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
