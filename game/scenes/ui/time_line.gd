@@ -11,6 +11,13 @@ var _current_time_seconds: float
 var _game_time_length_seconds: float
 var _next_year_seconds: float
 
+export var shower_duration_min: int = 15
+export var shower_duration_max: int = 30
+export var range_of_time_between_showers: int = 50
+
+export var showers_per_game_min: int = 5
+export var showers_per_game_max: int = 10
+
 # sprite object and event time
 var timeline_markers = {}
 
@@ -42,12 +49,12 @@ func _ready():
 	_next_year_seconds = float(seconds_per_year)
 	for c in _marker_templates_parent.get_children():
 		c.visible = false
+	_initialize_timeline()
 
 func _add_event_dict(event: Dictionary)->bool:
 	if event.has("type") and event["type"] in EventType.values() and \
 	event.has("time") and event.has("duration"):
 		event_schedule.push_back(event)
-		_sort_timeline_events()
 		_add_timeline_marker(event)
 		return true
 	else:
@@ -68,39 +75,40 @@ func _add_timeline_marker(event):
 	new_sprite.show()
 	timeline_markers[new_sprite] = event["time"]
 	$Markers.add_child(new_sprite)
-
-func _add_event(event_type:int, time:int, duration:int)->bool:
-	var event_dict = {}
-	if event_type in EventType.values():
-		event_dict["type"] = event_type
-	else:
-		print("incorrect event type sent to timeline")
-		print(event_type)
-		return false
-	event_dict["time"] = time
-	event_dict["duration"] = duration
-	event_schedule.push_back(event_dict)
-	_sort_timeline_events()
-	_add_timeline_marker(event_dict)
-	return true
 	
 func _get_next_event() ->Dictionary:
-	_sort_timeline_events()
-	var next_event = null
-	for x in event_schedule:
-		if next_event == null:
-			next_event = x
-		else:
-			if x["time"] < next_event["time"]:
-				next_event = x
-	# no need to compare to current time, the schedule should be pruned
-	return next_event
+	var ret = {}
+	if event_schedule.empty():
+		return ret
+	else:
+		return event_schedule[0]
 
 func _sort_timeline_events():
 	event_schedule.sort_custom(CustomSorter, "sort_ascending")
-	
+
+func _initialize_timeline():
+	var total_game_time = game_time_length_minutes * 60
+	var adjusted_time_range = total_game_time - 120
+	var total_shower_events = randi() % (showers_per_game_max - showers_per_game_min) + showers_per_game_min
+	for x in range( 0, total_shower_events ):
+		var seconds_event = 120 + ( x * adjusted_time_range / total_shower_events )
+		seconds_event += rand_range(-range_of_time_between_showers,range_of_time_between_showers)
+		if seconds_event > total_game_time:
+			seconds_event = total_game_time - (120 + rand_range(-20,20))
+		var event_dict = {}
+		event_dict["type"] = 0
+		event_dict["time"] = seconds_event
+		event_dict["duration"] = randi() % (shower_duration_max - shower_duration_min) + shower_duration_min
+		if _add_event_dict(event_dict):
+			pass
+		else:
+			print("adding event failed type = " + str(event_dict["type"] + " at " + str(event_dict["time"] + " seconds ")))
+	_sort_timeline_events()
+
 func _check_event_schedule():
 	var closest_event = _get_next_event()
+	if closest_event.empty():
+		return
 	var time_of_event = closest_event["time"]
 	if _current_time_seconds > time_of_event:
 		if closest_event["type"] == 0:
