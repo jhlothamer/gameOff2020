@@ -30,6 +30,7 @@ export var fragment_propel_variance_min = 0.6
 export var fragment_propel_variance_max = 1.0
 export var shower_duration_min = 15
 export var shower_duration_max = 30
+export var range_of_time_between_showers = 50
 # in seconds
 var total_game_time = 0
 
@@ -102,13 +103,21 @@ func _is_out_of_bounds(body):
 
 func _initialize_timeline():
 	total_game_time = get_parent().get_node("Hud/TimeLine").game_time_length_minutes * 60
+	var time_before_events_start = 120
+	var adjusted_time_range = total_game_time - 120
 	var total_shower_events = randi() % (showers_per_game_max - showers_per_game_min) + showers_per_game_min
-	for x in range( 0, total_shower_events + 1 ):
-		var seconds_event = randi() % (total_game_time - 1) + 1
+	var interval = adjusted_time_range / total_shower_events
+	print("total shower evernts = " + str(total_shower_events))
+	for x in range( 0, total_shower_events  ):
+		var seconds_event = time_before_events_start + ( x * interval)
+		seconds_event += rand_range(-range_of_time_between_showers,range_of_time_between_showers)
+		if seconds_event > total_game_time:
+			seconds_event = total_game_time - (120 + rand_range(-20,20))
 		var event_dict = {}
 		event_dict["type"] = 0
 		event_dict["time"] = seconds_event
 		event_dict["duration"] = randi() % (shower_duration_max - shower_duration_min) + shower_duration_min
+		print(seconds_event)
 		if get_parent().get_node("Hud/TimeLine")._add_event_dict(event_dict):
 			pass
 		else:
