@@ -84,6 +84,7 @@ class StructureData:
 
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
+var _structure_interaction_temp_sound_class := preload("res://scenes/sound/structure_interaction_temp_sound.tscn")
 
 # metadata about structures
 var _structure_data := {}
@@ -320,12 +321,17 @@ func get_structure_construction_resources(structure_type_id: int) -> Dictionary:
 
 
 func _do_construction_animation(structure: StructureData) -> void:
+	var interaction_sound = _structure_interaction_temp_sound_class.instance()
+	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
+	interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
+	interaction_sound.play_placement_sound()
+	yield(interaction_sound, "tree_exited")
 	Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, -1)
 	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
 	structure.current_animation = construction_animation
 	Game.get_construction_repair_etc_animations_parent().add_child(construction_animation)
 	construction_animation.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
-	construction_animation.play("default")
+	construction_animation.play_construction_animation()
 	yield(construction_animation, "animation_finished")
 	construction_animation.queue_free()
 	structure.disabled = false
@@ -340,7 +346,7 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 	structure.current_animation = construction_animation
 	Game.get_construction_repair_etc_animations_parent().add_child(construction_animation)
 	construction_animation.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
-	construction_animation.play("default", true)
+	construction_animation.play_reclamation_animation()
 	yield(construction_animation, "animation_finished")
 	construction_animation.queue_free()
 	_structures.erase(structure.tile_map_cell)
@@ -390,6 +396,11 @@ func disable_structure(cell_v: Vector2):
 	if !structure.disabled:
 		structure.disabled = true
 		refresh_structure_resources()
+		var interaction_sound = _structure_interaction_temp_sound_class.instance()
+		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
+		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
+		interaction_sound.play_player_deactivate_sound()
+		
 	
 func enable_structure(cell_v: Vector2):
 	if !_structures.has(cell_v):
@@ -398,3 +409,16 @@ func enable_structure(cell_v: Vector2):
 	if structure.disabled:
 		structure.disabled = false
 		refresh_structure_resources()
+		var interaction_sound = _structure_interaction_temp_sound_class.instance()
+		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
+		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
+		interaction_sound.play_player_reactive_sound()
+
+func damage_structure(structure: StructureData):
+	structure.set_damaged(true)
+	refresh_structure_resources()
+	var interaction_sound = _structure_interaction_temp_sound_class.instance()
+	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
+	interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
+	interaction_sound.play_failure_deactive_sound()
+	
