@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/managers/stats_mgr.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tests/stats_test/stat_mgr_test.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=3]
+
+[node name="stat_mgr_test" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsMgr" parent="." instance=ExtResource( 1 )]
+debug = true
+
+[node name="SignalYearBtn" type="Button" parent="."]
+margin_left = 139.589
+margin_top = 181.315
+margin_right = 333.589
+margin_bottom = 251.315
+text = "Signal Year"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 412.039
+margin_top = 183.315
+margin_right = 692.039
+margin_bottom = 239.315
+custom_fonts/font = ExtResource( 3 )
+text = "boom"
+[connection signal="pressed" from="SignalYearBtn" to="." method="_on_SignalYearBtn_pressed"]
