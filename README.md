@@ -8,27 +8,24 @@ Aaron Bowers - sound and music
 
 Leanne Bowers - art
 
+Bob
+
 Jason Lothamer - programming
 
 ---
 
 ## Credits
+
+### art:
+asteroids (https://opengameart.org/content/asteroids)
+by phaelax (https://opengameart.org/users/phaelax)
+License: CC-BY-SA3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
+Unaltered
+
+
 ### music:
-"2020-04-27 Sythwave Vaporwave"<br>
-by Doctor_Dreamchip (https://freesound.org/people/Doctor_Dreamchip/)<br>
-Licensed under Creative Commons: By Attribution 3.0 License<br>
-https://creativecommons.org/licenses/by/3.0/
 
 ### sounds:
-"windloop"<br>
-by warwickallison (https://freesound.org/people/warwickallison/)<br>
-Licensed under Creative Commons: By Attribution 3.0 License<br>
-https://creativecommons.org/licenses/by/3.0/
-
-"SpaceEngine_ControlRoom_Loop_01"<br>
-by LittleRobotSoundFactory (https://freesound.org/people/LittleRobotSoundFactory/)<br>
-Licensed under Creative Commons: By Attribution 3.0 License<br>
-https://creativecommons.org/licenses/by/3.0/
 
 ### fonts:
 https://fontlibrary.org/en/font/jellee-typeface<br>
