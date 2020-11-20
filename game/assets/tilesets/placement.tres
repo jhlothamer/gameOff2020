@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=25 format=2]
+[gd_resource type="TileSet" load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/tiles/Reclaimation-Center_disallowed.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/tiles/Start-Tile_allowed.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/images/tiles/Office_disallowed.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/tiles/Recreation_allowed.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/tiles/Agriculture_allowed.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/temp/tiles/education_placement_disallowed.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/tiles/Education_disallowed.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/tiles/Factory_disallowed.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/tiles/Recreation_disallowed.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/temp/tiles/medical_placement_disallowed.png" type="Texture" id=10]
@@ -21,9 +21,7 @@
 [ext_resource path="res://assets/images/tiles/Residence_allowed.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/tiles/Power_Reactor_allowed.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/tiles/Office_allowed.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/temp/tiles/education_placement_allowed.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/temp/tiles/reclaim_disallowed.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/temp/tiles/reclaim_allowed.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/tiles/Education_allowed.png" type="Texture" id=22]
 
 [resource]
 0/name = "uuc_placement_allowed.png 0"
@@ -334,31 +332,3 @@
 21/shape_one_way_margin = 0.0
 21/shapes = [  ]
 21/z_index = 0
-22/name = "reclaim_allowed.png 22"
-22/texture = ExtResource( 24 )
-22/tex_offset = Vector2( 0, 0 )
-22/modulate = Color( 1, 1, 1, 1 )
-22/region = Rect2( 0, 0, 200, 200 )
-22/tile_mode = 0
-22/occluder_offset = Vector2( 0, 0 )
-22/navigation_offset = Vector2( 0, 0 )
-22/shape_offset = Vector2( 0, 0 )
-22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-22/shape_one_way = false
-22/shape_one_way_margin = 0.0
-22/shapes = [  ]
-22/z_index = 0
-23/name = "reclaim_disallowed.png 23"
-23/texture = ExtResource( 23 )
-23/tex_offset = Vector2( 0, 0 )
-23/modulate = Color( 1, 1, 1, 1 )
-23/region = Rect2( 0, 0, 200, 200 )
-23/tile_mode = 0
-23/occluder_offset = Vector2( 0, 0 )
-23/navigation_offset = Vector2( 0, 0 )
-23/shape_offset = Vector2( 0, 0 )
-23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-23/shape_one_way = false
-23/shape_one_way_margin = 0.0
-23/shapes = [  ]
-23/z_index = 0

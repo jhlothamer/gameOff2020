@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/audio/music/Music_Sample-01.ogg" type="AudioStream" id=1]
-[ext_resource path="res://assets/audio/sounds/temp/274186__littlerobotsoundfactory__spaceengine-controlroom-loop-01.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/audio/sounds/temp/115759__warwickallison__windloop.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sounds/temp/mp3-8209654939931753-160543743293813.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/sound/rand_audio_stream_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_3.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Alarms_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_5.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Rumbles_3.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Rumbles_2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_4.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Rumbles_4.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Rumbles_1.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_6.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_7.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Impacts_2.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_12.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_07.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_2.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Impacts_1.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_10.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_06.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_05.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Impacts_3.wav" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_6.wav" type="AudioStream" id=26]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_7.wav" type="AudioStream" id=27]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_04.wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_11.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_4.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_1.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_01.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Impacts_4.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_3.wav" type="AudioStream" id=34]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_08.wav" type="AudioStream" id=35]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_09.wav" type="AudioStream" id=36]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_03.wav" type="AudioStream" id=37]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_02.wav" type="AudioStream" id=38]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_5.wav" type="AudioStream" id=39]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Train_1.wav" type="AudioStream" id=40]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_13.wav" type="AudioStream" id=41]
 
 [node name="ZoomLevelSoundMixer" type="Node"]
 pause_mode = 2
@@ -18,9 +54,71 @@ bus = "Zoom1"
 
 [node name="Zoom1Sound" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Sound"]
-stream = ExtResource( 2 )
+[node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="Zoom1Sound"]
+stream = ExtResource( 3 )
 volume_db = -15.0
+
+[node name="RandAudioStreamPlayer" parent="Zoom1Sound" instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 32 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 38 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 37 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 28 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 24 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 23 )
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 19 )
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 35 )
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 36 )
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 22 )
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 29 )
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 18 )
+
+[node name="AudioStreamPlayer13" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 41 )
+
+[node name="AudioStreamPlayer14" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 31 )
+
+[node name="AudioStreamPlayer15" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 20 )
+
+[node name="AudioStreamPlayer16" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 34 )
+
+[node name="AudioStreamPlayer17" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 30 )
+
+[node name="AudioStreamPlayer18" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 39 )
+
+[node name="AudioStreamPlayer19" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 26 )
+
+[node name="AudioStreamPlayer20" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 27 )
 
 [node name="Zoom2Music" type="Node" parent="."]
 
@@ -30,8 +128,25 @@ bus = "Zoom2"
 
 [node name="Zoom2Sound" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Sound"]
+[node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="Zoom2Sound"]
 stream = ExtResource( 3 )
+
+[node name="RandAudioStreamPlayer" parent="Zoom2Sound" instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 21 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 17 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 25 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 33 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 40 )
 
 [node name="Zoom3Music" type="Node" parent="."]
 
@@ -42,6 +157,44 @@ bus = "Zoom3"
 
 [node name="Zoom3Sound" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Sound"]
-stream = ExtResource( 4 )
+[node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="Zoom3Sound"]
+stream = ExtResource( 3 )
 volume_db = -18.0
+
+[node name="RandAudioStreamPlayer" parent="Zoom3Sound" instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 6 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 7 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 12 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 9 )
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 15 )
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 16 )
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 14 )
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 10 )
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
+stream = ExtResource( 13 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/white_rect_10x10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/howToPlay/howToPlay.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
@@ -50,5 +50,5 @@ margin_left = 20.0
 margin_top = 113.0
 margin_right = -20.0
 margin_bottom = -90.0
+hiding_enabled = false
 filePath = "res://scenes/howToPlay/howToPlay.txt"
-

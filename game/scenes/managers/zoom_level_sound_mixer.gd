@@ -2,6 +2,7 @@ extends Node
 
 export var initial_zoom_level: int = 3
 export var quiet_volumn_db:int = -48
+export var no_music := false
 
 var _tween: Tween
 var _stream_length: float
@@ -15,7 +16,7 @@ func _ready():
 	add_child(_tween)
 	#start music and get it's stream length
 	var initial_zoom_level_audio_player := _get_zoom_level_music_audio_stream_player(initial_zoom_level)
-	if !initial_zoom_level_audio_player.autoplay:
+	if !initial_zoom_level_audio_player.autoplay && !no_music:
 		initial_zoom_level_audio_player.play()
 	_stream_length = initial_zoom_level_audio_player.stream.get_length()
 	
@@ -40,7 +41,8 @@ func _on_zoom_step_change_initiated(from_zoom_step: int, to_zoom_step: int, zoom
 	var to_audio_player := _get_zoom_level_music_audio_stream_player(to_zoom_step+1)
 	_tween.interpolate_property(from_audio_player, "volume_db", max_volume_db, quiet_volumn_db, zoom_speed,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_tween.interpolate_property(to_audio_player, "volume_db", quiet_volumn_db, max_volume_db, zoom_speed,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	to_audio_player.play(_current_position)
+	if !no_music:
+		to_audio_player.play(_current_position)
 	_fade_in_out_zoom_level_sound_effects(from_zoom_step+1, false, zoom_speed)
 	_fade_in_out_zoom_level_sound_effects(to_zoom_step+1, true, zoom_speed)
 	_tween.start()

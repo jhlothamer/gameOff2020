@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/images/ui/Start-Tile_icon_disabled.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/ui/Residence_icon_disabled.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/ui/Factory_icon_disabled.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/temp/ui/education_icon.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/Education_icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/ui/Start-Tile_icon.png" type="Texture" id=10]
 [ext_resource path="res://scenes/ui/construction_tool_bar.gd" type="Script" id=11]
 [ext_resource path="res://assets/images/ui/Recreation_icon_disabled.png" type="Texture" id=12]
@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/images/ui/Reclaimation-Center_icon.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/ui/Office_icon.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/ui/Power_Reactor_icon_disabled.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/temp/ui/education_icon_disabled.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/ui/Education_icon_disabled.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "expand"
