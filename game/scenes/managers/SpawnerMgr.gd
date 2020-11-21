@@ -33,10 +33,6 @@ func _ready():
 	Globals.set("SpawnMgr", self)
 	SignalMgr.register_subscriber(self, "AsteroidShowerEvent", "_on_AsteroidShowerEvent")
 	spawn_extents_min.x = spawn_limit_rect.rect_global_position.x
-	print("spawn extents min x = " + str(spawn_extents_min.x))
-	print("spawn extents min y = " + str(spawn_extents_min.y))
-	print("spawn extents max x = " + str(spawn_extents_max.x))
-	print("spawn extents max y = " + str(spawn_extents_max.y))
 	spawn_extents_min.y = spawn_limit_rect.rect_global_position.y
 	spawn_extents_max.x = abs(spawn_limit_rect.rect_global_position.x)
 	spawn_extents_max.y = abs(spawn_limit_rect.rect_global_position.y)

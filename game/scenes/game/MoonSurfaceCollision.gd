@@ -15,6 +15,13 @@ func _body_impacted(body):
 		if body.type == "Asteroid":
 			var spawn_mgr = Globals.get("SpawnMgr")
 			emit_signal("asteroid_impact")
+			var duration = 1
+			var intensity = 30
+			if "impact_force" in body:
+				duration = body.impact_force / 30 + rand_range( -1.5, 1.5 )
+				intensity = body.impact_force + rand_range(-20, 20)
+			intensity = clamp(intensity, 10, 100)
+			duration = clamp(duration, 0.5, 5)
 			emit_signal("CameraShake", 1.0, rand_range(0.5, 2.0), rand_range(10.0,30.0) )
 			spawn_mgr._asteroid_impact(body)
 		else:

@@ -41,7 +41,6 @@ func _ready():
 	noise.octaves = 2
 
 func on_camera_shake(priority: int, duration: float, amount: float) -> void:
-	print("camera shake signal received!")
 	start_camera_shake(priority, duration, amount)
 
 
