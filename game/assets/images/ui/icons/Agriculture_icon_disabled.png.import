@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/people-blue.png-b33f91551463414f199e22a3988fb108.stex"
+path="res://.import/Agriculture_icon_disabled.png-687e5b95c60c143c778f15e56290f164.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/people-blue.png"
-dest_files=[ "res://.import/people-blue.png-b33f91551463414f199e22a3988fb108.stex" ]
+source_file="res://assets/images/ui/icons/Agriculture_icon_disabled.png"
+dest_files=[ "res://.import/Agriculture_icon_disabled.png-687e5b95c60c143c778f15e56290f164.stex" ]
 
 [params]
 

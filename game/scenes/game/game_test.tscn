@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game/game_test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/ui/power-blue.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/icons/power-blue.png" type="Texture" id=4]
 [ext_resource path="res://scenes/managers/resource_mgr.gd" type="Script" id=5]
 [ext_resource path="res://scenes/ui/hud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" type="Script" id=7]
@@ -13,14 +13,15 @@
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=11]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=12]
 [ext_resource path="res://scenes/managers/SpawnerMgr.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/images/ui/people-red.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/ui/icons/people-red.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/tiles/Damage_overlay.png" type="Texture" id=15]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=16]
 [ext_resource path="res://assets/tilesets/placement.tres" type="TileSet" id=17]
 [ext_resource path="res://scenes/game/moon.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/images/ui/people-blue.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/ui/power-red.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/ui/icons/people-blue.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/ui/icons/power-red.png" type="Texture" id=20]
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/managers/stats_mgr.tscn" type="PackedScene" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "power-blue.png 0"
@@ -122,7 +123,7 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 200, 200 )
 cell_quadrant_size = 100
 format = 1
-tile_data = PoolIntArray( -65552, 8, 0, -65551, 9, 0, -65550, 6, 0, -16, 5, 0, -15, 3, 0, -14, 1, 0, 65520, 2, 0, 65521, 4, 0, 65522, 7, 0 )
+tile_data = PoolIntArray( -262160, 1, 0, -65550, 2, 0, -65548, 5, 0, -65547, 6, 0, -65545, 7, 0, -15, 2, 0, -14, 1, 0, -13, 9, 0, -12, 3, 0, -11, 3, 0, -10, 4, 0, -9, 1, 0, -8, 8, 0, 65521, 2, 0, 65522, 1, 0, 65523, 4, 0, 65524, 3, 0, 65525, 3, 0, 65526, 9, 0, 65527, 1, 0, 65528, 8, 0, 131058, 2, 0, 131060, 6, 0, 131061, 5, 0, 131063, 7, 0, 393200, 1, 0 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -216,6 +217,8 @@ script = ExtResource( 10 )
 
 [node name="DamageTimer" type="Timer" parent="DamageMgr"]
 one_shot = true
+
+[node name="StatsMgr" parent="." instance=ExtResource( 22 )]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )

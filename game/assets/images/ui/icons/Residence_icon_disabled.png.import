@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/people-red.png-cc123ef78b962abe1fe7041aa765033c.stex"
+path="res://.import/Residence_icon_disabled.png-61eb26ca78d229e0101b0f9173111dc6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/people-red.png"
-dest_files=[ "res://.import/people-red.png-cc123ef78b962abe1fe7041aa765033c.stex" ]
+source_file="res://assets/images/ui/icons/Residence_icon_disabled.png"
+dest_files=[ "res://.import/Residence_icon_disabled.png-61eb26ca78d229e0101b0f9173111dc6.stex" ]
 
 [params]
 

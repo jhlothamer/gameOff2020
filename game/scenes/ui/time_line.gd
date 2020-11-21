@@ -1,11 +1,11 @@
 extends MarginContainer
 
-signal year_has_elapsed()
+signal stat_cycle_time_has_elapsed()
 signal time_has_expired()
 signal AsteroidShowerEvent(event)
 
 export (int, 1, 60)  var game_time_length_minutes: int = 30
-export (int, 1, 60) var seconds_per_year: int = 1
+export (int, 1, 60) var seconds_per_stat_cycle_time: int = 1
 
 var _current_time_seconds: float
 var _game_time_length_seconds: float
@@ -44,11 +44,11 @@ class CustomSorter:
 		return false
 
 func _ready():
-	SignalMgr.register_publisher(self, "year_has_elapsed")
+	SignalMgr.register_publisher(self, "stat_cycle_time_has_elapsed")
 	SignalMgr.register_publisher(self, "time_has_expired")
 	SignalMgr.register_publisher(self, "AsteroidShowerEvent")
 	_game_time_length_seconds = game_time_length_minutes * 60
-	_next_year_seconds = float(seconds_per_year)
+	_next_year_seconds = float(seconds_per_stat_cycle_time)
 	for c in _marker_templates_parent.get_children():
 		c.visible = false
 	_initialize_timeline()
@@ -144,8 +144,8 @@ func _process(delta):
 	else:
 		event_check_frequency -= 1
 	if _current_time_seconds >= _next_year_seconds:
-		_next_year_seconds += float(seconds_per_year)
-		emit_signal("year_has_elapsed")
+		_next_year_seconds += float(seconds_per_stat_cycle_time)
+		emit_signal("stat_cycle_time_has_elapsed")
 	var progress = _current_time_seconds / _game_time_length_seconds
 	_generation_ship_path_follow.unit_offset = progress
 	if progress >= 1.0:

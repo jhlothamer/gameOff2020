@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_helper_pack/core/util/enum_util.gd"
 }, {
+"base": "HBoxContainer",
+"class": "FunctioningStructureCount",
+"language": "GDScript",
+"path": "res://tests/stats_test/functioning_structure_count.gd"
+}, {
 "base": "Node2D",
 "class": "Game",
 "language": "GDScript",
@@ -154,6 +159,7 @@ _global_script_class_icons={
 "Constants": "",
 "DictionaryUtil": "",
 "EnumUtil": "",
+"FunctioningStructureCount": "",
 "Game": "",
 "GraphUtil": "",
 "MultiYield": "",

@@ -20,3 +20,6 @@ static func get_string(enum_class, enum_int_value: int) -> String:
 static func get_array(enum_class) -> Array:
 	return enum_class.values()
 
+static func get_names_string_array(enum_class) -> Array:
+	return enum_class.keys()
+

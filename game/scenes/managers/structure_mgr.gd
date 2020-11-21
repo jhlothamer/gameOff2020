@@ -427,7 +427,7 @@ func damage_structure(structure: StructureData):
 func get_functioning_structures_by_type_name(type_name: String) -> Array:
 	var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, type_name)
 	var functioning_structures := []
-	for structure in _structures:
+	for structure in _structures.values():
 		if structure.structure_type_id != structure_type_id:
 			continue
 		if structure.disabled or structure.damaged or structure.under_construction or structure.lacks_resources():

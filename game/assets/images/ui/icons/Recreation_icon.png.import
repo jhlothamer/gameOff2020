@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Office_icon_disabled.png-07b13e4aa50e9bfc47c5606f890237d1.stex"
+path="res://.import/Recreation_icon.png-b4840a16c02a2b4364c38fd5223f3cc9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Office_icon_disabled.png"
-dest_files=[ "res://.import/Office_icon_disabled.png-07b13e4aa50e9bfc47c5606f890237d1.stex" ]
+source_file="res://assets/images/ui/icons/Recreation_icon.png"
+dest_files=[ "res://.import/Recreation_icon.png-b4840a16c02a2b4364c38fd5223f3cc9.stex" ]
 
 [params]
 

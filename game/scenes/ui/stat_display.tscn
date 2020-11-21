@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/text_small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/ui/decrease_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/increase_icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/no_change_icon.png" type="Texture" id=5]
+[ext_resource path="res://scenes/ui/stat_display.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="StatDisplay" type="MarginContainer"]
+margin_right = 159.0
+margin_bottom = 51.0
+mouse_filter = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 159.0
+margin_bottom = 51.0
+mouse_filter = 2
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="VBoxContainer"]
+margin_right = 159.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 2 )
+text = "Population"
+align = 1
+
+[node name="StatValueAndDelta" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 159.0
+margin_bottom = 50.0
+mouse_filter = 2
+
+[node name="StatValue" type="Label" parent="VBoxContainer/StatValueAndDelta"]
+margin_right = 81.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "100000"
+
+[node name="DeltaIndicatorCtrl" type="Control" parent="VBoxContainer/StatValueAndDelta"]
+margin_left = 85.0
+margin_right = 105.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeltaIndicatorSprite" type="AnimatedSprite" parent="VBoxContainer/StatValueAndDelta/DeltaIndicatorCtrl"]
+frames = SubResource( 1 )
+centered = false
+
+[node name="StatValueDelta" type="Label" parent="VBoxContainer/StatValueAndDelta"]
+margin_left = 109.0
+margin_right = 159.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "-100"
+align = 2

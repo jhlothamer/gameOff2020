@@ -5,7 +5,7 @@
 		"increasePercentLimit": 0.02
 	},
 	"Morale":{
-		"startingAmount": 1000
+		"startingAmount": 1.0
 	},
 	"Water":{
 		"producedByStructure": "Reclamation",

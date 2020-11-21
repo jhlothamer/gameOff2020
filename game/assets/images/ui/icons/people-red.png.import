@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Power_Reactor_icon.png-87ecf06c6cce8dd0390cabf03e9acbe2.stex"
+path="res://.import/people-red.png-a19fae9e11eab1bf7d2b96d766e50ffb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Power_Reactor_icon.png"
-dest_files=[ "res://.import/Power_Reactor_icon.png-87ecf06c6cce8dd0390cabf03e9acbe2.stex" ]
+source_file="res://assets/images/ui/icons/people-red.png"
+dest_files=[ "res://.import/people-red.png-a19fae9e11eab1bf7d2b96d766e50ffb.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Reclaimation-Center_icon_disabled.png-3b379fcba5f54e3ba5e18fb02c9f8eaf.stex"
+path="res://.import/Factory_icon_disabled.png-ab306c956df5ca3a0b2d3439e7e28f84.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Reclaimation-Center_icon_disabled.png"
-dest_files=[ "res://.import/Reclaimation-Center_icon_disabled.png-3b379fcba5f54e3ba5e18fb02c9f8eaf.stex" ]
+source_file="res://assets/images/ui/icons/Factory_icon_disabled.png"
+dest_files=[ "res://.import/Factory_icon_disabled.png-ab306c956df5ca3a0b2d3439e7e28f84.stex" ]
 
 [params]
 

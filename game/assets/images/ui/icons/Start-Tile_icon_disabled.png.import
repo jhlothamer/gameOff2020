@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Power_Reactor_icon_disabled.png-2cabf7d59099bac9bd7d063d63b8392f.stex"
+path="res://.import/Start-Tile_icon_disabled.png-624ee6e46ae6a601785d7cc2b2171b17.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Power_Reactor_icon_disabled.png"
-dest_files=[ "res://.import/Power_Reactor_icon_disabled.png-2cabf7d59099bac9bd7d063d63b8392f.stex" ]
+source_file="res://assets/images/ui/icons/Start-Tile_icon_disabled.png"
+dest_files=[ "res://.import/Start-Tile_icon_disabled.png-624ee6e46ae6a601785d7cc2b2171b17.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Start-Tile_icon_disabled.png-c11fc5fe908d553c16af8fb52248eed8.stex"
+path="res://.import/Agriculture_icon.png-bd5ab0242817f6e73b3640146653facd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Start-Tile_icon_disabled.png"
-dest_files=[ "res://.import/Start-Tile_icon_disabled.png-c11fc5fe908d553c16af8fb52248eed8.stex" ]
+source_file="res://assets/images/ui/icons/Agriculture_icon.png"
+dest_files=[ "res://.import/Agriculture_icon.png-bd5ab0242817f6e73b3640146653facd.stex" ]
 
 [params]
 
