@@ -37,7 +37,11 @@ func _ready():
 	for resource_name in resources.keys():
 		var resource = resources[resource_name]
 		_resource_amounts[resource_name] = resource["starting_amount"]
+	
+	call_deferred("_signal_resource_init")
 
+func _signal_resource_init():
+	emit_signal("resources_updated")
 
 func have_enough_resources_for_constructions(structure_type_id: int) -> bool:
 	var structure_mgr = StructureMgr.get_structure_mgr()
@@ -121,8 +125,10 @@ func _increment_resources_for_reclamation(structure_type_id: int):
 func get_resource_amounts():
 	return _resource_amounts
 
-func get_resource_amount():
-	pass
+func get_resource_amount(resource_name) -> float:
+	if !_resource_amounts.has(resource_name):
+		return INF
+	return _resource_amounts[resource_name]
 
 func _on_structure_tile_placed(structure_tile_type, cell_v):
 	if _decrement_resources_for_construction(structure_tile_type):
