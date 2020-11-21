@@ -108,7 +108,7 @@ func _process(_delta):
 
 
 func _on_button_down(tile_type):
-	print("clicked on structure button of type " + str(tile_type))
+	#print("clicked on structure button of type " + str(tile_type))
 	yield(get_tree().create_timer(.2),"timeout")
 	var resource_mgr := ResourceMgr.get_resource_mgr()
 	if resource_mgr.have_enough_resources_for_constructions(tile_type):
