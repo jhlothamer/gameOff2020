@@ -33,6 +33,10 @@ func _ready():
 	Globals.set("SpawnMgr", self)
 	SignalMgr.register_subscriber(self, "AsteroidShowerEvent", "_on_AsteroidShowerEvent")
 	spawn_extents_min.x = spawn_limit_rect.rect_global_position.x
+	print("spawn extents min x = " + str(spawn_extents_min.x))
+	print("spawn extents min y = " + str(spawn_extents_min.y))
+	print("spawn extents max x = " + str(spawn_extents_max.x))
+	print("spawn extents max y = " + str(spawn_extents_max.y))
 	spawn_extents_min.y = spawn_limit_rect.rect_global_position.y
 	spawn_extents_max.x = abs(spawn_limit_rect.rect_global_position.x)
 	spawn_extents_max.y = abs(spawn_limit_rect.rect_global_position.y)
@@ -70,23 +74,23 @@ func _process(delta):
 			fragments.erase(i)
 
 func _is_out_of_bounds(body):
-	if body.global_position.x > spawn_extents_max.x + 1000 or \
-		body.global_position.x < spawn_extents_min.x - 1000 or \
-		body.global_position.y > spawn_extents_max.y + 1000 or \
-		body.global_position.y < spawn_extents_min.y - 1000:
+	if body.global_position.x > spawn_extents_max.x + 5000 or \
+		body.global_position.x < spawn_extents_min.x - 5000 or \
+		body.global_position.y > spawn_extents_max.y + 5000 or \
+		body.global_position.y < spawn_extents_min.y - 5000:
 			return true
 	return false
 
 # testing, uncomment func below and press tab to spawn shower
 
 
-#func _input(event):
-#	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
-#		var new_event = {}
-#		new_event["time"] = 0#dosnt matter
-#		new_event["type"] = 0
-#		new_event["duration"] = 100
-#		_on_AsteroidShowerEvent(new_event)
+func _input(event):
+	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
+		var new_event = {}
+		new_event["time"] = 0#dosnt matter
+		new_event["type"] = 0
+		new_event["duration"] = 100
+		_on_AsteroidShowerEvent(new_event)
 
 
 func _spawn_asteroid():
