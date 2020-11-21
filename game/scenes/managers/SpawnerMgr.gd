@@ -80,13 +80,13 @@ func _is_out_of_bounds(body):
 # testing, uncomment func below and press tab to spawn shower
 
 
-func _input(event):
-	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
-		var new_event = {}
-		new_event["time"] = 0#dosnt matter
-		new_event["type"] = 0
-		new_event["duration"] = 100
-		_on_AsteroidShowerEvent(new_event)
+#func _input(event):
+#	if event.is_action_pressed("ui_focus_next") and not event.is_echo():
+#		var new_event = {}
+#		new_event["time"] = 0#dosnt matter
+#		new_event["type"] = 0
+#		new_event["duration"] = 100
+#		_on_AsteroidShowerEvent(new_event)
 
 
 func _spawn_asteroid():
@@ -149,11 +149,11 @@ func _asteroid_impact(body : RigidBody2D ):
 	body._mark_for_disintegration()
 
 func _disintegrate(body):
-	# create a random number of debris parts
-	# some will eject off into space
-	# some will form an orbit "ring" around the moon
-	# some will settle on the surface.
-	# TODO: base number of fragments on random asteroid size?
+#	# create a random number of debris parts
+#	# some will eject off into space
+#	# some will form an orbit "ring" around the moon
+#	# some will settle on the surface.
+#	# TODO: base number of fragments on random asteroid size?
 	var segments = int(rand_range(min_asteroid_segments,max_asteroid_segments))
 	for i in range(0,segments):
 		var new_fragment = fragment_scene.instance()

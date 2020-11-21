@@ -40,6 +40,7 @@ func _ready():
 	noise.period = 4
 	noise.octaves = 2
 
+
 func on_camera_shake(priority: int, duration: float, amount: float) -> void:
 	start_camera_shake(priority, duration, amount)
 
