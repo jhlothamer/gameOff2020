@@ -728,7 +728,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.0000002"
-     inkscape:cx="685.70796"
+     inkscape:cx="673.45796"
      inkscape:cy="-302.37106"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -35231,20 +35231,24 @@
     </g>
     <path
        id="rect6404"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793747;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793747, 0.79374699999999998"
-       d="m 180.69524,-87.551415 2.64584,5.29166 h -5.29167 z"
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.793747;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793747, 0.79374699999999998"
+       d="m 180.69524,-82.259755 2.64584,-5.29166 h -5.29167 z"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_decrease_icon.png"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/decrease_icon.png"
        inkscape:export-xdpi="95.999298"
        inkscape:export-ydpi="95.999298" />
     <g
-       id="g6422"
-       transform="translate(-6.7821682,0.91682669)">
+       id="g6434"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/no_change_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298">
       <g
-         id="g6416">
+         id="g6416"
+         transform="translate(-6.7821682,0.91682669)"
+         style="fill:#ffffff">
         <path
            id="path6407"
-           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.793746"
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.79374599999999984"
            d="m 197.19411,-85.648854 -2.11667,1.058338 v -2.116673 z"
            sodipodi:nodetypes="cccc"
            inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_decrease_icon.png"
@@ -35252,7 +35256,7 @@
            inkscape:export-ydpi="95.999298" />
         <path
            id="path6409"
-           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.793746"
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.79374599999999984"
            d="m 191.90248,-85.648854 2.11667,1.058338 v -2.116673 z"
            sodipodi:nodetypes="cccc"
            inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_decrease_icon.png"
@@ -35264,8 +35268,16 @@
          id="rect6412"
          width="5.2916665"
          height="5.2916665"
-         x="191.90247"
-         y="-88.294685" />
+         x="185.1203"
+         y="-87.377861" />
     </g>
+    <path
+       id="path6424"
+       style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:0.793747;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793747, 0.79374699999999998"
+       d="m 175.40364,-87.551415 2.64584,5.29166 h -5.29167 z"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
   </g>
 </svg>

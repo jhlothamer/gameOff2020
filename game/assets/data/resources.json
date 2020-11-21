@@ -1,53 +1,18 @@
 {
 	"resources": {
 		"population": {
-			"starting_amount": 200,
+			"starting_amount": 1000.0,
 		},
 		"electricity": {
 			"produced_by": "Power",
-			"starting_amount": 0
+			"starting_amount": 0.0
 		},
 		"water": {
-			"starting_amount": 200
+			"starting_amount": 2000.0,
+			"lostPerCycle": 0.1
 		},
-		"iron": {
-			"starting_amount": 200
-		},
-		"cobalt": {
-			"starting_amount": 200
-		},
-		"nickel": {
-			"starting_amount": 200
-		},
-		"gold": {
-			"starting_amount": 200
-		},
-		"silver": {
-			"starting_amount": 200
-		},
-		"copper": {
-			"starting_amount": 200
-		},
-		"nitrogen": {
-			"starting_amount": 200
-		},
-		"ruthenium": {
-			"starting_amount": 200
-		},
-		"rhodium": {
-			"starting_amount": 200
-		},
-		"paladium": {
-			"starting_amount": 200
-		},
-		"osmium": {
-			"starting_amount": 200
-		},
-		"iridium": {
-			"starting_amount": 200
-		},
-		"platinum": {
-			"starting_amount": 200
+		"ore": {
+			"starting_amount": 1000.0
 		}
 	}
 }
