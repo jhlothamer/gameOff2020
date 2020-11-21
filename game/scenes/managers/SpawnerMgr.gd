@@ -149,11 +149,11 @@ func _asteroid_impact(body : RigidBody2D ):
 	body._mark_for_disintegration()
 
 func _disintegrate(body):
-#	# create a random number of debris parts
-#	# some will eject off into space
-#	# some will form an orbit "ring" around the moon
-#	# some will settle on the surface.
-#	# TODO: base number of fragments on random asteroid size?
+	# create a random number of debris parts
+	# some will eject off into space
+	# some will form an orbit "ring" around the moon
+	# some will settle on the surface.
+	# TODO: base number of fragments on random asteroid size?
 	var segments = int(rand_range(min_asteroid_segments,max_asteroid_segments))
 	for i in range(0,segments):
 		var new_fragment = fragment_scene.instance()
