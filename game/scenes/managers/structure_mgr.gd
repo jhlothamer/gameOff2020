@@ -3,6 +3,37 @@ extends Node
 
 const structure_data_file_path = "res://assets/data/structures.json"
 
+enum StructureTileType {
+	UUC,
+	Power,
+	Agriculture,
+	Residential,
+	Office,
+	Education,
+	Medical,
+	Reclamation,
+	Factory,
+	Recreation
+}
+
+class StructureMetadata:
+	var structure_metadata
+	func _init(metadata: Dictionary):
+		structure_metadata = metadata
+	func _get_metadata_item(item_name: String) -> Dictionary:
+		if structure_metadata == null || !structure_metadata.has(item_name):
+			return {}
+		return structure_metadata[item_name]
+	func get_construction_resources() -> Dictionary:
+		return _get_metadata_item("constructionResources")
+	func get_repair_resources() -> Dictionary:
+		return _get_metadata_item("repairResources")
+	func get_reclamation_resources() -> Dictionary:
+		return _get_metadata_item("reclamationResources")
+	func get_name():
+		return structure_metadata["name"]
+	
+
 class StructureData:
 	var structure_type_id :int = Constants.StructureTileType.UUC
 	var tile_map_cell := Vector2.ZERO
@@ -12,27 +43,27 @@ class StructureData:
 	var powers_cells := []
 	#total amount of power being used from powered cells or amount of power being given to a non-power station structure
 	var power_subscription := 0
-	var structure_meta_data
+	var structure_metadata
 	var disabled := false
 	var damaged := false
 	var structure_name = ""
 	var under_construction := true
 	var resources_lacking := []
 	var current_animation
-	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_meta_data_):
+	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_metadata_):
 		structure_type_id = structure_type_id_
 		tile_map_cell = tile_map_cell_
-		structure_meta_data = structure_meta_data_
+		structure_metadata = structure_metadata_
 	func power_station_process_structure(structure: StructureData):
 		if structure.disabled:
 			return
-		var required_power = structure.structure_meta_data["operatingResources"]["electricity"]
+		var required_power = structure.structure_metadata["operatingResources"]["electricity"]
 		if required_power == 0:
 			return
 		required_power -= structure.power_subscription
 		if required_power == 0:
 			return
-		var power_provided = structure_meta_data["powerProvided"]
+		var power_provided = structure_metadata["powerProvided"]
 		var power_left = power_provided - power_subscription
 		if power_left == 0:
 			return
@@ -50,7 +81,7 @@ class StructureData:
 		resources_lacking.clear()
 		if structure_type_id != Constants.StructureTileType.Power:
 			#check power
-			var required_power = structure_meta_data["operatingResources"]["electricity"]
+			var required_power = structure_metadata["operatingResources"]["electricity"]
 			if power_subscription < required_power:
 				resources_lacking.append("electricity")
 				#print("structure at tile " + str(tile_map_cell) + " lacks power")
@@ -63,7 +94,9 @@ class StructureData:
 	func set_damaged(is_damaged:bool) -> void:
 		damaged = is_damaged
 		disabled = is_damaged
-
+	func lacks_resources() -> bool:
+		return resources_lacking.size() > 0
+		
 
 #export var allowed_tiles_tile_map: NodePath
 #export var structure_tiles_tile_map: NodePath
@@ -176,8 +209,8 @@ func _init_structures_list():
 	
 
 func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector2, disabled: bool = false, custom_name: String = "") -> StructureData:
-	var structure_meta_data = _get_structure_metadata_by_id(structure_type_id)
-	var structureData = StructureData.new(structure_type_id, tile_map_cell, structure_meta_data)
+	var structure_metadata = _get_structure_metadata_by_id(structure_type_id)
+	var structureData = StructureData.new(structure_type_id, tile_map_cell, structure_metadata)
 	structureData.disabled = disabled
 	if structure_type_id == Constants.StructureTileType.Power:
 		structureData.powers_cells = _get_powered_cells(tile_map_cell)
@@ -314,12 +347,11 @@ func _get_structure_metadata_by_id(structure_type_id: int) -> Dictionary:
 	var structure_type_name = _structure_id_to_name[structure_type_id]
 	return _structure_data["structures"][structure_type_name]
 
-func get_structure_construction_resources(structure_type_id: int) -> Dictionary:
-	var structure_metadata = _get_structure_metadata_by_id(structure_type_id)
+
+func get_structure_metadata(structure_type_id: int) -> StructureMetadata:
+	return StructureMetadata.new(_get_structure_metadata_by_id(structure_type_id))
+
 	
-	return structure_metadata["constructionResources"]
-
-
 func _do_construction_animation(structure: StructureData) -> void:
 	var interaction_sound = _structure_interaction_temp_sound_class.instance()
 	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
@@ -421,4 +453,16 @@ func damage_structure(structure: StructureData):
 	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 	interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 	interaction_sound.play_failure_deactive_sound()
+
+func get_functioning_structures_by_type_name(type_name: String) -> Array:
+	var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, type_name)
+	var functioning_structures := []
+	for structure in _structures.values():
+		if structure.structure_type_id != structure_type_id:
+			continue
+		if structure.disabled or structure.damaged or structure.under_construction or structure.lacks_resources():
+			continue
+		functioning_structures.append(structure)
+	return functioning_structures
+
 	

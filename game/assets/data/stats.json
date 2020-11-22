@@ -1,0 +1,77 @@
+{
+	"Population":{
+		"startingAmount": 1000,
+		"looseGameAmount": 100,
+		"increasePercentLimit": 0.02
+	},
+	"Morale":{
+		"startingAmount": 1.0
+	},
+	"Water":{
+		"producedByStructure": "Reclamation",
+		"unitsPerStructure": 500,
+		"populationSchedule": {
+			".5": -10,
+			".6": -8,
+			".7": -6,
+			".8": -4,
+			".9": -2
+		}
+	},
+	"Food":{
+		"producedByStructure": "Agriculture",
+		"unitsPerStructure": 250,
+		"populationSchedule": {
+			".5": -6,
+			".6": -4,
+			".7": -2,
+			".8": -1
+		}
+	},
+	"Shelter":{
+		"producedByStructure": "Residential",
+		"unitsPerStructure": 500,
+		"populationSchedule": {
+			".1": -10,
+			".2": -8,
+			".3": -6,
+			".4": -4,
+			".5": -2
+		}
+	},
+	"Clothing":{
+		"producedByStructure": "Factory",
+		"unitsPerStructure": 750,
+		"populationSchedule": {
+			".1": -10,
+			".2": -8,
+			".3": -6,
+			".4": -4,
+			".5": -2
+		}
+	},
+	"Health":{
+		"producedByStructure": "Medical",
+		"unitsPerStructure": 500,
+		"populationSchedule": {
+			".3": -10,
+			".4": -8,
+			".5": -6,
+			".6": -4,
+			".7": -2
+		}
+	},
+	"Education":{
+		"producedByStructure": "Education",
+		"unitsPerStructure": 500,
+		"populationSchedule": {
+		}
+	},
+	"Entertainment":{
+		"producedByStructure": "Recreation",
+		"unitsPerStructure": 500,
+		"populationSchedule": {
+
+		}
+	}
+}

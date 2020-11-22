@@ -1,18 +1,25 @@
 extends Node
 
 #export var structure_mgr: NodePath
-export var min_damage_time_interval = 1
-export var max_damage_time_interval = 5
+export var min_damage_time_interval = 15
+export var max_damage_time_interval = 180
 
 #var _structure_mgr: StructureMgr
 
-var damage_active = false
+export var damage_active := true
+export var debug := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalMgr.register_subscriber(self, "random_damage_test_clicked", "_on_random_damage_test_clicked")
-#	if structure_mgr != null:
-#		_structure_mgr = get_node_or_null(structure_mgr)
+	call_deferred("_init_damage_mgr")
+
+func _init_damage_mgr():
+	if StructureMgr.get_structure_mgr() == null:
+		return
+	if damage_active:
+		_start_random_damage_timer()
+
 
 func _on_random_damage_test_clicked():
 	if StructureMgr.get_structure_mgr() == null:
@@ -28,6 +35,8 @@ func _start_random_damage_timer():
 		return
 	$DamageTimer.wait_time = rand_range(min_damage_time_interval,max_damage_time_interval)
 	$DamageTimer.start()
+	if debug:
+		print("Damage timer set to wait for " + str($DamageTimer.wait_time) + " seconds")
 
 func _on_DamageTimer_timeout():
 	if !damage_active:

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tests/stats_test/stat_value.gd" type="Script" id=1]
+
+[node name="StatValue" type="HBoxContainer"]
+margin_right = 228.0
+margin_bottom = 14.0
+custom_constants/separation = 20
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_right = 128.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Population"
+align = 2
+
+[node name="Value" type="Label" parent="."]
+margin_left = 148.0
+margin_right = 228.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+text = "100000.00"

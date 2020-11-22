@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tests/stats_test/functioning_structure_count.gd" type="Script" id=1]
+
+[node name="FunctioningStructureCount" type="HBoxContainer"]
+margin_right = 262.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 20
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StructureTypeName" type="Label" parent="."]
+margin_top = 13.0
+margin_right = 108.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "test"
+align = 2
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 128.0
+margin_right = 202.0
+margin_bottom = 40.0
+align = 1
+
+[node name="NumStructuresNeeded" type="Label" parent="."]
+margin_left = 222.0
+margin_top = 13.0
+margin_right = 262.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 40, 0 )
+[connection signal="value_changed" from="SpinBox" to="." method="_on_SpinBox_value_changed"]

@@ -727,9 +727,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="80.190309"
-     inkscape:cy="-321.85444"
+     inkscape:zoom="5.6568544"
+     inkscape:cx="640.32688"
+     inkscape:cy="-304.96171"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -739,10 +739,10 @@
      inkscape:snap-bbox="true"
      inkscape:bbox-nodes="true"
      inkscape:snap-bbox-midpoints="true"
-     inkscape:window-width="1848"
-     inkscape:window-height="1016"
-     inkscape:window-x="1992"
-     inkscape:window-y="27"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:snap-global="false"
      showguides="false"
@@ -35229,5 +35229,55 @@
          d="m 141.8485,-34.203014 v 4.233333"
          id="path13169" />
     </g>
+    <path
+       id="rect6404"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793747;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793747, 0.79374699999999998"
+       d="m 180.69524,-82.259755 2.64584,-5.29166 h -5.29167 z"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/decrease_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
+    <g
+       id="g6434"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/no_change_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298">
+      <g
+         id="g6416"
+         transform="translate(-6.7821682,0.91682669)"
+         style="fill:#ffffff">
+        <path
+           id="path6407"
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.79374599999999984"
+           d="m 197.19411,-85.648854 -2.11667,1.058338 v -2.116673 z"
+           sodipodi:nodetypes="cccc"
+           inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_decrease_icon.png"
+           inkscape:export-xdpi="95.999298"
+           inkscape:export-ydpi="95.999298" />
+        <path
+           id="path6409"
+           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793746;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793746, 0.79374599999999984"
+           d="m 191.90248,-85.648854 2.11667,1.058338 v -2.116673 z"
+           sodipodi:nodetypes="cccc"
+           inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_decrease_icon.png"
+           inkscape:export-xdpi="95.999298"
+           inkscape:export-ydpi="95.999298" />
+      </g>
+      <rect
+         style="fill:none;fill-opacity:1;stroke:none;stroke-width:0.793754;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793754, 0.793754"
+         id="rect6412"
+         width="5.2916665"
+         height="5.2916665"
+         x="185.1203"
+         y="-87.377861" />
+    </g>
+    <path
+       id="path6424"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.793747;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.793747, 0.79374699999999998"
+       d="m 175.49718,-87.738504 2.64584,5.29166 h -5.29167 z"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/jason/projects/godot/32/jams/2020/gameOff2020/game/assets/images/ui/increase_icon.png"
+       inkscape:export-xdpi="95.999298"
+       inkscape:export-ydpi="95.999298" />
   </g>
 </svg>

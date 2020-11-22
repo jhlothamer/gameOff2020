@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/moon/Impossible_Drive.png" type="Texture" id=2]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=3]
 [ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=4]
 [ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
@@ -28,11 +29,14 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
-radius = 3600.0
+radius = 3550.0
 color = Color( 0.584314, 0.584314, 0.584314, 1 )
 stroke = true
 stroke_color = Color( 0.584314, 0.584314, 0.584314, 1 )
 stroke_width = 20.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
 
 [node name="Impossible_Drive" type="Sprite" parent="."]
 position = Vector2( -4486, 0 )
@@ -104,6 +108,7 @@ __meta__ = {
 shape = SubResource( 3 )
 
 [node name="MoonSurfaceBody" type="StaticBody2D" parent="."]
+visible = false
 scale = Vector2( 360, 360 )
 collision_layer = 2
 physics_material_override = SubResource( 4 )

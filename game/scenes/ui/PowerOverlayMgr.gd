@@ -20,12 +20,13 @@ func _ready():
 	SignalMgr.register_subscriber(self, "toggle_power_overlay", "_on_toggle_power_overlay")
 	SignalMgr.register_subscriber(self, "update_power_overlay", "_on_update_power_overlay")
 	
+	_spiral_vectors = GraphUtil.spiral_vectors(200)
+	call_deferred("_init_power_radius_tiles_sq")
+
+func _init_power_radius_tiles_sq():
 	if Game.get_power_overlay_tile_map() != null:
 		var cell_size = Game.get_power_overlay_tile_map().cell_size
 		_power_radius_tiles_sq = cell_size.x * cell_size.x * float(power_radius_tiles) * float(power_radius_tiles)
-	
-	_spiral_vectors = GraphUtil.spiral_vectors(200)
-
 
 func _on_toggle_power_overlay(show):
 	if !show:

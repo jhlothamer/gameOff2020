@@ -17,6 +17,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 30.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -25,6 +26,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 15.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 3.0
 			}
 		},
 		"Power": {
@@ -34,6 +43,7 @@
 			"powerProvided": 10,
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 100.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -42,6 +52,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 50.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 10.0
 			}
 		},
 		"Agriculture": {
@@ -49,6 +67,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 250.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -59,6 +78,14 @@
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
 				"water": 0.1
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 125.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 25.0
 			}
 		},
 		"Residential": {
@@ -66,6 +93,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 60.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -74,6 +102,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 30.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 60.0
 			}
 		},
 		"Office": {
@@ -81,6 +117,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 60.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -89,6 +126,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 30.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 60.0
 			}
 		},
 		"Education": {
@@ -96,6 +141,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 60.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -104,6 +150,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 30.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 6.0
 			}
 		},
 		"Medical": {
@@ -111,6 +165,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 100.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -119,6 +174,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 50.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 10.0
 			}
 		},
 		"Reclamation": {
@@ -126,6 +189,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 200.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -134,6 +198,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 100.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 20.0
 			}
 		},
 		"Factory": {
@@ -141,6 +213,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 200.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -149,6 +222,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 100.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 20.0
 			}
 		},
 		"Recreation": {
@@ -156,6 +237,7 @@
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
+				"ore": 80.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
@@ -164,6 +246,14 @@
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 40.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 8.0
 			}
 		}
 	}
