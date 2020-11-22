@@ -77,6 +77,7 @@ margin_bottom = 179.0
 alignment = 2
 
 [node name="RndDmgTestBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
+visible = false
 margin_top = 2.0
 margin_right = 137.0
 margin_bottom = 22.0
