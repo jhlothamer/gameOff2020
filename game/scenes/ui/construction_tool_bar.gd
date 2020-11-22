@@ -104,18 +104,12 @@ func _process(_delta):
 			continue
 		if _follow_y.has(btn):
 			var follow_y_btn = _follow_y[_btns[i]]
-			if follow_y_btn.rect_position.y != 0:
-				pass
 			btn.rect_position.y = follow_y_btn.rect_position.y
 		else:
 			var dy = abs(_btns[i - 1].rect_position.y - _btns[i-2].rect_position.y)
-			if dy != 0:
-				pass
 			btn.rect_position.y = _btns[i - 1].rect_position.y - dy
 		if _follow_x.has(btn):
 			var follow_x_btn = _follow_x[_btns[i]]
-			if follow_x_btn.rect_position.x != 0:
-				pass
 			btn.rect_position.x = follow_x_btn.rect_position.x
 
 
