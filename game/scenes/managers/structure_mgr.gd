@@ -3,6 +3,19 @@ extends Node
 
 const structure_data_file_path = "res://assets/data/structures.json"
 
+enum StructureTileType {
+	UUC,
+	Power,
+	Agriculture,
+	Residential,
+	Office,
+	Education,
+	Medical,
+	Reclamation,
+	Factory,
+	Recreation
+}
+
 class StructureMetadata:
 	var structure_metadata
 	func _init(metadata: Dictionary):
