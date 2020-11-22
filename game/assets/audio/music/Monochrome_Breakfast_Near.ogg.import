@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Monochrome_Breakfast_Near.ogg-b9317bc219f41eb08762dfff01e2b086.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Monochrome_Breakfast_Near.ogg"
+dest_files=[ "res://.import/Monochrome_Breakfast_Near.ogg-b9317bc219f41eb08762dfff01e2b086.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
