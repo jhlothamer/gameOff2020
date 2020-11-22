@@ -7,6 +7,7 @@ export var max_damage_time_interval = 180
 #var _structure_mgr: StructureMgr
 
 export var damage_active := true
+export var debug := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,6 +35,8 @@ func _start_random_damage_timer():
 		return
 	$DamageTimer.wait_time = rand_range(min_damage_time_interval,max_damage_time_interval)
 	$DamageTimer.start()
+	if debug:
+		print("Damage timer set to wait for " + str($DamageTimer.wait_time) + " seconds")
 
 func _on_DamageTimer_timeout():
 	if !damage_active:

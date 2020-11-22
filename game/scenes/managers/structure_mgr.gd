@@ -30,6 +30,8 @@ class StructureMetadata:
 		return _get_metadata_item("repairResources")
 	func get_reclamation_resources() -> Dictionary:
 		return _get_metadata_item("reclamationResources")
+	func get_name():
+		return structure_metadata["name"]
 	
 
 class StructureData:

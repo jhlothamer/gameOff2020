@@ -12,7 +12,7 @@ onready var _label := $Label
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/temp/ui/education_icon.png",
+	Constants.StructureTileType.Education: "res://assets/images/ui/Education_icon.png",
 	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
 	Constants.StructureTileType.Medical: "res://assets/images/temp/ui/medical_icon.png",
 	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
@@ -26,7 +26,7 @@ var _normal_icons := {
 
 var _disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/temp/ui/education_icon_disabled.png",
+	Constants.StructureTileType.Education: "res://assets/images/ui/Education_icon_disabled.png",
 	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
 	Constants.StructureTileType.Medical: "res://assets/images/temp/ui/medical_icon_disabled.png",
 	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
@@ -40,15 +40,19 @@ var _disabled_icons := {
 func _ready():
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
-	call_deferred("_init_cost_label")
+	_texture_button.hint_tooltip = EnumUtil.get_string(StructureMgr.StructureTileType, structure_type)
+	call_deferred("_init_labels")
 
-func _init_cost_label():
+
+func _init_labels():
 	var structure_mgr := StructureMgr.get_structure_mgr()
 	if structure_mgr == null:
 		return
 	var structure_metadata: StructureMgr.StructureMetadata = structure_mgr.get_structure_metadata(structure_type)
 	var construction_cost_string = _make_resources_string(structure_metadata.get_construction_resources(), "-")
 	_label.text = construction_cost_string
+	_texture_button.hint_tooltip = structure_metadata.get_name()
+
 
 func _make_resources_string(resources: Dictionary, amount_prefix: String) -> String:
 	var s = ""
