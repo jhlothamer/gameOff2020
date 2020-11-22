@@ -39,12 +39,15 @@ func _on_stats_updated():
 	if is_zero_approx(delta):
 		_stat_value_delta_indicator.frame = no_delta_indicator_index
 		_stat_value_delta_label.modulate = stat_no_delta_color
+		_stat_value_delta_indicator.modulate = stat_no_delta_color
 	elif delta > 0:
 		_stat_value_delta_indicator.frame = increase_delta_indicator_index
 		_stat_value_delta_label.modulate = stat_delta_increase_color
+		_stat_value_delta_indicator.modulate = stat_delta_increase_color
 	else:
 		_stat_value_delta_indicator.frame = decrease_delta_indicator_index
 		_stat_value_delta_label.modulate = stat_delta_decrease_color
+		_stat_value_delta_indicator.modulate = stat_delta_decrease_color
 	
 
 func _on_resources_updated():
