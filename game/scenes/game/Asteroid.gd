@@ -7,6 +7,8 @@ var physics_tick_countdown = 10
 var apply_initial_force = true
 var disintegration_countdown = 3
 var marked_for_disintegration = false
+# used for camera shake calculations
+var impact_force = 30
 
 func _ready():
 	pass

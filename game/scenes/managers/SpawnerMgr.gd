@@ -70,10 +70,10 @@ func _process(delta):
 			fragments.erase(i)
 
 func _is_out_of_bounds(body):
-	if body.global_position.x > spawn_extents_max.x + 1000 or \
-		body.global_position.x < spawn_extents_min.x - 1000 or \
-		body.global_position.y > spawn_extents_max.y + 1000 or \
-		body.global_position.y < spawn_extents_min.y - 1000:
+	if body.global_position.x > spawn_extents_max.x + 5000 or \
+		body.global_position.x < spawn_extents_min.x - 5000 or \
+		body.global_position.y > spawn_extents_max.y + 5000 or \
+		body.global_position.y < spawn_extents_min.y - 5000:
 			return true
 	return false
 
