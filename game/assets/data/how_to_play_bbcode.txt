@@ -1,0 +1,67 @@
+This is a realtime construction and management simulation.  You're goal is to keep the colonists alive and grow the population to 10,000 individuals before the generation ship arrives at the destination planet.
+
+To grow the population you'll need to provide more food, water and shelter at the very least.  But people have other needs too such as clothing , medical care, places to work, education and recreation.  All of this is produced or provided by structures.
+
+[table=2]
+[cell][img]res://assets/images/ui/icons/Start-Tile_icon.png[/img] [/cell]
+[cell]To construct a structure first you must build a Universal Utility Conduit structure on a tile.  This structure provides all the utility connections required by other structures such as power, water, sewage, and transporation tunneling.[/cell]
+[/table]
+
+On top of Universal Utility Conduit structures can be placed all the other structure types.  The following is a list of such structures and what resource they provide.
+
+
+[table=2]
+[cell][img]res://assets/images/ui/icons/Power_Reactor_icon.png[/img] [/cell]
+[cell]Power Station - provides power to structures in a given radius.  It can only generate so much power, so multiple power stations in an area may be required.  Also, structures without power do not produce anything which can lead to population loss.[/cell]
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Agriculture_icon.png[/img] [/cell]
+[cell]Agriculture Pod - provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand short periods with less food.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Reclaimation-Center_icon.png[/img] [/cell]
+[cell]Reclamation Center - recycles materials and treats sewage and water.  The number of reclamation centers is limiting factor on how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Residence_icon.png[/img] [/cell]
+[cell]Residential Complex - provides shelter.  While a population needs shelter, they can make do with overcrowding to an extent.  However, overcrowding can affect their mood and morale.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Medical_icon.png[/img] [/cell]
+[cell]Medical Center - Provides health services.  An unhealth population does not thrive as well as a healthy one.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Education_icon.png[/img] [/cell]
+[cell]Education Complex - This provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaning the robotic fleet.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Factory_icon.png[/img] [/cell]
+[cell]Factory - This highly automated facility makes all the clothing and other items for the colony.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Recreation_icon.png[/img] [/cell]
+[cell]Recreation Center - Provides entertainment and excercise for the colony.[/cell]
+
+[/table]
+
+Constructing and repairing colony structures takes resources, of which some have been supplied at launch time.  Harvest asteroid fragments that land on the moon's surface to gain more resources.  You won't be able to create a thriving colony without it.
+
+You can remove a structure from the colony to reclaim a portion of the resources it took to construct it.  You may wish to do this so that another more critical structure may be built or decided that a structure was constructed in error.  Structure can also become nonfunctional by wear and tear.  Structures need to be repaired quickly or else the population will start to suffer.  But as it costs resources to repair a structure another option is to reclaim it or leave it disabled if it's not at the moment vital.
+
+Structures can also be disabled.  While they are disabled they require no power and so make power avialable for other structures on the power grid.  Disabling a non-vital structure such as Recreation Center may allow more food or water to be available and thus save lives.
+
+[center]Good luck!![/center]
+
