@@ -8,7 +8,7 @@ Aaron Bowers - sound and music
 
 Leanne Bowers - art
 
-Bob
+bobrobbow - programmer
 
 Jason Lothamer - programming
 
@@ -17,8 +17,8 @@ Jason Lothamer - programming
 ## Credits
 
 ### art:
-asteroids (https://opengameart.org/content/asteroids)
-by phaelax (https://opengameart.org/users/phaelax)
+asteroids (https://opengameart.org/content/asteroids)<br>
+by phaelax (https://opengameart.org/users/phaelax)<br>
 License: CC-BY-SA3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
 Unaltered
 
@@ -28,6 +28,6 @@ Unaltered
 ### sounds:
 
 ### fonts:
-https://fontlibrary.org/en/font/jellee-typeface<br>
-by Alfredo Marco Pradil<br>
+https://fontlibrary.org/en/font/generale-station<br>
+by Ariel Martín Pérez<br>
 License: OFL (SIL Open Font License)

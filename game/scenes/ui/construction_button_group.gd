@@ -12,9 +12,9 @@ onready var _label := $Label
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/Education_icon.png",
+	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
 	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
-	Constants.StructureTileType.Medical: "res://assets/images/temp/ui/medical_icon.png",
+	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
 	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
 	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
 	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
@@ -26,9 +26,9 @@ var _normal_icons := {
 
 var _disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/Education_icon_disabled.png",
+	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
 	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
-	Constants.StructureTileType.Medical: "res://assets/images/temp/ui/medical_icon_disabled.png",
+	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
 	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
 	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
 	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",

@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/white_rect_10x10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/howToPlay/howToPlay.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/text_large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/components/fileContentDisplay/fileContentDisplay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=9]
 
 [node name="howToPlay" type="TextureRect"]
 self_modulate = Color( 0.578482, 0.195068, 0.734375, 1 )
@@ -13,14 +17,256 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+line_fade_in_time_seconds = 2.0
+time_between_line_fade_ins_seconds = 1.8
 
-[node name="howToPlayLbl" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 256.0
-margin_bottom = 87.0
+[node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="Introduction" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntroLines1" type="VBoxContainer" parent="Introduction"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -330.0
+margin_top = -172.0
+margin_right = 330.0
+margin_bottom = 172.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Introduction/IntroLines1"]
+margin_right = 660.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 3 )
-text = "How To Play"
+text = "Weather gone haywire."
+
+[node name="Label2" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 52.0
+margin_right = 660.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+text = "Crops failing."
+align = 2
+
+[node name="Label3" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 104.0
+margin_right = 660.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 3 )
+text = "Nature turning on humanity"
+
+[node name="Label4" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 156.0
+margin_right = 660.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 3 )
+text = "and humanity on itself."
+align = 2
+
+[node name="Label7" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 208.0
+margin_right = 660.0
+margin_bottom = 240.0
+custom_fonts/font = ExtResource( 3 )
+text = "Our world was dying."
+align = 1
+
+[node name="Label5" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 260.0
+margin_right = 660.0
+margin_bottom = 292.0
+custom_fonts/font = ExtResource( 3 )
+text = "A new world was needed"
+
+[node name="Label6" type="Label" parent="Introduction/IntroLines1"]
+margin_top = 312.0
+margin_right = 660.0
+margin_bottom = 344.0
+custom_fonts/font = ExtResource( 3 )
+text = "as well as a way to get there."
+align = 2
+
+[node name="IntroLines2" type="VBoxContainer" parent="Introduction"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -330.0
+margin_top = -172.0
+margin_right = 430.0
+margin_bottom = 68.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Introduction/IntroLines2"]
+margin_right = 760.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
+text = "Moonshot 2 gave us new hope:"
+
+[node name="Label2" type="Label" parent="Introduction/IntroLines2"]
+margin_top = 52.0
+margin_right = 760.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+text = "the invention of the impossible drive."
+align = 2
+
+[node name="Label3" type="Label" parent="Introduction/IntroLines2"]
+margin_top = 104.0
+margin_right = 760.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 3 )
+text = "Capable of moving the moon to the stars."
+
+[node name="Label4" type="Label" parent="Introduction/IntroLines2"]
+margin_top = 156.0
+margin_right = 760.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 3 )
+text = "And along with it a colony"
+align = 2
+
+[node name="Label7" type="Label" parent="Introduction/IntroLines2"]
+margin_top = 208.0
+margin_right = 760.0
+margin_bottom = 240.0
+custom_fonts/font = ExtResource( 3 )
+text = "nestled in the heart of the moon."
+align = 1
+
+[node name="IntroLines3" type="VBoxContainer" parent="Introduction"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -330.0
+margin_top = -172.0
+margin_right = 411.0
+margin_bottom = 172.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Introduction/IntroLines3"]
+margin_right = 741.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
+text = "Sustained through generations."
+
+[node name="Label2" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 52.0
+margin_right = 741.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+text = "Growing in number."
+align = 2
+
+[node name="Label3" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 104.0
+margin_right = 741.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 3 )
+text = "In the hopes that one day"
+
+[node name="Label4" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 156.0
+margin_right = 741.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 3 )
+text = "there will be a new dawn for humanity."
+align = 2
+
+[node name="Label7" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 208.0
+margin_right = 741.0
+margin_bottom = 240.0
+custom_fonts/font = ExtResource( 3 )
+text = "On a new home"
+align = 1
+
+[node name="Label8" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 260.0
+margin_right = 741.0
+margin_bottom = 292.0
+custom_fonts/font = ExtResource( 3 )
+text = "given a new moon"
+align = 1
+
+[node name="Label9" type="Label" parent="Introduction/IntroLines3"]
+margin_top = 312.0
+margin_right = 741.0
+margin_bottom = 344.0
+custom_fonts/font = ExtResource( 3 )
+text = "called Generation Ship Luna."
+align = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="InstructionsMarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InstructionsMarginContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 1004.0
+margin_bottom = 520.0
+
+[node name="Label" type="Label" parent="InstructionsMarginContainer/VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 9 )
+text = "How to Play"
+
+[node name="Instructions" type="RichTextLabel" parent="InstructionsMarginContainer/VBoxContainer"]
+margin_top = 91.0
+margin_right = 984.0
+margin_bottom = 510.0
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[table=2]
+[cell][img]res://assets/images/ui/icons/Power_Reactor_icon.png[/img]  [/cell]
+[cell]provides power to structures in a given radius.  It can only generate so much power, so multiple power stations in an area may be required.  Also, structures without power do not produce anything which can lead to population loss.[/cell]
+[cell][/cell]
+[cell][/cell]
+[cell][img]res://assets/images/ui/icons/Agriculture_icon.png[/img][/cell]
+[cell]provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand short periods with less food.[/cell]
+[/tables]
+"
+text = "  provides power to structures in a given radius.  It can only generate so much power, so multiple power stations in an area may be required.  Also, structures without power do not produce anything which can lead to population loss.provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand short periods with less food."
 
 [node name="backBtn" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -39,16 +285,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -151.0
 margin_top = -89.0
-margin_right = 0.0
+margin_right = 1.0
 margin_bottom = 0.0
 text = "Play"
-sceneToLoad = "res://scenes/title/title.tscn"
+sceneToLoad = "res://scenes/game/game.tscn"
 fadeSound = true
 
-[node name="fileContentDisplay" parent="." instance=ExtResource( 5 )]
-margin_left = 20.0
-margin_top = 113.0
-margin_right = -20.0
-margin_bottom = -90.0
-hiding_enabled = false
-filePath = "res://scenes/howToPlay/howToPlay.txt"
+[node name="SkipMarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -76.0
+margin_top = -75.0
+margin_right = 76.0
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipBtn" type="Button" parent="SkipMarginContainer"]
+margin_right = 152.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 5 )
+text = "Skip"
+flat = true
+[connection signal="pressed" from="SkipMarginContainer/SkipBtn" to="." method="_on_SkipBtn_pressed"]

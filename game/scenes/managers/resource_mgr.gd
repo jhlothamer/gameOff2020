@@ -24,14 +24,7 @@ func _ready():
 #	if structure_mgr != null:
 #		_structure_mgr = get_node_or_null(structure_mgr)
 	
-	var resource_file: File = File.new()
-	var error = resource_file.open(resource_data_file_path, File.READ)
-	if error != OK:
-		print("error opening resource data file")
-		resource_file.close()
-		return
-	_resource_data = parse_json(resource_file.get_as_text())
-	resource_file.close()
+	_resource_data = FileUtil.load_json_data(resource_data_file_path)
 	
 	var resources = _resource_data["resources"]
 	for resource_name in resources.keys():

@@ -107,21 +107,7 @@ func get_stat_by_name(stat_type_name: String) -> Stat:
 
 
 func _load_stats_data():
-	var data_file: File = File.new()
-	var error = data_file.open(stats_metadata_file_path, File.READ)
-	if error != OK:
-		print("error opening data file")
-		data_file.close()
-		return
-	var json_text = data_file.get_as_text()
-	var parse_results:JSONParseResult =  JSON.parse(json_text)
-	if parse_results.error != OK:
-		print("error parsing data.")
-		print(parse_results.error_string)
-		print(parse_results.error_line)
-		return
-	_stats_metadata = parse_results.result
-	data_file.close()
+	_stats_metadata = FileUtil.load_json_data(stats_metadata_file_path)
 
 
 func _update_structure_produced_stats():
