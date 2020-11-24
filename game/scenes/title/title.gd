@@ -1,8 +1,9 @@
 extends TextureRect
 
+
 func _ready():
-	Globals.set("menusBackgroundColor", self.self_modulate)
-	$TitleLbl.text = ProjectSettings.get_setting("application/config/name")
+	pass
+
 
 func _on_exitBtn_pressed():
 	get_tree().quit()

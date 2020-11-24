@@ -428,3 +428,5 @@ scale = Vector2( 700, 700 )
 z_index = -1
 texture = ExtResource( 11 )
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
+
+[editable path="SpawnerMgr"]

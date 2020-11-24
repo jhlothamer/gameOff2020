@@ -24,12 +24,31 @@ class StructureMetadata:
 		if structure_metadata == null || !structure_metadata.has(item_name):
 			return {}
 		return structure_metadata[item_name]
+	func _make_resources_string(resources: Dictionary, amount_prefix: String) -> String:
+		var s = ""
+		for resource_name in resources.keys():
+			if s.length() > 0:
+				s += ", "
+			s += amount_prefix + str(int(resources[resource_name])) + " " + resource_name
+		return s			
 	func get_construction_resources() -> Dictionary:
 		return _get_metadata_item("constructionResources")
 	func get_repair_resources() -> Dictionary:
 		return _get_metadata_item("repairResources")
 	func get_reclamation_resources() -> Dictionary:
 		return _get_metadata_item("reclamationResources")
+	func get_construction_resources_string() -> String:
+		return _make_resources_string(get_construction_resources(), "-")
+	func get_repair_resources_string() -> String:
+		return _make_resources_string(get_repair_resources(), "-")
+	func get_reclamation_resources_string() -> String:
+		return _make_resources_string(get_reclamation_resources(), "+")
+	func get_power_required() -> float:
+		if structure_metadata.has("operatingResources"):
+			if structure_metadata["operatingResources"].has("electricity"):
+				return structure_metadata["operatingResources"]["electricity"]
+		return 0.0
+	
 	func get_name():
 		return structure_metadata["name"]
 	
@@ -98,23 +117,6 @@ class StructureData:
 		return resources_lacking.size() > 0
 		
 
-#export var allowed_tiles_tile_map: NodePath
-#export var structure_tiles_tile_map: NodePath
-#export var structure_status_overlay_tiles_tile_map: NodePath
-##ConstructionRepairEtcAnimations
-#export var construction_repair_etc_animations_parent: NodePath
-#export var separator_boxes_tile_map: NodePath
-#export var damage_overlay_tile_map: NodePath
-#export var resource_indicators_overlay_tile_map: NodePath
-#
-#var _allowed_tiles_tile_map: TileMap
-#var _structure_tiles_tile_map: TileMap
-#var _structure_status_overlay_tiles_tile_map: TileMap
-#var _separator_boxes_tile_map: TileMap
-#var _damage_overlay_tile_map: TileMap
-#var _resource_indicators_overlay_tile_map: TileMap
-#var _construction_repair_etc_animations_parent: Node2D
-
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
 var _structure_interaction_temp_sound_class := preload("res://scenes/sound/structure_interaction_temp_sound.tscn")
@@ -138,40 +140,10 @@ const _structure_enabled_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE
 const _structure_lack_resource_status_overlay_tile_id := Constants.STRUCTURE_TILE_TYPE_COUNT*3 + 1
 
 func _ready():
-	#SignalMgr.register_subscriber(self, "structure_tile_placed", "_on_structure_tile_placed")
 	Globals.set("StructureMgr", self)
 	_spiral_vectors = GraphUtil.spiral_vectors(200)
 
-#	if structure_tiles_tile_map != null:
-#		_structure_tiles_tile_map = get_node_or_null(structure_tiles_tile_map)
-#	if allowed_tiles_tile_map != null:
-#		_allowed_tiles_tile_map = get_node_or_null(allowed_tiles_tile_map)
-#	if structure_status_overlay_tiles_tile_map != null:
-#		_structure_status_overlay_tiles_tile_map = get_node_or_null(structure_status_overlay_tiles_tile_map)
-#	if construction_repair_etc_animations_parent != null:
-#		_construction_repair_etc_animations_parent = get_node_or_null(construction_repair_etc_animations_parent)
-#	if separator_boxes_tile_map != null:
-#		_separator_boxes_tile_map = get_node_or_null(separator_boxes_tile_map)
-#	if damage_overlay_tile_map != null:
-#		_damage_overlay_tile_map = get_node_or_null(damage_overlay_tile_map)
-#	if resource_indicators_overlay_tile_map != null:
-#		_resource_indicators_overlay_tile_map = get_node_or_null(resource_indicators_overlay_tile_map)
-	
-	var structure_file: File = File.new()
-	var error = structure_file.open(structure_data_file_path, File.READ)
-	if error != OK:
-		print("error opening structure data file")
-		structure_file.close()
-		return
-	var json_text = structure_file.get_as_text()
-	var parse_results:JSONParseResult =  JSON.parse(json_text)
-	if parse_results.error != OK:
-		print("error parsing structure data.")
-		print(parse_results.error_string)
-		print(parse_results.error_line)
-		return
-	_structure_data = parse_results.result
-	structure_file.close()
+	_structure_data = FileUtil.load_json_data(structure_data_file_path)
 	
 	_structure_name_to_id = _structure_data["ids"]
 	for structure_name in _structure_name_to_id.keys():
@@ -182,7 +154,6 @@ func _ready():
 		_structure_disable_status_overlay_tile_id[structure_type_id] = Constants.STRUCTURE_TILE_TYPE_COUNT*2 + structure_type_id
 	
 	call_deferred("_init_structures_list")
-	
 
 
 static func get_structure_mgr() -> StructureMgr:
@@ -465,4 +436,21 @@ func get_functioning_structures_by_type_name(type_name: String) -> Array:
 		functioning_structures.append(structure)
 	return functioning_structures
 
+func get_functioning_structures_by_type_id(structure_type_id: int) -> Array:
+	var functioning_structures := []
+	for structure in _structures.values():
+		if structure.structure_type_id != structure_type_id:
+			continue
+		if structure.disabled or structure.damaged or structure.under_construction or structure.lacks_resources():
+			continue
+		functioning_structures.append(structure)
+	return functioning_structures
+		
+func get_structures_by_type_id(structure_type_id: int) -> Array:
+	var structures := []
+	for structure in _structures.values():
+		if structure.structure_type_id != structure_type_id:
+			continue
+		structures.append(structure)
+	return structures
 	

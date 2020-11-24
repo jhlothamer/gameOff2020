@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Education_icon.png-24f47f203119346cfd4ea60b6d9bac7b.stex"
+path="res://.import/Education_icon_mouse_over.png-55947e3c543508458e0a017b99b273d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Education_icon.png"
-dest_files=[ "res://.import/Education_icon.png-24f47f203119346cfd4ea60b6d9bac7b.stex" ]
+source_file="res://assets/images/ui/icons/Education_icon_mouse_over.png"
+dest_files=[ "res://.import/Education_icon_mouse_over.png-55947e3c543508458e0a017b99b273d1.stex" ]
 
 [params]
 

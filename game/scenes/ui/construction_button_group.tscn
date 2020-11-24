@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon_disabled.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ui/construction_button_group.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/sounds/UI_Menu_Mouse_Over_01.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png" type="Texture" id=5]
 
 [node name="ConstuctionButton" type="VBoxContainer"]
 margin_right = 54.0
@@ -20,6 +22,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
 texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 5 )
 texture_disabled = ExtResource( 2 )
 expand = true
 stretch_mode = 3
@@ -35,4 +38,8 @@ text = "-250 ore"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 [connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]

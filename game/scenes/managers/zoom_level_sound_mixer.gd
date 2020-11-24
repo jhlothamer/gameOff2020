@@ -9,6 +9,9 @@ var _stream_length: float
 var _current_position: float
 var _original_sound_fx_volume_db := {}
 
+onready var zoom_in_sound := $ZoomInSoundStreamPlayer
+onready var zoom_out_sound := $ZoomOutSoundStreamPlayer
+
 
 func _ready():
 	SignalMgr.register_subscriber(self, "zoom_step_change_initiated", "_on_zoom_step_change_initiated")
@@ -45,6 +48,10 @@ func _on_zoom_step_change_initiated(from_zoom_step: int, to_zoom_step: int, zoom
 		to_audio_player.play(_current_position)
 	_fade_in_out_zoom_level_sound_effects(from_zoom_step+1, false, zoom_speed)
 	_fade_in_out_zoom_level_sound_effects(to_zoom_step+1, true, zoom_speed)
+	if from_zoom_step > to_zoom_step:
+		zoom_in_sound.play()
+	else:
+		zoom_out_sound.play()
 	_tween.start()
 	yield(_tween, "tween_all_completed")
 	from_audio_player.stop()

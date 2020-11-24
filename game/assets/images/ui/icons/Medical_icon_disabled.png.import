@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Education_icon_disabled.png-dde1e845b45d3561a9fd50f29c102be1.stex"
+path="res://.import/Medical_icon_disabled.png-fcde82f8c6a455edc9cdc3093b82ac65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/Education_icon_disabled.png"
-dest_files=[ "res://.import/Education_icon_disabled.png-dde1e845b45d3561a9fd50f29c102be1.stex" ]
+source_file="res://assets/images/ui/icons/Medical_icon_disabled.png"
+dest_files=[ "res://.import/Medical_icon_disabled.png-fcde82f8c6a455edc9cdc3093b82ac65.stex" ]
 
 [params]
 

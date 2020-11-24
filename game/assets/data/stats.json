@@ -73,5 +73,13 @@
 		"populationSchedule": {
 
 		}
+	},
+	"Power":{
+		"producedByStructure": "Power",
+		"unitsPerStructure": 10
+	},
+	"Administration":{
+		"producedByStructure": "Office",
+		"unitsPerStructure": 1
 	}
 }

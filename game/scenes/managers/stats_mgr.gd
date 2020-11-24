@@ -14,6 +14,8 @@ enum StatType {
 	Health,
 	Education,
 	Entertainment,
+	Power,
+	Administration,
 	#
 	PopulationDelta,
 }
@@ -41,7 +43,19 @@ class Stat:
 		if values.size() < 2:
 			return 0.0
 		return values[0] - values[1]
-
+	func get_produced_by_structure() -> String:
+		if stat_metadata.has("produceByStructure"):
+			return stat_metadata["producedByStructure"]
+		return ""
+	func get_units_per_structure() -> float:
+		if stat_metadata.has("unitsPerStructure"):
+			return stat_metadata["unitsPerStructure"]
+		return 0.0
+	func has_population_schedule() -> bool:
+		if stat_metadata.has("populationSchedule"):
+			return stat_metadata["populationSchedule"].keys().size() > 0
+		return false
+	
 export var debug := false
 
 
@@ -107,21 +121,7 @@ func get_stat_by_name(stat_type_name: String) -> Stat:
 
 
 func _load_stats_data():
-	var data_file: File = File.new()
-	var error = data_file.open(stats_metadata_file_path, File.READ)
-	if error != OK:
-		print("error opening data file")
-		data_file.close()
-		return
-	var json_text = data_file.get_as_text()
-	var parse_results:JSONParseResult =  JSON.parse(json_text)
-	if parse_results.error != OK:
-		print("error parsing data.")
-		print(parse_results.error_string)
-		print(parse_results.error_line)
-		return
-	_stats_metadata = parse_results.result
-	data_file.close()
+	_stats_metadata = FileUtil.load_json_data(stats_metadata_file_path)
 
 
 func _update_structure_produced_stats():
@@ -286,3 +286,7 @@ func get_needed_number_of_structures(structure_type_id: int) -> float:
 	return population / stat.stat_metadata["unitsPerStructure"]
 
 
+func get_stat_provided_by_structure_type_id(structure_type_id: int) -> Stat:
+	if _stats_by_produced_by_structure_id.has(structure_type_id):
+		return _stats_by_produced_by_structure_id[structure_type_id]
+	return null

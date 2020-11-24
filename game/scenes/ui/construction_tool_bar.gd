@@ -42,6 +42,10 @@ onready var _follow_y := {
 onready var _animation_player: AnimationPlayer = $AnimationPlayer
 onready var _construction_btn: TextureButton = $ConstructionBtn
 
+onready var _menu_open_sound := $MenuOpenStreamPlayer
+onready var _menu_close_sound := $MenuCloseStreamPlayer
+onready var _menu_mouse_over_sound := $MenuMouseOverStreamPlayer
+
 func _ready():
 	SignalMgr.register_subscriber(self, "focused_gained", "_on_focused_gained")
 	SignalMgr.register_publisher(self, "construction_tool_bar_clicked")
@@ -69,11 +73,13 @@ func _on_ConstructionBtn_toggled(button_pressed):
 		_refresh_button_disable_states()
 		_set_construction_button_labels_visibility(true)
 		_animation_player.play("expand")
+		_menu_open_sound.play()
 	else:
 		_expanded = false
 		_construction_btn.pressed = false
 		_set_construction_button_labels_visibility(false)
 		_animation_player.play_backwards("expand")
+		_menu_close_sound.play()
 
 
 func _on_ConstructionBtn_focus_exited():
@@ -134,3 +140,8 @@ func _set_construction_button_labels_visibility(is_visible: bool) -> void:
 		btn.label_visible = is_visible
 
 
+
+
+func _on_ConstructionToolBar_mouse_entered():
+	#_menu_mouse_over_sound.play()
+	pass
