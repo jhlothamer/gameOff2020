@@ -24,12 +24,31 @@ class StructureMetadata:
 		if structure_metadata == null || !structure_metadata.has(item_name):
 			return {}
 		return structure_metadata[item_name]
+	func _make_resources_string(resources: Dictionary, amount_prefix: String) -> String:
+		var s = ""
+		for resource_name in resources.keys():
+			if s.length() > 0:
+				s += ", "
+			s += amount_prefix + str(int(resources[resource_name])) + " " + resource_name
+		return s			
 	func get_construction_resources() -> Dictionary:
 		return _get_metadata_item("constructionResources")
 	func get_repair_resources() -> Dictionary:
 		return _get_metadata_item("repairResources")
 	func get_reclamation_resources() -> Dictionary:
 		return _get_metadata_item("reclamationResources")
+	func get_construction_resources_string() -> String:
+		return _make_resources_string(get_construction_resources(), "-")
+	func get_repair_resources_string() -> String:
+		return _make_resources_string(get_repair_resources(), "-")
+	func get_reclamation_resources_string() -> String:
+		return _make_resources_string(get_reclamation_resources(), "+")
+	func get_power_required() -> float:
+		if structure_metadata.has("operatingResources"):
+			if structure_metadata["operatingResources"].has("electricity"):
+				return structure_metadata["operatingResources"]["electricity"]
+		return 0.0
+	
 	func get_name():
 		return structure_metadata["name"]
 	
@@ -417,4 +436,21 @@ func get_functioning_structures_by_type_name(type_name: String) -> Array:
 		functioning_structures.append(structure)
 	return functioning_structures
 
+func get_functioning_structures_by_type_id(structure_type_id: int) -> Array:
+	var functioning_structures := []
+	for structure in _structures.values():
+		if structure.structure_type_id != structure_type_id:
+			continue
+		if structure.disabled or structure.damaged or structure.under_construction or structure.lacks_resources():
+			continue
+		functioning_structures.append(structure)
+	return functioning_structures
+		
+func get_structures_by_type_id(structure_type_id: int) -> Array:
+	var structures := []
+	for structure in _structures.values():
+		if structure.structure_type_id != structure_type_id:
+			continue
+		structures.append(structure)
+	return structures
 	

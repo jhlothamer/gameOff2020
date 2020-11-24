@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/structures_dialog.gd" type="Script" id=1]
+
+[node name="StructuresDialog" type="AcceptDialog"]
+margin_right = 933.0
+margin_bottom = 289.0
+window_title = "Structures"
+resizable = true
+script = ExtResource( 1 )
+structure_row_color = Color( 0.282353, 0.282353, 0.282353, 1 )
+costs_row_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+
+[node name="Tree" type="Tree" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 925.0
+margin_bottom = 253.0
+columns = 3
+hide_root = true
+select_mode = 1
+[connection signal="confirmed" from="." to="." method="_on_StructuresDialog_confirmed"]
+[connection signal="custom_action" from="." to="." method="_on_StructuresDialog_custom_action"]
+[connection signal="popup_hide" from="." to="." method="_on_StructuresDialog_popup_hide"]

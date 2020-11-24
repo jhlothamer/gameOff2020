@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/text_smaller.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/ui/resources_dlg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ui/time_line.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui/tile_popup_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui/pause_dlg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/ui/stat_display.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/ui/structures_dialog.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -27,6 +29,7 @@ shadow_color = Color( 0.0588235, 0.0156863, 0.0156863, 0.6 )
 shadow_size = 5
 
 [node name="Hud" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]
@@ -61,34 +64,31 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -199.0
-margin_right = 147.0
+margin_right = 158.0
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_group_": true,
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer"]
 margin_left = 20.0
-margin_right = 157.0
+margin_right = 158.0
 margin_bottom = 179.0
+grow_vertical = 0
 alignment = 2
 
-[node name="RndDmgTestBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
-visible = false
-margin_top = 2.0
-margin_right = 137.0
+[node name="StructureInfoBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
+margin_top = 1.0
+margin_right = 138.0
 margin_bottom = 22.0
-hint_tooltip = "Randomly Damage a Structure
-(this is just for testing)"
-toggle_mode = true
-text = "Rnd Dmg"
+custom_fonts/font = ExtResource( 3 )
+text = "Structure Info"
 
 [node name="PanelContainer" type="PanelContainer" parent="BottomLeftMarginContainer/VBoxContainer"]
 margin_top = 26.0
-margin_right = 137.0
+margin_right = 138.0
 margin_bottom = 179.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -98,7 +98,7 @@ __meta__ = {
 [node name="StatsMarginContainer" type="MarginContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 132.0
+margin_right = 133.0
 margin_bottom = 148.0
 __meta__ = {
 "_edit_group_": true,
@@ -106,20 +106,20 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer"]
-margin_right = 127.0
+margin_right = 128.0
 margin_bottom = 143.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PopulationStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_right = 127.0
+margin_right = 128.0
 margin_bottom = 45.0
 stat_delta_decrease_color = Color( 0.678431, 0, 0, 1 )
 
 [node name="WaterStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_top = 49.0
-margin_right = 127.0
+margin_right = 128.0
 margin_bottom = 94.0
 stat_label = "Water"
 stat_name = "water"
@@ -127,13 +127,14 @@ is_resource = true
 
 [node name="OreStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_top = 98.0
-margin_right = 127.0
+margin_right = 128.0
 margin_bottom = 143.0
 stat_label = "Ore"
 stat_name = "ore"
 is_resource = true
 
 [node name="TimeLine" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -351.0
@@ -159,4 +160,6 @@ visible = false
 
 [node name="PauseDlg" parent="Dialogs" instance=ExtResource( 7 )]
 visible = false
-[connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/RndDmgTestBtn" to="." method="_on_RndDmgTestBtn_pressed"]
+
+[node name="StructuresDialog" parent="Dialogs" instance=ExtResource( 9 )]
+[connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
