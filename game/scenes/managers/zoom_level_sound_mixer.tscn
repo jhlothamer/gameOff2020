@@ -1,6 +1,6 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=46 format=2]
 
-[ext_resource path="res://assets/audio/music/Music_Sample-01.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Near.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/sound/rand_audio_stream_player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_3.wav" type="AudioStream" id=4]
@@ -41,6 +41,10 @@
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Human_5.wav" type="AudioStream" id=39]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Mid_Train_1.wav" type="AudioStream" id=40]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_13.wav" type="AudioStream" id=41]
+[ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Far.ogg" type="AudioStream" id=42]
+[ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Mid.ogg" type="AudioStream" id=43]
+[ext_resource path="res://assets/audio/sounds/UI_Zoom_In_01.wav" type="AudioStream" id=44]
+[ext_resource path="res://assets/audio/sounds/UI_Zoom_Out_01.wav" type="AudioStream" id=45]
 
 [node name="ZoomLevelSoundMixer" type="Node"]
 pause_mode = 2
@@ -123,7 +127,7 @@ stream = ExtResource( 27 )
 [node name="Zoom2Music" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Music"]
-stream = ExtResource( 1 )
+stream = ExtResource( 43 )
 bus = "Zoom2"
 
 [node name="Zoom2Sound" type="Node" parent="."]
@@ -151,7 +155,7 @@ stream = ExtResource( 40 )
 [node name="Zoom3Music" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Music"]
-stream = ExtResource( 1 )
+stream = ExtResource( 42 )
 volume_db = -14.241
 bus = "Zoom3"
 
@@ -198,3 +202,9 @@ stream = ExtResource( 10 )
 
 [node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
 stream = ExtResource( 13 )
+
+[node name="ZoomInSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 44 )
+
+[node name="ZoomOutSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 45 )

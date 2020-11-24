@@ -6,6 +6,8 @@ export var costs_row_color: Color
 
 
 onready var _tree := $Tree
+onready var _dialog_open_sound := $DialogOpenStreamPlayer
+onready var _dialog_close_sound := $DialogCloseStreamPlayer
 
 enum Columns{
 	StructureName,
@@ -38,6 +40,7 @@ func show():
 	_refresh_contents()
 	.show()
 	popup_centered()
+	_dialog_open_sound.play()
 
 
 func _refresh_contents():
@@ -137,13 +140,16 @@ func _set_bg_color(item: TreeItem, bg_color: Color) -> void:
 func _on_StructuresDialog_popup_hide():
 	get_tree().paused = false
 	hide()
+	_dialog_close_sound.play()
 
 
 func _on_StructuresDialog_confirmed():
 	get_tree().paused = false
 	hide()
+	_dialog_close_sound.play()
 
 
 func _on_StructuresDialog_custom_action(action):
 	get_tree().paused = false
 	hide()
+	_dialog_close_sound.play()

@@ -9,6 +9,7 @@ var label_visible := false setget _set_label_visible
 
 onready var _texture_button := $TextureButton
 onready var _label := $Label
+onready var _mouse_over_sound := $MouseOverStreamPlayer
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
@@ -23,6 +24,18 @@ var _normal_icons := {
 	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
 }
 
+var _mouse_over_icons := {
+	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_mouse_over.png",
+	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_mouse_over.png",
+	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_mouse_over.png",
+	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_mouse_over.png",
+	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_mouse_over.png",
+	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_mouse_over.png",
+	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_mouse_over.png",
+	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_mouse_over.png",
+	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_mouse_over.png",
+	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png",
+}
 
 var _disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
@@ -39,6 +52,7 @@ var _disabled_icons := {
 
 func _ready():
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
+	_texture_button.texture_hover = load(_mouse_over_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
 	_texture_button.hint_tooltip = EnumUtil.get_string(StructureMgr.StructureTileType, structure_type)
 	call_deferred("_init_labels")
@@ -75,3 +89,9 @@ func _set_label_visible(value):
 
 func _on_TextureButton_button_down():
 	emit_signal("button_down")
+
+
+
+func _on_TextureButton_mouse_entered():
+	if !disabled:
+		_mouse_over_sound.play()
