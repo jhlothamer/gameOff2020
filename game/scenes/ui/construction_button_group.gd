@@ -5,6 +5,7 @@ signal button_down()
 export (StructureMgr.StructureTileType) var structure_type: int
 
 var disabled := false setget _set_disabled
+var collapsed := true
 var label_visible := false setget _set_label_visible
 
 onready var _texture_button := $TextureButton
@@ -93,5 +94,5 @@ func _on_TextureButton_button_down():
 
 
 func _on_TextureButton_mouse_entered():
-	if !disabled:
+	if !disabled && !collapsed:
 		_mouse_over_sound.play()

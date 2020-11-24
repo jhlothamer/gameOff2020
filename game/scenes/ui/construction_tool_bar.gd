@@ -95,6 +95,9 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	if !_expanded:
 		for i in range(2, _btns.size()):
 			_btns[i].rect_position = Vector2.ZERO
+			_btns[i].collapsed = true
+		_btns[1].collapsed = true
+		
 
 
 func _on_AnimationPlayer_animation_started(_anim_name):
@@ -134,6 +137,7 @@ func _refresh_button_disable_states():
 	for structure_type_id in _structure_tile_type_to_button.keys():
 		var btn = _structure_tile_type_to_button[structure_type_id]
 		btn.disabled = !resource_mgr.have_enough_resources_for_constructions(structure_type_id)
+		btn.collapsed = false
 
 func _set_construction_button_labels_visibility(is_visible: bool) -> void:
 	for btn in _structure_tile_type_to_button.values():
