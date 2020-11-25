@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/audio/sounds/UI_Menu_Open_01.wav" type="AudioStream" id=3]
 
 [node name="StructuresDialog" type="AcceptDialog"]
+pause_mode = 2
 margin_right = 933.0
 margin_bottom = 289.0
 window_title = "Structures"

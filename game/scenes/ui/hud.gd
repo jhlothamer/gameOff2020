@@ -7,6 +7,7 @@ signal random_damage_test_clicked()
 onready var dialogs: Control = $Dialogs
 onready var resources_dialog: Control = $Dialogs/ResourcesDlg
 onready var structures_dialog := $Dialogs/StructuresDialog
+onready var help_dialog := $Dialogs/HelpDialog
 
 var _last_control_focused: Control
 
@@ -42,3 +43,7 @@ func _on_RndDmgTestBtn_pressed():
 
 func _on_StructureInfoBtn_pressed():
 	structures_dialog.show()
+
+
+func _on_HelpBtn_pressed():
+	help_dialog.show()

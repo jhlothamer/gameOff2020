@@ -1,3 +1,4 @@
+class_name HowToPlay
 extends TextureRect
 
 signal intro_lines_complete()
