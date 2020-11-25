@@ -1,10 +1,10 @@
-This is a realtime construction and management simulation.  You're goal is to keep the colonists alive and grow the population to 10,000 individuals before the generation ship arrives at the destination planet.
+This is a real time construction and management simulation.  You're goal is to keep the colonists alive and grow the population to 10,000 individuals before the generation ship arrives at the destination planet.
 
 To grow the population you'll need to provide more food, water and shelter at the very least.  But people have other needs too such as clothing , medical care, places to work, education and recreation.  All of this is produced or provided by structures.
 
 [table=2]
 [cell][img]res://assets/images/ui/icons/Start-Tile_icon.png[/img] [/cell]
-[cell]To construct a structure first you must build a Universal Utility Conduit structure on a tile.  This structure provides all the utility connections required by other structures such as power, water, sewage, and transporation tunneling.[/cell]
+[cell]To construct a structure first you must build a Universal Utility Conduit structure on a tile.  This structure provides all the utility connections required by other structures such as power, water, sewage, and transportation tunneling.[/cell]
 [/table]
 
 On top of Universal Utility Conduit structures can be placed all the other structure types.  The following is a list of such structures and what resource they provide.
@@ -35,13 +35,13 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [cell][/cell]
 
 [cell][img]res://assets/images/ui/icons/Medical_icon.png[/img] [/cell]
-[cell]Medical Center - Provides health services.  An unhealth population does not thrive as well as a healthy one.[/cell]
+[cell]Medical Center - Provides health services.  An unhealthy population does not thrive as well as a healthy one.[/cell]
 
 [cell][/cell]
 [cell][/cell]
 
 [cell][img]res://assets/images/ui/icons/Education_icon.png[/img] [/cell]
-[cell]Education Complex - This provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaning the robotic fleet.[/cell]
+[cell]Education Complex - This provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaining the robotic fleet.[/cell]
 
 [cell][/cell]
 [cell][/cell]
@@ -53,7 +53,7 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [cell][/cell]
 
 [cell][img]res://assets/images/ui/icons/Recreation_icon.png[/img] [/cell]
-[cell]Recreation Center - Provides entertainment and excercise for the colony.[/cell]
+[cell]Recreation Center - Provides entertainment and exercise for the colony.[/cell]
 
 [/table]
 
@@ -61,7 +61,6 @@ Constructing and repairing colony structures takes resources, of which some have
 
 You can remove a structure from the colony to reclaim a portion of the resources it took to construct it.  You may wish to do this so that another more critical structure may be built or decided that a structure was constructed in error.  Structure can also become nonfunctional by wear and tear.  Structures need to be repaired quickly or else the population will start to suffer.  But as it costs resources to repair a structure another option is to reclaim it or leave it disabled if it's not at the moment vital.
 
-Structures can also be disabled.  While they are disabled they require no power and so make power avialable for other structures on the power grid.  Disabling a non-vital structure such as Recreation Center may allow more food or water to be available and thus save lives.
+Structures can also be disabled.  While they are disabled they require no power and so make power available for other structures on the power grid.  Disabling a non-vital structure such as Recreation Center may allow more food or water to be available and thus save lives.
 
 [center]Good luck!![/center]
-

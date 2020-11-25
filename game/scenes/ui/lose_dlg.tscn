@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/ui/lose_dlg.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/dialog_background.tscn" type="PackedScene" id=4]
+
+[node name="LoseDialog" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -376.5
+margin_top = -222.0
+margin_right = 376.5
+margin_bottom = 222.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+margin_right = 753.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "Population Crash!"
+align = 1
+
+[node name="WhatHappenedLabel" type="Label" parent="VBoxContainer"]
+margin_top = 89.0
+margin_right = 753.0
+margin_bottom = 310.0
+custom_fonts/font = ExtResource( 2 )
+text = "The population dwindled till the colony halls echoed only with the sound of automated machinery and the occasional wail of the lonely.  Realizing that their numbers did not provide enough genetic diversity for viable offspring, those that remained gathered on the itinerant moon's surface for one last picnic in the cosmic void, sans spacesuits of course."
+align = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 340.0
+margin_right = 753.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+
+[node name="TryAgainBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 351.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Try Again"
+
+[node name="MainMenuBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 401.0
+margin_right = 753.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Main Menu"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TryAgainBtn" to="." method="_on_TryAgainBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainMenuBtn" to="." method="_on_MainMenuBtn_pressed"]

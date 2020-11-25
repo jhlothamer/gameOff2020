@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ui/help_dialog.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/sounds/UI_Menu_Open_01.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sounds/UI_Menu_Close_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/fonts/text_small.tres" type="DynamicFont" id=4]
+
+[node name="HelpDialog" type="AcceptDialog"]
+pause_mode = 2
+margin_right = 940.0
+margin_bottom = 434.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 930.0
+margin_bottom = 394.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "marry had a little lamb and thought it tasted like ham."
+text = "marry had a little lamb and thought it tasted like ham."
+
+[node name="DialogOpenStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="DialogCloseStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="about_to_show" from="." to="." method="_on_HelpDialog_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_HelpDialog_popup_hide"]

@@ -267,9 +267,10 @@ func _on_stat_cycle_time_has_elapsed() -> void:
 	
 	emit_signal("stats_updated")
 	
-	var loose_game_population_amount : float = population_stat.stat_metadata["increasePercentLimit"]
+	var loose_game_population_amount : float = population_stat.stat_metadata["looseGameAmount"]
 	
 	if loose_game_population_amount > current_population:
+		print("population crashed!")
 		emit_signal("population_crashed_game_over")
 
 

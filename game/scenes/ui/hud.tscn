@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/ui/pause_dlg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/ui/stat_display.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ui/structures_dialog.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ui/help_dialog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ui/lose_dlg.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -75,21 +77,27 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer"]
 margin_left = 20.0
 margin_right = 158.0
-margin_bottom = 179.0
+margin_bottom = 203.0
 grow_vertical = 0
 alignment = 2
 
 [node name="StructureInfoBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_top = 1.0
 margin_right = 138.0
-margin_bottom = 22.0
+margin_bottom = 21.0
 custom_fonts/font = ExtResource( 3 )
 text = "Structure Info"
 
-[node name="PanelContainer" type="PanelContainer" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_top = 26.0
+[node name="HelpBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
+margin_top = 25.0
 margin_right = 138.0
-margin_bottom = 179.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "Help"
+
+[node name="PanelContainer" type="PanelContainer" parent="BottomLeftMarginContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 138.0
+margin_bottom = 203.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,4 +170,10 @@ visible = false
 visible = false
 
 [node name="StructuresDialog" parent="Dialogs" instance=ExtResource( 9 )]
+
+[node name="HelpDialog" parent="Dialogs" instance=ExtResource( 10 )]
+
+[node name="LoseDialog" parent="Dialogs" instance=ExtResource( 11 )]
+visible = false
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
+[connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]
