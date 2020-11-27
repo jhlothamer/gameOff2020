@@ -258,6 +258,7 @@ __meta__ = {
 }
 
 [node name="Moon" parent="." instance=ExtResource( 14 )]
+point_count = 200
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false

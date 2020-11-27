@@ -65,6 +65,7 @@ class StructureData:
 	var structure_metadata
 	var disabled := false
 	var damaged := false
+	var repairing := false
 	var structure_name = ""
 	var under_construction := true
 	var resources_lacking := []
@@ -276,23 +277,22 @@ func refresh_structure_resources(debug: bool = false):
 
 
 func _refresh_structure_resource_indicators(structure: StructureData):
-	if structure.structure_type_id == Constants.StructureTileType.UUC:
-		return
-		
-	var structure_resource_icon_cellv = structure.tile_map_cell * 8 + Vector2(5,6)
+	var structure_resource_icon_cellv = structure.tile_map_cell * 8 + Vector2(6,6)
 	
-	if structure.structure_type_id != Constants.StructureTileType.Power:
+	if structure.structure_type_id != Constants.StructureTileType.Power and structure.structure_type_id != Constants.StructureTileType.UUC:
 		if structure.resources_lacking.has("electricity"):
 			Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 2)
 		else:
 			Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 0)
-	
-	structure_resource_icon_cellv += Vector2.RIGHT
-	
-	if structure.resources_lacking.has("population"):
-		Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 3)
 	else:
-		Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 1)
+		Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, -1)
+	
+	#structure_resource_icon_cellv += Vector2.RIGHT
+	
+#	if structure.resources_lacking.has("population"):
+#		Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 3)
+#	else:
+#		Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 1)
 
 
 func _get_powered_cells(power_station_cell: Vector2) -> Array:
@@ -364,6 +364,7 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 
 
 func _do_repair_animation(structure: StructureData) -> void:
+	structure.repairing = true
 	#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, -1)
 	var repair_animation: AnimatedSprite = _repair_animation_class.instance()
 	structure.current_animation = repair_animation
@@ -376,6 +377,7 @@ func _do_repair_animation(structure: StructureData) -> void:
 	print("done repairing tile at " + str(structure.tile_map_cell))
 	repair_animation.queue_free()
 	structure.disabled = false
+	structure.repairing = false
 	#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 	refresh_structure_resources(true)
 

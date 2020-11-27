@@ -88,18 +88,26 @@ func _zoom_step(zoom_in: bool) -> void:
 	emit_signal("zoom_step_change_initiated", current_zoom_level, next_zoom_level, zoom_step_time_seconds)
 	
 	tween.interpolate_property(camera, "zoom", camera.zoom, Vector2.ONE*zoom, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	if zoom_to_mouse:
-		var mouse_pos = get_viewport().get_mouse_position()# camera.get_global_mouse_position()
+	if zoom_to_mouse && zoom_in:
+		
+#		var x = camera.get_global_mouse_position()
+#		tween.interpolate_property(camera, "global_position", camera.global_position, x, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		
+		var mouse_pos = get_viewport().get_mouse_position()#
+		
+#		var top_left_screen = camera.global_position - get_viewport().size/2
+#		mouse_pos = top_left_screen - camera.get_global_mouse_position()
+#		print("mouse position is " + str(mouse_pos))
+		
+		
 		var point = mouse_pos
 		var c0 = camera.global_position
 		var v0 = get_viewport().size
+		print("viewport size is " + str(v0))
 		var z0 = camera.zoom
 		var z1 = zoom*Vector2.ONE
-		
+
 		var c1 = c0 + (-0.5*v0 + point)*(z0-z1)
-#		print("zoom to mouse: " + str(c1))
-#		print("camera glob pos: " + str(camera.global_position))
-		#camera.global_position = c1
 		tween.interpolate_property(camera, "global_position", camera.global_position, c1, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		#tween.interpolate_property(camera, "global_position", camera.global_position, mouse_pos, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()

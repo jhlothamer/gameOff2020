@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/ui/time_line.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/temp/timeline/timeline.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/temp/timeline/planet_endpoint.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/temp/timeline/destination_planet_time_line.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/temp/timeline/meteor_shower_marker.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/temp/timeline/comet_marker.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/temp/timeline/generation_ship.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/temp/timeline/generation_ship_actual.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/temp/timeline/desert_planet_time_line.png" type="Texture" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -24,44 +25,42 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 50.0
-margin_right = 702.0
-margin_bottom = 67.0
+margin_right = 704.0
+margin_bottom = 68.0
 mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
-margin_right = 19.0
-margin_bottom = 17.0
+margin_right = 20.0
+margin_bottom = 18.0
 mouse_filter = 2
 custom_constants/margin_top = -2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2"]
-modulate = Color( 0.972549, 0.713726, 0.376471, 1 )
 margin_top = -2.0
-margin_right = 19.0
-margin_bottom = 17.0
+margin_right = 20.0
+margin_bottom = 18.0
 mouse_filter = 2
 size_flags_vertical = 3
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
-margin_left = 23.0
-margin_right = 679.0
-margin_bottom = 17.0
+margin_left = 24.0
+margin_right = 680.0
+margin_bottom = 18.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 683.0
-margin_right = 702.0
-margin_bottom = 17.0
+margin_left = 684.0
+margin_right = 704.0
+margin_bottom = 18.0
 mouse_filter = 2
 custom_constants/margin_top = -2
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/MarginContainer"]
-self_modulate = Color( 0.572549, 0.223529, 0.964706, 1 )
 margin_top = -2.0
-margin_right = 19.0
-margin_bottom = 17.0
+margin_right = 20.0
+margin_bottom = 18.0
 mouse_filter = 2
 texture = ExtResource( 3 )
 
@@ -86,5 +85,6 @@ curve = SubResource( 1 )
 position = Vector2( 25.0855, 58.0042 )
 
 [node name="generation_ship" type="Sprite" parent="Path2D/PathFollow2D"]
+position = Vector2( 6.39926, 0.193245 )
 texture = ExtResource( 6 )
-offset = Vector2( -25, 0 )
+offset = Vector2( -31.3993, -0.193245 )

@@ -5,6 +5,7 @@ signal time_has_expired()
 signal AsteroidShowerEvent(event)
 
 export (int, 1, 60)  var game_time_length_minutes: int = 30
+export (int, 0, 100000) var starting_game_time_seconds: int = 0
 export (int, 1, 60) var seconds_per_stat_cycle_time: int = 1
 
 var _current_time_seconds: float
@@ -48,6 +49,8 @@ func _ready():
 	SignalMgr.register_publisher(self, "time_has_expired")
 	SignalMgr.register_publisher(self, "AsteroidShowerEvent")
 	_game_time_length_seconds = game_time_length_minutes * 60
+	if starting_game_time_seconds > 0:
+		_current_time_seconds = min(float(starting_game_time_seconds), _game_time_length_seconds)
 	_next_year_seconds = float(seconds_per_stat_cycle_time)
 	for c in _marker_templates_parent.get_children():
 		c.visible = false
