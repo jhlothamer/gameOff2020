@@ -19,6 +19,8 @@ export var range_of_time_between_showers: int = 50
 export var showers_per_game_min: int = 5
 export var showers_per_game_max: int = 10
 
+export (int, 0, 120) var showers_time_margine_begin_end := 120
+
 var event_check_frequency = 30
 
 # sprite object and event time
@@ -93,13 +95,13 @@ func _sort_timeline_events():
 
 func _initialize_timeline():
 	var total_game_time = game_time_length_minutes * 60
-	var adjusted_time_range = total_game_time - 120
+	var adjusted_time_range = total_game_time - showers_time_margine_begin_end
 	var total_shower_events = randi() % (showers_per_game_max - showers_per_game_min) + showers_per_game_min
 	for x in range( 0, total_shower_events ):
-		var seconds_event = 120 + ( x * adjusted_time_range / total_shower_events )
+		var seconds_event = showers_time_margine_begin_end + ( x * adjusted_time_range / total_shower_events )
 		seconds_event += rand_range(-range_of_time_between_showers,range_of_time_between_showers)
 		if seconds_event > total_game_time:
-			seconds_event = total_game_time - (120 + rand_range(-20,20))
+			seconds_event = total_game_time - (showers_time_margine_begin_end + rand_range(-20,20))
 		var event_dict = {}
 		event_dict["type"] = 0
 		event_dict["time"] = seconds_event

@@ -85,6 +85,5 @@ curve = SubResource( 1 )
 position = Vector2( 25.0855, 58.0042 )
 
 [node name="generation_ship" type="Sprite" parent="Path2D/PathFollow2D"]
-position = Vector2( 6.39926, 0.193245 )
 texture = ExtResource( 6 )
 offset = Vector2( -31.3993, -0.193245 )
