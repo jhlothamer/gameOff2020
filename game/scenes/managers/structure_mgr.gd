@@ -66,6 +66,7 @@ class StructureData:
 	var disabled := false
 	var damaged := false
 	var repairing := false
+	var reclaiming := false
 	var structure_name = ""
 	var under_construction := true
 	var resources_lacking := []
@@ -270,8 +271,6 @@ func refresh_structure_resources(debug: bool = false):
 			Game.get_damage_overlay_tile_map().set_cellv(structure.tile_map_cell, 0)
 			Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		else:
-			if debug:
-				print("clearing damage overlat for tile at " + str(structure.tile_map_cell))
 			Game.get_damage_overlay_tile_map().set_cellv(structure.tile_map_cell, -1)
 			#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 
@@ -344,6 +343,7 @@ func _do_construction_animation(structure: StructureData) -> void:
 
 func _do_reclamation_animation(structure: StructureData) -> void:
 	structure.clear_current_animation()
+	structure.reclaiming = true
 	Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, -1)
 	var construction_animation: AnimatedSprite = _construction_animation_class.instance()
 	structure.current_animation = construction_animation

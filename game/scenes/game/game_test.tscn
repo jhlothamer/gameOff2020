@@ -258,7 +258,6 @@ __meta__ = {
 }
 
 [node name="Moon" parent="." instance=ExtResource( 14 )]
-point_count = 200
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -369,6 +368,7 @@ min_time_between_asteroids = 4.0
 
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 8 )
+max_damage_time_interval = 20
 
 [node name="DamageTimer" type="Timer" parent="DamageMgr"]
 one_shot = true

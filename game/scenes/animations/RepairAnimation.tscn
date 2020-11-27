@@ -22,9 +22,9 @@ region = Rect2( 400, 0, 200, 200 )
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
+"loop": false,
 "name": "default",
-"speed": 0.8
+"speed": 0.33
 } ]
 
 [node name="RepairAnimation" type="AnimatedSprite"]
