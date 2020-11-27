@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AMB_Space_Asteroid_Impact_1.wav-93988009ce00816837809e97d373a8fe.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/ambience/AMB_Space_Asteroid_Impact_1.wav"
+dest_files=[ "res://.import/AMB_Space_Asteroid_Impact_1.wav-93988009ce00816837809e97d373a8fe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
