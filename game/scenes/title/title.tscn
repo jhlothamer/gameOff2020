@@ -87,6 +87,7 @@ __meta__ = {
 [node name="newGameBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
 margin_right = 300.0
 margin_bottom = 65.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "New Game"
 sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
 fadeSound = true
@@ -95,6 +96,7 @@ fadeSound = true
 margin_top = 69.0
 margin_right = 300.0
 margin_bottom = 134.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Credits"
 sceneToLoad = "res://scenes/credits/credits.tscn"
 fadeSound = true
@@ -103,6 +105,7 @@ fadeSound = true
 margin_top = 138.0
 margin_right = 300.0
 margin_bottom = 203.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

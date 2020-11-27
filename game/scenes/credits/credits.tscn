@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
+speed = 1.0
 
 [node name="CreditsLbl" type="Label" parent="."]
 margin_left = 20.0
@@ -38,6 +39,7 @@ margin_left = -160.0
 margin_top = -88.0
 margin_right = 0.0
 margin_bottom = 0.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Back"
 sceneToLoad = "res://scenes/title/title.tscn"
 fadeSound = true
