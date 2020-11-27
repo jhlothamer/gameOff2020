@@ -19,4 +19,5 @@ const STRUCTURE_TILE_TYPE_COUNT  = 10
 
 const TITLE_SCENE_PATH = "res://scenes/title/title.tscn"
 const GAME_SCENE_PATH = "res://scenes/game/game.tscn"
+const ENDING_SCENE_PATH = "res://scenes/ending/ending.tscn"
 const TRANSITION_SPEED = 2.0

@@ -29,8 +29,9 @@ func _ready():
 
 func show_for_structure(structure: StructureMgr.StructureData, position: Vector2):
 	set_item_text(NAME_ITEM_ID, structure._get_name())
-	set_item_disabled(REPAIR_ITEM_ID, !structure.damaged)
-	set_item_disabled(DISABLE_ITEM_ID, structure.damaged)
+	set_item_disabled(REPAIR_ITEM_ID, !structure.damaged || structure.repairing)
+	set_item_disabled(DISABLE_ITEM_ID, structure.damaged || structure.reclaiming)
+	set_item_disabled(RECLAIM_ITEM_ID, structure.reclaiming || structure.repairing)
 	if structure.disabled:
 		set_item_text(DISABLE_ITEM_ID, "Enable")
 	else:

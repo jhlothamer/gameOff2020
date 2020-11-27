@@ -16,6 +16,7 @@ onready var camera: Camera2D = get_parent() if typeof(get_parent()) == typeof(Ca
 onready var tween: Tween
 
 var _current_zoom_step := 0
+var _window_size := Vector2.ZERO
 
 func _ready():
 	if camera == null:
@@ -25,6 +26,8 @@ func _ready():
 	_current_zoom_step = zoom_steps
 	tween = Tween.new()
 	add_child(tween)
+	_window_size.x = ProjectSettings.get_setting("display/window/size/width")
+	_window_size.y = ProjectSettings.get_setting("display/window/size/height")
 
 func _unhandled_input(event):
 	#func _input(event):
@@ -54,7 +57,7 @@ func _zoom_regular(zoom_in: bool) -> void:
 	zoom = clamp( zoom + delta, min_camera_zoom, max_camera_zoom)
 
 	if zoom_to_mouse:
-		var mouse_pos = get_viewport().get_mouse_position()# camera.get_global_mouse_position()
+		var mouse_pos = _get_real_mouse_position()
 		var point = mouse_pos
 		var c0 = camera.global_position
 		var v0 = get_viewport().size
@@ -88,21 +91,27 @@ func _zoom_step(zoom_in: bool) -> void:
 	emit_signal("zoom_step_change_initiated", current_zoom_level, next_zoom_level, zoom_step_time_seconds)
 	
 	tween.interpolate_property(camera, "zoom", camera.zoom, Vector2.ONE*zoom, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	if zoom_to_mouse:
-		var mouse_pos = get_viewport().get_mouse_position()# camera.get_global_mouse_position()
+	if zoom_to_mouse and zoom_in:
+		var mouse_pos = _get_real_mouse_position()
+				
 		var point = mouse_pos
 		var c0 = camera.global_position
 		var v0 = get_viewport().size
+		print("viewport size is " + str(v0))
 		var z0 = camera.zoom
 		var z1 = zoom*Vector2.ONE
-		
+
 		var c1 = c0 + (-0.5*v0 + point)*(z0-z1)
-#		print("zoom to mouse: " + str(c1))
-#		print("camera glob pos: " + str(camera.global_position))
-		#camera.global_position = c1
 		tween.interpolate_property(camera, "global_position", camera.global_position, c1, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		#tween.interpolate_property(camera, "global_position", camera.global_position, mouse_pos, zoom_step_time_seconds,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 
+func _get_real_mouse_position() -> Vector2:
+	var viewport := get_viewport()
+	var mouse_pos = viewport.get_mouse_position()
+	var scaling = viewport.size / _window_size
+	mouse_pos *= scaling
+	
+	return mouse_pos
 

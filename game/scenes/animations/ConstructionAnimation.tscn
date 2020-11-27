@@ -30,7 +30,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": false,
 "name": "default",
-"speed": 0.4
+"speed": 1.33
 } ]
 
 [node name="ConstructionAnimation" type="AnimatedSprite"]

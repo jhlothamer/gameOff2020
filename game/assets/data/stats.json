@@ -2,6 +2,7 @@
 	"Population":{
 		"startingAmount": 1000,
 		"looseGameAmount": 100,
+		"winGameAmount": 10000,
 		"increasePercentLimit": 0.02
 	},
 	"Morale":{

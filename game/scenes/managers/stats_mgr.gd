@@ -71,6 +71,7 @@ func _ready():
 	SignalMgr.register_subscriber(self, "stat_cycle_time_has_elapsed", "_on_stat_cycle_time_has_elapsed")
 	SignalMgr.register_publisher(self, "stats_updated")
 	SignalMgr.register_publisher(self, "population_crashed_game_over")
+	SignalMgr.register_subscriber(self, "time_has_expired", "_on_time_has_expired")
 	call_deferred("_init_stats")
 
 static func get_stat_mgr() -> StatsMgr:
@@ -291,3 +292,20 @@ func get_stat_provided_by_structure_type_id(structure_type_id: int) -> Stat:
 	if _stats_by_produced_by_structure_id.has(structure_type_id):
 		return _stats_by_produced_by_structure_id[structure_type_id]
 	return null
+
+
+func _on_time_has_expired():
+	var population_stat := _get_stat(StatType.Population)
+	var current_population = population_stat.get_value()
+	var loose_game_population_amount : float = population_stat.stat_metadata["looseGameAmount"]
+	if loose_game_population_amount > current_population:
+		print("population crashed!")
+		emit_signal("population_crashed_game_over")
+		return
+	var win_game_population_amount : float = population_stat.stat_metadata["winGameAmount"]
+	if win_game_population_amount > current_population:
+		Globals.set("won", false)
+	else:
+		Globals.set("won", true)
+	transitionMgr.transitionTo(Constants.ENDING_SCENE_PATH, Constants.TRANSITION_SPEED, true)
+

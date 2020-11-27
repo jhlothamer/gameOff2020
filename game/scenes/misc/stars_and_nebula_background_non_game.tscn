@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/white_rect_10x10.png" type="Texture" id=1]
+[ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.gd" type="Script" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform float speed = 1.0;
 const int OCTAVES = 5;
 
 vec3 mod289(vec3 x)
@@ -138,20 +140,22 @@ void fragment()
 	float res = max((1.0 / SCREEN_PIXEL_SIZE).y, (1.0 / SCREEN_PIXEL_SIZE).y);
     vec2 coord = UV / 50.0;// * 5.0;
     vec3 ret = vec3(0.);
-
+	
+	float time = TIME * speed;
     vec3 nebcol1 = hsv2rgb(vec3(.5, 0.5, .25));
     vec3 nebcol2 = hsv2rgb(vec3(.7, 1., .25));
-    ret += nebula_gen(coord + ( vec2(TIME/ 80.0, 0)) + vec2(.1, .1), nebcol1, 1.);
-    ret += nebula_gen(coord + ( vec2( TIME / 160.0, 0)) + vec2(0., .2), nebcol2, .5);
-    ret += star_gen(coord + (vec2(TIME / 40.0, 0.0)), 4., 0.1, 2.) * vec3(.74, .74, .74);
-    ret += star_gen(coord + (vec2(TIME / 400.0, 0.0)), 8., 0.05, 1.) * vec3(.97, .74, .74);
-    ret += star_gen(coord + (vec2(TIME / 1000.0, 0.0)), 16., 0.025, 0.5) * vec3(.9, .9, .95);
+    ret += nebula_gen(coord + ( vec2(time/ 80.0, 0)) + vec2(.1, .1), nebcol1, 1.);
+    ret += nebula_gen(coord + ( vec2( time / 160.0, 0)) + vec2(0., .2), nebcol2, .5);
+    ret += star_gen(coord + (vec2(time / 40.0, 0.0)), 4., 0.1, 2.) * vec3(.74, .74, .74);
+    ret += star_gen(coord + (vec2(time / 400.0, 0.0)), 8., 0.05, 1.) * vec3(.97, .74, .74);
+    ret += star_gen(coord + (vec2(time / 1000.0, 0.0)), 16., 0.025, 0.5) * vec3(.9, .9, .95);
     
     COLOR = vec4(ret, 1.);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+shader_param/speed = 0.0
 
 [node name="StarsAndNebula" type="TextureRect"]
 material = SubResource( 2 )
@@ -159,6 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 2
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
