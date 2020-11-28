@@ -30,6 +30,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ShortcutLabel" type="Label" parent="TextureButton"]
+margin_right = 50.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 50, 50 )
+text = "(U)"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="."]
 margin_top = 54.0
 margin_right = 54.0
@@ -44,3 +55,4 @@ stream = ExtResource( 4 )
 bus = "UI"
 [connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]

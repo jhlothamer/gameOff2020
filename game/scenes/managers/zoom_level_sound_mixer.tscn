@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Near.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/sound/rand_audio_stream_player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_3.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Alarms_1.wav" type="AudioStream" id=6]
@@ -398,9 +398,10 @@ bus = "AMB_Ship_Far"
 
 [node name="Zoom3Music" type="Node" parent="."]
 
-[node name="Monochrome_Breakfast_Far" type="AudioStreamPlayer" parent="Zoom3Music"]
+[node name="Monochrome_Breakfast_Far" type="AudioStreamPlayer2D" parent="Zoom3Music"]
 stream = ExtResource( 42 )
 volume_db = -6.0
+max_distance = 10000.0
 bus = "Zoom3"
 
 [node name="Zoom3Sound" type="Node" parent="."]

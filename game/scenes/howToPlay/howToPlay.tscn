@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=9]
 

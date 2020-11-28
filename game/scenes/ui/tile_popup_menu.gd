@@ -1,7 +1,7 @@
 extends PopupMenu
 
-
-signal structure_tile_reclaimed(structure_tile_type, cell_v)
+signal confirm_structure_tile_reclaim(structure_tile_type, cell_v)
+#signal structure_tile_reclaimed(structure_tile_type, cell_v)
 signal structure_tile_repaired(structure_tile_type, cell_v)
 signal structure_tile_disabled(structure_tile_type, cell_v)
 signal structure_tile_enabled(structure_tile_type, cell_v)
@@ -17,7 +17,8 @@ const DISABLE_ITEM_ID := 4
 
 func _ready():
 	SignalMgr.register_publisher(self, "structure_tile_repaired")
-	SignalMgr.register_publisher(self, "structure_tile_reclaimed")
+	#SignalMgr.register_publisher(self, "structure_tile_reclaimed")
+	SignalMgr.register_publisher(self, "confirm_structure_tile_reclaim")
 	SignalMgr.register_publisher(self, "structure_tile_disabled")
 	SignalMgr.register_publisher(self, "structure_tile_enabled")
 	add_item("", 0) # will be filled with structure name
@@ -60,7 +61,7 @@ func _on_TilePopupMenu_id_pressed(id):
 	if id == REPAIR_ITEM_ID:
 		emit_signal("structure_tile_repaired", _current_structure.structure_type_id, _current_structure.tile_map_cell)
 	elif id == RECLAIM_ITEM_ID:
-		emit_signal("structure_tile_reclaimed", _current_structure.structure_type_id, _current_structure.tile_map_cell)
+		emit_signal("confirm_structure_tile_reclaim", _current_structure.structure_type_id, _current_structure.tile_map_cell)
 	elif id == DISABLE_ITEM_ID:
 		if _current_structure.disabled:
 			emit_signal("structure_tile_enabled", _current_structure.structure_type_id, _current_structure.tile_map_cell)

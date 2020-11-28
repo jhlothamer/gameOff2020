@@ -58,7 +58,9 @@ margin_right = 351.0
 margin_bottom = 65.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Try Again"
+flat = true
 
 [node name="MainMenuBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 401.0
@@ -66,6 +68,8 @@ margin_right = 753.0
 margin_bottom = 65.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Main Menu"
+flat = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TryAgainBtn" to="." method="_on_TryAgainBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MainMenuBtn" to="." method="_on_MainMenuBtn_pressed"]
