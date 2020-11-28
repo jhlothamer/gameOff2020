@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Tone_1.ogg" type="AudioStream" id=7]
 
 [node name="credits" type="TextureRect"]
 self_modulate = Color( 0.578482, 0.195068, 0.734375, 1 )
@@ -44,9 +44,10 @@ text = "Back"
 sceneToLoad = "res://scenes/title/title.tscn"
 fadeSound = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AMB_Space_Tone_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
+bus = "AMB_Space"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_top = 0.5

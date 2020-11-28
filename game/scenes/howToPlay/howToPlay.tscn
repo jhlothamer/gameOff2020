@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Tone_1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=9]
 
@@ -26,9 +26,10 @@ time_between_line_fade_ins_seconds = 1.8
 [node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
 speed = 1.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AMB_Space_Tone_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
+bus = "AMB_Space"
 
 [node name="Introduction" type="Control" parent="."]
 anchor_right = 1.0

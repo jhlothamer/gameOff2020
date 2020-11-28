@@ -96,18 +96,22 @@ anims/expand = SubResource( 1 )
 
 [node name="MenuOpenStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -3.0
 bus = "UI"
 
 [node name="MenuCloseStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -3.0
 bus = "UI"
 
 [node name="MenuMouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -6.0
 bus = "UI"
 
 [node name="MenuSelectStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -3.0
 bus = "UI"
 [connection signal="mouse_entered" from="." to="." method="_on_ConstructionToolBar_mouse_entered"]
 [connection signal="focus_exited" from="ConstructionBtn" to="." method="_on_ConstructionBtn_focus_exited"]
