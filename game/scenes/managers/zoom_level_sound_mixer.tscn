@@ -52,81 +52,180 @@ script = ExtResource( 5 )
 
 [node name="Zoom1Music" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Music"]
+[node name="Monochrome_Breakfast_Near" type="AudioStreamPlayer" parent="Zoom1Music"]
 stream = ExtResource( 1 )
-bus = "Zoom1"
+bus = "AMB_Ship_Mid"
 
 [node name="Zoom1Sound" type="Node" parent="."]
 
 [node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="Zoom1Sound"]
 stream = ExtResource( 3 )
-volume_db = -15.0
+volume_db = -12.0
+bus = "Zoom1"
 
-[node name="RandAudioStreamPlayer" parent="Zoom1Sound" instance=ExtResource( 2 )]
+[node name="AMB_Ship_Near" parent="Zoom1Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_01" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 32 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_02" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 38 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_03" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 37 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_04" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 28 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_05" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 24 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_06" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 23 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_07" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 19 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_08" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 35 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_09" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 36 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_10" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 22 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_11" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 29 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_12" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 18 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer13" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_13" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 41 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer14" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 31 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer15" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_2" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 20 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer16" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_3" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 34 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer17" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_4" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 30 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer18" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_5" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 39 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer19" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_6" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 26 )
+bus = "AMB_Ship_Near"
 
-[node name="AudioStreamPlayer20" type="AudioStreamPlayer" parent="Zoom1Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Human_7" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Near"]
 stream = ExtResource( 27 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Mid" parent="Zoom1Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
+
+[node name="AMB_Ship_Mid_Impacts_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Mid"]
+stream = ExtResource( 21 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Mid_Impacts_2" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Mid"]
+stream = ExtResource( 17 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Mid_Impacts_3" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Mid"]
+stream = ExtResource( 25 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Mid_Impacts_4" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Mid"]
+stream = ExtResource( 33 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Mid_Train_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Mid"]
+stream = ExtResource( 40 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Far" parent="Zoom1Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
+
+[node name="AMB_Ship_Far_Alarms_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 6 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 7 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_2" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 8 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_3" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 4 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_4" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 12 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_5" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 9 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_6" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 15 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_7" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 16 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_1" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 14 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_2" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 11 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_3" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 10 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_4" type="AudioStreamPlayer" parent="Zoom1Sound/AMB_Ship_Far"]
+stream = ExtResource( 13 )
+bus = "AMB_Ship_Far"
 
 [node name="Zoom2Music" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Music"]
+[node name="Monochrome_Breakfast_Mid" type="AudioStreamPlayer" parent="Zoom2Music"]
 stream = ExtResource( 43 )
 bus = "Zoom2"
 
@@ -134,29 +233,174 @@ bus = "Zoom2"
 
 [node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="Zoom2Sound"]
 stream = ExtResource( 3 )
+volume_db = -24.0
+bus = "Zoom2"
 
-[node name="RandAudioStreamPlayer" parent="Zoom2Sound" instance=ExtResource( 2 )]
+[node name="AMB_Ship_Near" parent="Zoom2Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Near_Beeps_Blips_01" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 32 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_02" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 38 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_03" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 37 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_04" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 28 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_05" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 24 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_06" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 23 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_07" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 19 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_08" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 35 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_09" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 36 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_10" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 22 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_11" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 29 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_12" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 18 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Beeps_Blips_13" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 41 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 31 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_2" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 20 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_3" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 34 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_4" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 30 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_5" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 39 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_6" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 26 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Near_Human_7" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Near"]
+stream = ExtResource( 27 )
+bus = "AMB_Ship_Near"
+
+[node name="AMB_Ship_Mid" parent="Zoom2Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
+
+[node name="AMB_Ship_Mid_Impacts_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Mid"]
 stream = ExtResource( 21 )
+bus = "AMB_Ship_Mid"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Mid_Impacts_2" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Mid"]
 stream = ExtResource( 17 )
+bus = "AMB_Ship_Mid"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Mid_Impacts_3" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Mid"]
 stream = ExtResource( 25 )
+bus = "AMB_Ship_Mid"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Mid_Impacts_4" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Mid"]
 stream = ExtResource( 33 )
+bus = "AMB_Ship_Mid"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom2Sound/RandAudioStreamPlayer"]
+[node name="AMB_Ship_Mid_Train_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Mid"]
 stream = ExtResource( 40 )
+bus = "AMB_Ship_Mid"
+
+[node name="AMB_Ship_Far" parent="Zoom2Sound" instance=ExtResource( 2 )]
+min_seconds_between_play = 5.0
+max_seconds_between_play = 10.0
+
+[node name="AMB_Ship_Far_Alarms_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 6 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 7 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_2" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 8 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_3" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 4 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_4" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 12 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_5" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 9 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_6" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 15 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Impacts_7" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 16 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_1" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 14 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_2" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 11 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_3" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 10 )
+bus = "AMB_Ship_Far"
+
+[node name="AMB_Ship_Far_Rumbles_4" type="AudioStreamPlayer" parent="Zoom2Sound/AMB_Ship_Far"]
+stream = ExtResource( 13 )
+bus = "AMB_Ship_Far"
 
 [node name="Zoom3Music" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Music"]
+[node name="Monochrome_Breakfast_Far" type="AudioStreamPlayer" parent="Zoom3Music"]
 stream = ExtResource( 42 )
-volume_db = -14.241
+volume_db = -6.0
 bus = "Zoom3"
 
 [node name="Zoom3Sound" type="Node" parent="."]
@@ -165,46 +409,10 @@ bus = "Zoom3"
 stream = ExtResource( 3 )
 volume_db = -18.0
 
-[node name="RandAudioStreamPlayer" parent="Zoom3Sound" instance=ExtResource( 2 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 6 )
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 7 )
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 8 )
-
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 4 )
-
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 12 )
-
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 9 )
-
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 15 )
-
-[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 16 )
-
-[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 14 )
-
-[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 11 )
-
-[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 10 )
-
-[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Zoom3Sound/RandAudioStreamPlayer"]
-stream = ExtResource( 13 )
-
 [node name="ZoomInSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 44 )
+bus = "UI"
 
 [node name="ZoomOutSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 45 )
+bus = "UI"

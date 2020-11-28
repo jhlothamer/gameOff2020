@@ -40,6 +40,8 @@ script = ExtResource( 2 )
 
 [node name="ConstructionAudioStream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+bus = "SI"
 
 [node name="ReclamationAudioStream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "SI"
