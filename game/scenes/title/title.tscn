@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/fonts/GeneraleStation-SemiExtended.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/fonts/GeneraleStation-Extended.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/ui/moon_huge_title.tscn" type="PackedScene" id=8]
 

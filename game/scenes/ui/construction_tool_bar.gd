@@ -5,6 +5,7 @@ signal construction_tool_bar_clicked(structure_tile_type)
 var _expanded := false
 var _btns := []
 var _animating := false
+var _mouse_over_button := false
 
 onready var _structure_tile_type_to_button := {
 	Constants.StructureTileType.Agriculture: $AgBtn,
@@ -45,6 +46,7 @@ onready var _construction_btn: TextureButton = $ConstructionBtn
 onready var _menu_open_sound := $MenuOpenStreamPlayer
 onready var _menu_close_sound := $MenuCloseStreamPlayer
 onready var _menu_mouse_over_sound := $MenuMouseOverStreamPlayer
+onready var _menu_select_sound := $MenuSelectStreamPlayer
 
 func _ready():
 	SignalMgr.register_subscriber(self, "focused_gained", "_on_focused_gained")
@@ -57,6 +59,9 @@ func _ready():
 	for structure_tile_type in _structure_tile_type_to_button.keys():
 		var btn = _structure_tile_type_to_button[structure_tile_type]
 		btn.connect("button_down", self,"_on_button_down", [structure_tile_type])
+		btn.connect("shortcut_activated", self,"_on_shortcut_activated", [structure_tile_type])
+		btn.connect("mouse_entered", self, "_on_button_mouse_entered")
+		btn.connect("mouse_exited", self, "_on_button_mouse_exited")
 		btn.collapsed = true
 	_set_construction_button_labels_visibility(false)
 	
@@ -80,7 +85,12 @@ func _on_ConstructionBtn_toggled(button_pressed):
 		_construction_btn.pressed = false
 		_set_construction_button_labels_visibility(false)
 		_animation_player.play_backwards("expand")
-		_menu_close_sound.play()
+		if !_mouse_over_button:
+			_menu_close_sound.play()
+			print("play menu close sound")
+		else:
+			print("not playing menu close sound")
+			_mouse_over_button = false
 
 
 func _on_ConstructionBtn_focus_exited():
@@ -98,7 +108,6 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 			_btns[i].rect_position = Vector2.ZERO
 			_btns[i].collapsed = true
 		_btns[1].collapsed = true
-		
 
 
 func _on_AnimationPlayer_animation_started(_anim_name):
@@ -129,9 +138,14 @@ func _on_button_down(tile_type):
 	var resource_mgr := ResourceMgr.get_resource_mgr()
 	if resource_mgr.have_enough_resources_for_constructions(tile_type):
 		emit_signal("construction_tool_bar_clicked", tile_type)
+		_menu_select_sound.play()
+		print("play menu select sound")
+		#_skip_next_menu_select_sound = true
 	else:
 		print("didn't have enough resource in end - play sound and/or show message")
 
+func _on_shortcut_activated(tile_type):
+	_on_button_down(tile_type)
 
 func _refresh_button_disable_states():
 	var resource_mgr:ResourceMgr = Globals.get("ResourceMgr")
@@ -150,3 +164,14 @@ func _set_construction_button_labels_visibility(is_visible: bool) -> void:
 func _on_ConstructionToolBar_mouse_entered():
 	#_menu_mouse_over_sound.play()
 	pass
+
+
+func _on_button_mouse_entered():
+	_mouse_over_button = true
+	print("button mouse entered")
+
+func _on_button_mouse_exited():
+	_mouse_over_button = false
+	print("button mouse exited")
+
+

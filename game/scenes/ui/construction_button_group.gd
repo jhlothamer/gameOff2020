@@ -1,16 +1,19 @@
 extends VBoxContainer
 
 signal button_down()
+signal shortcut_activated()
 
 export (StructureMgr.StructureTileType) var structure_type: int
 
 var disabled := false setget _set_disabled
 var collapsed := true setget _set_collapsed
 var label_visible := false setget _set_label_visible
+var shortcut: ShortCut
 
 onready var _texture_button := $TextureButton
 onready var _label := $Label
 onready var _mouse_over_sound := $MouseOverStreamPlayer
+onready var _shortcut_label = $TextureButton/ShortcutLabel
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
@@ -51,11 +54,35 @@ var _disabled_icons := {
 	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
 }
 
+var _shortcut_keys := {
+	StructureMgr.StructureTileType.Agriculture: KEY_G,
+	Constants.StructureTileType.Education: KEY_E,
+	Constants.StructureTileType.Factory: KEY_F,
+	Constants.StructureTileType.Medical: KEY_M,
+	Constants.StructureTileType.Office: KEY_O,
+	Constants.StructureTileType.Power: KEY_P,
+	Constants.StructureTileType.Reclamation: KEY_R,
+	Constants.StructureTileType.Recreation: KEY_C,
+	Constants.StructureTileType.Residential: KEY_T,
+	Constants.StructureTileType.UUC: KEY_U,
+}
+
+
 func _ready():
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_hover = load(_mouse_over_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
 	_texture_button.hint_tooltip = EnumUtil.get_string(StructureMgr.StructureTileType, structure_type)
+	
+	shortcut = ShortCut.new()
+	var inputEventKey := InputEventKey.new()
+	inputEventKey.scancode = _shortcut_keys[structure_type]
+	shortcut.shortcut = inputEventKey
+	_texture_button.shortcut = shortcut
+	
+	var shortcut_string = "(%s)" % char(inputEventKey.scancode)
+	_shortcut_label.text = shortcut_string
+	
 	call_deferred("_init_labels")
 
 
@@ -99,3 +126,18 @@ func _on_TextureButton_button_down():
 func _on_TextureButton_mouse_entered():
 	if !disabled && !collapsed:
 		_mouse_over_sound.play()
+		emit_signal("mouse_entered")
+
+
+func _unhandled_input(event):
+	if !event is InputEventKey:
+		return
+	if event.is_echo():
+		return
+	var inputEventKey: InputEventKey = event
+	if inputEventKey.scancode == shortcut.shortcut.scancode:
+		emit_signal("shortcut_activated")
+
+
+func _on_TextureButton_mouse_exited():
+	emit_signal("mouse_exited")

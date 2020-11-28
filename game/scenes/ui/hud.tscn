@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/ui/structures_dialog.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/ui/help_dialog.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/ui/lose_dlg.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/ui/reclaim_confirmation_dialog.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -175,5 +176,7 @@ visible = false
 
 [node name="LoseDialog" parent="Dialogs" instance=ExtResource( 11 )]
 visible = false
+
+[node name="ReclaimConfirmationDialog" parent="Dialogs" instance=ExtResource( 12 )]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]
