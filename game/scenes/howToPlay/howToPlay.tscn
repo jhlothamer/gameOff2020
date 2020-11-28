@@ -257,6 +257,7 @@ margin_top = 91.0
 margin_right = 984.0
 margin_bottom = 510.0
 size_flags_vertical = 3
+custom_fonts/bold_font = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[table=2]

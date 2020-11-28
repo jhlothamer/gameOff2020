@@ -12,7 +12,7 @@
 			"lostPerCycle": 0.1
 		},
 		"ore": {
-			"starting_amount": 20000.0
+			"starting_amount": 30000.0
 		}
 	}
 }
