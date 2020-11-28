@@ -25,9 +25,11 @@ select_mode = 1
 
 [node name="DialogOpenStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "UI"
 
 [node name="DialogCloseStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "UI"
 [connection signal="confirmed" from="." to="." method="_on_StructuresDialog_confirmed"]
 [connection signal="custom_action" from="." to="." method="_on_StructuresDialog_custom_action"]
 [connection signal="popup_hide" from="." to="." method="_on_StructuresDialog_popup_hide"]
