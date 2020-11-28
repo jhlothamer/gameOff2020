@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/planets/destination_planet.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/fonts/text_large.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/fonts/GeneraleStation-Regular.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show Ending Text"
@@ -326,6 +327,8 @@ custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Main Menu"
 sceneToLoad = "res://scenes/title/title.tscn"
 fadeSound = true
+
+[node name="MenuButtonSound" parent="MarginContainer2/Button" instance=ExtResource( 10 )]
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 margin_right = 441.0
