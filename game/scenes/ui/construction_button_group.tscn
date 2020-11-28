@@ -52,6 +52,7 @@ __meta__ = {
 
 [node name="MouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -9.0
 bus = "UI"
 [connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]

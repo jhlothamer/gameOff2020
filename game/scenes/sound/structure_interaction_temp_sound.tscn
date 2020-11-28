@@ -11,15 +11,19 @@ script = ExtResource( 4 )
 
 [node name="PlayerDeactiveSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
+bus = "SI"
 
 [node name="PlayerReactiveSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )
+bus = "SI"
 
 [node name="PlacementSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "SI"
 
 [node name="FailureDeactiveSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+bus = "SI"
 [connection signal="finished" from="PlayerDeactiveSound" to="." method="_on_PlayerDeactiveSound_finished"]
 [connection signal="finished" from="PlayerReactiveSound" to="." method="_on_PlayerReactiveSound_finished"]
 [connection signal="finished" from="PlacementSound" to="." method="_on_PlacementSound_finished"]
