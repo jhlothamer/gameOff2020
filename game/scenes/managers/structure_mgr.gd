@@ -374,7 +374,6 @@ func _do_repair_animation(structure: StructureData) -> void:
 	yield(repair_animation, "repair_complete")
 	structure.disabled = false
 	structure.damaged = false
-	print("done repairing tile at " + str(structure.tile_map_cell))
 	repair_animation.queue_free()
 	structure.disabled = false
 	structure.repairing = false

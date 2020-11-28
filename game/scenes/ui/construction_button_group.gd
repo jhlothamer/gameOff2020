@@ -5,7 +5,7 @@ signal button_down()
 export (StructureMgr.StructureTileType) var structure_type: int
 
 var disabled := false setget _set_disabled
-var collapsed := true
+var collapsed := true setget _set_collapsed
 var label_visible := false setget _set_label_visible
 
 onready var _texture_button := $TextureButton
@@ -87,6 +87,9 @@ func _set_label_visible(value):
 	if _label != null:
 		_label.visible = value
 
+func _set_collapsed(value):
+	collapsed = value
+	visible = !collapsed
 
 func _on_TextureButton_button_down():
 	emit_signal("button_down")

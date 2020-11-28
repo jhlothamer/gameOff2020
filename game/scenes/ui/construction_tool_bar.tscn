@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/images/temp/ui/construction_icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ui/icons/Construction-Menu.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sounds/UI_Menu_Close_01.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/audio/sounds/UI_Menu_Mouse_Over_01.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sounds/UI_Menu_Open_01.wav" type="AudioStream" id=4]
@@ -86,7 +86,6 @@ hint_tooltip = "Construction Menu"
 mouse_filter = 1
 toggle_mode = true
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

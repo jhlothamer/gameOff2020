@@ -55,7 +55,7 @@ margin_top = 212.0
 margin_right = 327.0
 margin_bottom = 277.0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 1.2, 1.2, 1 )
 text = "Main Menu"
 flat = true
 [connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]

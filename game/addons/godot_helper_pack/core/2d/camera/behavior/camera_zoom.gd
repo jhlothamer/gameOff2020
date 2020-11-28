@@ -97,7 +97,6 @@ func _zoom_step(zoom_in: bool) -> void:
 		var point = mouse_pos
 		var c0 = camera.global_position
 		var v0 = get_viewport().size
-		print("viewport size is " + str(v0))
 		var z0 = camera.zoom
 		var z1 = zoom*Vector2.ONE
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -250,6 +250,12 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
 
+[sub_resource type="Environment" id=5]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 2.09
+glow_blend_mode = 0
+
 [node name="game" type="Node2D"]
 script = ExtResource( 6 )
 __meta__ = {
@@ -301,6 +307,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="StructuresStatusOverlay2" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 200, 200 )
+cell_quadrant_size = 100
+format = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
 [node name="DamageOverlay" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 200, 200 )
@@ -311,6 +327,7 @@ __meta__ = {
 }
 
 [node name="SeperatorBoxes" type="TileMap" parent="."]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 200, 200 )
 cell_quadrant_size = 100
@@ -427,6 +444,9 @@ material = SubResource( 4 )
 scale = Vector2( 700, 700 )
 z_index = -1
 texture = ExtResource( 20 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
 
 [editable path="SpawnerMgr"]

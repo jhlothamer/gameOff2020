@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/ui/time_line.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/temp/timeline/timeline.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/temp/timeline/destination_planet_time_line.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/temp/timeline/meteor_shower_marker.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/timeline/meteor_shower_marker.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/temp/timeline/comet_marker.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/temp/timeline/generation_ship_actual.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/temp/timeline/desert_planet_time_line.png" type="Texture" id=7]
@@ -67,9 +67,9 @@ texture = ExtResource( 3 )
 [node name="MarkersTemplates" type="Node2D" parent="."]
 
 [node name="meteor_shower_marker" type="Sprite" parent="MarkersTemplates"]
-position = Vector2( 249.823, 57.95 )
+position = Vector2( 252.265, 58.0387 )
 texture = ExtResource( 4 )
-offset = Vector2( 4.50369, -23.9998 )
+offset = Vector2( 0.891907, -24.0887 )
 
 [node name="comet_marker" type="Sprite" parent="MarkersTemplates"]
 position = Vector2( 372.26, 57.8852 )

@@ -57,6 +57,7 @@ func _ready():
 	for structure_tile_type in _structure_tile_type_to_button.keys():
 		var btn = _structure_tile_type_to_button[structure_tile_type]
 		btn.connect("button_down", self,"_on_button_down", [structure_tile_type])
+		btn.collapsed = true
 	_set_construction_button_labels_visibility(false)
 	
 
