@@ -24,6 +24,7 @@ line_fade_in_time_seconds = 2.0
 time_between_line_fade_ins_seconds = 1.8
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
+speed = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
@@ -274,6 +275,7 @@ anchor_bottom = 1.0
 margin_top = -86.0
 margin_right = 175.0
 margin_bottom = 0.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Back"
 sceneToLoad = "res://scenes/title/title.tscn"
 fadeSound = true
@@ -287,6 +289,7 @@ margin_left = -151.0
 margin_top = -89.0
 margin_right = 1.0
 margin_bottom = 0.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Play"
 sceneToLoad = "res://scenes/game/game.tscn"
 fadeSound = true
@@ -308,6 +311,7 @@ __meta__ = {
 margin_right = 152.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Skip"
 flat = true
 [connection signal="pressed" from="SkipMarginContainer/SkipBtn" to="." method="_on_SkipBtn_pressed"]

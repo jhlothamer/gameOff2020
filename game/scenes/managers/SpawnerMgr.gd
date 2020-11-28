@@ -1,6 +1,6 @@
 extends Node
 var checked = false
-onready var asteroid_scene = preload("res://scenes/game/Asteroid.tscn")
+var asteroid_scene = preload("res://scenes/game/Asteroid.tscn")
 var asteroids = []
 var fragments = []
 var asteroid_sprites = []
@@ -8,7 +8,7 @@ var fragment_sprites = []
 var spawn_extents_min = Vector2(-13233,-9203.9)
 var spawn_extents_max = Vector2(13233,9203.9)
 
-onready var fragment_scene = preload("res://scenes/game/Fragment.tscn")
+var fragment_scene = preload("res://scenes/game/Fragment.tscn")
 export var min_time_between_asteroids:float = 1 #seconds
 export var max_time_between_asteroids:float = 2
 export var debug := false
@@ -28,6 +28,9 @@ export var fragment_propel_variance_max = 1.0
 
 
 onready var spawn_limit_rect := $ReferenceRect
+
+var _asteroid_impact_sound = preload("res://scenes/sound/asteroid_impact_sound.tscn")
+
 
 func _ready():
 	Globals.set("SpawnMgr", self)
@@ -167,6 +170,11 @@ func _disintegrate(body):
 			+ rand_range(-20,20)
 		fragments.append(new_fragment)
 		call_deferred("add_child",new_fragment)
+	
+	var impact_sound = _asteroid_impact_sound.instance()
+	impact_sound.position = body.position
+	Game.get_construction_repair_etc_animations_parent().add_child(impact_sound)
+	
 	asteroids.erase(body)
 	body.queue_free()
 

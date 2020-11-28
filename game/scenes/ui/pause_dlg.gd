@@ -1,7 +1,5 @@
 extends Control
 
-
-
 func _unhandled_input(event):
 	if event.is_echo():
 		return
@@ -24,3 +22,6 @@ func _on_ResumeBtn_pressed():
 
 func _on_MainMenuBtn_pressed():
 	transitionMgr.transitionTo(Constants.TITLE_SCENE_PATH, Constants.TRANSITION_SPEED)
+
+
+

@@ -364,7 +364,6 @@ script = ExtResource( 7 )
 script = ExtResource( 1 )
 
 [node name="SpawnerMgr" parent="." instance=ExtResource( 12 )]
-min_time_between_asteroids = 4.0
 
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 8 )
