@@ -72,13 +72,13 @@ func _ready():
 	SignalMgr.register_publisher(self, "stats_updated")
 	SignalMgr.register_publisher(self, "population_crashed_game_over")
 	SignalMgr.register_subscriber(self, "time_has_expired", "_on_time_has_expired")
+	_load_stats_data()
 	call_deferred("_init_stats")
 
 static func get_stat_mgr() -> StatsMgr:
 	return Globals.get("StatsMgr")
 
 func _init_stats():
-	_load_stats_data()
 	var structure_mgr = StructureMgr.get_structure_mgr()
 	if structure_mgr == null:
 		printerr("did not get structure mgr when initializing stats - stats will never be calculated")
@@ -293,6 +293,38 @@ func get_stat_provided_by_structure_type_id(structure_type_id: int) -> Stat:
 		return _stats_by_produced_by_structure_id[structure_type_id]
 	return null
 
+func get_win_game_population_amount() -> int:
+	var population_stat_metadata := get_stat_metadata(StatType.Population)
+	return _get_win_game_population_amount(population_stat_metadata)
+
+
+func _get_win_game_population_amount(population_stat_metadata) -> int:
+	var difficulty_level = DifficultySettings.get_difficulty_setting()
+	if difficulty_level == DifficultySettings.DifficultyLevels.Easy:
+		return population_stat_metadata["winGameAmountEasy"]
+	elif difficulty_level == DifficultySettings.DifficultyLevels.Medium:
+		return population_stat_metadata["winGameAmountMedium"]
+	elif difficulty_level == DifficultySettings.DifficultyLevels.Hard:
+		return population_stat_metadata["winGameAmountHard"]
+	else:
+		assert(false)
+	return 0
+
+
+func get_win_game_population_amounts() -> Dictionary:
+	var amounts := {}
+	var population_stat_metadata := get_stat_metadata(StatType.Population)
+	amounts[DifficultySettings.DifficultyLevels.Easy] = population_stat_metadata["winGameAmountEasy"]
+	amounts[DifficultySettings.DifficultyLevels.Medium] = population_stat_metadata["winGameAmountMedium"]
+	amounts[DifficultySettings.DifficultyLevels.Hard] = population_stat_metadata["winGameAmountHard"]
+	return amounts
+
+func get_stat_metadata(stat_type: int) -> Dictionary:
+	if _stats_metadata == null:
+		return {}
+	var stat_name = EnumUtil.get_string(StatType, stat_type)
+	return _stats_metadata[stat_name]
+
 
 func _on_time_has_expired():
 	var population_stat := _get_stat(StatType.Population)
@@ -302,7 +334,7 @@ func _on_time_has_expired():
 		print("population crashed!")
 		emit_signal("population_crashed_game_over")
 		return
-	var win_game_population_amount : float = population_stat.stat_metadata["winGameAmount"]
+	var win_game_population_amount : float = _get_win_game_population_amount(population_stat.stat_metadata)
 	if win_game_population_amount > current_population:
 		Globals.set("won", false)
 	else:

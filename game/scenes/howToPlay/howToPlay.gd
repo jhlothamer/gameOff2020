@@ -17,6 +17,7 @@ onready var _tween := $Tween
 onready var _instructions_container := $InstructionsMarginContainer
 onready var _instructions := $InstructionsMarginContainer/VBoxContainer/Instructions
 onready var _skip_btn := $SkipMarginContainer/SkipBtn
+onready var _stat_mgr := $StatsMgr
 
 var _invisible_color := Color(1.0, 1.0, 1.0, 0.0)
 var _visible_color := Color.white
@@ -29,7 +30,8 @@ func _ready():
 	_intro.visible = true
 	_instructions_container.visible = false
 	_instructions.bbcode_enabled = true
-	_instructions.bbcode_text = FileUtil.load_text(how_to_play_bbcode_file_path)
+	var winning_population_amount = "%d" % _stat_mgr.get_win_game_population_amount()
+	_instructions.bbcode_text = FileUtil.load_text(how_to_play_bbcode_file_path).replace("%WIN_POPULATION_AMOUNT%", winning_population_amount)
 	call_deferred("_start_intro")
 
 func _start_intro():

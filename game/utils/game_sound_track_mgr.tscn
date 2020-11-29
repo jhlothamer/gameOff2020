@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 
 [node name="SceneSoundTrack" type="Node" parent="."]
 script = ExtResource( 2 )
-scenes = [ "res://scenes/title/title.tscn", "res://scenes/credits/credits.tscn", "res://scenes/howToPlay/howToPlay.tscn" ]
+scenes = [ "res://scenes/title/title.tscn", "res://scenes/credits/credits.tscn", "res://scenes/howToPlay/howToPlay.tscn", "res://scenes/difficulty_settings/difficulty_settings.tscn" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneSoundTrack"]
 stream = ExtResource( 3 )
