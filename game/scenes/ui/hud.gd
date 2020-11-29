@@ -3,6 +3,7 @@ extends CanvasLayer
 signal focused_gained(control)
 signal reclaim_structure_initiated()
 signal random_damage_test_clicked()
+signal harvester_activated()
 
 onready var dialogs: Control = $Dialogs
 onready var resources_dialog: Control = $Dialogs/ResourcesDlg
@@ -17,6 +18,7 @@ func _ready():
 	SignalMgr.register_publisher(self, "focused_gained")
 	SignalMgr.register_publisher(self, "reclaim_structure_initiated")
 	SignalMgr.register_publisher(self, "random_damage_test_clicked")
+	SignalMgr.register_publisher(self, "harvester_activated")
 	for child in dialogs.get_children():
 		child.visible = false
 	dialogs.visible = true
@@ -51,3 +53,7 @@ func _on_StructureInfoBtn_pressed():
 func _on_HelpBtn_pressed():
 	_help_btn.release_focus()
 	help_dialog.show()
+
+
+func _on_LaunchHarvesterBtn_pressed():
+	emit_signal("harvester_activated")

@@ -9,10 +9,13 @@ absorbent = true
 
 [sub_resource type="RectangleShape2D" id=2]
 
-[node name="FragmentBody" type="RigidBody2D"]
+[node name="FragmentBody" type="RigidBody2D" groups=[
+"fragment",
+]]
 collision_mask = 15
 mass = 0.8
 physics_material_override = SubResource( 1 )
+can_sleep = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

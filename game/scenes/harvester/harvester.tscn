@@ -1,0 +1,208 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/images/harvester/vehicle-assembled.png" type="Texture" id=1]
+[ext_resource path="res://scenes/harvester/harvester.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/harvester/wheel.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/harvester/vehicle-animation.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Harvest_1.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/images/asteroids/fragments/a10000.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 196, 86 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 196, 0, 196, 86 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 392, 0, 196, 86 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 588, 0, 196, 86 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( -100, -100, 0 )
+spread = 90.0
+flatness = 1.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 75.0
+initial_velocity_random = 0.41
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale = 2.0
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( -100, -100, 0 )
+spread = 90.0
+flatness = 1.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.41
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale = 2.0
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 30 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "spin_wheels"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D/wheel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("KinematicBody2D/wheel2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("KinematicBody2D/wheel3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("KinematicBody2D/wheel4:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("KinematicBody2D/AnimatedSprite:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[node name="Harvester" type="Node2D"]
+script = ExtResource( 2 )
+distance_from_moon_tolerance = 200.0
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -44.5449 )
+
+[node name="HarvestingSound" type="AudioStreamPlayer2D" parent="KinematicBody2D"]
+position = Vector2( 0, 44.5449 )
+stream = ExtResource( 5 )
+volume_db = 12.0
+max_distance = 7000.0
+attenuation = 1.68179
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+polygon = PoolVector2Array( 96.3919, -0.355537, 6.58929, -44.9033, -59.5252, -45.2568, -94.527, 30.7572, -80.4561, 44.3549, -5.785, 44.355, 96.392, 44.355 )
+
+[node name="vehicle-assembled" type="Sprite" parent="KinematicBody2D"]
+modulate = Color( 0, 0.858824, 1, 1 )
+texture = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( 0, -7.41624 )
+frames = SubResource( 6 )
+frame = 2
+
+[node name="SprayParticles2D" type="Particles2D" parent="KinematicBody2D/AnimatedSprite"]
+position = Vector2( 97.5534, 6.68175 )
+emitting = false
+amount = 100
+process_material = SubResource( 8 )
+
+[node name="ChunkParticles2D" type="Particles2D" parent="KinematicBody2D/AnimatedSprite"]
+position = Vector2( 97.5534, 6.68175 )
+emitting = false
+amount = 3
+lifetime = 0.6
+explosiveness = 1.0
+process_material = SubResource( 9 )
+texture = ExtResource( 6 )
+
+[node name="wheel" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -75.1352, 36.3834 )
+texture = ExtResource( 3 )
+
+[node name="wheel2" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -53.946, 36.3834 )
+texture = ExtResource( 3 )
+
+[node name="wheel3" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -30.6378, 36.3834 )
+texture = ExtResource( 3 )
+
+[node name="wheel4" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -8.38905, 36.3834 )
+texture = ExtResource( 3 )
+
+[node name="FragmentDetectArea" type="Area2D" parent="KinematicBody2D"]
+position = Vector2( 94.385, 12.0922 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/FragmentDetectArea"]
+position = Vector2( 1.7818, 2.22725 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin_wheels"
+anims/spin_wheels = SubResource( 7 )
+[connection signal="body_entered" from="KinematicBody2D/FragmentDetectArea" to="." method="_on_FragmentDetectArea_body_entered"]
+[connection signal="body_exited" from="KinematicBody2D/FragmentDetectArea" to="." method="_on_FragmentDetectArea_body_exited"]

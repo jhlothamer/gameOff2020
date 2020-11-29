@@ -268,6 +268,10 @@ material = SubResource( 2 )
 scale = Vector2( 700, 700 )
 z_index = -1
 texture = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Moon" parent="." instance=ExtResource( 14 )]
 

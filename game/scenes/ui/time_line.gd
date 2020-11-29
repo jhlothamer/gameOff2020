@@ -130,7 +130,7 @@ func _check_event_schedule():
 		var type = ""
 		if closest_event["type"] == 0:
 			type = "Asteroid shower"
-		print("time until next " + type + " is " + str(time_until_next_event) + " seconds away")
+		#print("time until next " + type + " is " + str(time_until_next_event) + " seconds away")
 	
 
 func _clean_event_markers(event_dict):
