@@ -11,4 +11,7 @@ text = "Button"
 flat = true
 align = 0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="." to="." method="_on_Button_pressed"]
