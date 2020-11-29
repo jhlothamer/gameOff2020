@@ -109,10 +109,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/managers/resource_mgr.gd"
 }, {
+"base": "Node",
+"class": "SceneSoundTrack",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/audio/scene_sound_track.gd"
+}, {
 "base": "Node2D",
 "class": "ShapeDraw2D",
 "language": "GDScript",
 "path": "res://addons/godot_helper_pack/core/2d/shape/shape_draw_2d.gd"
+}, {
+"base": "Node",
+"class": "SoundTrackMgr",
+"language": "GDScript",
+"path": "res://addons/godot_helper_pack/core/audio/sound_track_mgr.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -180,7 +190,9 @@ _global_script_class_icons={
 "RandomDistributionArea": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area.svg",
 "RandomDistributionAreaLayer": "res://addons/godot_helper_pack/core/2d/util/random_distribution_area_layer.svg",
 "ResourceMgr": "",
+"SceneSoundTrack": "",
 "ShapeDraw2D": "",
+"SoundTrackMgr": "",
 "State": "res://addons/godot_helper_pack/core/state_machine/state.svg",
 "StateMachine": "res://addons/godot_helper_pack/core/state_machine/state_machine.svg",
 "StatsMgr": "",
@@ -204,8 +216,8 @@ config/icon="res://icon.png"
 Globals="*res://addons/godot_helper_pack/core/globals.gd"
 SignalMgr="*res://addons/godot_helper_pack/core/signal_mgr.gd"
 transitionMgr="*res://utils/transitionMgr.tscn"
-soundTrackMgr="*res://utils/soundTrackMgr.tscn"
 Init="*res://utils/init.gd"
+GameSoundTrackMgr="*res://utils/game_sound_track_mgr.tscn"
 
 [display]
 

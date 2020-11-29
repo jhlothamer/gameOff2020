@@ -1,0 +1,34 @@
+class_name SceneSoundTrack
+extends Node
+
+export (Array, String, FILE, "*.tscn, *.scn") var scenes
+export var startup := false
+
+var _scene_names := []
+
+func _ready():
+	for scene_file_path in scenes:
+		var scene_name = StringUtil.get_file_name(scene_file_path)
+		_scene_names.append(scene_name)
+	
+	if startup and _scene_names.size() > 0:
+		check_scene_and_play(_scene_names[0])
+
+func check_scene_and_play(scene_name) -> bool:
+	if !_scene_names.has(scene_name):
+		return false
+	for c in get_children():
+		if c is AudioStreamPlayer or c is AudioStreamPlayer2D or c is AudioStreamPlayer3D:
+			print("SceneSoundTrack: match for " + scene_name)
+			if !c.playing:
+				print("SceneSoundTrack: starting sound track for " + scene_name)
+				c.play()
+			else:
+				print("SceneSoundTrack: sound track already started for " + scene_name)
+			return true
+	return false
+
+
+
+
+

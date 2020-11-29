@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/white_rect_10x10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/title/title.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/GeneraleStation-SemiExtended.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Tone_1.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/fonts/GeneraleStation-Extended.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/ui/moon_huge_title.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=9]
@@ -91,7 +90,6 @@ margin_bottom = 65.0
 custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "New Game"
 sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
-fadeSound = true
 
 [node name="MenuButtonSounds" parent="VBoxContainer/newGameBtn" instance=ExtResource( 9 )]
 
@@ -102,7 +100,6 @@ margin_bottom = 134.0
 custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Credits"
 sceneToLoad = "res://scenes/credits/credits.tscn"
-fadeSound = true
 
 [node name="MenuButtonSounds" parent="VBoxContainer/creditsBtn" instance=ExtResource( 9 )]
 
@@ -114,9 +111,4 @@ custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "Exit"
 
 [node name="MenuButtonSounds" parent="VBoxContainer/exitBtn" instance=ExtResource( 9 )]
-
-[node name="AMB_Space_Tone_1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true
-bus = "AMB_Space"
 [connection signal="pressed" from="VBoxContainer/exitBtn" to="." method="_on_exitBtn_pressed"]
