@@ -20,9 +20,8 @@ func _ready():
 	SignalMgr.register_subscriber(self, "structure_tile_repaired", "_on_structure_tile_repaired")
 	SignalMgr.register_subscriber(self, "structure_tile_enabled", "_on_structure_tile_enabled")
 	SignalMgr.register_subscriber(self, "structure_tile_disabled", "_on_structure_tile_disabled")
+	SignalMgr.register_subscriber(self, "resource_amount_added", "_on_resource_amount_added")
 	Globals.set("ResourceMgr", self)
-#	if structure_mgr != null:
-#		_structure_mgr = get_node_or_null(structure_mgr)
 	
 	_resource_data = FileUtil.load_json_data(resource_data_file_path)
 	
@@ -112,8 +111,14 @@ func _increment_resources_for_reclamation(structure_type_id: int):
 	
 	if resources_updated:
 		emit_signal("resources_updated")
-	
-	
+
+
+func _increment_resource_amount(resource_name: String, amount: float) -> void:
+	if !_resource_amounts.has(resource_name):
+		return
+	_resource_amounts[resource_name] += amount
+	emit_signal("resources_updated")
+
 
 func get_resource_amounts():
 	return _resource_amounts
@@ -153,3 +158,6 @@ func _on_structure_tile_disabled(structure_tile_type, cell_v):
 
 func get_fragment_harvest_amount() -> float:
 	return _resource_data["resources"]["ore"]["fragment_harvest_amount"]
+
+func _on_resource_amount_added(resource_name: String, amount: float) -> void:
+	_increment_resource_amount(resource_name, amount)

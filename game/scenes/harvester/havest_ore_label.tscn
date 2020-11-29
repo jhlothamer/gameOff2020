@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/GeneraleStation-SemiExtended.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/harvester/havest_ore_label.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "animate_label"
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:rect_scale")
@@ -59,7 +62,7 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 620, 90 )
 rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 310, 45 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0.462745, 1 )
 text = "+ 500 Ore"
 align = 1
@@ -69,5 +72,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "animate_label"
-anims/animate_label = SubResource( 1 )
+anims/animate_label = SubResource( 2 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
