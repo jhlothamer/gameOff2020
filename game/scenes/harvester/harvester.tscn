@@ -7,35 +7,35 @@
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Harvest_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/images/asteroids/fragments/a10000.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 196, 86 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 196, 0, 196, 86 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 392, 0, 196, 86 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 588, 0, 196, 86 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
 flag_align_y = true
@@ -52,7 +52,7 @@ orbit_velocity_random = 0.0
 angle_random = 1.0
 scale = 2.0
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
 flag_align_y = true
@@ -69,11 +69,10 @@ orbit_velocity_random = 0.0
 angle_random = 1.0
 scale = 2.0
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 10, 30 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "spin_wheels"
+[sub_resource type="Animation" id=9]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -139,7 +138,6 @@ tracks/4/keys = {
 
 [node name="Harvester" type="Node2D"]
 script = ExtResource( 2 )
-distance_from_moon_tolerance = 200.0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 position = Vector2( 0, -44.5449 )
@@ -160,14 +158,14 @@ texture = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 position = Vector2( 0, -7.41624 )
-frames = SubResource( 6 )
+frames = SubResource( 5 )
 frame = 2
 
 [node name="SprayParticles2D" type="Particles2D" parent="KinematicBody2D/AnimatedSprite"]
 position = Vector2( 97.5534, 6.68175 )
 emitting = false
 amount = 100
-process_material = SubResource( 8 )
+process_material = SubResource( 6 )
 
 [node name="ChunkParticles2D" type="Particles2D" parent="KinematicBody2D/AnimatedSprite"]
 position = Vector2( 97.5534, 6.68175 )
@@ -175,7 +173,7 @@ emitting = false
 amount = 3
 lifetime = 0.6
 explosiveness = 1.0
-process_material = SubResource( 9 )
+process_material = SubResource( 7 )
 texture = ExtResource( 6 )
 
 [node name="wheel" type="Sprite" parent="KinematicBody2D"]
@@ -199,10 +197,10 @@ position = Vector2( 94.385, 12.0922 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/FragmentDetectArea"]
 position = Vector2( 1.7818, 2.22725 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spin_wheels"
-anims/spin_wheels = SubResource( 7 )
+anims/spin_wheels = SubResource( 9 )
 [connection signal="body_entered" from="KinematicBody2D/FragmentDetectArea" to="." method="_on_FragmentDetectArea_body_entered"]
 [connection signal="body_exited" from="KinematicBody2D/FragmentDetectArea" to="." method="_on_FragmentDetectArea_body_exited"]

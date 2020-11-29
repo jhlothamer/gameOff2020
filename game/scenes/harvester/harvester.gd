@@ -34,7 +34,8 @@ var _travel_direction := 1.0
 var _harvester_barn_direction_radians := 0.0
 var _harvester_barn_direction_tolerance_radians := 0.0
 var _distance_from_moon_tolerance_sq := 0
-
+var _fragment_harvest_amount := 0.0
+var _harvest_ore_label_class := preload("res://scenes/harvester/havest_ore_label.tscn")
 
 func _ready():
 	SignalMgr.register_subscriber(self, "harvester_activated", "_on_harvester_activated")
@@ -70,7 +71,7 @@ func _process(delta: float) -> void:
 		if current_fragment_harvest_time >= harvest_time_per_fragment:
 			var spawn_mgr := SpawnMgr.get_spawn_mgr()
 			spawn_mgr.remove_fragment(_current_fragement)
-			#up resource amount
+			_spawn_havest_ore_label()
 			_fragment_harvest_times.erase(_current_fragement)
 			_current_fragement = null
 		else:
@@ -100,8 +101,8 @@ func _on_FragmentDetectArea_body_exited(body):
 	if body.is_in_group("fragment"):
 		_fragment_contact_count = max(_fragment_contact_count - 1, 0)
 		if body == _current_fragement:
-			var spawn_mgr := SpawnMgr.get_spawn_mgr()
-			spawn_mgr.remove_fragment(_current_fragement)
+#			var spawn_mgr := SpawnMgr.get_spawn_mgr()
+#			spawn_mgr.remove_fragment(_current_fragement)
 			_current_fragement = null
 			#force to travel - don't want harvest to get stuck
 			_fragment_contact_count = 0
@@ -205,3 +206,16 @@ func _is_at_barn_location(delta_radians: float) -> bool:
 
 func _approx_eq(a: float, b: float, tolerance: float) -> bool:
 	return abs(a - b) <= tolerance
+
+func _get_fragment_harvest_amount() -> float:
+	if _fragment_harvest_amount <= 0.0:
+		var resource_mgr = ResourceMgr.get_resource_mgr()
+		_fragment_harvest_amount = resource_mgr.get_fragment_harvest_amount()
+	return _fragment_harvest_amount
+
+func _spawn_havest_ore_label():
+	var harvest_ore_label = _harvest_ore_label_class.instance()
+	var parent = Game.get_construction_repair_etc_animations_parent()
+	harvest_ore_label.fragment_harvest_amount = _get_fragment_harvest_amount()
+	parent.add_child(harvest_ore_label)
+	harvest_ore_label.global_position = _body.global_position

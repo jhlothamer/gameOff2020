@@ -151,3 +151,5 @@ func _on_structure_tile_disabled(structure_tile_type, cell_v):
 	StructureMgr.get_structure_mgr().disable_structure(cell_v)
 
 
+func get_fragment_harvest_amount() -> float:
+	return _resource_data["resources"]["ore"]["fragment_harvest_amount"]
