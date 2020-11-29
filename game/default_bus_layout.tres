@@ -2,23 +2,26 @@
 
 [sub_resource type="AudioEffectAmplify" id=1]
 resource_name = "Amplify"
-volume_db = 3.0
+volume_db = 9.0
 
 [sub_resource type="AudioEffectReverb" id=2]
 resource_name = "Reverb"
 room_size = 0.1
-dry = 0.5
+hipass = 0.25
+dry = 0.75
 
 [sub_resource type="AudioEffectReverb" id=3]
 resource_name = "Reverb"
 room_size = 0.2
-dry = 0.5
+hipass = 0.1
+dry = 0.75
+wet = 0.4
 
 [sub_resource type="AudioEffectReverb" id=4]
 resource_name = "Reverb"
-room_size = 0.6
+room_size = 0.5
+hipass = 0.25
 dry = 0.0
-wet = 0.7
 
 [resource]
 bus/1/name = "Zoom1"
@@ -57,7 +60,7 @@ bus/6/name = "AMB_Ship_Near"
 bus/6/solo = false
 bus/6/mute = false
 bus/6/bypass_fx = false
-bus/6/volume_db = 0.265018
+bus/6/volume_db = -3.32444
 bus/6/send = "Master"
 bus/6/effect/0/effect = SubResource( 2 )
 bus/6/effect/0/enabled = true
@@ -81,5 +84,5 @@ bus/9/name = "AMB_Space"
 bus/9/solo = false
 bus/9/mute = false
 bus/9/bypass_fx = false
-bus/9/volume_db = 0.0
+bus/9/volume_db = -3.41558
 bus/9/send = "Zoom3"
