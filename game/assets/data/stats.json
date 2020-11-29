@@ -3,6 +3,9 @@
 		"startingAmount": 1000,
 		"looseGameAmount": 100,
 		"winGameAmount": 10000,
+		"winGameAmountEasy": 5000,
+		"winGameAmountMedium": 7500,
+		"winGameAmountHard": 10000,
 		"increasePercentLimit": 0.02
 	},
 	"Morale":{

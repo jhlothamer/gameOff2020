@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_helper_pack/core/util/dictionary_util.gd"
 }, {
+"base": "Control",
+"class": "DifficultySettings",
+"language": "GDScript",
+"path": "res://scenes/difficulty_settings/difficulty_settings.gd"
+}, {
 "base": "Object",
 "class": "EnumUtil",
 "language": "GDScript",
@@ -183,6 +188,7 @@ _global_script_class_icons={
 "Circle2D": "",
 "Constants": "",
 "DictionaryUtil": "",
+"DifficultySettings": "",
 "EnumUtil": "",
 "FileUtil": "",
 "FunctioningStructureCount": "",

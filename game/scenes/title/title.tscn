@@ -32,7 +32,6 @@ __meta__ = {
 }
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 5 )]
-speed = 1.0
 
 [node name="Titles" type="VBoxContainer" parent="."]
 margin_left = 24.548
@@ -89,7 +88,7 @@ margin_right = 300.0
 margin_bottom = 65.0
 custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
 text = "New Game"
-sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
+sceneToLoad = "res://scenes/difficulty_settings/difficulty_settings.tscn"
 
 [node name="MenuButtonSounds" parent="VBoxContainer/newGameBtn" instance=ExtResource( 9 )]
 

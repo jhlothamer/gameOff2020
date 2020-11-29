@@ -1,0 +1,205 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/difficulty_settings/difficulty_settings.gd" type="Script" id=5]
+[ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/images/temp/timeline/generation_ship_actual.png" type="Texture" id=7]
+[ext_resource path="res://scenes/difficulty_settings/difficulty_settings_button_group.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/managers/stats_mgr.tscn" type="PackedScene" id=10]
+
+[node name="DifficultySettings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 550.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 2 )
+text = "Difficulty"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -467.5
+margin_top = -127.5
+margin_right = 467.5
+margin_bottom = 127.5
+custom_constants/vseparation = 30
+custom_constants/hseparation = 10
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EasySelectionTextureRect" type="TextureRect" parent="GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 110.0
+margin_bottom = 65.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="EasyDifficultyBtn" type="Button" parent="GridContainer"]
+margin_left = 120.0
+margin_right = 342.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.462745, 1 )
+toggle_mode = true
+group = ExtResource( 8 )
+text = "Easy"
+flat = true
+align = 0
+
+[node name="MenuButtonSounds" parent="GridContainer/EasyDifficultyBtn" instance=ExtResource( 3 )]
+
+[node name="EasyLabel" type="Label" parent="GridContainer"]
+margin_left = 352.0
+margin_top = 6.0
+margin_right = 935.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Target population is 5,0000 with game length of 20 minutes."
+autowrap = true
+
+[node name="MediumSelectionTextureRect" type="TextureRect" parent="GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 95.0
+margin_right = 110.0
+margin_bottom = 160.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="MediumDifficultyBtn" type="Button" parent="GridContainer"]
+margin_left = 120.0
+margin_top = 95.0
+margin_right = 342.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.462745, 1 )
+toggle_mode = true
+group = ExtResource( 8 )
+text = "Medium"
+flat = true
+align = 0
+
+[node name="MenuButtonSounds" parent="GridContainer/MediumDifficultyBtn" instance=ExtResource( 3 )]
+
+[node name="MediumLabel" type="Label" parent="GridContainer"]
+margin_left = 352.0
+margin_top = 101.0
+margin_right = 935.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Target population is 7,500 with game length of 20 minutes."
+autowrap = true
+
+[node name="HardSelectionTextureRect" type="TextureRect" parent="GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 190.0
+margin_right = 110.0
+margin_bottom = 255.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="HardDifficultyBtn" type="Button" parent="GridContainer"]
+margin_left = 120.0
+margin_top = 190.0
+margin_right = 342.0
+margin_bottom = 255.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.462745, 1 )
+toggle_mode = true
+group = ExtResource( 8 )
+text = "Hard"
+flat = true
+align = 0
+
+[node name="MenuButtonSounds" parent="GridContainer/HardDifficultyBtn" instance=ExtResource( 3 )]
+
+[node name="HardLabel" type="Label" parent="GridContainer"]
+margin_left = 352.0
+margin_top = 196.0
+margin_right = 935.0
+margin_bottom = 249.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Target population is 10,000 with game length of 20 minutes."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -312.0
+margin_top = -85.0
+custom_constants/margin_right = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueBtn" parent="MarginContainer2" instance=ExtResource( 9 )]
+margin_right = 292.0
+margin_bottom = 65.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+text = "Continue"
+sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
+
+[node name="MenuButtonSounds" parent="MarginContainer2/ContinueBtn" instance=ExtResource( 3 )]
+
+[node name="StatsMgr" parent="." instance=ExtResource( 10 )]
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -85.0
+margin_right = 172.0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBtn" parent="MarginContainer3" instance=ExtResource( 9 )]
+margin_left = 20.0
+margin_right = 172.0
+margin_bottom = 65.0
+text = "Back"
+sceneToLoad = "res://scenes/title/title.tscn"
+
+[node name="MenuButtonSounds" parent="MarginContainer3/BackBtn" instance=ExtResource( 3 )]
+[connection signal="toggled" from="GridContainer/EasyDifficultyBtn" to="." method="_on_EasyDifficultyBtn_toggled"]
+[connection signal="toggled" from="GridContainer/MediumDifficultyBtn" to="." method="_on_MediumDifficultyBtn_toggled"]
+[connection signal="toggled" from="GridContainer/HardDifficultyBtn" to="." method="_on_HardDifficultyBtn_toggled"]
