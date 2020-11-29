@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/moon/Impossible_Drive.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=4]
 [ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=6]
+[ext_resource path="res://scenes/harvester/harvester.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
@@ -37,6 +38,16 @@ stroke_width = 20.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Harvester" parent="." instance=ExtResource( 7 )]
+rotation = -1.5708
+path_radius = 3560.0
+linear_speed = 600.0
+distance_from_moon_tolerance = 50.0
 
 [node name="Impossible_Drive" type="Sprite" parent="."]
 position = Vector2( -4486, 0 )

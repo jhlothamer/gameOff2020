@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/ui/reclaim_confirmation_dialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/styles/hud_text_button_style.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -47,6 +48,24 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="TopRightMarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -167.0
+margin_bottom = 51.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LaunchHarvesterBtn" type="Button" parent="TopRightMarginContainer"]
+margin_top = 100.0
+margin_right = 147.0
+margin_bottom = 131.0
+custom_fonts/font = ExtResource( 15 )
+text = "Harvester"
 
 [node name="BottomRightMarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -163,6 +182,7 @@ margin_right = 351.0
 margin_bottom = 77.0
 rect_pivot_offset = Vector2( 723.93, 511.996 )
 game_time_length_minutes = 20
+showers_time_margine_begin_end = 1
 
 [node name="Dialogs" type="Control" parent="."]
 anchor_right = 1.0
@@ -190,5 +210,7 @@ visible = false
 visible = false
 
 [node name="ReclaimConfirmationDialog" parent="Dialogs" instance=ExtResource( 12 )]
+visible = false
+[connection signal="pressed" from="TopRightMarginContainer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]

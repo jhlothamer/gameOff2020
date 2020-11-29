@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/harvester/harvester.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/Fragment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tests/harvester_test/harvester_test.gd" type="Script" id=4]
+
+[node name="harvester_test" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Circle2D" type="Position2D" parent="."]
+position = Vector2( 512, 300 )
+script = ExtResource( 2 )
+radius = 400.0
+
+[node name="Harvester" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 300 )
+rotation = -1.5708
+path_radius = 400.0
+linear_speed = 200.0
+harvest_time_per_fragment = 1.2
+harvester_barn_direction_tolerance_degrees = 5.0
+
+[node name="FragmentBody" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1227.16, -285.578 )
+rotation = 0.893843
+mode = 2
+
+[node name="FragmentBody2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 974.572, 305.833 )
+mode = 2
+
+[node name="FragmentBody3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 509.238, 773.048 )
+rotation = 0.00060153
+mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 514.939, 299.342 )
+current = true
+zoom = Vector2( 2.5, 2.5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LaunchHarvesterBtn" type="Button" parent="CanvasLayer"]
+margin_left = 10.0
+margin_top = 17.0
+margin_right = 183.0
+margin_bottom = 64.0
+text = "Launch Harvester"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]

@@ -1,3 +1,4 @@
+class_name SpawnMgr
 extends Node
 var checked = false
 var asteroid_scene = preload("res://scenes/game/Asteroid.tscn")
@@ -50,7 +51,7 @@ func _on_AsteroidShowerEvent(event_dict):
 		# new shower started during a current one
 		# just add the duration on
 		$ShowerDurationTimer.wait_time += new_time
-	print("asteroid shower event signalled")
+	#print("asteroid shower event signalled")
 	shower_active = true
 	$ShowerDurationTimer.wait_time = new_time
 	$ShowerDurationTimer.start()
@@ -181,3 +182,13 @@ func _disintegrate(body):
 func _on_ShowerDurationTimer_timeout():
 	shower_active = false
 	$AsteroidTimer.stop()
+
+static func get_spawn_mgr() -> SpawnMgr:
+	return Globals.get("SpawnMgr")
+
+
+func remove_fragment(fragment_body) -> void:
+	fragments.erase(fragment_body)
+	fragment_body.queue_free()
+
+

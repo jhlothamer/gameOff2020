@@ -19,12 +19,8 @@ func check_scene_and_play(scene_name) -> bool:
 		return false
 	for c in get_children():
 		if c is AudioStreamPlayer or c is AudioStreamPlayer2D or c is AudioStreamPlayer3D:
-			print("SceneSoundTrack: match for " + scene_name)
 			if !c.playing:
-				print("SceneSoundTrack: starting sound track for " + scene_name)
 				c.play()
-			else:
-				print("SceneSoundTrack: sound track already started for " + scene_name)
 			return true
 	return false
 
