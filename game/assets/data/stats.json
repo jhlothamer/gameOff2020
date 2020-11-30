@@ -85,5 +85,7 @@
 	"Administration":{
 		"producedByStructure": "Office",
 		"unitsPerStructure": 1
+	},
+	"TotalPowerRequired":{
 	}
 }

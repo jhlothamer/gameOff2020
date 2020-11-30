@@ -154,6 +154,7 @@ bus = "AMB_Space"
 polygon = PoolVector2Array( 96.3919, -0.355537, 6.58929, -44.9033, -59.5252, -45.2568, -94.527, 30.7572, -80.4561, 44.3549, -5.785, 44.355, 96.392, 44.355 )
 
 [node name="vehicle-assembled" type="Sprite" parent="KinematicBody2D"]
+visible = false
 modulate = Color( 0, 0.858824, 1, 1 )
 texture = ExtResource( 1 )
 
