@@ -32,6 +32,8 @@ func _ready():
 
 func _delayed_init():
 	var stat_mgr = StatsMgr.get_stat_mgr()
+	if stat_mgr == null:
+		return
 	var win_population = stat_mgr.get_win_game_population_amount()
 	_population_target_label.text = "Pop. Goal: %d" % win_population
 

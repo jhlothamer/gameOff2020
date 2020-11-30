@@ -6,6 +6,7 @@ var _expanded := false
 var _btns := []
 var _animating := false
 var _mouse_over_button := false
+var _construction_button_group_size := Vector2(60, 74)
 
 onready var _structure_tile_type_to_button := {
 	Constants.StructureTileType.Agriculture: $AgBtn,
@@ -149,6 +150,8 @@ func _on_shortcut_activated(tile_type):
 
 func _refresh_button_disable_states():
 	var resource_mgr:ResourceMgr = Globals.get("ResourceMgr")
+	if resource_mgr == null:
+		return
 	for structure_type_id in _structure_tile_type_to_button.keys():
 		var btn = _structure_tile_type_to_button[structure_type_id]
 		btn.disabled = !resource_mgr.have_enough_resources_for_constructions(structure_type_id)

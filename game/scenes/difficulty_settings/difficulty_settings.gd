@@ -65,5 +65,5 @@ func set_difficulty_setting(difficulty_level: int) -> void:
 static func get_difficulty_setting() -> int:
 	var raw_setting_value = Globals.get("difficulty")
 	if raw_setting_value == null:
-		return DifficultyLevels.MEDIUM
+		return DifficultyLevels.Medium
 	return raw_setting_value
