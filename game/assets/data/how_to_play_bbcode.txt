@@ -79,4 +79,7 @@ Structures can also be disabled.  While they are disabled they require no power 
 [center][u][b]Navigation[/b][/u][/center]
 All navigation of the game camera is done via the mouse.  To pan or move the camera view, click and drag the left mouse button.  To zoom in the camera view, scroll the middle mouse wheel up.  To zoom out the camera view, scroll the middle mouse wheel down.  There are only 3 zoom levels, so not much scrolling is required.  As the camera zooms in it will also move towards the location of the mouse pointer.
 
+[center][u][b]Help During Gameplay[/b][/u][/center]
+This help text is available during gameplay.  Just click the Help button which is on the left hand side above the stats display.
+
 [center]Good luck!![/center]

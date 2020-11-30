@@ -10,6 +10,7 @@
 pause_mode = 2
 margin_right = 940.0
 margin_bottom = 434.0
+window_title = "Help  (Game is paused)"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

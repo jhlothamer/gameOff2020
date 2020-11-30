@@ -77,6 +77,7 @@ func _ready():
 	shortcut = ShortCut.new()
 	var inputEventKey := InputEventKey.new()
 	inputEventKey.scancode = _shortcut_keys[structure_type]
+	inputEventKey.pressed = true
 	shortcut.shortcut = inputEventKey
 	_texture_button.shortcut = shortcut
 	
@@ -132,7 +133,7 @@ func _on_TextureButton_mouse_entered():
 func _unhandled_input(event):
 	if !event is InputEventKey:
 		return
-	if event.is_echo():
+	if event.is_echo() || !event.is_pressed():
 		return
 	var inputEventKey: InputEventKey = event
 	if inputEventKey.scancode == shortcut.shortcut.scancode:

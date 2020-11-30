@@ -17,7 +17,7 @@ export var debug := false
 var shower_active = false
 
 # how many asteroids can exist in scene at once
-export var max_concurrent_asteroids = 20
+export var max_concurrent_asteroids = 10
 
 # how many segments are launched after collision
 export var min_asteroid_segments: int = 4

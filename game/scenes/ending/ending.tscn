@@ -260,9 +260,9 @@ __meta__ = {
 }
 
 [node name="moon_huge_title" parent="." instance=ExtResource( 3 )]
-position = Vector2( 350, 278.286 )
+position = Vector2( -162.54, 278.286 )
 drive_on = true
-exhaust_length_percent = 0.0
+exhaust_length_percent = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
@@ -272,12 +272,11 @@ anims/ending = SubResource( 2 )
 
 [node name="AMB_Space_Tone_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -48.0
 autoplay = true
 bus = "AMB_Space"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color( 0, 0, 0, 0.572549 )
+modulate = Color( 0, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 6 )
@@ -300,13 +299,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MarginContainer"]
-margin_top = 20.0
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -179.0
 margin_right = 491.0
-margin_bottom = 437.0
+margin_bottom = 238.0
 custom_fonts/font = ExtResource( 7 )
 text = "After centuries the impossible drive fell silent and the moon slipped into orbit around a new world.  From the beginning accidents, new diseases and strife gripped the fledgling civilisation till hope was lost and along with it humanitities last chance."
 autowrap = true
-percent_visible = 0.0877193
+percent_visible = 0.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -342,6 +343,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MarginContainer3"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 20.0
 margin_top = 40.0
 margin_right = 441.0

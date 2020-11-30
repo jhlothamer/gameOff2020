@@ -8,7 +8,7 @@
 pause_mode = 2
 margin_right = 933.0
 margin_bottom = 289.0
-window_title = "Structures"
+window_title = "Structures (Game is paused)"
 resizable = true
 script = ExtResource( 1 )
 structure_row_color = Color( 0.282353, 0.282353, 0.282353, 1 )

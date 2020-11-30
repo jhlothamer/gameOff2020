@@ -57,9 +57,16 @@ class Stat:
 			return stat_metadata["unitsPerStructure"]
 		return 0.0
 	func has_population_schedule() -> bool:
-		if stat_metadata.has("populationSchedule"):
-			return stat_metadata["populationSchedule"].keys().size() > 0
-		return false
+		return stat_metadata.has("populationSchedule")
+#		if stat_metadata.has("populationSchedule"):
+#			return stat_metadata["populationSchedule"].keys().size() > 0
+#		return false
+	func has_overcapacity_limit() -> bool:
+		return stat_metadata.has("overCapacityLimit")
+	func get_overcapcity_limit() -> float:
+		if !stat_metadata.has("overCapacityLimit"):
+			return -1.0
+		return float(stat_metadata["overCapacityLimit"])
 	
 export var debug := false
 
@@ -173,15 +180,21 @@ func _calculate_population_delta_from_pop_schedules(current_population: float) -
 	
 	return population_delta
 
-func _get_overage_percent_for_needed_stat(stat_type_id: int, current_population) -> float:
-	var stat_name = EnumUtil.get_string(StatType, stat_type_id)
-	var stat = _stats[stat_name]
+func _get_overage_percent_for_needed_stat(stat: Stat, current_population) -> float:
+	# var stat_name = EnumUtil.get_string(StatType, stat_type_id)
+	# var stat = _stats[stat_name]
 	var stat_value = stat.get_value()
 	
-	if stat_value < current_population:
+	var over_capacity_limit = stat.get_overcapcity_limit()
+	if over_capacity_limit <= 0.0:
+		over_capacity_limit = stat.get_overcapcity_limit()
+		printerr("Over capacity limit is zero or negative.  This is not allowed!!  Stat: " + stat.stat_name)
+		assert(false)
+
+	if stat_value * over_capacity_limit < current_population:
 		return 0.0
 	
-	var overage_percent = float(stat_value) / float(current_population) - 1.0
+	var overage_percent = float(stat_value * over_capacity_limit) / float(current_population) - 1.0
 	
 	return overage_percent
 
@@ -227,8 +240,14 @@ func _calculate_min_verage_percent() -> float:
 	var current_population = population_stat.get_value()
 	var population_increase_percent_limit: float = population_stat.stat_metadata["increasePercentLimit"]
 	var min_overage_percent := population_increase_percent_limit
-	for needed_stat in [StatType.Water, StatType.Food]:
-		min_overage_percent = min(min_overage_percent, _get_overage_percent_for_needed_stat(needed_stat, current_population))
+
+	for stat in _stats.values():
+		if !stat.has_overcapacity_limit():
+			continue
+		min_overage_percent = min(min_overage_percent, _get_overage_percent_for_needed_stat(stat, current_population))
+	
+	# for needed_stat in [StatType.Water, StatType.Food]:
+	# 	min_overage_percent = min(min_overage_percent, _get_overage_percent_for_needed_stat(needed_stat, current_population))
 	return min_overage_percent
 
 
@@ -267,7 +286,7 @@ func _on_stat_cycle_time_has_elapsed() -> void:
 	
 	var min_overage_percent := _calculate_min_verage_percent()
 	
-	_calc_population_morale(min_overage_percent)
+	#_calc_population_morale(min_overage_percent)
 	
 	if debug:
 		print("min overage percent is :" + str(min_overage_percent))
@@ -304,9 +323,9 @@ func get_needed_number_of_structures(structure_type_id: int) -> float:
 	if !_stats_by_produced_by_structure_id.has(structure_type_id):
 		return 0.0
 	var stat = _stats_by_produced_by_structure_id[structure_type_id]
-	var structure_mgr := StructureMgr.get_structure_mgr()
-	var structure_type_name := EnumUtil.get_string(Constants.StructureTileType, structure_type_id)
-	var function_structures = structure_mgr.get_functioning_structures_by_type_name(structure_type_name)
+	#var structure_mgr := StructureMgr.get_structure_mgr()
+	#var structure_type_name := EnumUtil.get_string(Constants.StructureTileType, structure_type_id)
+	#var function_structures = structure_mgr.get_functioning_structures_by_type_name(structure_type_name)
 	
 	var population_stat := _get_stat(StatType.Population)
 	var population := population_stat.get_value()

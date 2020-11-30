@@ -61,6 +61,11 @@ func _start_intro():
 	_tween.interpolate_property(_intro_lines_3, "modulate", _intro_lines_3.modulate, _invisible_color, time_between_line_fade_ins_seconds,Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	_tween.start()
 	yield(_tween,"tween_all_completed")
+	
+	if _skipped:
+		return
+	
+	_on_SkipBtn_pressed()
 
 func _intro_labels(parent: Control):
 	var labels = parent.get_children()
@@ -82,6 +87,7 @@ func _on_SkipBtn_pressed():
 	_skipped = true
 	_skip_btn.visible = false
 	_intro.visible = false
+	_instructions_container.modulate = _invisible_color
 	_instructions_container.visible = true
 	_tween.interpolate_property(_instructions_container, "modulate", _invisible_color, _visible_color, time_between_line_fade_ins_seconds,Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	_tween.start()

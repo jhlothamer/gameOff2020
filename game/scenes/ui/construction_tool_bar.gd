@@ -143,7 +143,10 @@ func _on_button_down(tile_type):
 		print("play menu select sound")
 		#_skip_next_menu_select_sound = true
 	else:
-		print("didn't have enough resource in end - play sound and/or show message")
+		var structure_mgr := StructureMgr.get_structure_mgr()
+		var structure_metadata := structure_mgr.get_structure_metadata(tile_type)
+		HudAlertsMgr.add_hud_alert("Not enough resources to construct %s " % structure_metadata.get_name())
+		#print("didn't have enough resource in end - play sound and/or show message")
 
 func _on_shortcut_activated(tile_type):
 	_on_button_down(tile_type)
