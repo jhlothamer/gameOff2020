@@ -155,7 +155,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/speed = 0.0
+shader_param/speed = 1.0
 
 [node name="StarsAndNebula" type="TextureRect"]
 material = SubResource( 2 )

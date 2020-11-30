@@ -23,6 +23,7 @@ func _ready():
 	SignalMgr.register_publisher(self, "harvester_activated")
 	SignalMgr.register_subscriber(self, "harvester_active", "_on_harvester_active")
 	SignalMgr.register_subscriber(self, "harvester_inactive", "_on_harvester_inactive")
+	SignalMgr.register_subscriber(self, "population_crashed_game_over", "_on_population_crashed_game_over")
 	for child in dialogs.get_children():
 		child.visible = false
 	dialogs.visible = true
@@ -73,3 +74,5 @@ func _on_harvester_inactive():
 	_launch_harvester_btn.hint_tooltip = "Launch Harvester"
 
 
+func _on_population_crashed_game_over():
+	transitionMgr.transitionTo(Constants.POP_CRASH_ENDING_SCENE_PATH, Constants.TRANSITION_SPEED, true)

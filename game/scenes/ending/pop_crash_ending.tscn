@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/text_large.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ending/pop_crash_ending.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ending"
+length = 31.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PopCrashWriteupLabel:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 29 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ButtonsMarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 29, 31 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleMarginContainer/TitleLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PopCrashEnding" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StarsAndNebula" parent="." instance=ExtResource( 1 )]
+
+[node name="moon_huge" type="Sprite" parent="."]
+position = Vector2( 522.255, 2276.69 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -297.5
+margin_right = 297.5
+margin_bottom = 79.0
+custom_constants/margin_top = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="TitleMarginContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 20.0
+margin_right = 595.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 4 )
+text = "Population Crash!"
+align = 1
+
+[node name="PopCrashWriteupLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -420.5
+margin_top = -156.0
+margin_right = 420.5
+margin_bottom = 156.0
+custom_fonts/font = ExtResource( 3 )
+text = "The population dwindled till the colony halls echoed only with the sound of automated machinery and the occasional wail of the lonely.  Realizing that their numbers did not provide enough genetic diversity for viable offspring, those that remained gathered on the itinerant moon's surface for one last picnic in the cosmic void, sans spacesuits of course."
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsMarginContainer" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -347.0
+margin_top = -85.0
+margin_right = 347.0
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsMarginContainer"]
+margin_right = 694.0
+margin_bottom = 65.0
+custom_constants/separation = 40
+
+[node name="TryAgainBtn" parent="ButtonsMarginContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_right = 327.0
+margin_bottom = 65.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+text = "Try Again"
+sceneToLoad = "res://scenes/game/game.tscn"
+fadeSound = true
+
+[node name="MenuButtonSounds" parent="ButtonsMarginContainer/HBoxContainer/TryAgainBtn" instance=ExtResource( 6 )]
+
+[node name="MainMenuBtn" parent="ButtonsMarginContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 367.0
+margin_right = 694.0
+margin_bottom = 65.0
+custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
+text = "Main Menu"
+sceneToLoad = "res://scenes/title/title.tscn"
+
+[node name="MenuButtonSounds" parent="ButtonsMarginContainer/HBoxContainer/MainMenuBtn" instance=ExtResource( 6 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ending"
+anims/ending = SubResource( 1 )
