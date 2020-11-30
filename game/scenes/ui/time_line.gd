@@ -19,7 +19,7 @@ export var range_of_time_between_showers: int = 50
 export var showers_per_game_min: int = 5
 export var showers_per_game_max: int = 10
 
-export (int, 0, 120) var showers_time_margine_begin_end := 120
+export (int, 0, 120) var showers_time_margine_begin_end := 60
 
 var event_check_frequency = 30
 
@@ -120,6 +120,8 @@ func _check_event_schedule():
 	if _current_time_seconds > time_of_event:
 		if closest_event["type"] == 0:
 			emit_signal("AsteroidShowerEvent", closest_event.duplicate() )
+			HudAlertsMgr.add_hud_alert("Asteroid impacts imminent")
+			HudAlertsMgr.add_hud_alert("Prepare to deploy harvester")
 			event_schedule.erase(closest_event)
 			_clean_event_markers(closest_event)
 			#start one event at a time, even if only a few frames apart.
@@ -127,9 +129,12 @@ func _check_event_schedule():
 			return
 	var time_until_next_event = closest_event["time"] - int(_current_time_seconds)
 	if time_until_next_event < 20:
-		var type = ""
-		if closest_event["type"] == 0:
-			type = "Asteroid shower"
+		if !closest_event.has("alerted"):
+			closest_event["alerted"] = true
+			HudAlertsMgr.add_hud_alert("Incoming Asteroids")
+		# var type = ""
+		# if closest_event["type"] == 0:
+		# 	type = "Asteroid shower"
 		#print("time until next " + type + " is " + str(time_until_next_event) + " seconds away")
 	
 
