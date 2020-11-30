@@ -1,6 +1,9 @@
 tool
 extends Node2D
 
+signal harvester_active()
+signal harvester_inactive()
+
 enum HarvesterState {
 	IDLE,
 	TRAVELING,
@@ -39,6 +42,8 @@ var _harvest_ore_label_class := preload("res://scenes/harvester/havest_ore_label
 
 func _ready():
 	SignalMgr.register_subscriber(self, "harvester_activated", "_on_harvester_activated")
+	SignalMgr.register_publisher(self, "harvester_active")
+	SignalMgr.register_publisher(self, "harvester_inactive")
 	if !Engine.editor_hint:
 		_body.position.y -= path_radius
 	_speed_radians = linear_speed / path_radius
@@ -60,6 +65,7 @@ func _process(delta: float) -> void:
 		rotation += delta*_speed_radians*_travel_direction
 		if !_update_travel_direction():
 			_harvester_state = HarvesterState.RETURNING_TO_BARN
+			emit_signal("harvester_inactive")
 	if _harvester_state == HarvesterState.RETURNING_TO_BARN:
 		rotation += delta*_speed_radians*_travel_direction
 		if _is_at_barn_location(delta*_speed_radians):
@@ -126,6 +132,7 @@ func _on_harvester_activated() -> void:
 
 	if _update_travel_direction():
 		_harvester_state = HarvesterState.TRAVELING
+		emit_signal("harvester_active")
 		if debug:
 			print("Harvester: harvester_activated signal received.  Harvester now active.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 	else:
