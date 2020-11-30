@@ -23,7 +23,7 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [cell][/cell]
 
 [cell][img]res://assets/images/ui/icons/Reclaimation-Center_icon.png[/img] [/cell]
-[cell]Reclamation Center - recycles materials and treats sewage and water.  The number of reclamation centers limits on how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.[/cell]
+[cell]Reclamation Center - recycles materials and treats sewage and water.  The number of reclamation centers limits how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.[/cell]
 
 [cell][/cell]
 [cell][/cell]
@@ -52,6 +52,13 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [cell][/cell]
 [cell][/cell]
 
+[cell][img]res://assets/images/ui/icons/Office_icon.png[/img] [/cell]
+[cell]Office Complex - A place of work apart from other locations.  Also houses administration and government offices.[/cell]
+
+
+[cell][/cell]
+[cell][/cell]
+
 [cell][img]res://assets/images/ui/icons/Recreation_icon.png[/img] [/cell]
 [cell]Recreation Center - Provides entertainment and exercise for the colony.[/cell]
 
@@ -64,7 +71,19 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [/table]
 
 [center][u][b]Resources[/b][/u][/center]
-Constructing and repairing colony structures takes resources, of which some have been supplied at launch time.  Harvest asteroid fragments that land on the moon's surface to gain more resources.  You won't be able to create a thriving colony without it.
+
+[table=2]
+[cell][img]res://assets/images/asteroids/fragments/a10000.png[/img] [/cell]
+[cell]Constructing and repairing colony structures takes resources, of which some have been supplied at launch time.  Harvest asteroid fragments that land on the moon's surface to gain more resources.  You won't be able to create a thriving colony without it.[/cell]
+[/table]
+
+[table=2]
+[cell][img]res://assets/images/harvester/vehicle-assembled.png[/img] [/cell]
+[cell]Resources are gathered by the harvester, an indestructible vehicle that uses it's giant drill to break up asteroid fragments to get at the ore inside.[/cell]
+[cell][img]res://assets/images/ui/Drill-Deploy.png[/img] [/cell]
+[cell]The harvester is deployed with the Launch Harvester button (see left).  If no fragments are on the moons surface, then the harvester won't deploy.  But once it is deployed it will continue to harvest fragments till none are left on the surface.  However, fragments may be flying around the moon and land after the harvester has decided to return to the "barn".  If this happens, simply launch the harvester again and it will continue harvesting.[/cell]
+[/table]
+
 
 [center][u][b]Structure Management[/b][/u][/center]
 You can remove a structure from the colony to reclaim a portion of the resources it took to construct it.  You may wish to do this so that another more critical structure may be built or decided that a structure was constructed in error.  Structure can also become nonfunctional by wear and tear.  Structures need to be repaired quickly or else the population will start to suffer.  But as it costs resources to repair a structure another option is to reclaim it or leave it disabled if it's not at the moment vital.
@@ -76,10 +95,28 @@ Structures can also be disabled.  While they are disabled they require no power 
 [cell]To repair, disable or enable, or reclaim a structure, simply right click on the structure's tile.  A popup menu will display.  Options that are not available are disabled. See the example popup menu to the right for functioning power station tile.[/cell]
 [/table]
 
+The following are examples of what tiles look like in the listed states.
+
+[table=4]
+[cell][img]res://assets/images/help/EnabledTileExample.png[/img] [/cell]
+[cell]Fully functional tile[/cell]
+[cell][img]res://assets/images/help/UnpoweredTileExample.png[/img] [/cell]
+[cell]Unpowered tile[/cell]
+[cell][img]res://assets/images/help/DamagedTileExample.png[/img] [/cell]
+[cell]Damaged tile[/cell]
+[cell][img]res://assets/images/help/DisabledTileExample.png[/img] [/cell]
+[cell]Disabled tile[/cell]
+[/table]
+
+[center][u][b]Structure Info[/b][/u][/center]
+The Structure Info dialog shows critical data about structures and how much population they support at a glance.  If your population is not growing as expected, check the list to see what you might need to build.  The Structure Info dialog can be accessed by clicking on the Structure Info button located on the lower left right above the stats display.
+
+[center][img]res://assets/images/help/StructureInfoDialog.png[/img][/center]
+
 [center][u][b]Navigation[/b][/u][/center]
 All navigation of the game camera is done via the mouse.  To pan or move the camera view, click and drag the left mouse button.  To zoom in the camera view, scroll the middle mouse wheel up.  To zoom out the camera view, scroll the middle mouse wheel down.  There are only 3 zoom levels, so not much scrolling is required.  As the camera zooms in it will also move towards the location of the mouse pointer.
 
-[center][u][b]Help During Gameplay[/b][/u][/center]
-This help text is available during gameplay.  Just click the Help button which is on the left hand side above the stats display.
+[center][u][b]Help During Game Play[/b][/u][/center]
+This help text is available during game play.  Just click the Help button which is on the left hand side above the stats display.
 
 [center]Good luck!![/center]
