@@ -13,6 +13,7 @@ onready var _help_btn := $BottomLeftMarginContainer/VBoxContainer/HelpBtn
 onready var _structure_info_btn := $BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn
 onready var _active_harvester_animation := $TopRightMarginContainer/LaunchHarvesterBtn/ActiveHarvesterAnimation
 onready var _launch_harvester_btn := $TopRightMarginContainer/LaunchHarvesterBtn
+onready var _population_target_label := $BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer/PopulationTargetLabel
 
 var _last_control_focused: Control
 
@@ -27,6 +28,12 @@ func _ready():
 	for child in dialogs.get_children():
 		child.visible = false
 	dialogs.visible = true
+	call_deferred("_delayed_init")
+
+func _delayed_init():
+	var stat_mgr = StatsMgr.get_stat_mgr()
+	var win_population = stat_mgr.get_win_game_population_amount()
+	_population_target_label.text = "Pop. Goal: %d" % win_population
 
 
 func _unhandled_input(event):
