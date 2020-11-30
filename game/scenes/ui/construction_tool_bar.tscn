@@ -74,7 +74,7 @@ structure_type = 6
 structure_type = 7
 
 [node name="FactoryBtn" parent="." instance=ExtResource( 23 )]
-structure_type = 7
+structure_type = 8
 
 [node name="RecreationBtn" parent="." instance=ExtResource( 23 )]
 structure_type = 9

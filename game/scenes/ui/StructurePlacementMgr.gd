@@ -85,7 +85,7 @@ func _on_construction_tool_bar_clicked(structure_type):
 		return
 	_allowed_placement_tiles = _get_allowed_placement_tiles(structure_type)
 	if _allowed_placement_tiles == null or _allowed_placement_tiles.size() < 1:
-		HudAlertsMgr.add_hud_alert("No Universal Utility Conduit (UUC) tiles to build on")
+		#HudAlertsMgr.add_hud_alert("No Universal Utility Conduit (UUC) tiles to build on")
 		HudAlertsMgr.add_hud_alert("Build Universal Utility Conduit (UUC) tiles first")
 		return
 	for allowed_placement_tile in _allowed_placement_tiles:
