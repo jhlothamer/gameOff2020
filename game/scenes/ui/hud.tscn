@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
@@ -14,7 +14,136 @@
 [ext_resource path="res://scenes/ui/reclaim_confirmation_dialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/styles/hud_text_button_style.tres" type="StyleBox" id=14]
-[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/images/ui/Drill-Deploy.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/ui/Drill-Deploy-Active.png" type="Texture" id=16]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 66, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 132, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 198, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 264, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 330, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 396, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 462, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 528, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 594, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 660, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 726, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 792, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 858, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 924, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 990, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1056, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1122, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1188, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1254, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1320, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1386, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1452, 0, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 1518, 0, 66, 66 )
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -52,20 +181,26 @@ __meta__ = {
 [node name="TopRightMarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -167.0
-margin_bottom = 51.0
+margin_left = -70.0
+margin_bottom = 70.0
 custom_constants/margin_right = 20
-custom_constants/margin_top = 100
+custom_constants/margin_top = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LaunchHarvesterBtn" type="Button" parent="TopRightMarginContainer"]
-margin_top = 100.0
-margin_right = 147.0
-margin_bottom = 131.0
-custom_fonts/font = ExtResource( 15 )
-text = "Harvester"
+[node name="LaunchHarvesterBtn" type="TextureButton" parent="TopRightMarginContainer"]
+margin_top = 20.0
+margin_right = 50.0
+margin_bottom = 70.0
+hint_tooltip = "Launch Harvester"
+texture_normal = ExtResource( 15 )
+
+[node name="ActiveHarvesterAnimation" type="AnimatedSprite" parent="TopRightMarginContainer/LaunchHarvesterBtn"]
+visible = false
+frames = SubResource( 26 )
+centered = false
+offset = Vector2( -8, -8 )
 
 [node name="BottomRightMarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -210,7 +345,6 @@ visible = false
 visible = false
 
 [node name="ReclaimConfirmationDialog" parent="Dialogs" instance=ExtResource( 12 )]
-visible = false
 [connection signal="pressed" from="TopRightMarginContainer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
 [connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]
