@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/howToPlay/howToPlay.gd"
 }, {
+"base": "Control",
+"class": "HudAlertsMgr",
+"language": "GDScript",
+"path": "res://scenes/ui/hud_alerts.gd"
+}, {
 "base": "Object",
 "class": "MultiYield",
 "language": "GDScript",
@@ -195,6 +200,7 @@ _global_script_class_icons={
 "Game": "",
 "GraphUtil": "",
 "HowToPlay": "",
+"HudAlertsMgr": "",
 "MultiYield": "",
 "NodeUtil": "",
 "PropertyUtil": "",

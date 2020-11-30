@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 		if !_update_travel_direction():
 			_harvester_state = HarvesterState.RETURNING_TO_BARN
 			emit_signal("harvester_inactive")
+			HudAlertsMgr.add_hud_alert("Harvester returning to barn")
 	if _harvester_state == HarvesterState.RETURNING_TO_BARN:
 		rotation += delta*_speed_radians*_travel_direction
 		if _is_at_barn_location(delta*_speed_radians):
@@ -126,6 +127,7 @@ func _update_harvester_animation_direction():
 
 func _on_harvester_activated() -> void:
 	if [HarvesterState.TRAVELING, HarvesterState.HARVESTING].has(_harvester_state):
+		HudAlertsMgr.add_hud_alert("Harvester already deployed")
 		if debug:
 			print("Harvester: harvester_activated signal received by current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 		return
@@ -133,9 +135,11 @@ func _on_harvester_activated() -> void:
 	if _update_travel_direction():
 		_harvester_state = HarvesterState.TRAVELING
 		emit_signal("harvester_active")
+		HudAlertsMgr.add_hud_alert("Deploying harvester")
 		if debug:
 			print("Harvester: harvester_activated signal received.  Harvester now active.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 	else:
+		HudAlertsMgr.add_hud_alert("Nothing currrently on surface to harvest")
 		if debug:
 			print("Harvester: harvester_activated signal received by but nothing to harvest.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 			print("Harvester: distance_from_moon_tolerance = " + str(distance_from_moon_tolerance))

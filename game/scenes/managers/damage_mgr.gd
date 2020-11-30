@@ -51,3 +51,6 @@ func _on_DamageTimer_timeout():
 	structure_mgr.damage_structure(rand_structure)
 	# set random time for next damage
 	_start_random_damage_timer()
+	var structure_metadata := structure_mgr.get_structure_metadata(rand_structure.structure_type_id)
+	var structure_name = structure_metadata.get_name()
+	HudAlertsMgr.add_hud_alert(structure_name + " Damaged")

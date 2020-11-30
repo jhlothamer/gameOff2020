@@ -40,6 +40,10 @@ class Stat:
 		if values.size() < 1:
 			return 0.0
 		return values[0]
+	func get_prev_value() -> float:
+		if values.size() < 2:
+			return get_value()
+		return values[1]
 	func get_delta() -> float:
 		if values.size() < 2:
 			return 0.0
@@ -280,11 +284,20 @@ func _on_stat_cycle_time_has_elapsed() -> void:
 	
 	emit_signal("stats_updated")
 	
+	
 	var loose_game_population_amount : float = population_stat.stat_metadata["looseGameAmount"]
 	
 	if loose_game_population_amount > current_population:
 		print("population crashed!")
 		emit_signal("population_crashed_game_over")
+		return
+		
+	var warn_loose_game_population_amount = population_stat.stat_metadata["warnLooseGameAmount"]
+	if warn_loose_game_population_amount >= current_population:
+		var prev_population_value = population_stat.get_prev_value()
+		if warn_loose_game_population_amount < prev_population_value:
+			HudAlertsMgr.add_hud_alert("Population is crashing!")
+			HudAlertsMgr.add_hud_alert("Game over if population drops below %d" % loose_game_population_amount)
 
 
 func get_needed_number_of_structures(structure_type_id: int) -> float:
