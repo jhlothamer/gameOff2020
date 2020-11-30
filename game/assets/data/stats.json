@@ -15,6 +15,7 @@
 	"Water":{
 		"producedByStructure": "Reclamation",
 		"unitsPerStructure": 500,
+		"overCapacityLimit": 1,
 		"populationSchedule": {
 			".5": -10,
 			".6": -8,
@@ -26,6 +27,7 @@
 	"Food":{
 		"producedByStructure": "Agriculture",
 		"unitsPerStructure": 250,
+		"overCapacityLimit": 2,
 		"populationSchedule": {
 			".5": -6,
 			".6": -4,
@@ -36,6 +38,7 @@
 	"Shelter":{
 		"producedByStructure": "Residential",
 		"unitsPerStructure": 500,
+		"overCapacityLimit": 2,
 		"populationSchedule": {
 			".1": -10,
 			".2": -8,
@@ -47,6 +50,7 @@
 	"Clothing":{
 		"producedByStructure": "Factory",
 		"unitsPerStructure": 750,
+		"overCapacityLimit": 4,
 		"populationSchedule": {
 			".1": -10,
 			".2": -8,
@@ -58,6 +62,7 @@
 	"Health":{
 		"producedByStructure": "Medical",
 		"unitsPerStructure": 500,
+		"overCapacityLimit": 6,
 		"populationSchedule": {
 			".3": -10,
 			".4": -8,
@@ -69,12 +74,14 @@
 	"Education":{
 		"producedByStructure": "Education",
 		"unitsPerStructure": 500,
+		"overCapacityLimit": 6,
 		"populationSchedule": {
 		}
 	},
 	"Entertainment":{
 		"producedByStructure": "Recreation",
 		"unitsPerStructure": 500,
+		"overCapacityLimit": 10,
 		"populationSchedule": {
 
 		}
@@ -85,7 +92,11 @@
 	},
 	"Administration":{
 		"producedByStructure": "Office",
-		"unitsPerStructure": 1
+		"unitsPerStructure": 2000,
+		"overCapacityLimit": 4,
+		"populationSchedule": {
+
+		}
 	},
 	"TotalPowerRequired":{
 	}

@@ -137,9 +137,6 @@ func _unhandled_input(event):
 		return
 	var inputEventKey: InputEventKey = event
 	if inputEventKey.scancode == shortcut.shortcut.scancode:
-		if disabled:
-			HudAlertsMgr.add_hud_alert("Not enough resources to construct %s " % _texture_button.hint_tooltip)
-			return
 		emit_signal("shortcut_activated")
 
 

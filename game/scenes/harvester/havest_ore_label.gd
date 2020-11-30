@@ -10,6 +10,7 @@ onready var _label = $Label
 
 func _ready():
 	SignalMgr.register_publisher(self, "resource_amount_added")
+	_set_fragment_harvest_amount(fragment_harvest_amount)
 
 func _set_fragment_harvest_amount(value):
 	fragment_harvest_amount = value

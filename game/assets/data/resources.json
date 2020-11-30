@@ -13,7 +13,7 @@
 		},
 		"ore": {
 			"starting_amount": 1000.0,
-			"fragment_harvest_amount": 500.0
+			"fragment_harvest_amount": 250.0
 		}
 	}
 }
