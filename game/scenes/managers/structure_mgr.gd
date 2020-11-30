@@ -117,7 +117,11 @@ class StructureData:
 		disabled = is_damaged
 	func lacks_resources() -> bool:
 		return resources_lacking.size() > 0
-		
+	func get_power_required() -> float:
+		if structure_type_id == StructureTileType.Power || structure_type_id == StructureTileType.UUC:
+			return 0.0
+		return structure_metadata["operatingResources"]["electricity"]
+
 
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
@@ -455,3 +459,5 @@ func get_structures_by_type_id(structure_type_id: int) -> Array:
 		structures.append(structure)
 	return structures
 	
+func get_structures() -> Array:
+	return _structures.values()

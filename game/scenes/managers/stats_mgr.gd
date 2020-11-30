@@ -18,6 +18,7 @@ enum StatType {
 	Administration,
 	#
 	PopulationDelta,
+	TotalPowerRequired,
 }
 
 const VALUES_KEPT_LIMIT = 100
@@ -226,12 +227,23 @@ func _calculate_min_verage_percent() -> float:
 		min_overage_percent = min(min_overage_percent, _get_overage_percent_for_needed_stat(needed_stat, current_population))
 	return min_overage_percent
 
+
+func _update_total_power_required_stat(structure_mgr: StructureMgr):
+	var total_power_required_stat := _get_stat(StatType.TotalPowerRequired)
+	var total = 0.0
+	for structure in structure_mgr.get_structures():
+		total += structure.get_power_required()
+	total_power_required_stat.push_value(total)
+
+
 func _on_stat_cycle_time_has_elapsed() -> void:
 	var structure_mgr := StructureMgr.get_structure_mgr()
 	if structure_mgr == null:
 		return
 	
 	_update_structure_produced_stats()
+
+	_update_total_power_required_stat(structure_mgr)
 
 	var population_stat := _get_stat(StatType.Population)
 	var current_population = population_stat.get_value()

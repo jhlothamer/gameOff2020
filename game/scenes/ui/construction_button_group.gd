@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Panel
 
 signal button_down()
 signal shortcut_activated()
@@ -10,10 +10,10 @@ var collapsed := true setget _set_collapsed
 var label_visible := false setget _set_label_visible
 var shortcut: ShortCut
 
-onready var _texture_button := $TextureButton
-onready var _label := $Label
+onready var _texture_button := $PanelContainer/VBoxContainer/TextureButton
+onready var _label := $PanelContainer/VBoxContainer/Label
 onready var _mouse_over_sound := $MouseOverStreamPlayer
-onready var _shortcut_label = $TextureButton/ShortcutLabel
+onready var _shortcut_label = $PanelContainer/VBoxContainer/TextureButton/ShortcutLabel
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",

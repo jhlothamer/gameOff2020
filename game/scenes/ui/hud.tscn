@@ -221,8 +221,8 @@ __meta__ = {
 [node name="BottomLeftMarginContainer" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -199.0
-margin_right = 158.0
+margin_top = -283.0
+margin_right = 174.0
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 __meta__ = {
@@ -232,13 +232,13 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer"]
 margin_left = 20.0
-margin_right = 158.0
-margin_bottom = 195.0
+margin_right = 174.0
+margin_bottom = 263.0
 grow_vertical = 0
 alignment = 2
 
 [node name="StructureInfoBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_right = 138.0
+margin_right = 154.0
 margin_bottom = 17.0
 custom_styles/normal = ExtResource( 14 )
 custom_fonts/font = ExtResource( 3 )
@@ -250,7 +250,7 @@ do_on_pressed_sound = false
 
 [node name="HelpBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
 margin_top = 21.0
-margin_right = 138.0
+margin_right = 154.0
 margin_bottom = 38.0
 custom_styles/normal = ExtResource( 14 )
 custom_fonts/font = ExtResource( 3 )
@@ -262,8 +262,8 @@ do_on_pressed_sound = false
 
 [node name="PanelContainer" type="PanelContainer" parent="BottomLeftMarginContainer/VBoxContainer"]
 margin_top = 42.0
-margin_right = 138.0
-margin_bottom = 195.0
+margin_right = 154.0
+margin_bottom = 263.0
 custom_styles/panel = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -272,37 +272,50 @@ __meta__ = {
 [node name="StatsMarginContainer" type="MarginContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 133.0
-margin_bottom = 148.0
+margin_right = 149.0
+margin_bottom = 216.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer"]
-margin_right = 128.0
-margin_bottom = 143.0
+margin_right = 144.0
+margin_bottom = 211.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PopulationStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_right = 128.0
+margin_right = 144.0
 margin_bottom = 45.0
 stat_delta_decrease_color = Color( 0.678431, 0, 0, 1 )
 
-[node name="WaterStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="PopulationTargetLabel" type="Label" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer"]
 margin_top = 49.0
-margin_right = 128.0
-margin_bottom = 94.0
-stat_label = "Water"
-stat_name = "water"
-is_resource = true
+margin_right = 144.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pop. Goal: 10000"
+
+[node name="PowerStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 68.0
+margin_right = 144.0
+margin_bottom = 113.0
+stat_label = "Power"
+stat_name = "Power"
+
+[node name="PowerRequiredStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 117.0
+margin_right = 144.0
+margin_bottom = 162.0
+stat_label = "Power Required"
+stat_name = "TotalPowerRequired"
 
 [node name="OreStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_top = 98.0
-margin_right = 128.0
-margin_bottom = 143.0
+margin_top = 166.0
+margin_right = 144.0
+margin_bottom = 211.0
 stat_label = "Ore"
 stat_name = "ore"
 is_resource = true

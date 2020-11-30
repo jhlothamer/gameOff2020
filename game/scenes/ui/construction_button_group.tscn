@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon_disabled.png" type="Texture" id=2]
@@ -6,17 +6,49 @@
 [ext_resource path="res://assets/audio/sounds/UI_Menu_Mouse_Over_01.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png" type="Texture" id=5]
 
-[node name="ConstuctionButton" type="VBoxContainer"]
-margin_right = 54.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 54, 68 )
-mouse_filter = 2
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.615686, 0.627451, 0.611765 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0.615686, 0.627451, 0.611765 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="ConstructionButton" type="Panel"]
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="MouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -9.0
+bus = "UI"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 60.0
+margin_bottom = 74.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 57.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 54, 68 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 margin_right = 54.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
@@ -30,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShortcutLabel" type="Label" parent="TextureButton"]
+[node name="ShortcutLabel" type="Label" parent="PanelContainer/VBoxContainer/TextureButton"]
 margin_right = 50.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 50, 50 )
@@ -41,7 +73,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 margin_top = 54.0
 margin_right = 54.0
 margin_bottom = 68.0
@@ -49,11 +81,6 @@ text = "-250 ore"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-volume_db = -9.0
-bus = "UI"
-[connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
-[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
-[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_mouse_exited"]
