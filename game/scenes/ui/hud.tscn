@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
@@ -10,142 +10,141 @@
 [ext_resource path="res://scenes/ui/stat_display.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ui/structures_dialog.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/ui/help_dialog.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/ui/lose_dlg.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/ui/reclaim_confirmation_dialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/styles/hud_text_button_style.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/images/ui/Drill-Deploy.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/Drill-Deploy-Active.png" type="Texture" id=16]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 66, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 132, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 198, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 264, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 330, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 396, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 462, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 528, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 594, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 660, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 726, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 792, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 858, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 924, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 990, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1056, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1122, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1188, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1254, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1320, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1386, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=23]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1452, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 16 )
 region = Rect2( 1518, 0, 66, 66 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=26]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -198,7 +197,7 @@ texture_normal = ExtResource( 15 )
 
 [node name="ActiveHarvesterAnimation" type="AnimatedSprite" parent="TopRightMarginContainer/LaunchHarvesterBtn"]
 visible = false
-frames = SubResource( 26 )
+frames = SubResource( 25 )
 centered = false
 offset = Vector2( -8, -8 )
 
@@ -265,7 +264,7 @@ do_on_pressed_sound = false
 margin_top = 42.0
 margin_right = 138.0
 margin_bottom = 195.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -340,9 +339,6 @@ visible = false
 [node name="StructuresDialog" parent="Dialogs" instance=ExtResource( 9 )]
 
 [node name="HelpDialog" parent="Dialogs" instance=ExtResource( 10 )]
-
-[node name="LoseDialog" parent="Dialogs" instance=ExtResource( 11 )]
-visible = false
 
 [node name="ReclaimConfirmationDialog" parent="Dialogs" instance=ExtResource( 12 )]
 [connection signal="pressed" from="TopRightMarginContainer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]
