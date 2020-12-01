@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ending/pop_crash_ending.gd" type="Script" id=7]
+[ext_resource path="res://assets/audio/vo/VO_Game_End_Pop_Crash_FX.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ending"
@@ -46,6 +47,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VoiceOverStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="PopCrashEnding" type="Control"]
@@ -146,3 +159,6 @@ sceneToLoad = "res://scenes/title/title.tscn"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ending"
 anims/ending = SubResource( 1 )
+
+[node name="VoiceOverStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

@@ -1,17 +1,19 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/misc/stars_and_nebula_background_non_game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/planets/destination_planet.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ui/moon_huge_title.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Tone_1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/ending/ending.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/white_rect_10x10.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/text_large.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/fonts/GeneraleStation-Regular.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/audio/vo/VO_Game_End_Lose_FX.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/vo/VO_Game_End_Win_FX.ogg" type="AudioStream" id=12]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "Show Ending Text"
 length = 26.0
 tracks/0/type = "value"
@@ -110,6 +112,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_voice_over"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 5.0
@@ -133,30 +149,30 @@ tracks/1/keys = {
 "points": PoolRealArray( 278.286, -0.25, 0, 0.25, 0, 278.286, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 5 )
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("AMB_Space_Tone_1:volume_db")
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("moon_huge_title:exhaust_length_percent")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, -48.0 ]
+"points": PoolRealArray( 1, -0.25, 0, 2.15, -0.933774, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5 )
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("moon_huge_title:exhaust_length_percent")
+tracks/3/type = "value"
+tracks/3/path = NodePath("AMB_Ship_Tone_1:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 2.15, -0.933774, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 5 )
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("TextureRect:modulate:r")
@@ -235,7 +251,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 42
 font_data = ExtResource( 9 )
 
@@ -266,11 +282,11 @@ exhaust_length_percent = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
-"anims/Show Ending Text" = SubResource( 1 )
+"anims/Show Ending Text" = SubResource( 3 )
 anims/ending = SubResource( 2 )
-"anims/fade in" = SubResource( 3 )
+"anims/fade in" = SubResource( 4 )
 
-[node name="AMB_Space_Tone_1" type="AudioStreamPlayer" parent="."]
+[node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
 bus = "AMB_Space"
@@ -348,7 +364,13 @@ margin_left = 20.0
 margin_top = 40.0
 margin_right = 441.0
 margin_bottom = 145.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "A New World
 A New Chance"
+
+[node name="VO_Game_End_Lose_FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="VO_Game_End_Win_FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

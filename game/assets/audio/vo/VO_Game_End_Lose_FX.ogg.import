@@ -11,5 +11,5 @@ dest_files=[ "res://.import/VO_Game_End_Lose_FX.ogg-694fc0939cea3506a1cf250247c6
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

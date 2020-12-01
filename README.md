@@ -6,11 +6,11 @@ This is a game made for the Game Off 2020 game jam.  The theme for this jam is M
 
 Aaron Bowers - sound and music
 
-Leanne Bowers - art
+Leanne Bowers - art and voice talent
 
-bobrobbow - programmer
+bobrobbow - programming
 
-Jason Lothamer - programming
+Jason Lothamer - programming and design
 
 ---
 
