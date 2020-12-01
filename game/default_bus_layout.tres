@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+
+[sub_resource type="AudioEffectAmplify" id=5]
+resource_name = "Amplify"
+volume_db = 9.0
 
 [sub_resource type="AudioEffectAmplify" id=1]
 resource_name = "Amplify"
@@ -86,3 +90,11 @@ bus/9/mute = false
 bus/9/bypass_fx = false
 bus/9/volume_db = -3.41558
 bus/9/send = "Zoom3"
+bus/10/name = "VO"
+bus/10/solo = false
+bus/10/mute = false
+bus/10/bypass_fx = false
+bus/10/volume_db = 0.0
+bus/10/send = "Master"
+bus/10/effect/0/effect = SubResource( 5 )
+bus/10/effect/0/enabled = true
