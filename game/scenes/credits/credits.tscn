@@ -54,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = -173.0
 margin_bottom = 303.0
+mouse_filter = 2
 custom_constants/margin_right = 20
 custom_constants/margin_left = 40
 __meta__ = {
@@ -64,6 +65,7 @@ __meta__ = {
 margin_left = 40.0
 margin_right = 1004.0
 margin_bottom = 476.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,12 +73,14 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 964.0
 margin_bottom = 100.0
+mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="AaronBowersCreditsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 500.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -93,11 +97,9 @@ margin_left = 520.0
 margin_right = 964.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
-bbcode_enabled = true
-bbcode_text = "Art by
-Leanne Bowers"
 text = "Art and Voice Talent by
 Leanne Bowers"
 fit_content_height = true
@@ -106,12 +108,14 @@ fit_content_height = true
 margin_top = 104.0
 margin_right = 964.0
 margin_bottom = 182.0
+mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="BobrobbowCreditsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 500.0
 margin_bottom = 78.0
 rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -125,6 +129,7 @@ fit_content_height = true
 margin_left = 520.0
 margin_right = 964.0
 margin_bottom = 78.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -139,7 +144,8 @@ fit_content_height = true
 [node name="FontsCreditLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_top = 186.0
 margin_right = 964.0
-margin_bottom = 290.0
+margin_bottom = 250.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 7 )
 text = "font:
@@ -149,9 +155,10 @@ License: OFL (SIL Open Font License)"
 fit_content_height = true
 
 [node name="AdditionalArtCreditLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 294.0
+margin_top = 254.0
 margin_right = 964.0
-margin_bottom = 390.0
+margin_bottom = 350.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 7 )
 text = "Additional Art:
