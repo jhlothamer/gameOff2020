@@ -68,6 +68,9 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 [table=2]
 [cell][img]res://assets/images/ui/icons/Construction-Menu.png[/img] [/cell]
 [cell]All construction is started by selecting a structure from the build menu.  The menu is located on the bottom right of the screen.  Simply click the construction button to expand the menu and select a structure.  Resource costs are displayed. Once the resources have dropped below the construction cost listed you will not be able to build that structure.[/cell]
+[cell][img]res://assets/images/help/UUC_Construction_Button.png[/img] [/cell]
+[cell]Each structure type has a shortcut for initiating their construction.  The shortcut is listed in the construction menu on the lower right of the button.  Learning these shortcuts makes building your colony much, much easier and faster.[/cell]
+
 [/table]
 
 [center][u][b]Resources[/b][/u][/center]
