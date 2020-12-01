@@ -81,6 +81,7 @@ func _process(delta: float) -> void:
 			_spawn_havest_ore_label()
 			_fragment_harvest_times.erase(_current_fragement)
 			_current_fragement = null
+			_harvester_state = HarvesterState.TRAVELING
 		else:
 			_fragment_harvest_times[_current_fragement] = current_fragment_harvest_time
 
