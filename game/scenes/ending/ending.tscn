@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/audio/vo/VO_Game_End_Lose_FX.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/audio/vo/VO_Game_End_Win_FX.ogg" type="AudioStream" id=12]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Show Ending Text"
 length = 26.0
 tracks/0/type = "value"
@@ -172,7 +172,7 @@ tracks/3/keys = {
 "values": [ 0.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("TextureRect:modulate:r")
@@ -251,7 +251,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 9 )
 
@@ -262,6 +262,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_win_condition = true
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 1 )]
 speed = 0.0
@@ -277,14 +278,12 @@ __meta__ = {
 
 [node name="moon_huge_title" parent="." instance=ExtResource( 3 )]
 position = Vector2( -162.54, 278.286 )
-drive_on = true
-exhaust_length_percent = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
-"anims/Show Ending Text" = SubResource( 3 )
+"anims/Show Ending Text" = SubResource( 1 )
 anims/ending = SubResource( 2 )
-"anims/fade in" = SubResource( 4 )
+"anims/fade in" = SubResource( 3 )
 
 [node name="AMB_Ship_Tone_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -364,13 +363,15 @@ margin_left = 20.0
 margin_top = 40.0
 margin_right = 441.0
 margin_bottom = 145.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "A New World
 A New Chance"
 
 [node name="VO_Game_End_Lose_FX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "VO"
 
 [node name="VO_Game_End_Win_FX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "VO"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

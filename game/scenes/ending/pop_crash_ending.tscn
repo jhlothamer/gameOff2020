@@ -70,6 +70,7 @@ __meta__ = {
 }
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 1 )]
+speed = 1.0
 
 [node name="moon_huge" type="Sprite" parent="."]
 position = Vector2( 522.255, 2276.69 )
@@ -162,3 +163,4 @@ anims/ending = SubResource( 1 )
 
 [node name="VoiceOverStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "VO"
