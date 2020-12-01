@@ -262,7 +262,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_win_condition = true
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 1 )]
 speed = 0.0
@@ -278,6 +277,8 @@ __meta__ = {
 
 [node name="moon_huge_title" parent="." instance=ExtResource( 3 )]
 position = Vector2( -162.54, 278.286 )
+drive_on = true
+exhaust_length_percent = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
