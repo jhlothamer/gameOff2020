@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/game/moon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/images/ui/icons/people-blue.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/ui/icons/power-red.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/ui/icons/power-blue.png" type="Texture" id=19]
+[ext_resource path="res://scenes/managers/structure_tile_tooltip_mgr.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
@@ -258,7 +259,6 @@ __meta__ = {
 }
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
-point_count = 200
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -374,6 +374,9 @@ script = ExtResource( 7 )
 one_shot = true
 
 [node name="StatsMgr" parent="." instance=ExtResource( 13 )]
+
+[node name="StructureTileTooltipMgr" parent="." instance=ExtResource( 20 )]
+tooltip_wait = 1.5
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )

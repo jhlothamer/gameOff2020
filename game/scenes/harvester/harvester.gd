@@ -140,7 +140,7 @@ func _on_harvester_activated() -> void:
 		if debug:
 			print("Harvester: harvester_activated signal received.  Harvester now active.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 	else:
-		HudAlertsMgr.add_hud_alert("Nothing currrently on surface to harvest")
+		HudAlertsMgr.add_hud_alert("Nothing currently on surface to harvest")
 		if debug:
 			print("Harvester: harvester_activated signal received by but nothing to harvest.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 			print("Harvester: distance_from_moon_tolerance = " + str(distance_from_moon_tolerance))

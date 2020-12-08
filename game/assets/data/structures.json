@@ -21,7 +21,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 0,
+				"power": 0,
 				"population": 0
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -47,7 +47,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 0,
+				"power": 0,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -71,7 +71,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 5,
+				"power": 5,
 				"population": 2,
 				"water": 10
 			},
@@ -97,7 +97,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 2,
+				"power": 2,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -121,7 +121,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 2,
+				"power": 2,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -145,7 +145,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 2,
+				"power": 2,
 				"population": 20
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -169,7 +169,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 3,
+				"power": 3,
 				"population": 10
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -193,7 +193,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 1,
+				"power": 1,
 				"population": 2
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -217,7 +217,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 3,
+				"power": 3,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -241,7 +241,7 @@
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 1,
+				"power": 1,
 				"population": 3
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",

@@ -3,7 +3,7 @@
 		"population": {
 			"starting_amount": 1000.0,
 		},
-		"electricity": {
+		"power": {
 			"produced_by": "Power",
 			"starting_amount": 0.0
 		},

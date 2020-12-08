@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_move.gd" type="Script" id=3]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" type="Script" id=4]
 [ext_resource path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_zoom.gd" type="Script" id=5]
-[ext_resource path="res://scenes/game/game.gd" type="Script" id=6]
+[ext_resource path="res://scenes/game/game_test.gd" type="Script" id=6]
 [ext_resource path="res://scenes/managers/resource_mgr.gd" type="Script" id=7]
 [ext_resource path="res://scenes/managers/damage_mgr.gd" type="Script" id=8]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=9]
@@ -24,6 +24,7 @@
 [ext_resource path="res://scenes/ui/hud.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=23]
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/managers/structure_tile_tooltip_mgr.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -389,6 +390,9 @@ max_damage_time_interval = 20
 one_shot = true
 
 [node name="StatsMgr" parent="." instance=ExtResource( 13 )]
+
+[node name="StructureTileTooltipMgr" parent="." instance=ExtResource( 25 )]
+tooltip_wait = 0.75
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )

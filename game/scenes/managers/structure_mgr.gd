@@ -1,6 +1,8 @@
 class_name StructureMgr
 extends Node
 
+signal structure_state_changed(cellv)
+
 const structure_data_file_path = "res://assets/data/structures.json"
 
 enum StructureTileType {
@@ -45,11 +47,10 @@ class StructureMetadata:
 		return _make_resources_string(get_reclamation_resources(), "+")
 	func get_power_required() -> float:
 		if structure_metadata.has("operatingResources"):
-			if structure_metadata["operatingResources"].has("electricity"):
-				return structure_metadata["operatingResources"]["electricity"]
+			if structure_metadata["operatingResources"].has("power"):
+				return structure_metadata["operatingResources"]["power"]
 		return 0.0
-	
-	func get_name():
+	func get_name() -> String:
 		return structure_metadata["name"]
 	
 
@@ -63,6 +64,7 @@ class StructureData:
 	#total amount of power being used from powered cells or amount of power being given to a non-power station structure
 	var power_subscription := 0
 	var structure_metadata
+	var metadata_wrapped: StructureMetadata
 	var disabled := false
 	var damaged := false
 	var repairing := false
@@ -75,10 +77,11 @@ class StructureData:
 		structure_type_id = structure_type_id_
 		tile_map_cell = tile_map_cell_
 		structure_metadata = structure_metadata_
+		metadata_wrapped = StructureMetadata.new(structure_metadata)
 	func power_station_process_structure(structure: StructureData):
 		if structure.disabled:
 			return
-		var required_power = structure.structure_metadata["operatingResources"]["electricity"]
+		var required_power = structure.structure_metadata["operatingResources"]["power"]
 		if required_power == 0:
 			return
 		required_power -= structure.power_subscription
@@ -102,9 +105,9 @@ class StructureData:
 		resources_lacking.clear()
 		if structure_type_id != Constants.StructureTileType.Power:
 			#check power
-			var required_power = structure_metadata["operatingResources"]["electricity"]
+			var required_power = structure_metadata["operatingResources"]["power"]
 			if power_subscription < required_power:
-				resources_lacking.append("electricity")
+				resources_lacking.append("power")
 				#print("structure at tile " + str(tile_map_cell) + " lacks power")
 		#check population
 	func clear_current_animation():
@@ -120,8 +123,14 @@ class StructureData:
 	func get_power_required() -> float:
 		if structure_type_id == StructureTileType.Power || structure_type_id == StructureTileType.UUC:
 			return 0.0
-		return structure_metadata["operatingResources"]["electricity"]
-
+		return structure_metadata["operatingResources"]["power"]
+	func get_repair_resources_string() -> String:
+		return metadata_wrapped.get_repair_resources_string()
+	func get_reclamation_resources_string() -> String:
+		return metadata_wrapped.get_reclamation_resources_string()
+	func get_name() -> String:
+		return metadata_wrapped.get_name()
+		
 
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
@@ -147,6 +156,7 @@ const _structure_lack_resource_status_overlay_tile_id := Constants.STRUCTURE_TIL
 
 func _ready():
 	Globals.set("StructureMgr", self)
+	SignalMgr.register_publisher(self, "structure_state_changed")
 	_spiral_vectors = GraphUtil.spiral_vectors(200)
 
 	_structure_data = FileUtil.load_json_data(structure_data_file_path)
@@ -223,6 +233,7 @@ func remove_structure(cell_v: Vector2) -> void:
 	if !structure.disabled:
 		structure.disabled = true
 		refresh_structure_resources()
+	emit_signal("structure_state_changed", structure.tile_map_cell)
 	_do_reclamation_animation(structure)
 	
 
@@ -283,7 +294,7 @@ func _refresh_structure_resource_indicators(structure: StructureData):
 	var structure_resource_icon_cellv = structure.tile_map_cell * 8 + Vector2(6,6)
 	
 	if structure.structure_type_id != Constants.StructureTileType.Power and structure.structure_type_id != Constants.StructureTileType.UUC:
-		if structure.resources_lacking.has("electricity"):
+		if structure.resources_lacking.has("power"):
 			Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 2)
 		else:
 			Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 0)
@@ -344,6 +355,8 @@ func _do_construction_animation(structure: StructureData) -> void:
 	structure.under_construction = false
 	#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 	refresh_structure_resources()
+	emit_signal("structure_state_changed", structure.tile_map_cell)
+
 
 func _do_reclamation_animation(structure: StructureData) -> void:
 	structure.clear_current_animation()
@@ -365,6 +378,7 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 		_structures[structure.tile_map_cell] = uuc_structure
 		Game.get_structure_tiles_tile_map().set_cellv(structure.tile_map_cell, Constants.StructureTileType.UUC)
 	refresh_structure_resources()
+	emit_signal("structure_state_changed", structure.tile_map_cell)
 
 
 func _do_repair_animation(structure: StructureData) -> void:
@@ -383,6 +397,7 @@ func _do_repair_animation(structure: StructureData) -> void:
 	structure.repairing = false
 	#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 	refresh_structure_resources(true)
+	emit_signal("structure_state_changed", structure.tile_map_cell)
 
 func is_disabled(tile_map_cell: Vector2) -> bool:
 	if _structures.has(tile_map_cell):
@@ -429,6 +444,7 @@ func damage_structure(structure: StructureData):
 	Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 	interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 	interaction_sound.play_failure_deactive_sound()
+	emit_signal("structure_state_changed", structure.tile_map_cell)
 
 func get_functioning_structures_by_type_name(type_name: String) -> Array:
 	var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, type_name)
@@ -461,3 +477,15 @@ func get_structures_by_type_id(structure_type_id: int) -> Array:
 	
 func get_structures() -> Array:
 	return _structures.values()
+
+func get_structure_at_world_coord(world_coord: Vector2) -> StructureData:
+	var structure_tiles_map := Game.get_structure_tiles_tile_map()
+	var map_coord = structure_tiles_map.world_to_map(world_coord)
+	if _structures.has(map_coord):
+		return _structures[map_coord]
+	return null
+
+func get_structure(tile_map_coord: Vector2) -> StructureData:
+	if _structures.has(tile_map_coord):
+		return _structures[tile_map_coord]
+	return null
