@@ -11,5 +11,5 @@ dest_files=[ "res://.import/VO_Story_Game_End_Pop_Crash.ogg-140c3ae351f246d9f188
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
