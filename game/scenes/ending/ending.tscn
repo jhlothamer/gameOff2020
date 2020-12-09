@@ -10,8 +10,8 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/fonts/GeneraleStation-Regular.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/audio/vo/VO_Game_End_Lose_FX.ogg" type="AudioStream" id=11]
-[ext_resource path="res://assets/audio/vo/VO_Game_End_Win_FX.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/vo/VO_Story_Game_End_Lose.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/vo/VO_Story_Game_End_Win.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show Ending Text"
