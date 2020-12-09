@@ -11,5 +11,5 @@ dest_files=[ "res://.import/VO_Story_Introduction_1.ogg-291b6137952a922fafebe72c
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

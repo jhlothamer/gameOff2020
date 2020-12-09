@@ -11,5 +11,5 @@ dest_files=[ "res://.import/VO_Story_Game_End_Win.ogg-683124f06e99000a1624eca520
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
