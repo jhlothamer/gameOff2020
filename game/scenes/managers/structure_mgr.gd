@@ -3,6 +3,8 @@ extends Node
 
 signal structure_state_changed(cellv)
 
+export var debug := false
+
 const structure_data_file_path = "res://assets/data/structures.json"
 
 enum StructureTileType {
@@ -52,18 +54,19 @@ class StructureMetadata:
 		return 0.0
 	func get_name() -> String:
 		return structure_metadata["name"]
+	func get_power_provided() -> float:
+		if structure_metadata.has("powerProvided"):
+			return structure_metadata["powerProvided"]
+		return 0.0
 	
 
 class StructureData:
 	var structure_type_id :int = Constants.StructureTileType.UUC
 	var tile_map_cell := Vector2.ZERO
 	#if not a power station or UUC then list of power stations that power this cell
-	var power_stations := []
-	#if a power station then what cells it powers
-	var powers_cells := []
+	#var power_stations := []
 	#total amount of power being used from powered cells or amount of power being given to a non-power station structure
 	var power_subscription := 0
-	var structure_metadata
 	var metadata_wrapped: StructureMetadata
 	var disabled := false
 	var damaged := false
@@ -73,43 +76,28 @@ class StructureData:
 	var under_construction := true
 	var resources_lacking := []
 	var current_animation
-	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_metadata_):
+	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_metadata):
 		structure_type_id = structure_type_id_
 		tile_map_cell = tile_map_cell_
-		structure_metadata = structure_metadata_
 		metadata_wrapped = StructureMetadata.new(structure_metadata)
-	func power_station_process_structure(structure: StructureData):
-		if structure.disabled:
-			return
-		var required_power = structure.structure_metadata["operatingResources"]["power"]
-		if required_power == 0:
-			return
-		required_power -= structure.power_subscription
-		if required_power == 0:
-			return
-		var power_provided = structure_metadata["powerProvided"]
-		var power_left = power_provided - power_subscription
-		if power_left == 0:
-			return
-		if power_left >= required_power:
-			structure.power_subscription += required_power
-			power_subscription += required_power
-		else:
-			structure.power_subscription += power_left
-			power_subscription += power_left
+	func update_for_power_distribution(total_power_left: float) -> float:
+		resources_lacking.clear()
+		power_subscription = 0.0
+		var power_required = get_required_power()
+		if power_required == 0:
+			return total_power_left
+		if power_required > total_power_left:
+			total_power_left = 0.0
+			resources_lacking.append("power")
+			return total_power_left
+		total_power_left -= power_required
+		power_subscription = power_required
+		return total_power_left
+
 	func _get_name():
 		return structure_name
 	func _set_name(new_name):
 		structure_name = new_name
-	func update_lack_resources():
-		resources_lacking.clear()
-		if structure_type_id != Constants.StructureTileType.Power:
-			#check power
-			var required_power = structure_metadata["operatingResources"]["power"]
-			if power_subscription < required_power:
-				resources_lacking.append("power")
-				#print("structure at tile " + str(tile_map_cell) + " lacks power")
-		#check population
 	func clear_current_animation():
 		if current_animation == null:
 			return
@@ -120,17 +108,16 @@ class StructureData:
 		disabled = is_damaged
 	func lacks_resources() -> bool:
 		return resources_lacking.size() > 0
-	func get_power_required() -> float:
-		if structure_type_id == StructureTileType.Power || structure_type_id == StructureTileType.UUC:
-			return 0.0
-		return structure_metadata["operatingResources"]["power"]
 	func get_repair_resources_string() -> String:
 		return metadata_wrapped.get_repair_resources_string()
 	func get_reclamation_resources_string() -> String:
 		return metadata_wrapped.get_reclamation_resources_string()
 	func get_name() -> String:
 		return metadata_wrapped.get_name()
-		
+	func get_required_power() -> float:
+		return metadata_wrapped.get_power_required()
+	func get_power_provided() -> float:
+		return metadata_wrapped.get_power_provided()
 
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
@@ -199,8 +186,6 @@ func _create_structure_data_object(structure_type_id: int, tile_map_cell: Vector
 	var structure_metadata = _get_structure_metadata_by_id(structure_type_id)
 	var structureData = StructureData.new(structure_type_id, tile_map_cell, structure_metadata)
 	structureData.disabled = disabled
-	if structure_type_id == Constants.StructureTileType.Power:
-		structureData.powers_cells = _get_powered_cells(tile_map_cell)
 	if custom_name == "":
 		if _structure_id_to_name.has(structure_type_id):
 			structureData.structure_name = _structure_id_to_name[structure_type_id]
@@ -246,32 +231,98 @@ func repair_structure(cell_v: Vector2) -> void:
 		_do_repair_animation(structure)
 
 
+#creates a lists of connected structures (dictionary of tile map cell to structure)
+func _get_connected_structure_groups() -> Array:
+	#separate structures into connected groups
+	#powerstations in those groups will power the structures in that group
+	var directions := [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]
+	var connected_structure_groups := []
+	for tile_map_cell in _structures.keys():
+		var structure: StructureData = _structures[tile_map_cell]
+		if structure.disabled:
+			continue
+		var neighbor_list := []
+		for direction in directions:
+			var neighbor_tile_map_cell:Vector2 = structure.tile_map_cell + direction
+			for connected_structure_group in connected_structure_groups:
+				if connected_structure_group.has(neighbor_tile_map_cell):
+					neighbor_list.append((connected_structure_group))
+		if neighbor_list.size() == 0:
+			var connected_structure_group := {}
+			connected_structure_group[structure.tile_map_cell] = structure
+			connected_structure_groups.append(connected_structure_group)
+		else:
+			var new_connected_structure_group := {}
+			new_connected_structure_group[structure.tile_map_cell] = structure
+			for neighbor in neighbor_list:
+				DictionaryUtil.add(new_connected_structure_group, neighbor)
+				connected_structure_groups.erase(neighbor)
+			connected_structure_groups.append(new_connected_structure_group)
+			
+	
+	return connected_structure_groups
+
+
+func _get_total_power_provided_in_connect_structure_group(connected_structure_group: Dictionary) -> float:
+	var total_power_provided := 0.0
+	for tile_map_cell in connected_structure_group.keys():
+		var structure: StructureData = connected_structure_group[tile_map_cell]
+		if structure.structure_type_id != StructureTileType.Power:
+			continue
+		total_power_provided += structure.get_power_provided()
+	return total_power_provided
+
+var _structure_type_power_sort_priority := [
+	StructureTileType.Reclamation,
+	StructureTileType.Agriculture,
+	StructureTileType.Medical,
+	StructureTileType.Residential,
+	StructureTileType.Factory,
+	StructureTileType.Education,
+	StructureTileType.Office,
+	StructureTileType.Recreation,
+]
+
+
+func _custom_sort_power_priority(a: StructureData, b: StructureData) -> bool:
+	var a_priority = _structure_type_power_sort_priority.find(a.structure_type_id)
+	var b_priority = _structure_type_power_sort_priority.find(b.structure_type_id)
+	if a_priority < 0 or b_priority < 0:
+		printerr("bad structure priority for sorting for power")
+	return a_priority < b_priority
+
+#func _debug_print_structure_array(a: Array) -> void:
+#	for i in range(a.size()):
+#		var s: StructureData = a[i]
+#		print("a[%d] = %s" % [i, s.get_name()])
+
+
+func _get_ordered_list_of_structures_to_power(connected_structure_group: Dictionary) -> Array:
+	var structures_needing_power := []
+	for tile_map_cell in connected_structure_group.keys():
+		var structure: StructureData = connected_structure_group[tile_map_cell]
+		if structure.disabled or structure.structure_type_id == StructureTileType.Power or structure.structure_type_id == StructureTileType.UUC:
+			continue
+		structures_needing_power.append(structure)
+	structures_needing_power.sort_custom(self, "_custom_sort_power_priority")
+	return structures_needing_power
 
 func refresh_structure_resources(debug: bool = false):
-	var power_stations = []
-	for structure in _structures.values():
-		structure.power_subscription = 0
-		if structure.structure_type_id == Constants.StructureTileType.Power && !structure.disabled:
-			power_stations.append(structure)
 
 	Game.get_structure_status_overlay_tiles_tile_map().clear()
-	
-	for power_station in power_stations:
-		for powered_cell in power_station.powers_cells:
-			if powered_cell == power_station.tile_map_cell:
-				continue
-			if !_structures.has(powered_cell):
-				continue
-			var structure = _structures[powered_cell]
-			power_station.power_station_process_structure(structure)
+	var connected_structure_groups = _get_connected_structure_groups()
+	for connected_structure_group in connected_structure_groups:
+		var total_power_provided = _get_total_power_provided_in_connect_structure_group(connected_structure_group)
+		var structures_to_power = _get_ordered_list_of_structures_to_power(connected_structure_group)
+		for i in range(structures_to_power.size()):
+			var structure_to_power: StructureData = structures_to_power[i]
+			total_power_provided = structure_to_power.update_for_power_distribution(total_power_provided)
 	
 	for structure in _structures.values():
-		structure.update_lack_resources()
 		if structure.disabled:
 			Game.get_structure_status_overlay_tiles_tile_map().set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
 			Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		elif structure.resources_lacking.size() > 0:
-			#_structure_status_overlay_tiles_tile_map.set_cellv(structure.tile_map_cell, _structure_alert_status_overlay_tile_id[structure.structure_type_id])
 			Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		elif structure.under_construction:
 			Game.get_structure_status_overlay_tiles_tile_map().set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
@@ -287,7 +338,6 @@ func refresh_structure_resources(debug: bool = false):
 			Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
 		else:
 			Game.get_damage_overlay_tile_map().set_cellv(structure.tile_map_cell, -1)
-			#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
 
 
 func _refresh_structure_resource_indicators(structure: StructureData):
@@ -417,25 +467,35 @@ func disable_structure(cell_v: Vector2):
 		return
 	var structure: StructureData = _structures[cell_v]
 	if !structure.disabled:
+		if debug:
+			print("disabling structure %s at %s" % [structure.get_name(), str(structure.tile_map_cell)])
 		structure.disabled = true
 		refresh_structure_resources()
 		var interaction_sound = _structure_interaction_temp_sound_class.instance()
 		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 		interaction_sound.play_player_deactivate_sound()
-		
+	else:
+		if debug:
+			print("structure %s at %s already disabled" % [structure.get_name(), str(structure.tile_map_cell)])
+
 	
 func enable_structure(cell_v: Vector2):
 	if !_structures.has(cell_v):
 		return
 	var structure: StructureData = _structures[cell_v]
 	if structure.disabled:
+		if debug:
+			print("enabling structure %s at %s" % [structure.get_name(), str(structure.tile_map_cell)])
 		structure.disabled = false
 		refresh_structure_resources()
 		var interaction_sound = _structure_interaction_temp_sound_class.instance()
 		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 		interaction_sound.play_player_reactive_sound()
+	else:
+		if debug:
+			print("structure %s at %s already enabled" % [structure.get_name(), str(structure.tile_map_cell)])
 
 func damage_structure(structure: StructureData):
 	structure.set_damaged(true)
