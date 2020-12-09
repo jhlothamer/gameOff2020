@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VO_Story_Introduction_2.ogg-3769fe777399af5103f6e5a616d627a9.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/vo/VO_Story_Introduction_2.ogg"
+dest_files=[ "res://.import/VO_Story_Introduction_2.ogg-3769fe777399af5103f6e5a616d627a9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
