@@ -255,7 +255,7 @@ func _update_total_power_required_stat(structure_mgr: StructureMgr):
 	var total_power_required_stat := _get_stat(StatType.TotalPowerRequired)
 	var total = 0.0
 	for structure in structure_mgr.get_structures():
-		total += structure.get_power_required()
+		total += structure.get_required_power()
 	total_power_required_stat.push_value(total)
 
 

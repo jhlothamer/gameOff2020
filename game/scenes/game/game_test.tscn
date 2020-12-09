@@ -379,12 +379,14 @@ script = ExtResource( 7 )
 
 [node name="StructureMgr" type="Node" parent="."]
 script = ExtResource( 1 )
+debug = true
 
 [node name="SpawnerMgr" parent="." instance=ExtResource( 12 )]
 
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 8 )
 max_damage_time_interval = 20
+damage_active = false
 
 [node name="DamageTimer" type="Timer" parent="DamageMgr"]
 one_shot = true

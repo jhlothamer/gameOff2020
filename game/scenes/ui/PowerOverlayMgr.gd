@@ -2,16 +2,6 @@ extends Node
 
 export var power_radius_tiles := 4
 
-#export var placement_overlay_tile_map: NodePath
-#export var allowed_tiles_tile_map: NodePath
-#export var structure_tiles_tile_map: NodePath
-#export var power_overlay_tile_map: NodePath
-#
-#onready var _placement_overlay_tile_map: TileMap = get_node_or_null(placement_overlay_tile_map) if placement_overlay_tile_map != null else null
-#onready var _allowed_tiles_tile_map: TileMap = get_node_or_null(allowed_tiles_tile_map) if allowed_tiles_tile_map != null else null
-#onready var _structure_tiles_tile_map: TileMap = get_node_or_null(structure_tiles_tile_map) if structure_tiles_tile_map != null else null
-#onready var _power_overlay_tile_map: TileMap = get_node_or_null(power_overlay_tile_map) if power_overlay_tile_map != null else null
-
 var _power_radius_tiles_sq: float
 
 var _spiral_vectors := []

@@ -48,6 +48,7 @@ rotation = -1.5708
 path_radius = 3560.0
 linear_speed = 600.0
 distance_from_moon_tolerance = 50.0
+debug = false
 
 [node name="Impossible_Drive" type="Sprite" parent="."]
 position = Vector2( -4486, 0 )
