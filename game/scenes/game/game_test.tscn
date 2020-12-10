@@ -386,7 +386,6 @@ debug = true
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 8 )
 max_damage_time_interval = 20
-damage_active = false
 
 [node name="DamageTimer" type="Timer" parent="DamageMgr"]
 one_shot = true

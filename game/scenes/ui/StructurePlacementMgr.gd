@@ -3,6 +3,8 @@ extends Node2D
 signal structure_tile_placed(structure_tile_type, cell_v)
 signal structure_tile_reclaimed(structure_tile_type, cell_v)
 
+export var old_build_rules := false
+
 var _placing_structure := false
 var _reclaiming_structure := false
 var _allowed_placement_tiles := []
@@ -87,15 +89,19 @@ func _get_allowed_reclaim_tiles():
 
 
 func _get_allowed_placement_tiles(structure_type):
+	var allowed_placement_tiles = []
 	if structure_type != Constants.StructureTileType.UUC:
 		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.UUC)
 		var enabled_uuc_cells := []
 		for uuc_cell in uuc_cells:
 			if !StructureMgr.get_structure_mgr().is_disabled(uuc_cell):
 				enabled_uuc_cells.append(uuc_cell)
-		return enabled_uuc_cells
+		if old_build_rules:
+			return enabled_uuc_cells
+		else:
+			allowed_placement_tiles = enabled_uuc_cells
 	
-	var allowed_placement_tiles = []
+	#allowed_placement_tiles = []
 	var placed_structure_cells = Game.get_structure_tiles_tile_map().get_used_cells()
 	for placed_structure_cell in placed_structure_cells:
 		for direction in _directions:
