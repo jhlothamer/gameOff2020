@@ -71,6 +71,7 @@ func _process(delta: float) -> void:
 		rotation += delta*_speed_radians*_travel_direction
 		if _is_at_barn_location(delta*_speed_radians):
 			_harvester_state = HarvesterState.IDLE
+			HudAlertsMgr.add_hud_alert("Harvester ready")
 		
 	
 	if _current_fragement != null:
