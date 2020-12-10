@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/VO_Alerts_Incoming_Asteroids.wav-8e9f6596b5df33375cf17c66820fa5fa.sample"
+
+[deps]
+
+source_file="res://assets/audio/vo/VO_Alerts_Incoming_Asteroids.wav"
+dest_files=[ "res://.import/VO_Alerts_Incoming_Asteroids.wav-8e9f6596b5df33375cf17c66820fa5fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
