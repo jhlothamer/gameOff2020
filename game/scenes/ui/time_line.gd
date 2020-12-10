@@ -27,7 +27,6 @@ var event_check_frequency = 30
 var timeline_markers = {}
 
 
-#TODO: more types?
 enum EventType {
 	MeteorShower
 }
@@ -120,7 +119,7 @@ func _check_event_schedule():
 	if _current_time_seconds > time_of_event:
 		if closest_event["type"] == 0:
 			emit_signal("AsteroidShowerEvent", closest_event.duplicate() )
-			HudAlertsMgr.add_hud_alert("Asteroid impacts imminent")
+			HudAlertsMgr.add_hud_alert("Incoming Asteroids")
 			HudAlertsMgr.add_hud_alert("Prepare to deploy harvester")
 			event_schedule.erase(closest_event)
 			_clean_event_markers(closest_event)
@@ -131,7 +130,6 @@ func _check_event_schedule():
 	if time_until_next_event < 20:
 		if !closest_event.has("alerted"):
 			closest_event["alerted"] = true
-			HudAlertsMgr.add_hud_alert("Incoming Asteroids")
 		# var type = ""
 		# if closest_event["type"] == 0:
 		# 	type = "Asteroid shower"
