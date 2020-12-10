@@ -6,6 +6,7 @@ signal structure_tile_repaired(structure_tile_type, cell_v)
 signal structure_tile_disabled(structure_tile_type, cell_v)
 signal structure_tile_enabled(structure_tile_type, cell_v)
 
+export var enabled := false
 
 var _current_structure: StructureMgr.StructureData
 
@@ -27,6 +28,8 @@ func _ready():
 	add_item("Repair", 2)
 	add_item("Reclaim", 3)
 	add_item("Disable", 4)
+	if !enabled:
+		set_process_unhandled_input(false)
 
 func show_for_structure(structure: StructureMgr.StructureData, position: Vector2):
 	set_item_text(NAME_ITEM_ID, structure._get_name())

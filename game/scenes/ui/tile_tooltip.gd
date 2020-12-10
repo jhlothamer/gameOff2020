@@ -188,7 +188,7 @@ func _on_RichTextLabel_mouse_exited():
 func _on_zoom_step_change_initiated(from_zoom_step: int, to_zoom_step: int, zoom_speed: float) -> void:
 	if debug:
 		print("TileTooltip: zoom changed to level/step %d" % to_zoom_step)
-	_enable = to_zoom_step == 0
+	_enable = to_zoom_step <= 1
 	if visible:
 		hide()
 		_popup.hide()
