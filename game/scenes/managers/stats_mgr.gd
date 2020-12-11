@@ -141,8 +141,21 @@ func _update_structure_produced_stats():
 	var structure_mgr = StructureMgr.get_structure_mgr()
 	for stat in _stats.values():
 		if stat.stat_metadata.has("producedByStructure") and stat.stat_metadata.has("unitsPerStructure"):
-			var producingStructures = structure_mgr.get_functioning_structures_by_type_name(stat.stat_metadata["producedByStructure"])
-			stat.push_value(producingStructures.size() * stat.stat_metadata["unitsPerStructure"])
+			var producing_structures = structure_mgr.get_functioning_structures_by_type_name(stat.stat_metadata["producedByStructure"])
+			var total_units = calc_structure_produced_stats(stat, producing_structures)
+			stat.push_value(total_units)
+
+
+func calc_structure_produced_stats(stat: Stat, producing_structures: Array) -> float:
+	var units_per_structure: float = stat.stat_metadata["unitsPerStructure"]
+	if stat.stat_metadata.has("proximityEffects"):
+		var proximityEffects: Dictionary = stat.stat_metadata["proximityEffects"]
+		var total_units := 0.0
+		for i in range(producing_structures.size()):
+			var structure: StructureMgr.StructureData = producing_structures[i]
+			total_units += structure.calc_population_support_units(units_per_structure, proximityEffects)
+		return total_units
+	return producing_structures.size() * units_per_structure
 
 
 func _find_schedule_value(schedule: Dictionary, lookup_value: float) -> float:

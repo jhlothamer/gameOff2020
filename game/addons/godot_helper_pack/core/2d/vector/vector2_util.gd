@@ -4,6 +4,8 @@ class_name Vector2Util
 Collection of Vector2 utilities
 """
 
+const cardinal_directions := [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+const compass_rose_directions := [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.ONE, -1*Vector2.ONE, Vector2(1,-1), Vector2(-1,1)]
 
 # checks that given vectors are equal - handled -0 == 0
 static func equal(v1: Vector2, v2: Vector2) -> bool:

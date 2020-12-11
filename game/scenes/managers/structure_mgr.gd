@@ -76,6 +76,7 @@ class StructureData:
 	var under_construction := true
 	var resources_lacking := []
 	var current_animation
+	var neighbor_structures_type_counts := {}
 	func _init(structure_type_id_: int, tile_map_cell_: Vector2, structure_metadata):
 		structure_type_id = structure_type_id_
 		tile_map_cell = tile_map_cell_
@@ -118,7 +119,31 @@ class StructureData:
 		return metadata_wrapped.get_power_required()
 	func get_power_provided() -> float:
 		return metadata_wrapped.get_power_provided()
-
+	func update_neighbor_structures_type_counts(structures: Dictionary) -> void:
+		neighbor_structures_type_counts.clear()
+		for direction in Vector2Util.compass_rose_directions:
+			var v = tile_map_cell + direction
+			if !structures.has(v):
+				continue
+			var structure: StructureData = structures[v]
+			if neighbor_structures_type_counts.has(structure.structure_type_id):
+				neighbor_structures_type_counts[structure.structure_type_id] += 1
+			else:
+				neighbor_structures_type_counts[structure.structure_type_id] = 1
+		#print("neighbor structures types counts for tile at %s: %s" % [str(tile_map_cell), str(neighbor_structures_type_counts)])
+	func calc_population_support_units(base_units_per_structure: float, proximity_effects: Dictionary) -> float:
+		if proximity_effects == null or proximity_effects.size() < 1:
+			return base_units_per_structure
+		
+		var total_neighbor_effects := 0.0
+		for neighbor_structure_type_id in neighbor_structures_type_counts.keys():
+			var neighbor_structure_type_name = EnumUtil.get_string(StructureTileType, neighbor_structure_type_id)
+			if !proximity_effects.has(neighbor_structure_type_name):
+				continue
+			total_neighbor_effects += base_units_per_structure * proximity_effects[neighbor_structure_type_name] * neighbor_structures_type_counts[neighbor_structure_type_id]
+			
+		return base_units_per_structure + total_neighbor_effects
+			
 var _construction_animation_class = preload("res://scenes/animations/ConstructionAnimation.tscn")
 var _repair_animation_class = preload("res://scenes/animations/RepairAnimation.tscn")
 var _structure_interaction_temp_sound_class := preload("res://scenes/sound/structure_interaction_temp_sound.tscn")
@@ -319,6 +344,7 @@ func refresh_structure_resources(debug: bool = false):
 			total_power_provided = structure_to_power.update_for_power_distribution(total_power_provided)
 	
 	for structure in _structures.values():
+		structure.update_neighbor_structures_type_counts(_structures)
 		if structure.disabled:
 			Game.get_structure_status_overlay_tiles_tile_map().set_cellv(structure.tile_map_cell, _structure_disable_status_overlay_tile_id[structure.structure_type_id])
 			Game.get_separator_boxes_tile_map().set_cellv(structure.tile_map_cell, _structure_lack_resource_status_overlay_tile_id)
