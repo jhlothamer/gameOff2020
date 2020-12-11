@@ -15,6 +15,9 @@
 	"Water":{
 		"producedByStructure": "Reclamation",
 		"unitsPerStructure": 500,
+		"proximityEffects": {
+			"Agriculture": 0.05
+		},
 		"overCapacityLimit": 1,
 		"populationSchedule": {
 			".5": -10,
@@ -27,6 +30,9 @@
 	"Food":{
 		"producedByStructure": "Agriculture",
 		"unitsPerStructure": 250,
+		"proximityEffects": {
+			"Reclamation": 0.05
+		},
 		"overCapacityLimit": 2,
 		"populationSchedule": {
 			".5": -6,
@@ -38,6 +44,17 @@
 	"Shelter":{
 		"producedByStructure": "Residential",
 		"unitsPerStructure": 500,
+		"proximityEffects": {
+			"Reclamation": -0.07,
+			"Factory" : -0.05,
+			"Power" : -0.02,
+			"Recreation" : 0.02,
+			"Medical" : 0.02,
+			"Education" : 0.02,
+			"Office" : 0.02,
+			"Agriculture" : 0.01,
+			"Residential": 0.05
+		},
 		"overCapacityLimit": 2,
 		"populationSchedule": {
 			".1": -10,
@@ -50,6 +67,10 @@
 	"Clothing":{
 		"producedByStructure": "Factory",
 		"unitsPerStructure": 750,
+		"proximityEffects": {
+			"Agriculture": 0.05,
+			"Power": 0.02
+		},
 		"overCapacityLimit": 4,
 		"populationSchedule": {
 			".1": -10,
@@ -62,6 +83,12 @@
 	"Health":{
 		"producedByStructure": "Medical",
 		"unitsPerStructure": 500,
+		"proximityEffects": {
+			"Residential": 0.02,
+			"Power": 0.01,
+			"Office": 0.01,
+			"Education": 0.01
+		},
 		"overCapacityLimit": 6,
 		"populationSchedule": {
 			".3": -10,
@@ -74,6 +101,15 @@
 	"Education":{
 		"producedByStructure": "Education",
 		"unitsPerStructure": 500,
+		"proximityEffects": {
+			"Residential": 0.1,
+			"Office": 0.1,
+			"Medical": 0.01,
+			"Education": 0.1,
+			"Reclamation": -0.04,
+			"Factory": -0.05,
+			"Recreation": 0.06
+		},
 		"overCapacityLimit": 6,
 		"populationSchedule": {
 		}
@@ -81,6 +117,13 @@
 	"Entertainment":{
 		"producedByStructure": "Recreation",
 		"unitsPerStructure": 500,
+		"proximityEffects": {
+			"Residential": 0.1,
+			"Office": 0.1,
+			"Education": 0.1,
+			"Medical": 0.05,
+			"Reclamation": -0.05
+		},
 		"overCapacityLimit": 10,
 		"populationSchedule": {
 
@@ -93,6 +136,12 @@
 	"Administration":{
 		"producedByStructure": "Office",
 		"unitsPerStructure": 2000,
+		"proximityEffects": {
+			"Residential": 0.05,
+			"Office": 0.02,
+			"Education": 0.01,
+			"Medical": 0.01
+		},
 		"overCapacityLimit": 4,
 		"populationSchedule": {
 
