@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=23]
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/managers/structure_tile_tooltip_mgr.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/game/highlight_overlay.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -251,7 +252,7 @@ shader = SubResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=6]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 2.09
@@ -327,6 +328,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="HighlightOverlay" parent="." instance=ExtResource( 26 )]
+
 [node name="SeperatorBoxes" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 200, 200 )
@@ -385,7 +388,7 @@ debug = true
 
 [node name="DamageMgr" type="Node" parent="."]
 script = ExtResource( 8 )
-max_damage_time_interval = 20
+max_damage_time_interval = 90
 
 [node name="DamageTimer" type="Timer" parent="DamageMgr"]
 one_shot = true
@@ -445,7 +448,7 @@ __meta__ = {
 no_music = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 5 )
+environment = SubResource( 6 )
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
 
 [editable path="SpawnerMgr"]

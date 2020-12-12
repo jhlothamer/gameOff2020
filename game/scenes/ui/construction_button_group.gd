@@ -2,6 +2,8 @@ extends Panel
 
 signal button_down()
 signal shortcut_activated()
+signal construction_button_mouse_entered(structure_type)
+signal construction_button_mouse_exited(structure_type)
 
 export (StructureMgr.StructureTileType) var structure_type: int
 
@@ -69,6 +71,11 @@ var _shortcut_keys := {
 
 
 func _ready():
+#signal construction_button_mouse_entered(structure_type)
+#signal construction_button_mouse_exited(structure_type)
+	SignalMgr.register_publisher(self, "construction_button_mouse_entered")
+	SignalMgr.register_publisher(self, "construction_button_mouse_exited")
+
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_hover = load(_mouse_over_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
@@ -128,6 +135,7 @@ func _on_TextureButton_mouse_entered():
 	if !disabled && !collapsed:
 		_mouse_over_sound.play()
 		emit_signal("mouse_entered")
+		emit_signal("construction_button_mouse_entered", structure_type)
 
 
 func _unhandled_input(event):
@@ -142,3 +150,4 @@ func _unhandled_input(event):
 
 func _on_TextureButton_mouse_exited():
 	emit_signal("mouse_exited")
+	emit_signal("construction_button_mouse_exited", structure_type)

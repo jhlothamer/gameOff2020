@@ -88,9 +88,7 @@ func _on_ConstructionBtn_toggled(button_pressed):
 		_animation_player.play_backwards("expand")
 		if !_mouse_over_button:
 			_menu_close_sound.play()
-			print("play menu close sound")
 		else:
-			print("not playing menu close sound")
 			_mouse_over_button = false
 
 
@@ -134,19 +132,16 @@ func _process(_delta):
 
 
 func _on_button_down(tile_type):
-	#print("clicked on structure button of type " + str(tile_type))
 	yield(get_tree().create_timer(.2),"timeout")
 	var resource_mgr := ResourceMgr.get_resource_mgr()
 	if resource_mgr.have_enough_resources_for_constructions(tile_type):
 		emit_signal("construction_tool_bar_clicked", tile_type)
 		_menu_select_sound.play()
-		print("play menu select sound")
 		#_skip_next_menu_select_sound = true
 	else:
 		var structure_mgr := StructureMgr.get_structure_mgr()
 		var structure_metadata := structure_mgr.get_structure_metadata(tile_type)
 		HudAlertsMgr.add_hud_alert("Not enough resources to construct %s " % structure_metadata.get_name())
-		#print("didn't have enough resource in end - play sound and/or show message")
 
 func _on_shortcut_activated(tile_type):
 	_on_button_down(tile_type)
@@ -174,10 +169,8 @@ func _on_ConstructionToolBar_mouse_entered():
 
 func _on_button_mouse_entered():
 	_mouse_over_button = true
-	print("button mouse entered")
 
 func _on_button_mouse_exited():
 	_mouse_over_button = false
-	print("button mouse exited")
 
 

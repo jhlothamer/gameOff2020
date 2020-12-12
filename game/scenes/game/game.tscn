@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/game/moon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/images/ui/icons/power-red.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/ui/icons/power-blue.png" type="Texture" id=19]
 [ext_resource path="res://scenes/managers/structure_tile_tooltip_mgr.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/game/highlight_overlay.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/ui/StructurePlacementMgr.gd" type="Script" id=29]
 [ext_resource path="res://assets/tilesets/power_overlay.tres" type="TileSet" id=30]
 [ext_resource path="res://scenes/ui/PowerOverlayMgr.gd" type="Script" id=31]
@@ -310,6 +311,8 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+
+[node name="HighlightOverlay" parent="." instance=ExtResource( 21 )]
 
 [node name="SeperatorBoxes" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
