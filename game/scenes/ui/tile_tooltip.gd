@@ -159,7 +159,6 @@ func _get_bb_code_string():
 	return string
 
 
-
 func _on_RichTextLabel_meta_clicked(meta):
 	if debug:
 		print("TileTooltip: meta clicked: " + meta)
@@ -174,8 +173,6 @@ func _on_RichTextLabel_meta_clicked(meta):
 			emit_signal("structure_tile_disabled", current_structure.structure_type_id, current_structure.tile_map_cell)
 	hide()
 	_popup.hide()
-
-
 
 
 func _on_RichTextLabel_mouse_exited():

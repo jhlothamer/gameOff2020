@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/managers/structure_mgr.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/game.tres" type="TileSet" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://scenes/managers/zoom_level_sound_mixer.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/managers/structure_tile_tooltip_mgr.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/game/highlight_overlay.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/managers/screen_magnify_mgr.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/managers/tile_mangify_mgr.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -252,7 +254,7 @@ shader = SubResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=5]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 2.09
@@ -398,6 +400,10 @@ one_shot = true
 [node name="StructureTileTooltipMgr" parent="." instance=ExtResource( 25 )]
 tooltip_wait = 0.75
 
+[node name="ScreenMagnifyMgr" parent="." instance=ExtResource( 27 )]
+
+[node name="TileMangifyMgr" parent="." instance=ExtResource( 28 )]
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( -2884.48, 0 )
 current = true
@@ -448,7 +454,7 @@ __meta__ = {
 no_music = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 5 )
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
 
 [editable path="SpawnerMgr"]
