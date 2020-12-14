@@ -116,6 +116,8 @@ func _start_intro():
 	_on_SkipBtn_pressed()
 
 func _intro_labels(parent: Control, intro_vo: AudioStreamPlayer, intro_begin: Array, intro_end: Array) -> void:
+	if _skipped:
+		return
 	var labels = parent.get_children()
 	for label in labels:
 		label.modulate = _invisible_color
@@ -149,6 +151,9 @@ func _on_SkipBtn_pressed():
 	_skipped = true
 	_skip_btn.visible = false
 	_intro.visible = false
+	_intro1_vo.stop()
+	_intro2_vo.stop()
+	_intro3_vo.stop()
 	_instructions_container.modulate = _invisible_color
 	_instructions_container.visible = true
 	_tween.interpolate_property(_instructions_container, "modulate", _invisible_color, _visible_color, time_between_line_fade_ins_seconds,Tween.TRANS_LINEAR, Tween.EASE_OUT)
