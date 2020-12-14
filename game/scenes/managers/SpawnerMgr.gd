@@ -1,9 +1,7 @@
-class_name SpawnMgr
-extends Node
+extends "res://scenes/managers/spawn_mgr_interface.gd"
 var checked = false
 var asteroid_scene = preload("res://scenes/game/Asteroid.tscn")
 var asteroids = []
-var fragments = []
 var asteroid_sprites = []
 var fragment_sprites = []
 var spawn_extents_min = Vector2(-13233,-9203.9)
@@ -32,9 +30,10 @@ onready var spawn_limit_rect := $ReferenceRect
 
 var _asteroid_impact_sound = preload("res://scenes/sound/asteroid_impact_sound.tscn")
 
+func _enter_tree():
+	ServiceMgr.register_service(SpawnMgr, self)
 
 func _ready():
-	Globals.set("SpawnMgr", self)
 	SignalMgr.register_subscriber(self, "AsteroidShowerEvent", "_on_AsteroidShowerEvent")
 	spawn_extents_min.x = spawn_limit_rect.rect_global_position.x
 	spawn_extents_min.y = spawn_limit_rect.rect_global_position.y

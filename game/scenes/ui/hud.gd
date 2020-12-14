@@ -31,7 +31,7 @@ func _ready():
 	call_deferred("_delayed_init")
 
 func _delayed_init():
-	var stat_mgr = StatsMgr.get_stat_mgr()
+	var stat_mgr:StatsMgr = ServiceMgr.get_service(StatsMgr)
 	if stat_mgr == null:
 		return
 	var win_population = stat_mgr.get_win_game_population_amount()

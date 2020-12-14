@@ -197,7 +197,7 @@ func _on_zoom_step_change_initiated(from_zoom_step: int, to_zoom_step: int, zoom
 func _on_structure_state_changed(tile_map_cell: Vector2) -> void:
 	if !visible || current_structure == null:
 		return
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	current_structure = structure_mgr.get_structure(current_structure.tile_map_cell)
 	if current_structure == null:
 		hide()

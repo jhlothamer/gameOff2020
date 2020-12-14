@@ -12,6 +12,8 @@ onready var _construction_repair_etc_animations_parent: Node2D = $ConstructionRe
 onready var _power_overlay_tile_map: TileMap = $PoweredOverlay
 onready var _placement_overlay_tile_map: TileMap = $PlacementOverlay
 
+func _enter_tree():
+	ServiceMgr.register_service(Game, self)
 
 func _ready():
 	Globals.set("_allowed_tiles_tile_map",_allowed_tiles_tile_map)

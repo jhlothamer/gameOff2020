@@ -252,7 +252,7 @@ shader = SubResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=5]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 2.09
@@ -276,6 +276,7 @@ __meta__ = {
 }
 
 [node name="Moon" parent="." instance=ExtResource( 14 )]
+point_count = 200
 
 [node name="AllowedTiles" type="TileMap" parent="."]
 visible = false
@@ -448,7 +449,7 @@ __meta__ = {
 no_music = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 5 )
 [connection signal="timeout" from="DamageMgr/DamageTimer" to="DamageMgr" method="_on_DamageTimer_timeout"]
 
 [editable path="SpawnerMgr"]

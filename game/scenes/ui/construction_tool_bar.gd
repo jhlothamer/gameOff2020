@@ -133,13 +133,13 @@ func _process(_delta):
 
 func _on_button_down(tile_type):
 	yield(get_tree().create_timer(.2),"timeout")
-	var resource_mgr := ResourceMgr.get_resource_mgr()
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr.have_enough_resources_for_constructions(tile_type):
 		emit_signal("construction_tool_bar_clicked", tile_type)
 		_menu_select_sound.play()
 		#_skip_next_menu_select_sound = true
 	else:
-		var structure_mgr := StructureMgr.get_structure_mgr()
+		var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 		var structure_metadata := structure_mgr.get_structure_metadata(tile_type)
 		HudAlertsMgr.add_hud_alert("Not enough resources to construct %s " % structure_metadata.get_name())
 
@@ -147,7 +147,7 @@ func _on_shortcut_activated(tile_type):
 	_on_button_down(tile_type)
 
 func _refresh_button_disable_states():
-	var resource_mgr:ResourceMgr = Globals.get("ResourceMgr")
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr == null:
 		return
 	for structure_type_id in _structure_tile_type_to_button.keys():

@@ -93,8 +93,9 @@ func _get_allowed_placement_tiles(structure_type):
 	if structure_type != Constants.StructureTileType.UUC:
 		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.UUC)
 		var enabled_uuc_cells := []
+		var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 		for uuc_cell in uuc_cells:
-			if !StructureMgr.get_structure_mgr().is_disabled(uuc_cell):
+			if !structure_mgr.is_disabled(uuc_cell):
 				enabled_uuc_cells.append(uuc_cell)
 		if old_build_rules:
 			return enabled_uuc_cells
