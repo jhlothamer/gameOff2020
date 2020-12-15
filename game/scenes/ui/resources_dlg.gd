@@ -25,8 +25,7 @@ func _refresh_contents():
 	tree.set_column_title(1, "Amount")
 	tree.set_column_titles_visible(true)
 	
-	var resource_mgr: ResourceMgr = ResourceMgr.get_resource_mgr()
-	#var resource_amounts = resource_mgr.get_resource_amounts()
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	var resource_amounts := {}
 	if resource_mgr != null:
 		resource_amounts = resource_mgr.get_resource_amounts()

@@ -58,8 +58,8 @@ func _refresh_contents():
 	
 	var root_item = _tree.create_item()
 	
-	var structure_mgr := StructureMgr.get_structure_mgr()
-	var stats_mgr := StatsMgr.get_stat_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
+	var stats_mgr:StatsMgr = ServiceMgr.get_service(StatsMgr)
 	
 	for structure_type_id in EnumUtil.get_array(StructureMgr.StructureTileType):
 #		if structure_type_id == StructureMgr.StructureTileType.UUC:

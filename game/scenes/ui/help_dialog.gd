@@ -7,7 +7,7 @@ onready var _dialog_close_sound := $DialogCloseStreamPlayer
 
 func _ready():
 	_rich_text_label.bbcode_enabled = true
-	var stat_mgr = StatsMgr.get_stat_mgr()
+	var stat_mgr:StatsMgr = ServiceMgr.get_service(StatsMgr)
 	if stat_mgr == null:
 		return
 	var winning_population_amount = "%d" % stat_mgr.get_win_game_population_amount()

@@ -30,7 +30,7 @@ func _ready():
 func _on_stats_updated():
 	if is_resource:
 		return
-	var stat_mgr = StatsMgr.get_stat_mgr()
+	var stat_mgr:StatsMgr = ServiceMgr.get_service(StatsMgr)
 	var stat:StatsMgr.Stat = stat_mgr.get_stat_by_name(stat_name)
 	var value = stat.get_value()
 	var delta = stat.get_delta()
@@ -53,6 +53,6 @@ func _on_stats_updated():
 func _on_resources_updated():
 	if !is_resource:
 		return
-	var resource_mgr = ResourceMgr.get_resource_mgr()
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	var resource_amount = resource_mgr.get_resource_amount(stat_name)
 	_stat_value_label.text = "%10.2f" % resource_amount

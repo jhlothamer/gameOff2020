@@ -15,7 +15,7 @@ func _ready():
 
 
 func _on_confirm_structure_tile_reclaim(structure_tile_type: int, cell_v: Vector2) -> void:
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	var structure_metadata := structure_mgr.get_structure_metadata(structure_tile_type)
 	_label.text = _confirmation_msg % [structure_metadata.get_name(), structure_metadata.get_reclamation_resources_string()]
 	window_title = _dialog_title % structure_metadata.get_name()	

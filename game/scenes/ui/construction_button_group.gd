@@ -95,7 +95,7 @@ func _ready():
 
 
 func _init_labels():
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	if structure_mgr == null:
 		return
 	var structure_metadata: StructureMgr.StructureMetadata = structure_mgr.get_structure_metadata(structure_type)

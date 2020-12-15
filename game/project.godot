@@ -117,7 +117,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ResourceMgr",
 "language": "GDScript",
-"path": "res://scenes/managers/resource_mgr.gd"
+"path": "res://scenes/managers/resource_mgr_interface.gd"
 }, {
 "base": "Node",
 "class": "SceneSoundTrack",
@@ -137,7 +137,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "SpawnMgr",
 "language": "GDScript",
-"path": "res://scenes/managers/SpawnerMgr.gd"
+"path": "res://scenes/managers/spawn_mgr_interface.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -152,7 +152,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "StatsMgr",
 "language": "GDScript",
-"path": "res://scenes/managers/stats_mgr.gd"
+"path": "res://scenes/managers/stats_mgr_interface.gd"
 }, {
 "base": "Object",
 "class": "StatsUtil",
@@ -177,7 +177,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "StructureMgr",
 "language": "GDScript",
-"path": "res://scenes/managers/structure_mgr.gd"
+"path": "res://scenes/managers/structure_mgr_interface.gd"
 }, {
 "base": "Object",
 "class": "Vector2Util",
@@ -237,6 +237,7 @@ transitionMgr="*res://utils/transitionMgr.tscn"
 Init="*res://utils/init.gd"
 GameSoundTrackMgr="*res://utils/game_sound_track_mgr.tscn"
 FullScreenMgr="*res://utils/full_screen_mgr.tscn"
+ServiceMgr="*res://addons/godot_helper_pack/core/service_mgr.gd"
 
 [debug]
 

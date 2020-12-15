@@ -24,7 +24,7 @@ func _unhandled_input(event):
 	if !event is InputEventMouseMotion or _panning_camera:
 		return
 	var mouse_global_position = get_global_mouse_position()
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	var structure:StructureMgr.StructureData = structure_mgr.get_structure_at_world_coord(mouse_global_position)
 	if structure == null:
 		if debug and _current_structure:
