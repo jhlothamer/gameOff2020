@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/ui/icons/Construction-Menu.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Close_01.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Mouse_Over_01.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Open_01.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Select_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Open_03.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Mouse_Over_02.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Close_02.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Select_02.wav" type="AudioStream" id=5]
 [ext_resource path="res://scenes/ui/construction_tool_bar.gd" type="Script" id=11]
 [ext_resource path="res://scenes/ui/construction_button_group.tscn" type="PackedScene" id=23]
 
@@ -95,18 +95,18 @@ __meta__ = {
 anims/expand = SubResource( 1 )
 
 [node name="MenuOpenStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 2 )
 volume_db = -3.0
 bus = "UI"
 
 [node name="MenuCloseStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 volume_db = -3.0
 bus = "UI"
 
 [node name="MenuMouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -9.0
+volume_db = -3.0
 bus = "UI"
 
 [node name="MenuSelectStreamPlayer" type="AudioStreamPlayer" parent="."]

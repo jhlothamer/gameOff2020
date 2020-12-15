@@ -1,6 +1,5 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
-[ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Near.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/sound/rand_audio_stream_player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Tone_1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Far_Impacts_3.wav" type="AudioStream" id=4]
@@ -43,9 +42,10 @@
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Ship_Near_Beeps_Blips_13.wav" type="AudioStream" id=41]
 [ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Far.ogg" type="AudioStream" id=42]
 [ext_resource path="res://assets/audio/music/Monochrome_Breakfast_Mid.ogg" type="AudioStream" id=43]
-[ext_resource path="res://assets/audio/sounds/UI_Zoom_In_01.wav" type="AudioStream" id=44]
-[ext_resource path="res://assets/audio/sounds/UI_Zoom_Out_01.wav" type="AudioStream" id=45]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Zoom_In_01.wav" type="AudioStream" id=44]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Zoom_Out_01.wav" type="AudioStream" id=45]
 [ext_resource path="res://assets/audio/sounds/ambience/AMB_Space_Tone_1.ogg" type="AudioStream" id=46]
+
 
 [node name="ZoomLevelSoundMixer" type="Node"]
 pause_mode = 2
@@ -54,8 +54,8 @@ script = ExtResource( 5 )
 [node name="Zoom1Music" type="Node" parent="."]
 
 [node name="Monochrome_Breakfast_Near" type="AudioStreamPlayer" parent="Zoom1Music"]
-stream = ExtResource( 1 )
-bus = "AMB_Ship_Mid"
+stream = ExtResource( 43 )
+bus = "Zoom1"
 
 [node name="Zoom1Sound" type="Node" parent="."]
 

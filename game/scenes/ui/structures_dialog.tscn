@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/ui/structures_dialog.gd" type="Script" id=1]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Close_01.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/audio/sounds/UI_Menu_Open_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Close_02.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Open_03.wav" type="AudioStream" id=3]
 
 [node name="StructuresDialog" type="AcceptDialog"]
 pause_mode = 2
@@ -25,10 +25,12 @@ select_mode = 1
 
 [node name="DialogOpenStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -3.0
 bus = "UI"
 
 [node name="DialogCloseStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -3.0
 bus = "UI"
 [connection signal="confirmed" from="." to="." method="_on_StructuresDialog_confirmed"]
 [connection signal="custom_action" from="." to="." method="_on_StructuresDialog_custom_action"]

@@ -2,7 +2,8 @@
 
 [ext_resource path="res://assets/images/animations/Wrench-Animation.png" type="Texture" id=1]
 [ext_resource path="res://scenes/animations/RepairAnimation.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/sounds/Structure_Interactions_Repair_01.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/si/Structure_Interactions_Repair_01.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4

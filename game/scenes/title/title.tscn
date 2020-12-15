@@ -46,8 +46,6 @@ __meta__ = {
 }
 
 [node name="moon_huge_title" parent="Titles" instance=ExtResource( 8 )]
-drive_on = true
-exhaust_length_percent = 1.0
 
 [node name="TitleLbl" type="Label" parent="Titles"]
 margin_right = 734.0
