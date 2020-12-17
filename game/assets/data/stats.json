@@ -2,7 +2,7 @@
 	"Population":{
 		"startingAmount": 1000,
 		"looseGameAmount": 100,
-		"warnLooseGameAmount": 300,
+		"warnLooseGameAmount": 500,
 		"winGameAmount": 10000,
 		"winGameAmountEasy": 5000,
 		"winGameAmountMedium": 7500,
