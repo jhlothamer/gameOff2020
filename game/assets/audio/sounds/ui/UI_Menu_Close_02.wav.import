@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/UI_Menu_Close_02.wav-dce2c799f11a72d13f2c38cf1d0b3707.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/ui/UI_Menu_Close_02.wav"
+dest_files=[ "res://.import/UI_Menu_Close_02.wav-dce2c799f11a72d13f2c38cf1d0b3707.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Structure_Interactions_Placement_01.wav-39b50d8c9d28178c76714f2752914309.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/si/Structure_Interactions_Placement_01.wav"
+dest_files=[ "res://.import/Structure_Interactions_Placement_01.wav-39b50d8c9d28178c76714f2752914309.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
