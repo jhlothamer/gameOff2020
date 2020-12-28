@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/audio/sounds/ui/UI_Menu_Mouse_Over_02.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png" type="Texture" id=5]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.615686, 0.627451, 0.611765 )
 border_width_left = 3

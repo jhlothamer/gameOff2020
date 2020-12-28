@@ -1,8 +1,8 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=43 format=2]
 
-[ext_resource path="res://scenes/ui/construction_tool_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/ui/Right-Menu.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ui/hud.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/text_smaller.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/images/ui/Left-Menu.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ui/resources_dlg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ui/time_line.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui/tile_popup_menu.tscn" type="PackedScene" id=6]
@@ -12,11 +12,11 @@
 [ext_resource path="res://scenes/ui/help_dialog.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/ui/hud_alerts.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/ui/reclaim_confirmation_dialog.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/styles/hud_text_button_style.tres" type="StyleBox" id=14]
+[ext_resource path="res://scenes/ui/construction_drawer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/images/ui/Drill-Deploy.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/ui/Drill-Deploy-Active.png" type="Texture" id=16]
 [ext_resource path="res://scenes/ui/tile_tooltip.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/images/ui/Help.png" type="Texture" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -146,27 +146,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=26]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 0.972549, 0.713726, 0.376471, 0.352941 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0.972549, 0.713726, 0.376471, 0.352941 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color( 0.0588235, 0.0156863, 0.0156863, 0.6 )
-shadow_size = 5
-
 [node name="Hud" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 2 )
+
+[node name="ConstructionDrawer" parent="." instance=ExtResource( 13 )]
 
 [node name="TopRightMarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -179,134 +163,108 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LaunchHarvesterBtn" type="TextureButton" parent="TopRightMarginContainer"]
-margin_top = 20.0
-margin_right = 50.0
-margin_bottom = 70.0
-hint_tooltip = "Launch Harvester"
-texture_normal = ExtResource( 15 )
-
-[node name="ActiveHarvesterAnimation" type="AnimatedSprite" parent="TopRightMarginContainer/LaunchHarvesterBtn"]
-visible = false
-frames = SubResource( 25 )
-centered = false
-offset = Vector2( -8, -8 )
-
 [node name="BottomRightMarginContainer" type="MarginContainer" parent="."]
+show_behind_parent = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -70.0
-margin_top = -70.0
-custom_constants/margin_right = 20
-custom_constants/margin_bottom = 20
+margin_left = -180.0
+margin_top = -90.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="ConstructionToolBar" parent="BottomRightMarginContainer" instance=ExtResource( 1 )]
+[node name="TextureRect" type="TextureRect" parent="BottomRightMarginContainer"]
+margin_right = 180.0
+margin_bottom = 90.0
+texture = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomRightMarginContainer/TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomRightMarginContainer/TextureRect/MarginContainer"]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 150.0
+margin_bottom = 70.0
+custom_constants/separation = 20
+
+[node name="HelpBtn" type="TextureButton" parent="BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+hint_tooltip = "Help"
+texture_normal = ExtResource( 18 )
+
+[node name="LaunchHarvesterBtn" type="TextureButton" parent="BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+margin_left = 70.0
+margin_right = 120.0
+margin_bottom = 50.0
+hint_tooltip = "Launch Harvester"
+texture_normal = ExtResource( 15 )
+
+[node name="ActiveHarvesterAnimation" type="AnimatedSprite" parent="BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn"]
+visible = false
+frames = SubResource( 25 )
+centered = false
+offset = Vector2( -8, -8 )
 
 [node name="BottomLeftMarginContainer" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -283.0
-margin_right = 174.0
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+margin_top = -205.0
+margin_right = 180.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer"]
-margin_left = 20.0
-margin_right = 174.0
-margin_bottom = 263.0
-grow_vertical = 0
-alignment = 2
+[node name="TextureRect" type="TextureRect" parent="BottomLeftMarginContainer"]
+margin_right = 180.0
+margin_bottom = 205.0
+texture = ExtResource( 3 )
 
-[node name="StructureInfoBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_right = 154.0
-margin_bottom = 17.0
-custom_styles/normal = ExtResource( 14 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
-text = "Structure Info"
-
-[node name="MenuButtonSounds" parent="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" instance=ExtResource( 13 )]
-do_on_pressed_sound = false
-
-[node name="HelpBtn" type="Button" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_top = 21.0
-margin_right = 154.0
-margin_bottom = 38.0
-custom_styles/normal = ExtResource( 14 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_hover = Color( 0, 1, 1, 1 )
-text = "Help"
-
-[node name="MenuButtonSounds" parent="BottomLeftMarginContainer/VBoxContainer/HelpBtn" instance=ExtResource( 13 )]
-do_on_pressed_sound = false
-
-[node name="PanelContainer" type="PanelContainer" parent="BottomLeftMarginContainer/VBoxContainer"]
-margin_top = 42.0
-margin_right = 154.0
-margin_bottom = 263.0
-custom_styles/panel = SubResource( 26 )
+[node name="MarginContainer" type="MarginContainer" parent="BottomLeftMarginContainer/TextureRect"]
+margin_right = 145.0
+margin_bottom = 200.0
+custom_constants/margin_top = 5
+custom_constants/margin_left = 35
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsMarginContainer" type="MarginContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer"]
-margin_left = 5.0
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer/TextureRect/MarginContainer"]
+margin_left = 35.0
 margin_top = 5.0
-margin_right = 149.0
-margin_bottom = 216.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+margin_right = 145.0
+margin_bottom = 200.0
+custom_constants/separation = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer"]
-margin_right = 144.0
-margin_bottom = 211.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PopulationStatDisplay" parent="BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
 
-[node name="PopulationStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_right = 144.0
-margin_bottom = 45.0
-stat_delta_decrease_color = Color( 0.678431, 0, 0, 1 )
-
-[node name="PopulationTargetLabel" type="Label" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer"]
+[node name="PowerStatDisplay" parent="BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_top = 49.0
-margin_right = 144.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 3 )
-text = "Pop. Goal: 10000"
-
-[node name="PowerStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_top = 68.0
-margin_right = 144.0
-margin_bottom = 113.0
-stat_label = "Power"
+margin_bottom = 94.0
+stat_label = "Current Power"
 stat_name = "Power"
 
-[node name="PowerRequiredStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_top = 117.0
-margin_right = 144.0
-margin_bottom = 162.0
-stat_label = "Power Required"
+[node name="PowerRequiredStatDisplay" parent="BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 98.0
+margin_bottom = 143.0
+stat_label = "Power Needed"
 stat_name = "TotalPowerRequired"
 
-[node name="OreStatDisplay" parent="BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_top = 166.0
-margin_right = 144.0
-margin_bottom = 211.0
+[node name="OreStatDisplay" parent="BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 147.0
+margin_bottom = 192.0
 stat_label = "Ore"
 stat_name = "ore"
 is_resource = true
@@ -350,6 +308,6 @@ visible = false
 [node name="ReclaimConfirmationDialog" parent="Dialogs" instance=ExtResource( 12 )]
 
 [node name="TileTooltip" parent="Dialogs" instance=ExtResource( 17 )]
-[connection signal="pressed" from="TopRightMarginContainer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]
-[connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn" to="." method="_on_StructureInfoBtn_pressed"]
-[connection signal="pressed" from="BottomLeftMarginContainer/VBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]
+visible = false
+[connection signal="pressed" from="BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/HelpBtn" to="." method="_on_HelpBtn_pressed"]
+[connection signal="pressed" from="BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn" to="." method="_on_LaunchHarvesterBtn_pressed"]

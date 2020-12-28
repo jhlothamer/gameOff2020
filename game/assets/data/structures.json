@@ -14,6 +14,8 @@
 	"structures": {
 		"UUC": {
 			"name": "Universal Utility Conduit",
+			"shortName": "UUC",
+			"constructionShortCut": "U",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -38,6 +40,8 @@
 		},
 		"Power": {
 			"name": "Power Station",
+			"shortName": "Power",
+			"constructionShortCut": "P",
 			"description": "",
 			"powerRadius": 3,
 			"powerProvided": 10,
@@ -64,6 +68,8 @@
 		},
 		"Agriculture": {
 			"name": "Agriculture Pod",
+			"shortName": "Ag",
+			"constructionShortCut": "G",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -90,6 +96,8 @@
 		},
 		"Residential": {
 			"name": "Residential Complex",
+			"shortName": "Res",
+			"constructionShortCut": "T",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -114,6 +122,8 @@
 		},
 		"Office": {
 			"name": "Office Complex",
+			"shortName": "Office",
+			"constructionShortCut": "O",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -138,6 +148,8 @@
 		},
 		"Education": {
 			"name": "Education Complex",
+			"shortName": "Edu",
+			"constructionShortCut": "E",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -162,6 +174,8 @@
 		},
 		"Medical": {
 			"name": "Medical Center",
+			"shortName": "Med",
+			"constructionShortCut": "M",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -186,6 +200,8 @@
 		},
 		"Reclamation": {
 			"name": "Reclamation Center",
+			"shortName": "Recl",
+			"constructionShortCut": "R",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -210,6 +226,8 @@
 		},
 		"Factory": {
 			"name": "Factory",
+			"shortName": "Fac",
+			"constructionShortCut": "F",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
@@ -234,6 +252,8 @@
 		},
 		"Recreation": {
 			"name": "Recreation Center",
+			"shortName": "Rec",
+			"constructionShortCut": "C",
 			"description": "",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {

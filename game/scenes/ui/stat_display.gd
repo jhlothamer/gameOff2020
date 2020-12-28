@@ -7,15 +7,13 @@ export var stat_delta_increase_color := Color.green
 export var stat_delta_decrease_color := Color.red
 export var stat_no_delta_color := Color.white
 
-onready var _stat_name_label := $VBoxContainer/StatName
-onready var _stat_value_label := $VBoxContainer/StatValueAndDelta/StatValue
-onready var _stat_value_delta_label := $VBoxContainer/StatValueAndDelta/StatValueDelta
+onready var _stat_name_label := $VBoxContainer/StatValueAndDelta/StatName
+onready var _stat_value_label := $VBoxContainer/StatValue
 onready var _stat_value_delta_indicator := $VBoxContainer/StatValueAndDelta/DeltaIndicatorCtrl/DeltaIndicatorSprite
 onready var _stat_value_delta_indicator_ctrl := $VBoxContainer/StatValueAndDelta/DeltaIndicatorCtrl
 
-const no_delta_indicator_index := 0
-const increase_delta_indicator_index := 1
-const decrease_delta_indicator_index := 2
+const increase_delta_indicator_index := 0
+const decrease_delta_indicator_index := 1
 
 
 func _ready():
@@ -24,7 +22,6 @@ func _ready():
 	_stat_name_label.text = stat_label
 	if is_resource:
 		_stat_value_delta_indicator_ctrl.visible = false
-		_stat_value_delta_label.visible = false
 
 
 func _on_stats_updated():
@@ -35,18 +32,16 @@ func _on_stats_updated():
 	var value = stat.get_value()
 	var delta = stat.get_delta()
 	_stat_value_label.text = "%d" % value
-	_stat_value_delta_label.text = "%d" % delta
 	if is_zero_approx(delta):
-		_stat_value_delta_indicator.frame = no_delta_indicator_index
-		_stat_value_delta_label.modulate = stat_no_delta_color
+		_stat_value_delta_indicator.visible = false
 		_stat_value_delta_indicator.modulate = stat_no_delta_color
 	elif delta > 0:
 		_stat_value_delta_indicator.frame = increase_delta_indicator_index
-		_stat_value_delta_label.modulate = stat_delta_increase_color
+		_stat_value_delta_indicator.visible = true
 		_stat_value_delta_indicator.modulate = stat_delta_increase_color
 	else:
 		_stat_value_delta_indicator.frame = decrease_delta_indicator_index
-		_stat_value_delta_label.modulate = stat_delta_decrease_color
+		_stat_value_delta_indicator.visible = true
 		_stat_value_delta_indicator.modulate = stat_delta_decrease_color
 	
 
@@ -55,4 +50,4 @@ func _on_resources_updated():
 		return
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	var resource_amount = resource_mgr.get_resource_amount(stat_name)
-	_stat_value_label.text = "%10.2f" % resource_amount
+	_stat_value_label.text = "%d" % resource_amount
