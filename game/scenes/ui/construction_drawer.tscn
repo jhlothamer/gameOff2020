@@ -74,6 +74,7 @@ margin_right = 650.0
 margin_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 0
+rect_min_size = Vector2( 0, 18 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 alignment = 2
@@ -102,12 +103,12 @@ texture_pressed = ExtResource( 3 )
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 655.0
-margin_bottom = 128.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 margin_right = 655.0
-margin_bottom = 100.0
+margin_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 alignment = 1
@@ -115,50 +116,60 @@ alignment = 1
 [node name="UUCConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 9.0
 margin_right = 69.0
+margin_bottom = 160.0
 
 [node name="PowerConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 73.0
 margin_right = 133.0
+margin_bottom = 160.0
 structure_type = 1
 
 [node name="ReclamationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 137.0
 margin_right = 197.0
+margin_bottom = 160.0
 structure_type = 7
 
 [node name="AgricultureConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 201.0
 margin_right = 261.0
+margin_bottom = 160.0
 structure_type = 2
 
 [node name="ResidentialConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 265.0
 margin_right = 325.0
+margin_bottom = 160.0
 structure_type = 3
 
 [node name="OfficeConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 329.0
 margin_right = 389.0
+margin_bottom = 160.0
 structure_type = 4
 
 [node name="EducationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 393.0
 margin_right = 453.0
+margin_bottom = 160.0
 structure_type = 5
 
 [node name="MedicalConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 457.0
 margin_right = 517.0
+margin_bottom = 160.0
 structure_type = 6
 
 [node name="FactoryConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 521.0
 margin_right = 581.0
+margin_bottom = 160.0
 structure_type = 8
 
 [node name="RecreationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
 margin_left = 585.0
 margin_right = 645.0
+margin_bottom = 160.0
 structure_type = 9
 
 [node name="FillerControl2" type="Control" parent="HBoxContainer"]
