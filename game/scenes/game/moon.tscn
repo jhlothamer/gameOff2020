@@ -83,6 +83,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="DriveSurfaceBody" type="StaticBody2D" parent="Impossible_Drive"]
+visible = false
 position = Vector2( 4486, 0 )
 collision_layer = 2
 __meta__ = {
@@ -95,6 +96,7 @@ position = Vector2( -5460, -495 )
 polygon = PoolVector2Array( 20, 20, 99.5332, 128.342, 134.329, 272.017, 153.411, 353.957, 156.779, 484.162, 135.452, 762.662, 55.7568, 946.348, -3.7334, 991.247, 35.5527, 1054.83, 116.37, 1052.59, 181.473, 1026.77, 474.435, 1086.26, 515.966, 1143.5, 606.886, 1122.18, 979.393, 1216.1, 1083.51, 1293.52, 1184.96, 1253.48, 1483.96, 1314.88, 1884.41, 1429.68, 1996.65, 1432.71, 1958.9, 1221.29, 1860.73, 485.063, 1974, -375.75, 1673.93, -390.83, 1505.57, -341.442, 1164.34, -310.013, 194.431, -33.8874, 73.2046, -60.8265, 5.85693, -54.0918, 0, 0 )
 
 [node name="DriveSurface" type="Area2D" parent="Impossible_Drive"]
+visible = false
 position = Vector2( -974, -495 )
 collision_layer = 4
 __meta__ = {

@@ -9,11 +9,9 @@ onready var dialogs: Control = $Dialogs
 onready var resources_dialog: Control = $Dialogs/ResourcesDlg
 onready var structures_dialog := $Dialogs/StructuresDialog
 onready var help_dialog := $Dialogs/HelpDialog
-onready var _help_btn := $BottomLeftMarginContainer/VBoxContainer/HelpBtn
-onready var _structure_info_btn := $BottomLeftMarginContainer/VBoxContainer/StructureInfoBtn
-onready var _active_harvester_animation := $TopRightMarginContainer/LaunchHarvesterBtn/ActiveHarvesterAnimation
-onready var _launch_harvester_btn := $TopRightMarginContainer/LaunchHarvesterBtn
-onready var _population_target_label := $BottomLeftMarginContainer/VBoxContainer/PanelContainer/StatsMarginContainer/VBoxContainer/PopulationTargetLabel
+onready var _help_btn := $BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/HelpBtn
+onready var _active_harvester_animation := $BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn/ActiveHarvesterAnimation
+onready var _launch_harvester_btn := $BottomRightMarginContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn
 
 var _last_control_focused: Control
 
@@ -35,7 +33,6 @@ func _delayed_init():
 	if stat_mgr == null:
 		return
 	var win_population = stat_mgr.get_win_game_population_amount()
-	_population_target_label.text = "Pop. Goal: %d" % win_population
 
 
 func _unhandled_input(event):
@@ -59,11 +56,6 @@ func _on_RndDmgTestBtn_pressed():
 	emit_signal("random_damage_test_clicked")
 
 
-func _on_StructureInfoBtn_pressed():
-	_structure_info_btn.release_focus()
-	structures_dialog.show()
-
-
 func _on_HelpBtn_pressed():
 	_help_btn.release_focus()
 	help_dialog.show()
@@ -72,10 +64,12 @@ func _on_HelpBtn_pressed():
 func _on_LaunchHarvesterBtn_pressed():
 	emit_signal("harvester_activated")
 
+
 func _on_harvester_active():
 	_active_harvester_animation.play()
 	_active_harvester_animation.visible = true
 	_launch_harvester_btn.hint_tooltip = "Harvester Active"
+
 
 func _on_harvester_inactive():
 	_active_harvester_animation.stop()

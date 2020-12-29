@@ -48,6 +48,10 @@ class StructureMetadata:
 		return 0.0
 	func get_name() -> String:
 		return structure_metadata["name"]
+	func get_short_name() -> String:
+		return structure_metadata["shortName"]
+	func get_construction_short_cut_key() -> String:
+		return structure_metadata["constructionShortCut"]
 	func get_power_provided() -> float:
 		if structure_metadata.has("powerProvided"):
 			return structure_metadata["powerProvided"]
@@ -137,7 +141,9 @@ class StructureData:
 			total_neighbor_effects += base_units_per_structure * proximity_effects[neighbor_structure_type_name] * neighbor_structures_type_counts[neighbor_structure_type_id]
 			
 		return base_units_per_structure + total_neighbor_effects
-
+	func get_short_name() -> String:
+		return metadata_wrapped.get_short_name()
+	
 
 func get_structure(tile_map_coord: Vector2) -> StructureData:
 	return null
