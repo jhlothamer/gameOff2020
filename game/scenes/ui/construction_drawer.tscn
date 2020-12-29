@@ -31,7 +31,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 204.0
+margin_bottom = 205.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
@@ -44,7 +44,7 @@ size_flags_vertical = 0
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 margin_left = 180.0
 margin_right = 844.0
-margin_bottom = 204.0
+margin_bottom = 205.0
 grow_horizontal = 2
 size_flags_horizontal = 7
 custom_styles/panel = SubResource( 1 )
@@ -53,7 +53,7 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 6.0
 margin_top = 9.0
 margin_right = 661.0
-margin_bottom = 204.0
+margin_bottom = 205.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 custom_constants/separation = 10
