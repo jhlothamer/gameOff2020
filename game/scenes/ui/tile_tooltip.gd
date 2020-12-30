@@ -23,29 +23,29 @@ export var debug := false
 
 var structure_tile_normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
 }
 
 
 var structure_tile_disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
 }
 
 onready var _rich_text_label := $TileTooltip/MarginContainer/RichTextLabel

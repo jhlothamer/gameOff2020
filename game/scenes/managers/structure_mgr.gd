@@ -54,7 +54,7 @@ func _ready():
 func _init_structures_list():
 	if Game.get_structure_tiles_tile_map() == null:
 		return
-	var power_structure = _get_structure_metadata_by_id(Constants.StructureTileType.Power)
+	var power_structure = _get_structure_metadata_by_id(StructureMgr.StructureTileType.Power)
 	var power_radius = power_structure["powerRadius"]
 	var cell_size = Game.get_structure_tiles_tile_map().cell_size
 	_power_radius_tiles_sq = cell_size.x * cell_size.x * float(power_radius) * float(power_radius)
@@ -232,7 +232,7 @@ func refresh_structure_resources(debug: bool = false):
 func _refresh_structure_resource_indicators(structure: StructureData):
 	var structure_resource_icon_cellv = structure.tile_map_cell * 8 + Vector2(6,6)
 	
-	if structure.structure_type_id != Constants.StructureTileType.Power and structure.structure_type_id != Constants.StructureTileType.UUC:
+	if structure.structure_type_id != StructureMgr.StructureTileType.Power and structure.structure_type_id != StructureMgr.StructureTileType.UUC:
 		if structure.resources_lacking.has("power"):
 			Game.get_resource_indicators_overlay_tile_map().set_cellv(structure_resource_icon_cellv, 2)
 		else:
@@ -310,12 +310,12 @@ func _do_reclamation_animation(structure: StructureData) -> void:
 	construction_animation.queue_free()
 	_structures.erase(structure.tile_map_cell)
 	Game.get_structure_tiles_tile_map().set_cellv(structure.tile_map_cell, -1)
-	if structure.structure_type_id != Constants.StructureTileType.UUC:
+	if structure.structure_type_id != StructureMgr.StructureTileType.UUC:
 		#_separator_boxes_tile_map.set_cellv(structure.tile_map_cell, _structure_enabled_status_overlay_tile_id)
-		var uuc_structure = _create_structure_data_object(Constants.StructureTileType.UUC, structure.tile_map_cell, false)
+		var uuc_structure = _create_structure_data_object(StructureMgr.StructureTileType.UUC, structure.tile_map_cell, false)
 		uuc_structure.under_construction = false
 		_structures[structure.tile_map_cell] = uuc_structure
-		Game.get_structure_tiles_tile_map().set_cellv(structure.tile_map_cell, Constants.StructureTileType.UUC)
+		Game.get_structure_tiles_tile_map().set_cellv(structure.tile_map_cell, StructureMgr.StructureTileType.UUC)
 	refresh_structure_resources()
 	emit_signal("structure_state_changed", structure.tile_map_cell)
 
@@ -396,7 +396,7 @@ func damage_structure(structure: StructureData):
 	emit_signal("structure_state_changed", structure.tile_map_cell)
 
 func get_functioning_structures_by_type_name(type_name: String) -> Array:
-	var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, type_name)
+	var structure_type_id = EnumUtil.get_id(StructureMgr.StructureTileType, type_name)
 	var functioning_structures := []
 	for structure in _structures.values():
 		if structure.structure_type_id != structure_type_id:

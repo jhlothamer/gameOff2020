@@ -59,7 +59,7 @@ class StructureMetadata:
 	
 
 class StructureData:
-	var structure_type_id :int = Constants.StructureTileType.UUC
+	var structure_type_id :int = StructureTileType.UUC
 	var tile_map_cell := Vector2.ZERO
 	#if not a power station or UUC then list of power stations that power this cell
 	#var power_stations := []

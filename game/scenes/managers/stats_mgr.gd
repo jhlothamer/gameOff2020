@@ -68,7 +68,7 @@ func _init_stats():
 			var producingStructures = structure_mgr.get_functioning_structures_by_type_name(stat_metadata["producedByStructure"])
 			stat.push_value(producingStructures.size() * stat_metadata["unitsPerStructure"])
 		if stat_metadata.has("producedByStructure"):
-			var produced_by_structure_id := EnumUtil.get_id(Constants.StructureTileType, stat_metadata["producedByStructure"])
+			var produced_by_structure_id := EnumUtil.get_id(StructureMgr.StructureTileType, stat_metadata["producedByStructure"])
 			_stats_by_produced_by_structure_id[produced_by_structure_id] = stat
 	emit_signal("stats_updated")
 
