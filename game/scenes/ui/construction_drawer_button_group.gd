@@ -17,6 +17,8 @@ onready var _population_possible_label := $PopulationPossibleLabel
 onready var _mouse_over_sound := $MouseOverStreamPlayer
 onready var _shortcut_label := $Panel/MarginContainer/TextureButton/ShortcutLabel
 onready var _highlight_texture := $Panel/MarginContainer/TextureButton/HighlightTextureRect
+onready var _tutorial_highlight_texture := $Panel/TutorialHighlightTextureRect
+onready var _animation_player := $AnimationPlayer
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
@@ -50,6 +52,8 @@ func _ready():
 	SignalMgr.register_publisher(self, "construction_button_mouse_exited")
 	SignalMgr.register_subscriber(self, "resources_updated", "_on_resources_updated")
 	SignalMgr.register_subscriber(self, "structure_state_changed", "_on_structure_state_changed")
+	SignalMgr.register_subscriber(self, "HighlightConstructionButton", "_on_HighlightConstructionButton")
+	SignalMgr.register_subscriber(self, "BlinkConstructionButtonHighlight", "_on_BlinkConstructionButtonHighlight")
 	
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
@@ -98,6 +102,10 @@ func _on_TextureButton_mouse_entered():
 
 
 func _on_TextureButton_pressed():
+	var tutorial_mgr: TutorialMgr = ServiceMgr.get_service(TutorialMgr)
+	if !tutorial_mgr.is_construction_allowed(structure_type):
+		return
+	
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr.have_enough_resources_for_constructions(structure_type):
 		emit_signal("construction_tool_bar_clicked", structure_type)
@@ -145,4 +153,18 @@ func _update_labels() -> void:
 
 func _on_structure_state_changed(tile_map_cell: Vector2) -> void:
 	_update_labels()
+
+
+func _on_HighlightConstructionButton(structure_type_id: int, highlight_flag: bool) -> void:
+	if structure_type_id != structure_type:
+		return
+	if highlight_flag:
+		_animation_player.play("blink_highlight")
+	else:
+		_tutorial_highlight_texture.modulate = Color(1, 1, 1, 0)
+
+func _on_BlinkConstructionButtonHighlight(structure_type_id: int) -> void:
+	if structure_type_id != structure_type:
+		return
+	_animation_player.play("blink_highlight")
 

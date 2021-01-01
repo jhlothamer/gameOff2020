@@ -144,6 +144,7 @@ class StructureData:
 	func get_short_name() -> String:
 		return metadata_wrapped.get_short_name()
 	
+export var disable_enable_allowed := true
 
 func get_structure(tile_map_coord: Vector2) -> StructureData:
 	return null

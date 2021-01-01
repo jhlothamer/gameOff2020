@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/ui/time_line.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/temp/timeline/timeline.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/temp/timeline/destination_planet_time_line.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/timeline/meteor_shower_marker.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/temp/timeline/comet_marker.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/temp/timeline/generation_ship_actual.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/temp/timeline/desert_planet_time_line.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/timeline/time_line_generation_ship_no_plume.png" type="Texture" id=8]
+[ext_resource path="res://scenes/game/impossible_drive_plume_gradient_curve.tres" type="Gradient" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -84,6 +85,13 @@ curve = SubResource( 1 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( 25.0855, 58.0042 )
 
-[node name="generation_ship" type="Sprite" parent="Path2D/PathFollow2D"]
-texture = ExtResource( 6 )
-offset = Vector2( -31.3993, -0.193245 )
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
+texture = ExtResource( 8 )
+offset = Vector2( -1, 0 )
+
+[node name="Line2D" type="Line2D" parent="Path2D/PathFollow2D/Sprite"]
+show_behind_parent = true
+position = Vector2( -10.1136, 0 )
+points = PoolVector2Array( -11, 0, -71, 0 )
+width = 4.0
+gradient = ExtResource( 9 )

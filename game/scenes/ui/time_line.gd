@@ -1,4 +1,4 @@
-extends MarginContainer
+extends "res://scenes/ui/time_line_interface.gd"
 
 signal stat_cycle_time_has_elapsed()
 signal time_has_expired()
@@ -7,10 +7,12 @@ signal AsteroidShowerEvent(event)
 export (int, 1, 60)  var game_time_length_minutes: int = 30
 export (int, 0, 100000) var starting_game_time_seconds: int = 0
 export (int, 1, 60) var seconds_per_stat_cycle_time: int = 1
+export var active := false
 
 var _current_time_seconds: float
 var _game_time_length_seconds: float
 var _next_year_seconds: float
+
 
 export var shower_duration_min: int = 15
 export var shower_duration_max: int = 30
@@ -37,7 +39,8 @@ var event_schedule = []
 
 onready var _marker_templates_parent := $MarkersTemplates
 onready var _generation_ship_path_follow := $Path2D/PathFollow2D
-
+onready var _line2d := $Path2D/PathFollow2D/Sprite/Line2D
+var _line2d_length := 1.0
 
 class CustomSorter:
 	static func sort_ascending(a, b):
@@ -45,10 +48,16 @@ class CustomSorter:
 			return true
 		return false
 
+
+func _enter_tree():
+	ServiceMgr.register_service(TimeLine, self)
+
+
 func _ready():
 	SignalMgr.register_publisher(self, "stat_cycle_time_has_elapsed")
 	SignalMgr.register_publisher(self, "time_has_expired")
 	SignalMgr.register_publisher(self, "AsteroidShowerEvent")
+	_line2d_length = abs(_line2d.points[1].x - _line2d.points[0].x)
 	_game_time_length_seconds = game_time_length_minutes * 60
 	if starting_game_time_seconds > 0:
 		_current_time_seconds = min(float(starting_game_time_seconds), _game_time_length_seconds)
@@ -145,6 +154,8 @@ func _clean_event_markers(event_dict):
 			
 
 func _process(delta):
+	if !active:
+		return
 	_current_time_seconds += delta
 	if event_check_frequency <= 0:
 		_check_event_schedule()
@@ -158,3 +169,26 @@ func _process(delta):
 	_generation_ship_path_follow.unit_offset = progress
 	if progress >= 1.0:
 		emit_signal("time_has_expired")
+
+
+func activate() -> void:
+	active = true
+
+
+func deactivate() -> void:
+	active = false
+
+func _set_drive_on(value):
+	drive_on = value
+	if _line2d == null:
+		return
+	_line2d.visible = drive_on
+
+
+func _set_exhaust_length_percent(value):
+	exhaust_length_percent = value
+	if _line2d == null:
+		return
+	var new_length = value * _line2d_length
+	_line2d.points[1].x = _line2d.points[0].x - new_length
+

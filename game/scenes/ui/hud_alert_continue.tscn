@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/styles/hud_text_button_style.tres" type="StyleBox" id=2]
+[ext_resource path="res://scenes/ui/hud_alert_continue.gd" type="Script" id=3]
+
+[node name="HudAlertContinue" type="CenterContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 2.0
+margin_right = 539.0
+margin_bottom = 37.0
+
+[node name="SpacerControl" type="Control" parent="HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 400, 0 )
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 404.0
+margin_right = 539.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 135, 35 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.823529, 0, 0.462745, 1 )
+custom_colors/font_color_hover = Color( 0.823529, 0, 0.462745, 1 )
+custom_colors/font_color_pressed = Color( 0.823529, 0, 0.462745, 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 135, 35 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.823529, 0, 0.462745, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.909804 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 3
+text = "Continue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+show_behind_parent = true
+polygon = PoolVector2Array( 180.378, -26.7763, 374.408, -31.2712, 402.127, 71.3628, 164.645, 69.1153 )
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]

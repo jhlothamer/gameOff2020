@@ -352,6 +352,8 @@ func get_structure_by_mouse_global_position() -> StructureData:
 	return _structures[tile_map_cell]
 
 func disable_structure(cell_v: Vector2):
+	if !disable_enable_allowed:
+		return
 	if !_structures.has(cell_v):
 		return
 	var structure: StructureData = _structures[cell_v]
@@ -364,12 +366,15 @@ func disable_structure(cell_v: Vector2):
 		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 		interaction_sound.play_player_deactivate_sound()
+		emit_signal("structure_state_changed", structure.tile_map_cell)
 	else:
 		if debug:
 			print("structure %s at %s already disabled" % [structure.get_name(), str(structure.tile_map_cell)])
 
 	
 func enable_structure(cell_v: Vector2):
+	if !disable_enable_allowed:
+		return
 	if !_structures.has(cell_v):
 		return
 	var structure: StructureData = _structures[cell_v]
@@ -382,6 +387,7 @@ func enable_structure(cell_v: Vector2):
 		Game.get_construction_repair_etc_animations_parent().add_child(interaction_sound)
 		interaction_sound.global_position = Game.get_structure_tiles_tile_map().map_to_world(structure.tile_map_cell)
 		interaction_sound.play_player_reactive_sound()
+		emit_signal("structure_state_changed", structure.tile_map_cell)
 	else:
 		if debug:
 			print("structure %s at %s already enabled" % [structure.get_name(), str(structure.tile_map_cell)])
