@@ -40,6 +40,11 @@ var event_schedule = []
 onready var _marker_templates_parent := $MarkersTemplates
 onready var _generation_ship_path_follow := $Path2D/PathFollow2D
 onready var _line2d := $Path2D/PathFollow2D/Sprite/Line2D
+onready var _markers_parent := $Markers
+onready var _meteor_shower_marker := $MarkersTemplates/meteor_shower_marker
+onready var _timeline_texture_rect := $HBoxContainer/TimeLineTextureRect
+onready var _animation_player := $AnimationPlayer
+
 var _line2d_length := 1.0
 
 class CustomSorter:
@@ -80,16 +85,16 @@ func _add_event_dict(event: Dictionary)->bool:
 func _add_timeline_marker(event):
 	var new_sprite
 	if event["type"] == 0:#asteroid/meteor
-		new_sprite = $MarkersTemplates/meteor_shower_marker.duplicate()
+		new_sprite = _meteor_shower_marker.duplicate()
 	# calculate where to place it, scaled according to game time
 	var total_seconds_in_game = game_time_length_minutes * 60
-	var timeline_length_in_pixels = $HBoxContainer/TextureRect2.rect_size.x
+	var timeline_length_in_pixels = _timeline_texture_rect.rect_size.x
 	var scale = timeline_length_in_pixels / total_seconds_in_game
 	var seconds_to_pixels = event["time"] * scale
 	new_sprite.position.x = seconds_to_pixels + 20#offset
 	new_sprite.show()
 	timeline_markers[new_sprite] = event["time"]
-	$Markers.add_child(new_sprite)
+	_markers_parent.add_child(new_sprite)
 	
 func _get_next_event() ->Dictionary:
 	var ret = {}
@@ -191,4 +196,13 @@ func _set_exhaust_length_percent(value):
 		return
 	var new_length = value * _line2d_length
 	_line2d.points[1].x = _line2d.points[0].x - new_length
+
+
+func show_highlight():
+	_animation_player.play("show highlight", -1, .3)
+
+
+func hide_highlight():
+	_animation_player.play("hide highlight")
+
 

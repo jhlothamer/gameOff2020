@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="StarsAndNebula" parent="." instance=ExtResource( 6 )]
+speed = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 40.0
@@ -180,6 +181,7 @@ sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
 [node name="MenuButtonSounds" parent="MarginContainer2/ContinueBtn" instance=ExtResource( 3 )]
 
 [node name="StatsMgr" parent="." instance=ExtResource( 10 )]
+non_game_scene = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 anchor_top = 1.0

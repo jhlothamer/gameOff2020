@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/images/ui/Middle-Menu.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/ui/up_nav_arrow.png" type="Texture" id=2]
@@ -16,6 +16,155 @@ content_margin_right = 3.0
 content_margin_top = 9.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 664, 205 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0, 0.411765, 0 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0, 0.411765, 0 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide buttons highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "hide info panel highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/InfoPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show buttons highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "show info panel highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/InfoPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "hide buttons highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "hide info panel highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/InfoPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "show buttons highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show info panel highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/PanelContainer/VBoxContainer/InfoPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ) ]
+}
 
 [node name="ConstructionDrawer" type="MarginContainer"]
 anchor_top = 1.0
@@ -100,77 +249,87 @@ toggle_mode = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonsPanel" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 655.0
-margin_bottom = 188.0
+margin_bottom = 114.0
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2"]
-margin_right = 655.0
-margin_bottom = 160.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 652.0
+margin_bottom = 83.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="UUCConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 9.0
-margin_right = 69.0
-margin_bottom = 160.0
+[node name="UUCConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 6.0
+margin_right = 66.0
+margin_bottom = 80.0
 
-[node name="PowerConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 73.0
-margin_right = 133.0
-margin_bottom = 160.0
+[node name="PowerConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 70.0
+margin_right = 130.0
+margin_bottom = 80.0
 structure_type = 1
 
-[node name="ReclamationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 137.0
-margin_right = 197.0
-margin_bottom = 160.0
+[node name="ReclamationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 134.0
+margin_right = 194.0
+margin_bottom = 80.0
 structure_type = 7
 
-[node name="AgricultureConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 201.0
-margin_right = 261.0
-margin_bottom = 160.0
+[node name="AgricultureConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 198.0
+margin_right = 258.0
+margin_bottom = 80.0
 structure_type = 2
 
-[node name="ResidentialConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 265.0
-margin_right = 325.0
-margin_bottom = 160.0
+[node name="ResidentialConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 262.0
+margin_right = 322.0
+margin_bottom = 80.0
 structure_type = 3
 
-[node name="OfficeConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 329.0
-margin_right = 389.0
-margin_bottom = 160.0
+[node name="OfficeConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 326.0
+margin_right = 386.0
+margin_bottom = 80.0
 structure_type = 4
 
-[node name="EducationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 393.0
-margin_right = 453.0
-margin_bottom = 160.0
+[node name="EducationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 390.0
+margin_right = 450.0
+margin_bottom = 80.0
 structure_type = 5
 
-[node name="MedicalConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 457.0
-margin_right = 517.0
-margin_bottom = 160.0
+[node name="MedicalConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 454.0
+margin_right = 514.0
+margin_bottom = 80.0
 structure_type = 6
 
-[node name="FactoryConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 521.0
-margin_right = 581.0
-margin_bottom = 160.0
+[node name="FactoryConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 518.0
+margin_right = 578.0
+margin_bottom = 80.0
 structure_type = 8
 
-[node name="RecreationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 585.0
-margin_right = 645.0
-margin_bottom = 160.0
+[node name="RecreationConstructionDrawerButtonGroup" parent="HBoxContainer/PanelContainer/VBoxContainer/ButtonsPanel/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 582.0
+margin_right = 642.0
+margin_bottom = 80.0
 structure_type = 9
+
+[node name="InfoPanel" type="Panel" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+margin_top = 124.0
+margin_right = 655.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 0, 60 )
+custom_styles/panel = SubResource( 5 )
 
 [node name="FillerControl2" type="Control" parent="HBoxContainer"]
 margin_left = 844.0
@@ -195,4 +354,16 @@ bus = "UI"
 stream = ExtResource( 9 )
 volume_db = -3.0
 bus = "UI"
+
+[node name="AnimationPlayerButtons" type="AnimationPlayer" parent="."]
+"anims/hide buttons highlight" = SubResource( 3 )
+"anims/hide info panel highlight" = SubResource( 6 )
+"anims/show buttons highlight" = SubResource( 4 )
+"anims/show info panel highlight" = SubResource( 7 )
+
+[node name="AnimationPlayerInfoPanel" type="AnimationPlayer" parent="."]
+"anims/hide buttons highlight" = SubResource( 8 )
+"anims/hide info panel highlight" = SubResource( 9 )
+"anims/show buttons highlight" = SubResource( 10 )
+"anims/show info panel highlight" = SubResource( 11 )
 [connection signal="toggled" from="HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ExpandContractBtn" to="." method="_on_ExpandContractBtn_toggled"]

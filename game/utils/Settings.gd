@@ -24,6 +24,9 @@ func mark_tutorial_finished() -> void:
 	_settings["tutorial_finished"] = true
 	_save_settings()
 
+func mark_tutorial_unfinished() -> void:
+	_settings["tutorial_finished"] = false
+	_save_settings()
 
 func _save_settings() -> void:
 	FileUtil.save_json_data(SETTINGS_FILE_PATH, _settings)

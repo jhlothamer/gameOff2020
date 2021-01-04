@@ -19,3 +19,12 @@ func _set_drive_on(value):
 
 func _set_exhaust_length_percent(value):
 	pass
+
+
+func show_highlight():
+	pass
+
+
+func hide_highlight():
+	pass
+

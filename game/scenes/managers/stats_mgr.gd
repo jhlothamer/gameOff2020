@@ -23,7 +23,7 @@ enum StatType {
 
 
 export var debug := false
-
+export var non_game_scene := false
 
 var _stats := {}
 var _stats_by_produced_by_structure_id := {}
@@ -46,7 +46,8 @@ func _ready():
 func _init_stats():
 	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	if structure_mgr == null:
-		printerr("did not get structure mgr when initializing stats - stats will never be calculated")
+		if !non_game_scene:
+			printerr("did not get structure mgr when initializing stats - stats will never be calculated")
 		return
 	for stat_name in EnumUtil.get_names_string_array(StatType):
 		var stat_type_id = EnumUtil.get_id(StatType, stat_name) #StatType.keys()[stat_name]

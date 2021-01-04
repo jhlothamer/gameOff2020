@@ -10,10 +10,10 @@ var shortcut: ShortCut
 
 onready var _texture_button := $Panel/MarginContainer/TextureButton
 onready var _short_name_label := $ShortNameLabel
-onready var _cost_label := $CostLabel
-onready var _functional_label := $FunctionalLabel
-onready var _population_supported_label := $PopulationSupportedLabel
-onready var _population_possible_label := $PopulationPossibleLabel
+#onready var _cost_label := $CostLabel
+#onready var _functional_label := $FunctionalLabel
+#onready var _population_supported_label := $PopulationSupportedLabel
+#onready var _population_possible_label := $PopulationPossibleLabel
 onready var _mouse_over_sound := $MouseOverStreamPlayer
 onready var _shortcut_label := $Panel/MarginContainer/TextureButton/ShortcutLabel
 onready var _highlight_texture := $Panel/MarginContainer/TextureButton/HighlightTextureRect
@@ -80,7 +80,7 @@ func _init_labels():
 	_shortcut_label.text = shortcut_string
 
 	var construction_cost_string = _make_resources_string(structure_metadata.get_construction_resources(), "-")
-	_cost_label.text = construction_cost_string
+	#_cost_label.text = construction_cost_string
 	_short_name_label.text = structure_metadata.get_short_name()
 	#_texture_button.hint_tooltip = structure_metadata.get_name()
 	_update_labels()
@@ -136,7 +136,7 @@ func _update_labels() -> void:
 	var total = structures.size()
 	var functioning_structures = structure_mgr.get_functioning_structures_by_type_id(structure_type)
 	var functioning = functioning_structures.size()
-	_functional_label.text = "%d/%d" % [functioning, total]
+	#_functional_label.text = "%d/%d" % [functioning, total]
 	
 	var stats_mgr: StatsMgr = ServiceMgr.get_service(StatsMgr)
 	var stat := stats_mgr.get_stat_provided_by_structure_type_id(structure_type)
@@ -145,8 +145,8 @@ func _update_labels() -> void:
 		var total_population_provided = functioning * units_per_structure
 		var population_currently_supported = stats_mgr.calc_structure_produced_stats(stat, functioning_structures)
 		#_population_label.text =  "%d/%d" % [population_currently_supported, total_population_provided]
-		_population_supported_label.text = "%d" % population_currently_supported
-		_population_possible_label.text = "%d" % total_population_provided
+#		_population_supported_label.text = "%d" % population_currently_supported
+#		_population_possible_label.text = "%d" % total_population_provided
 	
 	
 

@@ -119,46 +119,6 @@ custom_constants/shadow_offset_x = 2
 text = "UUC"
 align = 1
 
-[node name="CostLabel" type="Label" parent="."]
-margin_top = 87.0
-margin_right = 60.0
-margin_bottom = 100.0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-text = "-250 Ore"
-align = 1
-
-[node name="FunctionalLabel" type="Label" parent="."]
-margin_top = 107.0
-margin_right = 60.0
-margin_bottom = 120.0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-text = "100/100"
-align = 1
-
-[node name="PopulationSupportedLabel" type="Label" parent="."]
-margin_top = 127.0
-margin_right = 60.0
-margin_bottom = 140.0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-text = "1000"
-align = 1
-
-[node name="PopulationPossibleLabel" type="Label" parent="."]
-margin_top = 147.0
-margin_right = 60.0
-margin_bottom = 160.0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-text = "1000"
-align = 1
-
 [node name="MouseOverStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -6.0

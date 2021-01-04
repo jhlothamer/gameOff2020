@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/ui/time_line.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/temp/timeline/timeline.png" type="Texture" id=2]
@@ -12,6 +12,53 @@
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 25.0855, 58.0042, 0, 0, 0, 0, 678.813, 58.0042 )
+}
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0, 0.411765, 0 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 7.0
+expand_margin_right = 7.0
+expand_margin_top = 48.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HighlightPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HighlightPanel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ), Color( 1, 0, 0.411765, 0 ), Color( 1, 0, 0.411765, 1 ) ]
 }
 
 [node name="TimeLine" type="MarginContainer"]
@@ -44,7 +91,7 @@ mouse_filter = 2
 size_flags_vertical = 3
 texture = ExtResource( 7 )
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+[node name="TimeLineTextureRect" type="TextureRect" parent="HBoxContainer"]
 margin_left = 24.0
 margin_right = 680.0
 margin_bottom = 18.0
@@ -95,3 +142,13 @@ position = Vector2( -10.1136, 0 )
 points = PoolVector2Array( -11, 0, -71, 0 )
 width = 4.0
 gradient = ExtResource( 9 )
+
+[node name="HighlightPanel" type="Panel" parent="."]
+margin_top = 50.0
+margin_right = 704.0
+margin_bottom = 68.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/hide highlight" = SubResource( 3 )
+"anims/show highlight" = SubResource( 4 )
