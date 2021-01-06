@@ -9,16 +9,16 @@ var _mouse_over_button := false
 var _construction_button_group_size := Vector2(60, 74)
 
 onready var _structure_tile_type_to_button := {
-	Constants.StructureTileType.Agriculture: $AgBtn,
-	Constants.StructureTileType.Education: $EducationBtn,
-	Constants.StructureTileType.Factory: $FactoryBtn,
-	Constants.StructureTileType.Medical: $MedicalBtn,
-	Constants.StructureTileType.Office: $OfficeBtn,
-	Constants.StructureTileType.Power: $PowerBtn,
-	Constants.StructureTileType.Reclamation: $ReclamationBtn,
-	Constants.StructureTileType.Recreation: $RecreationBtn,
-	Constants.StructureTileType.Residential: $ResidentialBtn,
-	Constants.StructureTileType.UUC: $UUCBtn,
+	StructureMgr.StructureTileType.Agriculture: $AgBtn,
+	StructureMgr.StructureTileType.Education: $EducationBtn,
+	StructureMgr.StructureTileType.Factory: $FactoryBtn,
+	StructureMgr.StructureTileType.Medical: $MedicalBtn,
+	StructureMgr.StructureTileType.Office: $OfficeBtn,
+	StructureMgr.StructureTileType.Power: $PowerBtn,
+	StructureMgr.StructureTileType.Reclamation: $ReclamationBtn,
+	StructureMgr.StructureTileType.Recreation: $RecreationBtn,
+	StructureMgr.StructureTileType.Residential: $ResidentialBtn,
+	StructureMgr.StructureTileType.UUC: $UUCBtn,
 }
 
 onready var _skip_manual_animation_controls := [
@@ -52,7 +52,7 @@ onready var _menu_select_sound := $MenuSelectStreamPlayer
 func _ready():
 	SignalMgr.register_subscriber(self, "focused_gained", "_on_focused_gained")
 	SignalMgr.register_publisher(self, "construction_tool_bar_clicked")
-	#set("custom_constants/separation", -50)
+	#set("custom_StructureMgr/separation", -50)
 	for c in get_children():
 		if c.name.ends_with("Btn"):
 			_btns.append(c)

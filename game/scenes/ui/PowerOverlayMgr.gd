@@ -43,9 +43,9 @@ func _on_update_power_overlay():
 func _get_power_station_cells():
 	var power_station_cells
 	
-	power_station_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.Power)
-	ArrayUtil.append_all(power_station_cells, Game.get_placement_overlay_tile_map().get_used_cells_by_id(Constants.StructureTileType.Power))
-	#ArrayUtil.append_all(power_station_cells, _placement_overlay_tile_map.get_used_cells_by_id(Constants.StructureTileType.Power + Constants.STRUCTURE_TILE_TYPE_COUNT))
+	power_station_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.Power)
+	ArrayUtil.append_all(power_station_cells, Game.get_placement_overlay_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.Power))
+	#ArrayUtil.append_all(power_station_cells, _placement_overlay_tile_map.get_used_cells_by_id(StructureMgr.StructureTileType.Power + Constants.STRUCTURE_TILE_TYPE_COUNT))
 	
 	return power_station_cells
 

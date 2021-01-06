@@ -1,0 +1,7 @@
+All navigation about the moon is done using the mouse.
+
+To pan or move the camera view, click and drag the left mouse button.
+
+There are three zoom levels.  To change from one level to another, simply scroll the mouse wheel up or down.
+
+While zooming in, the view will move towards the mouse pointer.  This coupled with there only being three zoom levels will make navigating to different parts of your colony or the moon much faster.

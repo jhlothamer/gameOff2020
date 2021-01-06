@@ -50,6 +50,8 @@ class StructureMetadata:
 		return structure_metadata["name"]
 	func get_short_name() -> String:
 		return structure_metadata["shortName"]
+	func get_description() -> String:
+		return structure_metadata["description"]
 	func get_construction_short_cut_key() -> String:
 		return structure_metadata["constructionShortCut"]
 	func get_power_provided() -> float:
@@ -59,7 +61,7 @@ class StructureMetadata:
 	
 
 class StructureData:
-	var structure_type_id :int = Constants.StructureTileType.UUC
+	var structure_type_id :int = StructureTileType.UUC
 	var tile_map_cell := Vector2.ZERO
 	#if not a power station or UUC then list of power stations that power this cell
 	#var power_stations := []
@@ -144,6 +146,7 @@ class StructureData:
 	func get_short_name() -> String:
 		return metadata_wrapped.get_short_name()
 	
+export var disable_enable_allowed := true
 
 func get_structure(tile_map_coord: Vector2) -> StructureData:
 	return null

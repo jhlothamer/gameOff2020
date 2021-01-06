@@ -1,0 +1,152 @@
+[
+	[
+		"Welcome commander!",
+		"We're about to depart on our generations long trip!",
+		"First let's familiarize you with the controls.",
+		"If you want to just dive in, click Skip Tutorial.",
+		"Continue"
+	],
+	[
+		"Let's go over a bit of navigation first.",
+		"Your view started all the way zoomed out.",
+		"To get a closer view, scroll the mouse wheel up.",
+		"zoom_step_1"
+	],
+	[
+		"This is the mid range zoom.",
+		"Note how the view moved towards the mouse pointer.",
+		"That's to make navigating to areas quicker.",
+		"Continue"
+	],
+	[
+		"Now scroll the mouse wheel up once more.",
+		"This will zoom the view in all the way.",
+		"zoom_step_0"
+	],
+	[
+		"Now we can see all base structures when they are in view.",
+		"Continue"
+	],
+	[
+		"Now click and drag the mouse to move the view.",
+		"Try to make the base in view if it's not already.",
+		"camera_pan_started",
+		3
+	],
+	[
+		"Moving the view this way is called panning.",
+		"You can pan the view at all zoom levels.",
+		"Continue"
+	],
+	[
+		"FuncRef:damage_random_structure",
+		"A structure has been damaged!",
+		"We better fix it before leaving the solor system.",
+		"Hover over the damaged tile till the popup window appears.",
+		"Then click on the repair link.",
+		"structure_state_changed"
+	],
+	[
+		"Things will break down during the long journey.",
+		"Be sure to keep on top of repairs.",
+		"lives are at stake!",
+		"Continue"
+	],
+	[
+		"Note the other info in the popup window.",
+		"It shows information about the structure.",
+		"It also allows you to disable, enable, and reclaim it.",
+		"Continue"
+	],
+	[
+		"Reclaiming a structure destroys it.",
+		"It also gives back some resources it took to create it.",
+		 "Continue"
+	],
+	[
+		"Lets go over the resources you'll need to manage.",
+		"Continue"
+	],
+	[
+		"FuncRef:highlight_ore_display",
+		"See the ore counter in the lower left.",
+		"This displays how much ore you have.",
+		"You need ore to build and repair structures.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_ore_display_highlight",
+		"FuncRef:highlight_harvester_launch_button",
+		"See the Launch Harvester button in the lower right.",
+		"This vehicle mines ore from asteroids that impact the moon.",
+		"Launch the harvester to during asteroid showers.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_harvester_launch_button_highlight",
+		"FuncRef:highlight_timeline",
+		"You can see when asteroid showers will happen on the timeline.",
+		"We've plotted a course so that we should have enough ore.",
+		"You can also see how far along the moon is on our trip.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_timeline_highlight",
+		"FuncRef:highlight_total_power",
+		"FuncRef:highlight_power_needed",
+		"Another resource you'll need keep an eye on is power.",
+		"Most structures need power to produce things and sustain life.",
+		"You can monitor the power available and how much is required.",
+		"Continue"
+	],
+	[
+		"Just like any other structure, power stations can break.",
+		"Structures will be unpowered when there isn't enough power.",
+		"Less important structures will be unpowered first.",
+		"With enough power loss, people will die.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_total_power_highlight",
+		"FuncRef:hide_powered_needed_highlight",
+		"FuncRef:highlight_population",
+		"You can monitor the population here.",
+		"Monitor this closely!!",
+		"When population drops to 100, the colony won't survive.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_population_highlight",
+		"FuncRef:highlight_construction_buttons",
+		"And you MUST increase the population.",
+		"1000 souls is not enough to ensure a viable colony.",
+		"To grow the population you'll need to build structures.",
+		"You do this with the construction panel.",
+		"Continue"
+	],
+	[
+		"Mouse over a construction button displays vital information.",
+		"This information appears on the ribbon above the buttons.",
+		"Try it now.  You'll see the following information:",
+		"- structure type name and construction shortcut key",
+		"- number of functioning versus total structures",
+		"- current vs max population supported",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_construction_buttons_highlight",
+		"FuncRef:extend_construction_drawer",
+		"FuncRef:highlight_construction_drawer",
+		"Lastly more info on each structure type is shown here",
+		"when mousing over construction buttons.",
+		"Continue"
+	],
+	[
+		"FuncRef:hide_construction_drawer_highlight",
+		"FuncRef:retract_construction_drawer",
+		"Well that's all the time we have for now.",
+		"If you need a refresher later, see the manual.",
+		"But for now buckle up and get ready for take off!",
+		"Continue"
+	]
+]

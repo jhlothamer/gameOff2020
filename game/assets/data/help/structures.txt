@@ -1,0 +1,61 @@
+The following is a list of structures that you can build and what they provide.
+
+[table=2]
+[cell][img]res://assets/images/ui/icons/Start-Tile_icon.png[/img] [/cell]
+[cell]Universal Utility Conduit (UUC) - This structure forms the foundation of all other structures.  It provides all the utility connections required such as power, water, sewage and transporation tunneling.  You can build this structure separately, but it is not required.  By itself it offers a cheap way to connect parts of the colony.
+[/cell]
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Power_Reactor_icon.png[/img] [/cell]
+[cell]Power Station - provides power to structures.  It can only generate so much power but can supply power to any connected structure.  A structure that is completely isolated from power will become not produce anything which can lead to population loss.  This isolation can happen if structures between the station an a structure become damaged or are otherwise disabled.[/cell]
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Agriculture_icon.png[/img] [/cell]
+[cell]Agriculture Pod - provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand short periods with less food.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Reclaimation-Center_icon.png[/img] [/cell]
+[cell]Reclamation Center - recycles materials and treats sewage and water.  The number of reclamation centers limits how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Residence_icon.png[/img] [/cell]
+[cell]Residential Complex - provides shelter.  While a population needs shelter, they can make do with overcrowding to an extent.  However, overcrowding can affect their mood and morale.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Medical_icon.png[/img] [/cell]
+[cell]Medical Center - Provides health services.  An unhealthy population does not thrive as well as a healthy one.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Education_icon.png[/img] [/cell]
+[cell]Education Complex - This provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaining the robotic fleet.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Factory_icon.png[/img] [/cell]
+[cell]Factory - This highly automated facility makes all the clothing and other items for the colony.[/cell]
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Office_icon.png[/img] [/cell]
+[cell]Office Complex - A place of work apart from other locations.  Also houses administration and government offices.[/cell]
+
+
+[cell][/cell]
+[cell][/cell]
+
+[cell][img]res://assets/images/ui/icons/Recreation_icon.png[/img] [/cell]
+[cell]Recreation Center - Provides entertainment and exercise for the colony.[/cell]
+
+[/table]

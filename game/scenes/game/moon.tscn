@@ -2,15 +2,12 @@
 
 [ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/moon/Impossible_Drive.png" type="Texture" id=2]
-[ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=3]
+[ext_resource path="res://scenes/game/moon.gd" type="Script" id=3]
 [ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=4]
 [ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=6]
 [ext_resource path="res://scenes/harvester/harvester.tscn" type="PackedScene" id=7]
-
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
-colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
+[ext_resource path="res://scenes/game/impossible_drive_plume_gradient_curve.tres" type="Gradient" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4700, 500 )
@@ -31,9 +28,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 radius = 3550.0
-color = Color( 0.584314, 0.584314, 0.584314, 1 )
+color = Color( 0.498039, 0.498039, 0.498039, 1 )
 stroke = true
-stroke_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+stroke_color = Color( 0.439216, 0.439216, 0.439216, 1 )
 stroke_width = 20.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -64,7 +61,7 @@ show_behind_parent = true
 position = Vector2( -732.551, 0 )
 points = PoolVector2Array( 0, 0, -7200, 0 )
 width = 978.0
-gradient = SubResource( 1 )
+gradient = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true

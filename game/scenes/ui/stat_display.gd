@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Panel
 
 export var stat_label := "Population"
 export var stat_name := "Population"
@@ -11,12 +11,14 @@ onready var _stat_name_label := $VBoxContainer/StatValueAndDelta/StatName
 onready var _stat_value_label := $VBoxContainer/StatValue
 onready var _stat_value_delta_indicator := $VBoxContainer/StatValueAndDelta/DeltaIndicatorCtrl/DeltaIndicatorSprite
 onready var _stat_value_delta_indicator_ctrl := $VBoxContainer/StatValueAndDelta/DeltaIndicatorCtrl
+onready var _animation_player := $AnimationPlayer
 
 const increase_delta_indicator_index := 0
 const decrease_delta_indicator_index := 1
 
 
 func _ready():
+	set("custom_styles/panel", get("custom_styles/panel").duplicate())
 	SignalMgr.register_subscriber(self, "stats_updated", "_on_stats_updated")
 	SignalMgr.register_subscriber(self, "resources_updated", "_on_resources_updated")
 	_stat_name_label.text = stat_label
@@ -51,3 +53,11 @@ func _on_resources_updated():
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	var resource_amount = resource_mgr.get_resource_amount(stat_name)
 	_stat_value_label.text = "%d" % resource_amount
+
+
+func show_highlight():
+	_animation_player.play("animate_highlight", -1, .3)
+
+func hide_highlight():
+	_animation_player.play("hide_highlight")
+

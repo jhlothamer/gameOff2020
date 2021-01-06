@@ -41,7 +41,7 @@ func _ready():
 		functioning_structure_count.structure_type_name = structure_type_name
 		functioning_structure_count.functional_count = _function_structures_count_by_type_name[structure_type_name]
 		_functioning_structure_count_control_by_type_name[structure_type_name] = functioning_structure_count
-		var structure_type_id = EnumUtil.get_id(Constants.StructureTileType, structure_type_name)
+		var structure_type_id = EnumUtil.get_id(StructureMgr.StructureTileType, structure_type_name)
 		functioning_structure_count.num_structures_needed = _stat_mgr.get_needed_number_of_structures(structure_type_id)
 
 	NodeUtil.remove_children(_stat_values)

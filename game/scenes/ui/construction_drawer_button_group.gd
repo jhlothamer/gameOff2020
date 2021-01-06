@@ -10,38 +10,40 @@ var shortcut: ShortCut
 
 onready var _texture_button := $Panel/MarginContainer/TextureButton
 onready var _short_name_label := $ShortNameLabel
-onready var _cost_label := $CostLabel
-onready var _functional_label := $FunctionalLabel
-onready var _population_supported_label := $PopulationSupportedLabel
-onready var _population_possible_label := $PopulationPossibleLabel
+#onready var _cost_label := $CostLabel
+#onready var _functional_label := $FunctionalLabel
+#onready var _population_supported_label := $PopulationSupportedLabel
+#onready var _population_possible_label := $PopulationPossibleLabel
 onready var _mouse_over_sound := $MouseOverStreamPlayer
 onready var _shortcut_label := $Panel/MarginContainer/TextureButton/ShortcutLabel
 onready var _highlight_texture := $Panel/MarginContainer/TextureButton/HighlightTextureRect
+onready var _tutorial_highlight_texture := $Panel/TutorialHighlightTextureRect
+onready var _animation_player := $AnimationPlayer
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
 }
 
 var _disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
 }
 
 func _ready():
@@ -50,6 +52,8 @@ func _ready():
 	SignalMgr.register_publisher(self, "construction_button_mouse_exited")
 	SignalMgr.register_subscriber(self, "resources_updated", "_on_resources_updated")
 	SignalMgr.register_subscriber(self, "structure_state_changed", "_on_structure_state_changed")
+	SignalMgr.register_subscriber(self, "HighlightConstructionButton", "_on_HighlightConstructionButton")
+	SignalMgr.register_subscriber(self, "BlinkConstructionButtonHighlight", "_on_BlinkConstructionButtonHighlight")
 	
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
@@ -76,7 +80,7 @@ func _init_labels():
 	_shortcut_label.text = shortcut_string
 
 	var construction_cost_string = _make_resources_string(structure_metadata.get_construction_resources(), "-")
-	_cost_label.text = construction_cost_string
+	#_cost_label.text = construction_cost_string
 	_short_name_label.text = structure_metadata.get_short_name()
 	#_texture_button.hint_tooltip = structure_metadata.get_name()
 	_update_labels()
@@ -98,6 +102,10 @@ func _on_TextureButton_mouse_entered():
 
 
 func _on_TextureButton_pressed():
+	var tutorial_mgr: TutorialMgr = ServiceMgr.get_service(TutorialMgr)
+	if !tutorial_mgr.is_construction_allowed(structure_type):
+		return
+	
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr.have_enough_resources_for_constructions(structure_type):
 		emit_signal("construction_tool_bar_clicked", structure_type)
@@ -128,7 +136,7 @@ func _update_labels() -> void:
 	var total = structures.size()
 	var functioning_structures = structure_mgr.get_functioning_structures_by_type_id(structure_type)
 	var functioning = functioning_structures.size()
-	_functional_label.text = "%d/%d" % [functioning, total]
+	#_functional_label.text = "%d/%d" % [functioning, total]
 	
 	var stats_mgr: StatsMgr = ServiceMgr.get_service(StatsMgr)
 	var stat := stats_mgr.get_stat_provided_by_structure_type_id(structure_type)
@@ -137,12 +145,26 @@ func _update_labels() -> void:
 		var total_population_provided = functioning * units_per_structure
 		var population_currently_supported = stats_mgr.calc_structure_produced_stats(stat, functioning_structures)
 		#_population_label.text =  "%d/%d" % [population_currently_supported, total_population_provided]
-		_population_supported_label.text = "%d" % population_currently_supported
-		_population_possible_label.text = "%d" % total_population_provided
+#		_population_supported_label.text = "%d" % population_currently_supported
+#		_population_possible_label.text = "%d" % total_population_provided
 	
 	
 
 
 func _on_structure_state_changed(tile_map_cell: Vector2) -> void:
 	_update_labels()
+
+
+func _on_HighlightConstructionButton(structure_type_id: int, highlight_flag: bool) -> void:
+	if structure_type_id != structure_type:
+		return
+	if highlight_flag:
+		_animation_player.play("blink_highlight")
+	else:
+		_tutorial_highlight_texture.modulate = Color(1, 1, 1, 0)
+
+func _on_BlinkConstructionButtonHighlight(structure_type_id: int) -> void:
+	if structure_type_id != structure_type:
+		return
+	_animation_player.play("blink_highlight")
 

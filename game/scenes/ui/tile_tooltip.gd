@@ -23,29 +23,29 @@ export var debug := false
 
 var structure_tile_normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
 }
 
 
 var structure_tile_disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
 }
 
 onready var _rich_text_label := $TileTooltip/MarginContainer/RichTextLabel
@@ -56,7 +56,7 @@ const ENABLED_COLOR_STRING = "#ffffff"
 const DISABLED_COLOR_STRING = "#b3b3b3"
 
 var _direction_try_vectors := [Vector2.ZERO, Vector2(-1,-1), Vector2(-1,0), Vector2(0, -1)]
-var _direction_offset := [Vector2.ONE*10, Vector2.ONE*-20, Vector2.RIGHT*20, Vector2.UP*20]
+var _direction_offset := [Vector2.ONE*10, Vector2.ONE*-20, Vector2.LEFT*20, Vector2.UP*20]
 
 func _ready():
 	#SignalMgr.register_publisher(self, "tile_tooltip_mouse_entered")
@@ -76,7 +76,7 @@ func popup_at(v: Vector2):
 	if debug:
 		print("TileTooltip: showing at location " + str(v))
 
-	var viewport_rect := get_viewport_rect()
+	var viewport_rect := get_viewport_rect().grow_margin(MARGIN_BOTTOM, -90)
 
 	var direction_offset = _direction_offset[0]
 	

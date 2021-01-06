@@ -4,7 +4,6 @@ signal resources_updated()
 
 const resource_data_file_path = "res://assets/data/resources.json"
 
-
 var _resource_data := {}
 # resource name to current amount
 var _resource_amounts := {}
@@ -133,6 +132,8 @@ func _on_structure_tile_placed(structure_tile_type, cell_v):
 
 
 func _on_structure_tile_reclaimed(structure_tile_type, cell_v):
+	if !reclamation_enabled:
+		return
 	#increment resources by reclamation amounts
 	_increment_resources_for_reclamation(structure_tile_type)
 	var structure_mgr:StructureMgr = ServiceMgr.get_service(StructureMgr)

@@ -8,7 +8,7 @@ export var old_build_rules := false
 var _placing_structure := false
 var _reclaiming_structure := false
 var _allowed_placement_tiles := []
-var _structure_type = Constants.StructureTileType.UUC
+var _structure_type = StructureMgr.StructureTileType.UUC
 var _directions := [
 	Vector2.LEFT,
 	Vector2.UP,
@@ -90,8 +90,8 @@ func _get_allowed_reclaim_tiles():
 
 func _get_allowed_placement_tiles(structure_type):
 	var allowed_placement_tiles = []
-	if structure_type != Constants.StructureTileType.UUC:
-		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.UUC)
+	if structure_type != StructureMgr.StructureTileType.UUC:
+		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.UUC)
 		var enabled_uuc_cells := []
 		var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 		for uuc_cell in uuc_cells:
