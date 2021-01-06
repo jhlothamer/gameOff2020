@@ -9,16 +9,16 @@ var _mouse_over_button := false
 var _construction_button_group_size := Vector2(60, 74)
 
 onready var _structure_tile_type_to_button := {
-	Constants.StructureTileType.Agriculture: $AgBtn,
-	Constants.StructureTileType.Education: $EducationBtn,
-	Constants.StructureTileType.Factory: $FactoryBtn,
-	Constants.StructureTileType.Medical: $MedicalBtn,
-	Constants.StructureTileType.Office: $OfficeBtn,
-	Constants.StructureTileType.Power: $PowerBtn,
-	Constants.StructureTileType.Reclamation: $ReclamationBtn,
-	Constants.StructureTileType.Recreation: $RecreationBtn,
-	Constants.StructureTileType.Residential: $ResidentialBtn,
-	Constants.StructureTileType.UUC: $UUCBtn,
+	StructureMgr.StructureTileType.Agriculture: $AgBtn,
+	StructureMgr.StructureTileType.Education: $EducationBtn,
+	StructureMgr.StructureTileType.Factory: $FactoryBtn,
+	StructureMgr.StructureTileType.Medical: $MedicalBtn,
+	StructureMgr.StructureTileType.Office: $OfficeBtn,
+	StructureMgr.StructureTileType.Power: $PowerBtn,
+	StructureMgr.StructureTileType.Reclamation: $ReclamationBtn,
+	StructureMgr.StructureTileType.Recreation: $RecreationBtn,
+	StructureMgr.StructureTileType.Residential: $ResidentialBtn,
+	StructureMgr.StructureTileType.UUC: $UUCBtn,
 }
 
 onready var _skip_manual_animation_controls := [
@@ -52,7 +52,7 @@ onready var _menu_select_sound := $MenuSelectStreamPlayer
 func _ready():
 	SignalMgr.register_subscriber(self, "focused_gained", "_on_focused_gained")
 	SignalMgr.register_publisher(self, "construction_tool_bar_clicked")
-	#set("custom_constants/separation", -50)
+	#set("custom_StructureMgr/separation", -50)
 	for c in get_children():
 		if c.name.ends_with("Btn"):
 			_btns.append(c)
@@ -88,9 +88,7 @@ func _on_ConstructionBtn_toggled(button_pressed):
 		_animation_player.play_backwards("expand")
 		if !_mouse_over_button:
 			_menu_close_sound.play()
-			print("play menu close sound")
 		else:
-			print("not playing menu close sound")
 			_mouse_over_button = false
 
 
@@ -134,25 +132,22 @@ func _process(_delta):
 
 
 func _on_button_down(tile_type):
-	#print("clicked on structure button of type " + str(tile_type))
 	yield(get_tree().create_timer(.2),"timeout")
-	var resource_mgr := ResourceMgr.get_resource_mgr()
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr.have_enough_resources_for_constructions(tile_type):
 		emit_signal("construction_tool_bar_clicked", tile_type)
 		_menu_select_sound.play()
-		print("play menu select sound")
 		#_skip_next_menu_select_sound = true
 	else:
-		var structure_mgr := StructureMgr.get_structure_mgr()
+		var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 		var structure_metadata := structure_mgr.get_structure_metadata(tile_type)
 		HudAlertsMgr.add_hud_alert("Not enough resources to construct %s " % structure_metadata.get_name())
-		#print("didn't have enough resource in end - play sound and/or show message")
 
 func _on_shortcut_activated(tile_type):
 	_on_button_down(tile_type)
 
 func _refresh_button_disable_states():
-	var resource_mgr:ResourceMgr = Globals.get("ResourceMgr")
+	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	if resource_mgr == null:
 		return
 	for structure_type_id in _structure_tile_type_to_button.keys():
@@ -174,10 +169,8 @@ func _on_ConstructionToolBar_mouse_entered():
 
 func _on_button_mouse_entered():
 	_mouse_over_button = true
-	print("button mouse entered")
 
 func _on_button_mouse_exited():
 	_mouse_over_button = false
-	print("button mouse exited")
 
 

@@ -13,7 +13,7 @@ func _ready():
 func _body_impacted(body):
 	if "type" in body:
 		if body.type == "Asteroid":
-			var spawn_mgr = Globals.get("SpawnMgr")
+			var spawn_mgr:SpawnMgr = ServiceMgr.get_service(SpawnMgr)
 			emit_signal("asteroid_impact")
 			var duration = 1
 			var intensity = 30

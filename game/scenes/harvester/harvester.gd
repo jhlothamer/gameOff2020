@@ -71,12 +71,13 @@ func _process(delta: float) -> void:
 		rotation += delta*_speed_radians*_travel_direction
 		if _is_at_barn_location(delta*_speed_radians):
 			_harvester_state = HarvesterState.IDLE
+			HudAlertsMgr.add_hud_alert("Harvester ready")
 		
 	
 	if _current_fragement != null:
 		var current_fragment_harvest_time = _fragment_harvest_times[_current_fragement] + delta
 		if current_fragment_harvest_time >= harvest_time_per_fragment:
-			var spawn_mgr := SpawnMgr.get_spawn_mgr()
+			var spawn_mgr:SpawnMgr = ServiceMgr.get_service(SpawnMgr)
 			spawn_mgr.remove_fragment(_current_fragement)
 			_spawn_havest_ore_label()
 			_fragment_harvest_times.erase(_current_fragement)
@@ -109,8 +110,6 @@ func _on_FragmentDetectArea_body_exited(body):
 	if body.is_in_group("fragment"):
 		_fragment_contact_count = max(_fragment_contact_count - 1, 0)
 		if body == _current_fragement:
-#			var spawn_mgr := SpawnMgr.get_spawn_mgr()
-#			spawn_mgr.remove_fragment(_current_fragement)
 			_current_fragement = null
 			#force to travel - don't want harvest to get stuck
 			_fragment_contact_count = 0
@@ -140,7 +139,7 @@ func _on_harvester_activated() -> void:
 		if debug:
 			print("Harvester: harvester_activated signal received.  Harvester now active.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 	else:
-		HudAlertsMgr.add_hud_alert("Nothing currrently on surface to harvest")
+		HudAlertsMgr.add_hud_alert("Nothing currently on surface to harvest")
 		if debug:
 			print("Harvester: harvester_activated signal received by but nothing to harvest.  Current state is " + EnumUtil.get_string(HarvesterState, _harvester_state))
 			print("Harvester: distance_from_moon_tolerance = " + str(distance_from_moon_tolerance))
@@ -149,7 +148,7 @@ func _on_harvester_activated() -> void:
 			var distance_sq = global_position.distance_squared_to(_body.global_position)
 			print("Harvester: distance of body to center: " + str(distance))
 			print("Harvester: distance of body to center (squared): " + str(distance_sq))
-			var spawn_mgr := SpawnMgr.get_spawn_mgr()
+			var spawn_mgr:SpawnMgr = ServiceMgr.get_service(SpawnMgr)
 			if spawn_mgr == null:
 				print("Harvester: spawn manager is null!!")
 			else:
@@ -177,7 +176,7 @@ func _on_harvester_activated() -> void:
 	
 
 func _update_travel_direction() -> bool:
-	var spawn_mgr := SpawnMgr.get_spawn_mgr()
+	var spawn_mgr:SpawnMgr = ServiceMgr.get_service(SpawnMgr)
 	if spawn_mgr == null:
 		return false
 	var fragments = spawn_mgr.fragments
@@ -221,7 +220,7 @@ func _approx_eq(a: float, b: float, tolerance: float) -> bool:
 
 func _get_fragment_harvest_amount() -> float:
 	if _fragment_harvest_amount <= 0.0:
-		var resource_mgr = ResourceMgr.get_resource_mgr()
+		var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 		_fragment_harvest_amount = resource_mgr.get_fragment_harvest_amount()
 	return _fragment_harvest_amount
 

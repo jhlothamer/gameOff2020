@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/VO_Alerts_Structure_Damaged.wav-dbecd97702d84c38e5590ef26a4a5445.sample"
+
+[deps]
+
+source_file="res://assets/audio/vo/VO_Alerts_Structure_Damaged.wav"
+dest_files=[ "res://.import/VO_Alerts_Structure_Damaged.wav-dbecd97702d84c38e5590ef26a4a5445.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

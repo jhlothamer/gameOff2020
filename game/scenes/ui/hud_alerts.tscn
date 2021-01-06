@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Insufficient_Resources.wav" type="AudioStream" id=1]
 [ext_resource path="res://scenes/ui/hud_alerts.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Harvester_Ready.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Population_Crash_Imminent.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Structure_Damaged.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Harvester_Returning.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Incoming_Asteroids.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Insufficient_Power.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/vo/VO_Alerts_Population_Decreasing.wav" type="AudioStream" id=9]
 
 [node name="HudAlerts" type="Control"]
 anchor_right = 1.0
@@ -25,3 +33,35 @@ margin_top = 100.0
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
+
+[node name="VO_Alerts_Harvester_Ready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "VO"
+
+[node name="VO_Alerts_Harvester_Returning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "VO"
+
+[node name="VO_Alerts_Incoming_Asteroids" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "VO"
+
+[node name="VO_Alerts_Insufficient_Power" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "VO"
+
+[node name="VO_Alerts_Insufficient_Resources" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "VO"
+
+[node name="VO_Alerts_Population_Crash_Imminent" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "VO"
+
+[node name="VO_Alerts_Population_Decreasing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "VO"
+
+[node name="VO_Alerts_Structure_Damaged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "VO"

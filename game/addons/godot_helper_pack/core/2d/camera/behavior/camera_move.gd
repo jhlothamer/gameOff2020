@@ -1,6 +1,9 @@
 extends Node
 class_name CameraMove2D
 
+signal camera_pan_started()
+signal camera_pan_stopped()
+
 
 export var move_speed: float = 10
 export var up_action_name := "ui_up"
@@ -18,6 +21,9 @@ onready var camera: Camera2D = get_parent() if typeof(get_parent()) == typeof(Ca
 func _ready():
 	if camera == null:
 		set_process(false)
+		return
+	SignalMgr.register_publisher(self, "camera_pan_started")
+	SignalMgr.register_publisher(self, "camera_pan_stopped")
 
 
 func _get_move_direction() -> Vector2:
@@ -81,6 +87,7 @@ func _handle_mouse_button_event(event: InputEventMouseButton) -> void:
 	if _is_dragging && !event.pressed:
 		_is_dragging = false
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		emit_signal("camera_pan_stopped")
 		return
 	if event.button_index == BUTTON_LEFT && left_mouse_button_drag:
 		_is_dragging = true
@@ -90,6 +97,7 @@ func _handle_mouse_button_event(event: InputEventMouseButton) -> void:
 		_is_dragging = true
 	if _is_dragging:
 		Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+		emit_signal("camera_pan_started")
 
 func _handle_mouse_motion_event(event: InputEventMouseMotion) -> void:
 	if !_is_dragging:

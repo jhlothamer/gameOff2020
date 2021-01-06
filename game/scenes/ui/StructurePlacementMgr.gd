@@ -2,24 +2,13 @@ extends Node2D
 
 signal structure_tile_placed(structure_tile_type, cell_v)
 signal structure_tile_reclaimed(structure_tile_type, cell_v)
-signal toggle_power_overlay(show_overlay)
-signal update_power_overlay()
 
-#export var placement_overlay_tile_map: NodePath
-#export var allowed_tiles_tile_map: NodePath
-#export var structure_tiles_tile_map: NodePath
-#export var structure_mgr: NodePath
-#
-#
-#onready var _placement_overlay_tile_map: TileMap
-#onready var _allowed_tiles_tile_map: TileMap
-#onready var _structure_tiles_tile_map: TileMap
-#onready var _structure_mgr: StructureMgr
+export var old_build_rules := false
 
 var _placing_structure := false
 var _reclaiming_structure := false
 var _allowed_placement_tiles := []
-var _structure_type = Constants.StructureTileType.UUC
+var _structure_type = StructureMgr.StructureTileType.UUC
 var _directions := [
 	Vector2.LEFT,
 	Vector2.UP,
@@ -37,18 +26,8 @@ func _ready():
 	SignalMgr.register_subscriber(self, "construction_tool_bar_clicked", "_on_construction_tool_bar_clicked")
 	SignalMgr.register_subscriber(self, "reclaim_structure_initiated", "_on_reclaim_structure_initiated")
 	SignalMgr.register_publisher(self, "structure_tile_placed")
-	SignalMgr.register_publisher(self, "toggle_power_overlay")
-	SignalMgr.register_publisher(self, "update_power_overlay")
 	SignalMgr.register_publisher(self, "structure_tile_reclaimed")
 	
-#	if placement_overlay_tile_map != null:
-#		_placement_overlay_tile_map = get_node_or_null(placement_overlay_tile_map)
-#	if allowed_tiles_tile_map != null:
-#		_allowed_tiles_tile_map = get_node_or_null(allowed_tiles_tile_map)
-#	if structure_tiles_tile_map != null:
-#		_structure_tiles_tile_map = get_node_or_null(structure_tiles_tile_map)
-#	if structure_mgr != null:
-#		_structure_mgr = get_node_or_null(structure_mgr)
 
 func _process(_delta):
 	if !_placing_structure || !_have_tile_map_nodes():
@@ -58,9 +37,6 @@ func _process(_delta):
 	if cell_v != _last_mouse_cell_v:
 		if _last_mouse_cell_v != null:
 			if _allowed_placement_tiles.has(_last_mouse_cell_v):
-#				if _reclaiming_structure:
-#					_placement_overlay_tile_map.set_cellv(_last_mouse_cell_v, _allowed_reclaim_tile_id)
-#				else:
 				Game.get_placement_overlay_tile_map().set_cellv(_last_mouse_cell_v, _allowed_placement_tile_id)
 			else:
 				Game.get_placement_overlay_tile_map().set_cellv(_last_mouse_cell_v, -1)
@@ -75,9 +51,6 @@ func _process(_delta):
 			else:
 				Game.get_placement_overlay_tile_map().set_cellv(cell_v, _structure_type + Constants.STRUCTURE_TILE_TYPE_COUNT)
 		_last_mouse_cell_v = cell_v
-		if _structure_type == Constants.StructureTileType.Power:
-			emit_signal("update_power_overlay")
-	
 	
 
 func _on_construction_tool_bar_clicked(structure_type):
@@ -92,8 +65,7 @@ func _on_construction_tool_bar_clicked(structure_type):
 		Game.get_placement_overlay_tile_map().set_cellv(allowed_placement_tile, _allowed_placement_tile_id)
 	_structure_type = structure_type
 	_placing_structure = true
-	if structure_type == Constants.StructureTileType.Power:
-		emit_signal("toggle_power_overlay", true)
+
 
 func _on_reclaim_structure_initiated():
 	if !_have_tile_map_nodes():
@@ -107,22 +79,30 @@ func _on_reclaim_structure_initiated():
 	_placing_structure = true
 	_reclaiming_structure = true
 
+
 func _have_tile_map_nodes():
 	return Game.get_placement_overlay_tile_map() != null and Game.get_allowed_tiles_tile_map() != null and Game.get_structure_tiles_tile_map() != null
+
 
 func _get_allowed_reclaim_tiles():
 	return Game.get_structure_tiles_tile_map().get_used_cells()
 
+
 func _get_allowed_placement_tiles(structure_type):
-	if structure_type != Constants.StructureTileType.UUC:
-		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.UUC)
-		var enabled_uuc_cells := []
-		for uuc_cell in uuc_cells:
-			if !StructureMgr.get_structure_mgr().is_disabled(uuc_cell):
-				enabled_uuc_cells.append(uuc_cell)
-		return enabled_uuc_cells
-	
 	var allowed_placement_tiles = []
+	if structure_type != StructureMgr.StructureTileType.UUC:
+		var uuc_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.UUC)
+		var enabled_uuc_cells := []
+		var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
+		for uuc_cell in uuc_cells:
+			if !structure_mgr.is_disabled(uuc_cell):
+				enabled_uuc_cells.append(uuc_cell)
+		if old_build_rules:
+			return enabled_uuc_cells
+		else:
+			allowed_placement_tiles = enabled_uuc_cells
+	
+	#allowed_placement_tiles = []
 	var placed_structure_cells = Game.get_structure_tiles_tile_map().get_used_cells()
 	for placed_structure_cell in placed_structure_cells:
 		for direction in _directions:
@@ -134,6 +114,7 @@ func _get_allowed_placement_tiles(structure_type):
 			allowed_placement_tiles.append(potential_structure_cell)
 	
 	return allowed_placement_tiles
+
 
 func _input(event):
 	if !_placing_structure or !event is InputEventMouseButton:
@@ -153,8 +134,5 @@ func _input(event):
 		_allowed_placement_tiles = []
 		_last_mouse_cell_v = null
 		Game.get_placement_overlay_tile_map().clear()
-		emit_signal("toggle_power_overlay", false)
-
-
 
 

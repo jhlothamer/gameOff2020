@@ -3,16 +3,19 @@ This is a real time construction and management simulation game.  You're goal is
 To grow the population you'll need to provide more food, water and shelter at the very least.  But people have other needs too such as clothing, medical care, places to work, education and recreation.  All of this is produced or provided by structures.
 
 [center][u][b]Structures[/b][/u][/center]
+
+
+The following is a list of structures that you can build and what they provide.
+
 [table=2]
 [cell][img]res://assets/images/ui/icons/Start-Tile_icon.png[/img] [/cell]
-[cell]To construct a structure first you must build a Universal Utility Conduit (UUC) structure on a tile.  This structure provides all the utility connections required by other structures such as power, water, sewage, and transportation tunneling.  It's tile looks like the image on the left.[/cell]
-[/table]
+[cell]Universal Utility Conduit (UUC) - This structure forms the foundation of all other structures.  It provides all the utility connections required such as power, water, sewage and transporation tunneling.  You can build this structure separately, but it is not required.  By itself it offers a cheap way to connect parts of the colony.
+[/cell]
+[cell][/cell]
+[cell][/cell]
 
-On top of Universal Utility Conduit structures can be placed all the other structure types.  The following is a list of such structures and what resource they provide.
-
-[table=2]
 [cell][img]res://assets/images/ui/icons/Power_Reactor_icon.png[/img] [/cell]
-[cell]Power Station - provides power to structures in a given radius.  It can only generate so much power, so multiple power stations in an area may be required.  Also, structures without power do not produce anything which can lead to population loss.[/cell]
+[cell]Power Station - provides power to structures.  It can only generate so much power but can supply power to any connected structure.  A structure that is completely isolated from power will become not produce anything which can lead to population loss.  This isolation can happen if structures between the station an a structure become damaged or are otherwise disabled.[/cell]
 [cell][/cell]
 [cell][/cell]
 
@@ -64,14 +67,15 @@ On top of Universal Utility Conduit structures can be placed all the other struc
 
 [/table]
 
-[center][u][b]How to Start Construction[/b][/u][/center]
-[table=2]
-[cell][img]res://assets/images/ui/icons/Construction-Menu.png[/img] [/cell]
-[cell]All construction is started by selecting a structure from the build menu.  The menu is located on the bottom right of the screen.  Simply click the construction button to expand the menu and select a structure.  Resource costs are displayed. Once the resources have dropped below the construction cost listed you will not be able to build that structure.[/cell]
-[cell][img]res://assets/images/help/UUC_Construction_Button.png[/img] [/cell]
-[cell]Each structure type has a shortcut for initiating their construction.  The shortcut is listed in the construction menu on the lower right of the button.  Learning these shortcuts makes building your colony much, much easier and faster.[/cell]
+[center][u][b]Construction Toolbar[/b][/u][/center]
 
-[/table]
+All construction is started by clicking on a construction button.  These buttons are located at the bottom center of the screen in a horizontal toolbar configuration.  
+[center][img]res://assets/images/help/ConstructionDrawer.png[/img][/center]
+Simply click the button and move the mouse to the location in the colony where you want to build the structure.  Also, each structure has a shortcut for initiating their construction.  The shortcut is listed on the lower right corner of the construction button.  Using these shortcuts makes building your colony easier and faster.
+
+The toolbar also contains a ribbon of information that is displayed when you mouse over a construction button.  This information includes the structure's full name, shortcut key, number of functioning versus total number of structures and the currently population supported versus the maximum population supported.  As structures fall into disrepair or are disabled the resource they provided will diminish and thus lower the amount of supported population.
+[center][img]res://assets/images/help/ConstructionDrawer_ButtonHoverExample.png[/img][/center]
+The toolbar can also be drawn out by clicking on the expand button that is located in the upper right of the toolbar.  This will reveal additional information about a structure when you mouse over a construction button such as the cost of building the structure and a description of what the structure provides.
 
 [center][u][b]Resources[/b][/u][/center]
 
@@ -111,10 +115,6 @@ The following are examples of what tiles look like in the listed states.
 [cell]Disabled tile[/cell]
 [/table]
 
-[center][u][b]Structure Info[/b][/u][/center]
-The Structure Info dialog shows critical data about structures and how much population they support at a glance.  If your population is not growing as expected, check the list to see what you might need to build.  The Structure Info dialog can be accessed by clicking on the Structure Info button located on the lower left right above the stats display.
-
-[center][img]res://assets/images/help/StructureInfoDialog.png[/img][/center]
 
 [center][u][b]Navigation[/b][/u][/center]
 All navigation of the game camera is done via the mouse.  To pan or move the camera view, click and drag the left mouse button.  To zoom in the camera view, scroll the middle mouse wheel up.  To zoom out the camera view, scroll the middle mouse wheel down.  There are only 3 zoom levels, so not much scrolling is required.  As the camera zooms in it will also move towards the location of the mouse pointer.

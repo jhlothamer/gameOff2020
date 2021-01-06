@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VO_Story_Game_End_Win.ogg-683124f06e99000a1624eca520b81bf8.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/vo/VO_Story_Game_End_Win.ogg"
+dest_files=[ "res://.import/VO_Story_Game_End_Win.ogg-683124f06e99000a1624eca520b81bf8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

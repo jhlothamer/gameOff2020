@@ -14,14 +14,16 @@
 	"structures": {
 		"UUC": {
 			"name": "Universal Utility Conduit",
-			"description": "",
+			"shortName": "UUC",
+			"constructionShortCut": "U",
+			"description": "Provides all the utility connections required by other structures such as power, water, sewage, and transportation tunneling.  Building another structure always includes this structure underneath.  By itself it offers a cheap way to connect parts of the colony.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
-				"ore": 30.0
+				"ore": 10.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 0,
+				"power": 0,
 				"population": 0
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -29,7 +31,7 @@
 			},
 			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
 			"reclamationResources": {
-				"ore": 15.0
+				"ore": 5.0
 			},
 			"repairResourcesDescription": "Resource cost of repairing structure.",
 			"repairResources": {
@@ -38,16 +40,18 @@
 		},
 		"Power": {
 			"name": "Power Station",
-			"description": "",
+			"shortName": "Power",
+			"constructionShortCut": "P",
+			"description": "Provides power to connected structures.  A structure is connected to a power station by being next to a station or via other undamaged structures.  Structures can become isolated and stop providing their life sustaining products such as food, water, shelter, etc.",
 			"powerRadius": 3,
 			"powerProvided": 10,
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
-				"ore": 100.0
+				"ore": 150.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 0,
+				"power": 0,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -55,23 +59,25 @@
 			},
 			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
 			"reclamationResources": {
-				"ore": 50.0
+				"ore": 75.0
 			},
 			"repairResourcesDescription": "Resource cost of repairing structure.",
 			"repairResources": {
-				"ore": 10.0
+				"ore": 15.0
 			}
 		},
 		"Agriculture": {
 			"name": "Agriculture Pod",
-			"description": "",
+			"shortName": "Ag",
+			"constructionShortCut": "G",
+			"description": "Provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand periods with less than optimal sustenance.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
-				"ore": 250.0
+				"ore": 300.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 5,
+				"power": 5,
 				"population": 2,
 				"water": 10
 			},
@@ -81,23 +87,25 @@
 			},
 			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
 			"reclamationResources": {
-				"ore": 125.0
+				"ore": 150.0
 			},
 			"repairResourcesDescription": "Resource cost of repairing structure.",
 			"repairResources": {
-				"ore": 25.0
+				"ore": 30.0
 			}
 		},
 		"Residential": {
 			"name": "Residential Complex",
-			"description": "",
+			"shortName": "Res",
+			"constructionShortCut": "T",
+			"description": "Provides shelter.  While a population needs shelter, they can make do with overcrowding to an extent.  However, severe overcrowding promotes more disease and morbidity.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
-				"ore": 60.0
+				"ore": 90.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 2,
+				"power": 2,
 				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
@@ -105,144 +113,26 @@
 			},
 			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
 			"reclamationResources": {
-				"ore": 30.0
-			},
-			"repairResourcesDescription": "Resource cost of repairing structure.",
-			"repairResources": {
-				"ore": 60.0
-			}
-		},
-		"Office": {
-			"name": "Office Complex",
-			"description": "",
-			"constructionResourcesDescription": "resource consumed and required for construction.",
-			"constructionResources": {
-				"ore": 60.0
-			},
-			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
-			"operatingResources": {
-				"electricity": 2,
-				"population": 4
-			},
-			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
-			"consumingResources": {
-			},
-			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
-			"reclamationResources": {
-				"ore": 30.0
-			},
-			"repairResourcesDescription": "Resource cost of repairing structure.",
-			"repairResources": {
-				"ore": 60.0
-			}
-		},
-		"Education": {
-			"name": "Education Complex",
-			"description": "",
-			"constructionResourcesDescription": "resource consumed and required for construction.",
-			"constructionResources": {
-				"ore": 60.0
-			},
-			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
-			"operatingResources": {
-				"electricity": 2,
-				"population": 20
-			},
-			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
-			"consumingResources": {
-			},
-			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
-			"reclamationResources": {
-				"ore": 30.0
-			},
-			"repairResourcesDescription": "Resource cost of repairing structure.",
-			"repairResources": {
-				"ore": 6.0
-			}
-		},
-		"Medical": {
-			"name": "Medical Center",
-			"description": "",
-			"constructionResourcesDescription": "resource consumed and required for construction.",
-			"constructionResources": {
-				"ore": 100.0
-			},
-			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
-			"operatingResources": {
-				"electricity": 3,
-				"population": 10
-			},
-			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
-			"consumingResources": {
-			},
-			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
-			"reclamationResources": {
-				"ore": 50.0
+				"ore": 45.0
 			},
 			"repairResourcesDescription": "Resource cost of repairing structure.",
 			"repairResources": {
 				"ore": 10.0
 			}
 		},
-		"Reclamation": {
-			"name": "Reclamation Center",
-			"description": "",
-			"constructionResourcesDescription": "resource consumed and required for construction.",
-			"constructionResources": {
-				"ore": 200.0
-			},
-			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
-			"operatingResources": {
-				"electricity": 1,
-				"population": 2
-			},
-			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
-			"consumingResources": {
-			},
-			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
-			"reclamationResources": {
-				"ore": 100.0
-			},
-			"repairResourcesDescription": "Resource cost of repairing structure.",
-			"repairResources": {
-				"ore": 20.0
-			}
-		},
-		"Factory": {
-			"name": "Factory",
-			"description": "",
-			"constructionResourcesDescription": "resource consumed and required for construction.",
-			"constructionResources": {
-				"ore": 200.0
-			},
-			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
-			"operatingResources": {
-				"electricity": 3,
-				"population": 4
-			},
-			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
-			"consumingResources": {
-			},
-			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
-			"reclamationResources": {
-				"ore": 100.0
-			},
-			"repairResourcesDescription": "Resource cost of repairing structure.",
-			"repairResources": {
-				"ore": 20.0
-			}
-		},
-		"Recreation": {
-			"name": "Recreation Center",
-			"description": "",
+		"Office": {
+			"name": "Office Complex",
+			"shortName": "Office",
+			"constructionShortCut": "O",
+			"description": "A place of work apart from other locations.  Also houses administration and government offices.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 80.0
 			},
 			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
 			"operatingResources": {
-				"electricity": 1,
-				"population": 3
+				"power": 2,
+				"population": 4
 			},
 			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
 			"consumingResources": {
@@ -253,7 +143,137 @@
 			},
 			"repairResourcesDescription": "Resource cost of repairing structure.",
 			"repairResources": {
-				"ore": 8.0
+				"ore": 60.0
+			}
+		},
+		"Education": {
+			"name": "Education Complex",
+			"shortName": "Edu",
+			"constructionShortCut": "E",
+			"description": "Provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaining the robotic fleet.",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"ore": 100.0
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"power": 2,
+				"population": 20
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 50.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 10.0
+			}
+		},
+		"Medical": {
+			"name": "Medical Center",
+			"shortName": "Med",
+			"constructionShortCut": "M",
+			"description": "Provides health services.  An unhealthy population does not thrive as well as a healthy one.",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"ore": 170.0
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"power": 3,
+				"population": 10
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 85.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 20.0
+			}
+		},
+		"Reclamation": {
+			"name": "Reclamation Center",
+			"shortName": "Recl",
+			"constructionShortCut": "R",
+			"description": "Recycles materials and treats sewage and water.  The number of reclamation centers limits how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"ore": 300.0
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"power": 1,
+				"population": 2
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 150.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 30.0
+			}
+		},
+		"Factory": {
+			"name": "Factory",
+			"shortName": "Fac",
+			"constructionShortCut": "F",
+			"description": "This highly automated facility makes all the clothing and other items for the colony.",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"ore": 300.0
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"power": 3,
+				"population": 4
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 150.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 30.0
+			}
+		},
+		"Recreation": {
+			"name": "Recreation Center",
+			"shortName": "Rec",
+			"constructionShortCut": "C",
+			"description": "Provides entertainment and exercise for the colony.",
+			"constructionResourcesDescription": "resource consumed and required for construction.",
+			"constructionResources": {
+				"ore": 120.0
+			},
+			"operatingResourcesDescription": "resources required for the structure to operate.  If structure not operational during a tick, then it produces nothing.",
+			"operatingResources": {
+				"power": 1,
+				"population": 3
+			},
+			"consumingResourcesDescription": "Some resources are lost or used by the structure every tick.",
+			"consumingResources": {
+			},
+			"reclamationResourcesDescription": "Resources re-gained reclaiming structure.",
+			"reclamationResources": {
+				"ore": 60.0
+			},
+			"repairResourcesDescription": "Resource cost of repairing structure.",
+			"repairResources": {
+				"ore": 15.0
 			}
 		}
 	}

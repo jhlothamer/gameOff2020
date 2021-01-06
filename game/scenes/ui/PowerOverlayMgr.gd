@@ -2,16 +2,6 @@ extends Node
 
 export var power_radius_tiles := 4
 
-#export var placement_overlay_tile_map: NodePath
-#export var allowed_tiles_tile_map: NodePath
-#export var structure_tiles_tile_map: NodePath
-#export var power_overlay_tile_map: NodePath
-#
-#onready var _placement_overlay_tile_map: TileMap = get_node_or_null(placement_overlay_tile_map) if placement_overlay_tile_map != null else null
-#onready var _allowed_tiles_tile_map: TileMap = get_node_or_null(allowed_tiles_tile_map) if allowed_tiles_tile_map != null else null
-#onready var _structure_tiles_tile_map: TileMap = get_node_or_null(structure_tiles_tile_map) if structure_tiles_tile_map != null else null
-#onready var _power_overlay_tile_map: TileMap = get_node_or_null(power_overlay_tile_map) if power_overlay_tile_map != null else null
-
 var _power_radius_tiles_sq: float
 
 var _spiral_vectors := []
@@ -53,9 +43,9 @@ func _on_update_power_overlay():
 func _get_power_station_cells():
 	var power_station_cells
 	
-	power_station_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(Constants.StructureTileType.Power)
-	ArrayUtil.append_all(power_station_cells, Game.get_placement_overlay_tile_map().get_used_cells_by_id(Constants.StructureTileType.Power))
-	#ArrayUtil.append_all(power_station_cells, _placement_overlay_tile_map.get_used_cells_by_id(Constants.StructureTileType.Power + Constants.STRUCTURE_TILE_TYPE_COUNT))
+	power_station_cells = Game.get_structure_tiles_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.Power)
+	ArrayUtil.append_all(power_station_cells, Game.get_placement_overlay_tile_map().get_used_cells_by_id(StructureMgr.StructureTileType.Power))
+	#ArrayUtil.append_all(power_station_cells, _placement_overlay_tile_map.get_used_cells_by_id(StructureMgr.StructureTileType.Power + Constants.STRUCTURE_TILE_TYPE_COUNT))
 	
 	return power_station_cells
 

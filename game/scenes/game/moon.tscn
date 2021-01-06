@@ -2,15 +2,12 @@
 
 [ext_resource path="res://scenes/game/DrivePlumePhysics.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/moon/Impossible_Drive.png" type="Texture" id=2]
-[ext_resource path="res://addons/godot_helper_pack/core/2d/shape/circle_2d.gd" type="Script" id=3]
+[ext_resource path="res://scenes/game/moon.gd" type="Script" id=3]
 [ext_resource path="res://scenes/game/MoonSurfaceBody.gd" type="Script" id=4]
 [ext_resource path="res://scenes/game/MoonSurfaceCollision.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/moon/moon_huge.png" type="Texture" id=6]
 [ext_resource path="res://scenes/harvester/harvester.tscn" type="PackedScene" id=7]
-
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 2.57486e-28, 0.219477, 0.59157 )
-colors = PoolColorArray( 0, 1, 1, 1, 1, 0, 0.835294, 1, 1, 0, 0.909804, 0 )
+[ext_resource path="res://scenes/game/impossible_drive_plume_gradient_curve.tres" type="Gradient" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4700, 500 )
@@ -31,9 +28,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 radius = 3550.0
-color = Color( 0.584314, 0.584314, 0.584314, 1 )
+color = Color( 0.498039, 0.498039, 0.498039, 1 )
 stroke = true
-stroke_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+stroke_color = Color( 0.439216, 0.439216, 0.439216, 1 )
 stroke_width = 20.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -48,6 +45,7 @@ rotation = -1.5708
 path_radius = 3560.0
 linear_speed = 600.0
 distance_from_moon_tolerance = 50.0
+debug = false
 
 [node name="Impossible_Drive" type="Sprite" parent="."]
 position = Vector2( -4486, 0 )
@@ -63,7 +61,7 @@ show_behind_parent = true
 position = Vector2( -732.551, 0 )
 points = PoolVector2Array( 0, 0, -7200, 0 )
 width = 978.0
-gradient = SubResource( 1 )
+gradient = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -82,6 +80,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="DriveSurfaceBody" type="StaticBody2D" parent="Impossible_Drive"]
+visible = false
 position = Vector2( 4486, 0 )
 collision_layer = 2
 __meta__ = {
@@ -94,6 +93,7 @@ position = Vector2( -5460, -495 )
 polygon = PoolVector2Array( 20, 20, 99.5332, 128.342, 134.329, 272.017, 153.411, 353.957, 156.779, 484.162, 135.452, 762.662, 55.7568, 946.348, -3.7334, 991.247, 35.5527, 1054.83, 116.37, 1052.59, 181.473, 1026.77, 474.435, 1086.26, 515.966, 1143.5, 606.886, 1122.18, 979.393, 1216.1, 1083.51, 1293.52, 1184.96, 1253.48, 1483.96, 1314.88, 1884.41, 1429.68, 1996.65, 1432.71, 1958.9, 1221.29, 1860.73, 485.063, 1974, -375.75, 1673.93, -390.83, 1505.57, -341.442, 1164.34, -310.013, 194.431, -33.8874, 73.2046, -60.8265, 5.85693, -54.0918, 0, 0 )
 
 [node name="DriveSurface" type="Area2D" parent="Impossible_Drive"]
+visible = false
 position = Vector2( -974, -495 )
 collision_layer = 4
 __meta__ = {

@@ -58,8 +58,8 @@ func _refresh_contents():
 	
 	var root_item = _tree.create_item()
 	
-	var structure_mgr := StructureMgr.get_structure_mgr()
-	var stats_mgr := StatsMgr.get_stat_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
+	var stats_mgr:StatsMgr = ServiceMgr.get_service(StatsMgr)
 	
 	for structure_type_id in EnumUtil.get_array(StructureMgr.StructureTileType):
 #		if structure_type_id == StructureMgr.StructureTileType.UUC:
@@ -88,9 +88,9 @@ func _refresh_contents():
 			structure_item.set_text(Columns.StatProvided, stat.stat_name)
 			var units_per_structure = stat.get_units_per_structure()
 			structure_item.set_text(Columns.UnitsProvided, str(units_per_structure))
-			structure_item.set_text(Columns.TotalUnitsProvided, str(stat.get_value()))
+			structure_item.set_text(Columns.TotalUnitsProvided, str(functioning_structures.size() * units_per_structure))
 			if stat.has_population_schedule():
-				var population_supported = functioning_structures.size() * units_per_structure
+				var population_supported = stats_mgr.calc_structure_produced_stats(stat, functioning_structures)
 				structure_item.set_text(Columns.PopulationSupported, str(population_supported))
 			else:
 				structure_item.set_text(Columns.PopulationSupported, "- -")

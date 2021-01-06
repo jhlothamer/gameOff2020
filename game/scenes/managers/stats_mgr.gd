@@ -1,5 +1,4 @@
-class_name StatsMgr
-extends Node
+extends "res://scenes/managers/stats_mgr_interface.gd"
 
 signal stats_updated()
 signal population_crashed_game_over()
@@ -21,55 +20,10 @@ enum StatType {
 	TotalPowerRequired,
 }
 
-const VALUES_KEPT_LIMIT = 100
 
-class Stat:
-	var stat_name := ""
-	var stat_type_id:int
-	var stat_metadata
-	var values := []
-	func _init(stat_name, stat_type_id: int, stat_metadata):
-		self.stat_name = stat_name
-		self.stat_type_id = stat_type_id
-		self.stat_metadata = stat_metadata
-	func push_value(value: float) -> void:
-		values.push_front(value)
-		if values.size() > VALUES_KEPT_LIMIT:
-			var _throw_away = values.pop_back()
-	func get_value() -> float:
-		if values.size() < 1:
-			return 0.0
-		return values[0]
-	func get_prev_value() -> float:
-		if values.size() < 2:
-			return get_value()
-		return values[1]
-	func get_delta() -> float:
-		if values.size() < 2:
-			return 0.0
-		return values[0] - values[1]
-	func get_produced_by_structure() -> String:
-		if stat_metadata.has("produceByStructure"):
-			return stat_metadata["producedByStructure"]
-		return ""
-	func get_units_per_structure() -> float:
-		if stat_metadata.has("unitsPerStructure"):
-			return stat_metadata["unitsPerStructure"]
-		return 0.0
-	func has_population_schedule() -> bool:
-		return stat_metadata.has("populationSchedule")
-#		if stat_metadata.has("populationSchedule"):
-#			return stat_metadata["populationSchedule"].keys().size() > 0
-#		return false
-	func has_overcapacity_limit() -> bool:
-		return stat_metadata.has("overCapacityLimit")
-	func get_overcapcity_limit() -> float:
-		if !stat_metadata.has("overCapacityLimit"):
-			return -1.0
-		return float(stat_metadata["overCapacityLimit"])
-	
+
 export var debug := false
-
+export var non_game_scene := false
 
 var _stats := {}
 var _stats_by_produced_by_structure_id := {}
@@ -77,9 +31,10 @@ var _stats_metadata := {}
 
 const stats_metadata_file_path := "res://assets/data/stats.json"
 
+func _enter_tree():
+	ServiceMgr.register_service(StatsMgr, self)
 
 func _ready():
-	Globals.set("StatsMgr", self)
 	SignalMgr.register_subscriber(self, "stat_cycle_time_has_elapsed", "_on_stat_cycle_time_has_elapsed")
 	SignalMgr.register_publisher(self, "stats_updated")
 	SignalMgr.register_publisher(self, "population_crashed_game_over")
@@ -87,13 +42,12 @@ func _ready():
 	_load_stats_data()
 	call_deferred("_init_stats")
 
-static func get_stat_mgr() -> StatsMgr:
-	return Globals.get("StatsMgr")
 
 func _init_stats():
-	var structure_mgr = StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	if structure_mgr == null:
-		printerr("did not get structure mgr when initializing stats - stats will never be calculated")
+		if !non_game_scene:
+			printerr("did not get structure mgr when initializing stats - stats will never be calculated")
 		return
 	for stat_name in EnumUtil.get_names_string_array(StatType):
 		var stat_type_id = EnumUtil.get_id(StatType, stat_name) #StatType.keys()[stat_name]
@@ -115,10 +69,12 @@ func _init_stats():
 			var producingStructures = structure_mgr.get_functioning_structures_by_type_name(stat_metadata["producedByStructure"])
 			stat.push_value(producingStructures.size() * stat_metadata["unitsPerStructure"])
 		if stat_metadata.has("producedByStructure"):
-			var produced_by_structure_id := EnumUtil.get_id(Constants.StructureTileType, stat_metadata["producedByStructure"])
+			var produced_by_structure_id := EnumUtil.get_id(StructureMgr.StructureTileType, stat_metadata["producedByStructure"])
 			_stats_by_produced_by_structure_id[produced_by_structure_id] = stat
 	emit_signal("stats_updated")
 
+func get_stat(stat_type: int) -> Stat:
+	return _get_stat(stat_type)
 
 func _get_stat(stat_type: int) -> Stat:
 	var stat_name = EnumUtil.get_string(StatType, stat_type)
@@ -138,11 +94,24 @@ func _load_stats_data():
 
 
 func _update_structure_produced_stats():
-	var structure_mgr = StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	for stat in _stats.values():
 		if stat.stat_metadata.has("producedByStructure") and stat.stat_metadata.has("unitsPerStructure"):
-			var producingStructures = structure_mgr.get_functioning_structures_by_type_name(stat.stat_metadata["producedByStructure"])
-			stat.push_value(producingStructures.size() * stat.stat_metadata["unitsPerStructure"])
+			var producing_structures = structure_mgr.get_functioning_structures_by_type_name(stat.stat_metadata["producedByStructure"])
+			var total_units = calc_structure_produced_stats(stat, producing_structures)
+			stat.push_value(total_units)
+
+
+func calc_structure_produced_stats(stat: Stat, producing_structures: Array) -> float:
+	var units_per_structure: float = stat.stat_metadata["unitsPerStructure"]
+	if stat.stat_metadata.has("proximityEffects"):
+		var proximityEffects: Dictionary = stat.stat_metadata["proximityEffects"]
+		var total_units := 0.0
+		for i in range(producing_structures.size()):
+			var structure: StructureMgr.StructureData = producing_structures[i]
+			total_units += structure.calc_population_support_units(units_per_structure, proximityEffects)
+		return total_units
+	return producing_structures.size() * units_per_structure
 
 
 func _find_schedule_value(schedule: Dictionary, lookup_value: float) -> float:
@@ -255,12 +224,12 @@ func _update_total_power_required_stat(structure_mgr: StructureMgr):
 	var total_power_required_stat := _get_stat(StatType.TotalPowerRequired)
 	var total = 0.0
 	for structure in structure_mgr.get_structures():
-		total += structure.get_power_required()
+		total += structure.get_required_power()
 	total_power_required_stat.push_value(total)
 
 
 func _on_stat_cycle_time_has_elapsed() -> void:
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	if structure_mgr == null:
 		return
 	
@@ -323,9 +292,6 @@ func get_needed_number_of_structures(structure_type_id: int) -> float:
 	if !_stats_by_produced_by_structure_id.has(structure_type_id):
 		return 0.0
 	var stat = _stats_by_produced_by_structure_id[structure_type_id]
-	#var structure_mgr := StructureMgr.get_structure_mgr()
-	#var structure_type_name := EnumUtil.get_string(Constants.StructureTileType, structure_type_id)
-	#var function_structures = structure_mgr.get_functioning_structures_by_type_name(structure_type_name)
 	
 	var population_stat := _get_stat(StatType.Population)
 	var population := population_stat.get_value()

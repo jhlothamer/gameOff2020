@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Structure_Interactions_Player_Deactivate_01.wav-3eb37ae60f4c0a4c5c806ed3bc5c2ae1.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/si/Structure_Interactions_Player_Deactivate_01.wav"
+dest_files=[ "res://.import/Structure_Interactions_Player_Deactivate_01.wav-3eb37ae60f4c0a4c5c806ed3bc5c2ae1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

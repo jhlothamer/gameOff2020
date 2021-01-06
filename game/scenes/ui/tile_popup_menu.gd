@@ -6,6 +6,7 @@ signal structure_tile_repaired(structure_tile_type, cell_v)
 signal structure_tile_disabled(structure_tile_type, cell_v)
 signal structure_tile_enabled(structure_tile_type, cell_v)
 
+export var enabled := false
 
 var _current_structure: StructureMgr.StructureData
 
@@ -27,6 +28,8 @@ func _ready():
 	add_item("Repair", 2)
 	add_item("Reclaim", 3)
 	add_item("Disable", 4)
+	if !enabled:
+		set_process_unhandled_input(false)
 
 func show_for_structure(structure: StructureMgr.StructureData, position: Vector2):
 	set_item_text(NAME_ITEM_ID, structure._get_name())
@@ -40,7 +43,7 @@ func show_for_structure(structure: StructureMgr.StructureData, position: Vector2
 	_current_structure = structure
 
 	#var x = structure.structure_type_id
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	var structure_metadata: StructureMgr.StructureMetadata = structure_mgr.get_structure_metadata(structure.structure_type_id)
 	var repair_cost_string = _make_resources_string(structure_metadata.get_repair_resources(), "-")
 	set_item_text(REPAIR_ITEM_ID, "Repair: " + repair_cost_string)
@@ -74,7 +77,7 @@ func _unhandled_input(event):
 	var mouse_event: InputEventMouseButton = event
 	if mouse_event.button_index != BUTTON_RIGHT:
 		return
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	var structure: StructureMgr.StructureData = structure_mgr.get_structure_by_mouse_global_position()
 	if structure == null:
 		return

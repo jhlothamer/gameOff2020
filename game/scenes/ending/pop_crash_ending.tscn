@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/sound/menu_button_sounds.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ending/pop_crash_ending.gd" type="Script" id=7]
-[ext_resource path="res://assets/audio/vo/VO_Game_End_Pop_Crash_FX.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/vo/VO_Story_Game_End_Pop_Crash.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ending"

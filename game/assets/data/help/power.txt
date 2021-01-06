@@ -1,0 +1,7 @@
+Power is another type of resource.  Without it a structure won't produce anything.  That could mean just more boredom for the colonist when a recreation facility goes off line, or it could mean people starving or dying of thirst.  So having enough power and keeping Power Stations up and running is very important.
+
+[center][img]res://assets/images/help/PowerDisplays.png[/img][/center]
+
+You can see the amount of power being produced and the amount needed in the Current Power and Power Needed displays located toward the bottom left of the screen.
+
+Power is distributed from a Power Station to any connected structure.  This means that if part of your colony becomes isolated those structures will deactivate.  This can also happen when there is not enough power for all structures connected to the power stations.  In the event there is not enough power, structures will be deactivated in priority order.  In other words, less important structures like the Recreation Center will go without power first.  Then Office complexes, etc. till finally the Agriculture Pods and Reclamation Centers will go without power.  This is to limit the amount of population loss when power stations are damaged.

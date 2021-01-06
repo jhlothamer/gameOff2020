@@ -2,6 +2,8 @@ extends Panel
 
 signal button_down()
 signal shortcut_activated()
+signal construction_button_mouse_entered(structure_type)
+signal construction_button_mouse_exited(structure_type)
 
 export (StructureMgr.StructureTileType) var structure_type: int
 
@@ -17,58 +19,63 @@ onready var _shortcut_label = $PanelContainer/VBoxContainer/TextureButton/Shortc
 
 var _normal_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon.png",
 }
 
 var _mouse_over_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_mouse_over.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_mouse_over.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_mouse_over.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_mouse_over.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_mouse_over.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_mouse_over.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_mouse_over.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_mouse_over.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_mouse_over.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_mouse_over.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_mouse_over.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_mouse_over.png",
 }
 
 var _disabled_icons := {
 	StructureMgr.StructureTileType.Agriculture: "res://assets/images/ui/icons/Agriculture_icon_disabled.png",
-	Constants.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
-	Constants.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
-	Constants.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
-	Constants.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
-	Constants.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
-	Constants.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
-	Constants.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
-	Constants.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
-	Constants.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
+	StructureMgr.StructureTileType.Education: "res://assets/images/ui/icons/Education_icon_disabled.png",
+	StructureMgr.StructureTileType.Factory: "res://assets/images/ui/icons/Factory_icon_disabled.png",
+	StructureMgr.StructureTileType.Medical: "res://assets/images/ui/icons/Medical_icon_disabled.png",
+	StructureMgr.StructureTileType.Office: "res://assets/images/ui/icons/Office_icon_disabled.png",
+	StructureMgr.StructureTileType.Power: "res://assets/images/ui/icons/Power_Reactor_icon_disabled.png",
+	StructureMgr.StructureTileType.Reclamation: "res://assets/images/ui/icons/Reclaimation-Center_icon_disabled.png",
+	StructureMgr.StructureTileType.Recreation: "res://assets/images/ui/icons/Recreation_icon_disabled.png",
+	StructureMgr.StructureTileType.Residential: "res://assets/images/ui/icons/Residence_icon_disabled.png",
+	StructureMgr.StructureTileType.UUC: "res://assets/images/ui/icons/Start-Tile_icon_disabled.png",
 }
 
 var _shortcut_keys := {
 	StructureMgr.StructureTileType.Agriculture: KEY_G,
-	Constants.StructureTileType.Education: KEY_E,
-	Constants.StructureTileType.Factory: KEY_F,
-	Constants.StructureTileType.Medical: KEY_M,
-	Constants.StructureTileType.Office: KEY_O,
-	Constants.StructureTileType.Power: KEY_P,
-	Constants.StructureTileType.Reclamation: KEY_R,
-	Constants.StructureTileType.Recreation: KEY_C,
-	Constants.StructureTileType.Residential: KEY_T,
-	Constants.StructureTileType.UUC: KEY_U,
+	StructureMgr.StructureTileType.Education: KEY_E,
+	StructureMgr.StructureTileType.Factory: KEY_F,
+	StructureMgr.StructureTileType.Medical: KEY_M,
+	StructureMgr.StructureTileType.Office: KEY_O,
+	StructureMgr.StructureTileType.Power: KEY_P,
+	StructureMgr.StructureTileType.Reclamation: KEY_R,
+	StructureMgr.StructureTileType.Recreation: KEY_C,
+	StructureMgr.StructureTileType.Residential: KEY_T,
+	StructureMgr.StructureTileType.UUC: KEY_U,
 }
 
 
 func _ready():
+#signal construction_button_mouse_entered(structure_type)
+#signal construction_button_mouse_exited(structure_type)
+	SignalMgr.register_publisher(self, "construction_button_mouse_entered")
+	SignalMgr.register_publisher(self, "construction_button_mouse_exited")
+
 	_texture_button.texture_normal = load(_normal_icons[structure_type])
 	_texture_button.texture_hover = load(_mouse_over_icons[structure_type])
 	_texture_button.texture_disabled = load(_disabled_icons[structure_type])
@@ -88,7 +95,7 @@ func _ready():
 
 
 func _init_labels():
-	var structure_mgr := StructureMgr.get_structure_mgr()
+	var structure_mgr: StructureMgr = ServiceMgr.get_service(StructureMgr)
 	if structure_mgr == null:
 		return
 	var structure_metadata: StructureMgr.StructureMetadata = structure_mgr.get_structure_metadata(structure_type)
@@ -128,6 +135,7 @@ func _on_TextureButton_mouse_entered():
 	if !disabled && !collapsed:
 		_mouse_over_sound.play()
 		emit_signal("mouse_entered")
+		emit_signal("construction_button_mouse_entered", structure_type)
 
 
 func _unhandled_input(event):
@@ -142,3 +150,4 @@ func _unhandled_input(event):
 
 func _on_TextureButton_mouse_exited():
 	emit_signal("mouse_exited")
+	emit_signal("construction_button_mouse_exited", structure_type)

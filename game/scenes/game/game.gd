@@ -12,7 +12,6 @@ onready var _construction_repair_etc_animations_parent: Node2D = $ConstructionRe
 onready var _power_overlay_tile_map: TileMap = $PoweredOverlay
 onready var _placement_overlay_tile_map: TileMap = $PlacementOverlay
 
-
 func _ready():
 	Globals.set("_allowed_tiles_tile_map",_allowed_tiles_tile_map)
 	Globals.set("_structure_tiles_tile_map",_structure_tiles_tile_map)
