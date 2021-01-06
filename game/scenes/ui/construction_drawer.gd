@@ -12,6 +12,8 @@ onready var _expand_contract_btn := $HBoxContainer/PanelContainer/VBoxContainer/
 onready var _ribbon_label := $HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ribbonLabel
 onready var _animation_player_buttons := $AnimationPlayerButtons
 onready var _animation_player_info_panel := $AnimationPlayerInfoPanel
+onready var _full_name_label := $HBoxContainer/PanelContainer/VBoxContainer/InfoPanel/MarginContainer/PanelContainer/VBoxContainer/FullNameLabel
+onready var _description_label := $HBoxContainer/PanelContainer/VBoxContainer/InfoPanel/MarginContainer/PanelContainer/VBoxContainer/Description
 
 var _tween_trans := Tween.TRANS_EXPO
 var _current_hover_structure_type_id := -1
@@ -62,6 +64,9 @@ func _on_construction_button_mouse_entered(structure_type_id):
 func _on_construction_button_mouse_exited(structure_type_id):
 	_current_hover_structure_type_id = -1
 	_ribbon_label.text = ""
+	_full_name_label.text = "Mouse over a button for more information"
+	_description_label.text = ""
+	
 
 
 func _update_ribbon_text(structure_type_id: int) -> void:
@@ -74,6 +79,9 @@ func _update_ribbon_text(structure_type_id: int) -> void:
 	var functioning_structures = structure_mgr.get_functioning_structures_by_type_id(structure_type_id)
 	var functioning = functioning_structures.size()
 	var label = "%s (%s) functional: %d/%d" % [structure_name, short_cut_key, functioning, total]
+	_full_name_label.text = structure_name + " (%s)" % structure_metadata.get_construction_resources_string()
+	_description_label.text = structure_metadata.get_description()
+	
 	
 	var stats_mgr: StatsMgr = ServiceMgr.get_service(StatsMgr)
 	var stat := stats_mgr.get_stat_provided_by_structure_type_id(structure_type_id)

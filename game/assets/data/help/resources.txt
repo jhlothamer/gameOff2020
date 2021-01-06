@@ -1,0 +1,11 @@
+[table=2]
+[cell][img]res://assets/images/asteroids/fragments/a10000.png[/img] [/cell]
+[cell]Constructing and repairing colony structures takes resources, of which some have been supplied at launch time.  Harvest asteroid fragments that land on the moon's surface to gain more resources.  You won't be able to create a thriving colony without it.[/cell]
+[/table]
+
+[table=2]
+[cell][img]res://assets/images/harvester/vehicle-assembled.png[/img] [/cell]
+[cell]Resources are gathered by the harvester, an indestructible vehicle that uses it's giant drill to break up asteroid fragments to get at the ore inside.[/cell]
+[cell][img]res://assets/images/ui/Drill-Deploy.png[/img] [/cell]
+[cell]The harvester is deployed with the Launch Harvester button (see left).  If no fragments are on the moons surface, then the harvester won't deploy.  But once it is deployed it will continue to harvest fragments till none are left on the surface.  However, fragments may be flying around the moon and land after the harvester has decided to return to the "barn".  If this happens, simply launch the harvester again and it will continue harvesting.[/cell]
+[/table]

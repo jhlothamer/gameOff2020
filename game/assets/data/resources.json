@@ -1,7 +1,7 @@
 {
 	"resources": {
 		"population": {
-			"starting_amount": 1000.0,
+			"starting_amount": 1000.0
 		},
 		"power": {
 			"produced_by": "Power",

@@ -226,7 +226,7 @@ min_time_between_asteroids = 4.0
 [node name="StatsMgr" parent="." instance=ExtResource( 13 )]
 
 [node name="StructureTileTooltipMgr" parent="." instance=ExtResource( 20 )]
-tooltip_wait = 1.5
+tooltip_wait = 1.0
 
 [node name="TutorialMgr" parent="." instance=ExtResource( 22 )]
 

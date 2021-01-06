@@ -1,0 +1,5 @@
+This is a real time construction and management simulation game.  Your goal is to keep the colonists alive and grow the population to %WIN_POPULATION_AMOUNT% individuals before the generation ship arrives at the destination planet.
+
+To grow the population you'll need to provide more food, water and shelter at the very least.  But people have other needs too such as clothing, medical care, places to work, education and recreation.  All of this is produced or provided by structures.
+
+Please see other tabs for more information about navigation, management, construction and more.

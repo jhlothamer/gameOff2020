@@ -9,7 +9,7 @@ signal tutorial_skipped()
 onready var dialogs: Control = $Dialogs
 onready var resources_dialog: Control = $Dialogs/ResourcesDlg
 onready var structures_dialog := $Dialogs/StructuresDialog
-onready var help_dialog := $Dialogs/HelpDialog
+onready var help_dialog := $Dialogs/HelpDialog2
 onready var _help_btn := $BottomRightMarginContainer/VBoxContainer/TextureRect/MarginContainer/HBoxContainer/HelpBtn
 onready var _active_harvester_animation := $BottomRightMarginContainer/VBoxContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn/ActiveHarvesterAnimation
 onready var _launch_harvester_btn := $BottomRightMarginContainer/VBoxContainer/TextureRect/MarginContainer/HBoxContainer/LaunchHarvesterBtn
@@ -19,7 +19,7 @@ onready var _power_stat_display := $BottomLeftMarginContainer/TextureRect/Margin
 onready var _power_required_stat_display := $BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer/PowerRequiredStatDisplay
 onready var _ore_stat_display := $BottomLeftMarginContainer/TextureRect/MarginContainer/VBoxContainer/OreStatDisplay
 onready var _animation_player := $AnimationPlayer
-onready var _skip_tutorial_btn := $BottomRightMarginContainer/VBoxContainer/SkipTutorialBtn
+onready var _skip_tutorial_btn := $BottomRightMarginContainer/VBoxContainer/MarginContainer/SkipTutorialBtn
 
 var _last_control_focused: Control
 

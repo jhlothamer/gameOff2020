@@ -16,7 +16,7 @@
 			"name": "Universal Utility Conduit",
 			"shortName": "UUC",
 			"constructionShortCut": "U",
-			"description": "",
+			"description": "Provides all the utility connections required by other structures such as power, water, sewage, and transportation tunneling.  Building another structure always includes this structure underneath.  By itself it offers a cheap way to connect parts of the colony.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 10.0
@@ -42,7 +42,7 @@
 			"name": "Power Station",
 			"shortName": "Power",
 			"constructionShortCut": "P",
-			"description": "",
+			"description": "Provides power to connected structures.  A structure is connected to a power station by being next to a station or via other undamaged structures.  Structures can become isolated and stop providing their life sustaining products such as food, water, shelter, etc.",
 			"powerRadius": 3,
 			"powerProvided": 10,
 			"constructionResourcesDescription": "resource consumed and required for construction.",
@@ -70,7 +70,7 @@
 			"name": "Agriculture Pod",
 			"shortName": "Ag",
 			"constructionShortCut": "G",
-			"description": "",
+			"description": "Provides food, wood and plant fibers.  People need food to live, so the number of pods affects how large a population the colony can sustain.  However, the population can withstand periods with less than optimal sustenance.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 300.0
@@ -98,7 +98,7 @@
 			"name": "Residential Complex",
 			"shortName": "Res",
 			"constructionShortCut": "T",
-			"description": "",
+			"description": "Provides shelter.  While a population needs shelter, they can make do with overcrowding to an extent.  However, severe overcrowding promotes more disease and morbidity.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 90.0
@@ -124,7 +124,7 @@
 			"name": "Office Complex",
 			"shortName": "Office",
 			"constructionShortCut": "O",
-			"description": "",
+			"description": "A place of work apart from other locations.  Also houses administration and government offices.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 80.0
@@ -150,7 +150,7 @@
 			"name": "Education Complex",
 			"shortName": "Edu",
 			"constructionShortCut": "E",
-			"description": "",
+			"description": "Provides education at all age levels and training for workers to run and maintain all the systems that keep the colony running. It also provides some services beyond this like building and maintaining the robotic fleet.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 100.0
@@ -176,7 +176,7 @@
 			"name": "Medical Center",
 			"shortName": "Med",
 			"constructionShortCut": "M",
-			"description": "",
+			"description": "Provides health services.  An unhealthy population does not thrive as well as a healthy one.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 170.0
@@ -202,7 +202,7 @@
 			"name": "Reclamation Center",
 			"shortName": "Recl",
 			"constructionShortCut": "R",
-			"description": "",
+			"description": "Recycles materials and treats sewage and water.  The number of reclamation centers limits how much water is available.  Since people need water to live, the amount of water is a hard limit on the population.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 300.0
@@ -228,7 +228,7 @@
 			"name": "Factory",
 			"shortName": "Fac",
 			"constructionShortCut": "F",
-			"description": "",
+			"description": "This highly automated facility makes all the clothing and other items for the colony.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 300.0
@@ -254,7 +254,7 @@
 			"name": "Recreation Center",
 			"shortName": "Rec",
 			"constructionShortCut": "C",
-			"description": "",
+			"description": "Provides entertainment and exercise for the colony.",
 			"constructionResourcesDescription": "resource consumed and required for construction.",
 			"constructionResources": {
 				"ore": 120.0

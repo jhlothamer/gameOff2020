@@ -1,0 +1,13 @@
+All construction is started by clicking on a construction button.  These buttons are located at the bottom center of the screen in a horizontal toolbar configuration.
+
+[center][img]res://assets/images/help/ConstructionDrawer.png[/img][/center]
+
+Simply click the button and move the mouse to the location in the colony where you want to build the structure.  Also, each structure has a shortcut for initiating their construction.  The shortcut is listed on the lower right corner of the construction button.  Using these shortcuts makes building your colony easier and faster.
+
+The toolbar also contains a ribbon of information that is displayed when you mouse over a construction button.  This information includes the structure's full name, shortcut key, number of functioning versus total number of structures and the currently population supported versus the maximum population supported.  As structures fall into disrepair or are disabled the resource they provided will diminish and thus lower the amount of supported population.
+
+[center][img]res://assets/images/help/ConstructionDrawer_ButtonHoverExample.png[/img][/center]
+
+The toolbar can also be drawn out by clicking on the expand button that is located in the upper right of the toolbar.  This will reveal additional information about a structure when you mouse over a construction button such as the cost of building the structure and a description of what the structure provides.
+
+[center][img]res://assets/images/help/ConstructionDrawer_Expanded_ButtonHoverExample.png[/img][/center]

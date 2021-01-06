@@ -260,7 +260,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game Off 2020 - MOONSHOT"
+config/name="Moonshot 2 Generation Ship Luna"
 run/main_scene="res://scenes/title/title.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"

@@ -56,7 +56,7 @@ const ENABLED_COLOR_STRING = "#ffffff"
 const DISABLED_COLOR_STRING = "#b3b3b3"
 
 var _direction_try_vectors := [Vector2.ZERO, Vector2(-1,-1), Vector2(-1,0), Vector2(0, -1)]
-var _direction_offset := [Vector2.ONE*10, Vector2.ONE*-20, Vector2.RIGHT*20, Vector2.UP*20]
+var _direction_offset := [Vector2.ONE*10, Vector2.ONE*-20, Vector2.LEFT*20, Vector2.UP*20]
 
 func _ready():
 	#SignalMgr.register_publisher(self, "tile_tooltip_mouse_entered")
@@ -76,7 +76,7 @@ func popup_at(v: Vector2):
 	if debug:
 		print("TileTooltip: showing at location " + str(v))
 
-	var viewport_rect := get_viewport_rect()
+	var viewport_rect := get_viewport_rect().grow_margin(MARGIN_BOTTOM, -90)
 
 	var direction_offset = _direction_offset[0]
 	

@@ -1,0 +1,20 @@
+During the long journey structures will need to be managed.  Mostly this means that when structures break down they'll need to be fixed, but you also have the option to disable and enable structures as well as destroy them to reclaim some resources.
+
+All interaction with structures is done via the structure tile tool tip.  Simply hover the mouse over a structure and this dialog will appear.
+
+[center][img]res://assets/images/help/TileTooltipExample.png[/img][/center]
+
+This tool tip will tell you at a glance the type of the structure and its status.  To perform any of the actions on a tile, click the link for that action.  Actions that are not available will have their links disabled.
+
+The status of a structure is indicated by changes in its icon on the moon.  The following are examples of what tiles look like in the listed states.
+
+[table=4]
+[cell][img]res://assets/images/help/EnabledTileExample.png[/img] [/cell]
+[cell]Fully functional tile[/cell]
+[cell][img]res://assets/images/help/UnpoweredTileExample.png[/img] [/cell]
+[cell]Unpowered tile[/cell]
+[cell][img]res://assets/images/help/DamagedTileExample.png[/img] [/cell]
+[cell]Damaged tile[/cell]
+[cell][img]res://assets/images/help/DisabledTileExample.png[/img] [/cell]
+[cell]Disabled tile[/cell]
+[/table]

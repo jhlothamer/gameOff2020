@@ -50,6 +50,8 @@ class StructureMetadata:
 		return structure_metadata["name"]
 	func get_short_name() -> String:
 		return structure_metadata["shortName"]
+	func get_description() -> String:
+		return structure_metadata["description"]
 	func get_construction_short_cut_key() -> String:
 		return structure_metadata["constructionShortCut"]
 	func get_power_provided() -> float:

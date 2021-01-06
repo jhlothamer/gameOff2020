@@ -15,7 +15,6 @@ onready var _intro_lines_3 := $Introduction/IntroLines3
 onready var _intro_lines_4 := $Introduction/IntroLines4
 onready var _timer := $Timer
 onready var _tween := $Tween
-onready var _skip_btn := $SkipMarginContainer/SkipBtn
 onready var _intro1_vo := $Intro1AudioStreamPlayer
 onready var _intro2_vo := $Intro2AudioStreamPlayer
 onready var _intro3_vo := $Intro3AudioStreamPlayer
