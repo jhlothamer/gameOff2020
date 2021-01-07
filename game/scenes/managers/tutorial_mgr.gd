@@ -22,6 +22,8 @@ signal extend_construction_drawer()
 signal retract_construction_drawer()
 signal highlight_construction_drawer()
 signal hide_construction_drawer_highlight()
+signal enable_structure_tile_tooltip()
+signal disable_structure_tile_tooltip()
 
 
 #tutorial signals
@@ -30,6 +32,7 @@ signal zoom_step_1() #middle
 signal zoom_step_2() #farthest
 signal camera_pan_started()
 signal structure_state_changed()
+signal construction_button_mouse_entered()
 signal tutorial_skipped()
 
 const tutorial_data_file_path = "res://assets/data/tutorial.json"
@@ -41,6 +44,7 @@ var _tutorial_active := true
 var _allowed_structure_type_id := -1
 var _structure_state_changed_map_cell := Vector2.INF
 var _tutorial_skipped := false
+var _tutorial_action_signal_counts := {}
 
 func _enter_tree():
 	ServiceMgr.register_service(TutorialMgr, self)
@@ -68,12 +72,14 @@ func _ready():
 	SignalMgr.register_publisher(self, "retract_construction_drawer")
 	SignalMgr.register_publisher(self, "highlight_construction_drawer")
 	SignalMgr.register_publisher(self, "hide_construction_drawer_highlight")
-
+	SignalMgr.register_publisher(self, "enable_structure_tile_tooltip")
+	SignalMgr.register_publisher(self, "disable_structure_tile_tooltip")
 
 	SignalMgr.register_subscriber(self, "zoom_step_change_initiated", "_on_zoom_step_change_initiated")
 	SignalMgr.register_subscriber(self, "camera_pan_started", "_on_camera_pan_started")
 	SignalMgr.register_subscriber(self, "structure_state_changed", "_on_structure_state_changed")
 	SignalMgr.register_subscriber(self, "tutorial_skipped", "_on_tutorial_skipped")
+	SignalMgr.register_subscriber(self, "construction_button_mouse_entered")
 	CameraShake.enable_camera_shake(self)
 	call_deferred("_do_tutorial")
 
@@ -92,6 +98,7 @@ func _init_for_tutorial():
 	structure_mgr.disable_enable_allowed = false
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	resource_mgr.reclamation_enabled = false
+	disable_structure_tile_tooltip()
 
 func _init_for_launch():
 	emit_signal("TutorialComplete")
@@ -119,6 +126,7 @@ func _end_tutorial():
 	structure_mgr.disable_enable_allowed = true
 	var resource_mgr: ResourceMgr = ServiceMgr.get_service(ResourceMgr)
 	resource_mgr.reclamation_enabled = true
+	enable_structure_tile_tooltip()
 
 	var game_background: GameBackground = ServiceMgr.get_service(GameBackground)
 	var moon: Moon = ServiceMgr.get_service(Moon)
@@ -159,11 +167,10 @@ func _do_tutorial():
 		var tutorial_part_size:int = tutorial_part.size()
 		var repeat_yield := 1
 		var last_entry = tutorial_part[tutorial_part_size - 1]
-		var last_entry_type = typeof(last_entry)
-		#if typeof(last_entry) == TYPE_INT:
 		if last_entry is float:
 			tutorial_part_size -= 1
 			repeat_yield = int(last_entry)
+		#_tutorial_action_signal_counts.erase(tutorial_part[tutorial_part_size-1])
 		
 		for i in range(tutorial_part_size):
 			if _tutorial_skipped:
@@ -183,11 +190,18 @@ func _do_tutorial():
 					HudAlertsMgr.clear_hud_alerts()
 					yield(get_tree().create_timer(section_pause_time), "timeout")
 				else:
+					if _tutorial_action_signal_counts.has(tutorial_line):
+						if _tutorial_action_signal_counts[tutorial_line] >= repeat_yield:
+							HudAlertsMgr.clear_hud_alerts()
+							continue
 					yield_util.add(self, tutorial_line)
 					for _i in range(repeat_yield):
 						yield(yield_util.wait_any(), "completed")
 						if _tutorial_skipped:
 							break
+						if _tutorial_action_signal_counts.has(tutorial_line):
+							if _tutorial_action_signal_counts[tutorial_line] >= repeat_yield:
+								continue
 					HudAlertsMgr.clear_hud_alerts()
 					if !_tutorial_skipped:
 						yield(get_tree().create_timer(section_pause_time), "timeout")
@@ -201,10 +215,17 @@ func _do_tutorial():
 	_end_tutorial()
 	Settings.mark_tutorial_finished()
 
+func _record_tutorial_signal(signal_name: String) -> void:
+	if _tutorial_action_signal_counts.has(signal_name):
+		_tutorial_action_signal_counts[signal_name] += 1
+	else:
+		_tutorial_action_signal_counts[signal_name] = 1
+
 
 func damage_random_structure():
 	var damage_mgr: DamageMgr = ServiceMgr.get_service(DamageMgr)
 	damage_mgr.damage_random_structure()
+	_tutorial_action_signal_counts.erase("structure_state_changed")
 
 
 func is_construction_allowed(structure_type_id: int) -> bool:
@@ -215,18 +236,23 @@ func is_construction_allowed(structure_type_id: int) -> bool:
 
 func _on_zoom_step_change_initiated(from_zoom_step: int, to_zoom_step: int, zoom_speed: float) -> void:
 	if to_zoom_step == 0:
+		_record_tutorial_signal("zoom_step_0")
 		emit_signal("zoom_step_0")
 	if to_zoom_step == 1:
+		_record_tutorial_signal("zoom_step_1")
 		emit_signal("zoom_step_1")
 	if to_zoom_step == 2:
+		_record_tutorial_signal("zoom_step_2")
 		emit_signal("zoom_step_2")
 
 func _on_camera_pan_started():
+	_record_tutorial_signal("camera_pan_started")
 	emit_signal("camera_pan_started")
 
 
 func _on_structure_state_changed(structure_map_cell):
 	_structure_state_changed_map_cell = structure_map_cell
+	_record_tutorial_signal("structure_state_changed")
 	emit_signal("structure_state_changed")
 
 func _is_structure_repaired(structure_map_cell):
@@ -236,7 +262,13 @@ func _is_structure_repaired(structure_map_cell):
 
 func _on_tutorial_skipped():
 	_tutorial_skipped = true
+	_record_tutorial_signal("tutorial_skipped")
 	emit_signal("tutorial_skipped")
+
+
+func _on_construction_button_mouse_entered(structure_type_id) -> void:
+	_record_tutorial_signal("construction_button_mouse_entered")
+	emit_signal("construction_button_mouse_entered")
 
 
 func highlight_ore_display():
@@ -312,3 +344,14 @@ func highlight_construction_drawer():
 
 func hide_construction_drawer_highlight():
 	emit_signal("hide_construction_drawer_highlight")
+
+
+func enable_structure_tile_tooltip():
+	emit_signal("enable_structure_tile_tooltip")
+
+
+func disable_structure_tile_tooltip():
+	emit_signal("disable_structure_tile_tooltip")
+
+
+

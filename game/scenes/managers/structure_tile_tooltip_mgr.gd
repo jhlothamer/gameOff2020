@@ -10,6 +10,7 @@ onready var tooltip_wait_timer := $TooltipWaitTimer
 
 var _current_structure: StructureMgr.StructureData
 var _panning_camera := false
+var _tooltip_enabled := true
 
 func _ready():
 	SignalMgr.register_publisher(self, "pop_tile_tooltip")
@@ -17,6 +18,9 @@ func _ready():
 	SignalMgr.register_subscriber(self, "camera_pan_started", "_on_camera_pan_started")
 	SignalMgr.register_subscriber(self, "camera_pan_stopped", "_on_camera_pan_stopped")
 	SignalMgr.register_subscriber(self, "tile_tooltip_auto_closed", "_on_tile_tooltip_auto_closed")
+	SignalMgr.register_subscriber(self, "enable_structure_tile_tooltip")
+	SignalMgr.register_subscriber(self, "disable_structure_tile_tooltip")
+	
 	tooltip_wait_timer.wait_time = tooltip_wait
 
 
@@ -43,7 +47,7 @@ func _on_TooltipWaitTimer_timeout():
 	if debug:
 		print("StructureTileTooltipMgr: wait timer expired.  Showing tooltip")
 	var mouse_screen_coord = get_viewport().get_mouse_position()
-	if _current_structure != null:
+	if _current_structure != null and _tooltip_enabled:
 		emit_signal("pop_tile_tooltip", mouse_screen_coord, _current_structure)
 	elif debug:
 		print("StructureTileTooltipMgr: no current structure - did not show tooltip")
@@ -60,4 +64,12 @@ func _on_camera_pan_started():
 
 func _on_camera_pan_stopped():
 	_panning_camera = false
+
+
+func _on_enable_structure_tile_tooltip() -> void:
+	_tooltip_enabled = true
+	
+func _on_disable_structure_tile_tooltip() -> void:
+	_tooltip_enabled = false
+
 
