@@ -80,7 +80,6 @@ custom_constants/separation = 20
 margin_right = 500.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 500, 0 )
-mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -129,7 +128,6 @@ fit_content_height = true
 margin_left = 520.0
 margin_right = 964.0
 margin_bottom = 78.0
-mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -144,7 +142,7 @@ fit_content_height = true
 [node name="FontsCreditLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_top = 186.0
 margin_right = 964.0
-margin_bottom = 250.0
+margin_bottom = 242.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 7 )
@@ -155,9 +153,9 @@ License: OFL (SIL Open Font License)"
 fit_content_height = true
 
 [node name="AdditionalArtCreditLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 254.0
+margin_top = 246.0
 margin_right = 964.0
-margin_bottom = 350.0
+margin_bottom = 330.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 7 )

@@ -115,8 +115,6 @@ __meta__ = {
 
 [node name="moon_huge_title" parent="." instance=ExtResource( 3 )]
 position = Vector2( -155.652, 229.671 )
-drive_on = true
-exhaust_length_percent = 1.0
 
 [node name="Moonshot2MarginContainer" type="MarginContainer" parent="."]
 margin_right = 444.0
